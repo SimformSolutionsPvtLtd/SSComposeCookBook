@@ -36,9 +36,7 @@ fun SimpleText(displayText: String) {
     Text(text = displayText)
 }
 
-// Android Studio provides an awesome feature of previewing your Compose UI elements while writing the code.
-// To do so, you need to use @Preview annotation and then write a Composable function and call your UI element.
-// The UI will be refreshed on every build or you can refresh manually from the UI preview tab.
+
 @Preview
 @Composable
 fun SimpleTextPreview() {
