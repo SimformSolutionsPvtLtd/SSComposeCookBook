@@ -3,6 +3,7 @@ package com.jetpack.compose.learning
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
@@ -19,9 +20,12 @@ import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.jetpack.compose.learning.recyclerview.MovieList
 import com.jetpack.compose.learning.textstyle.SimpleTextActivity
 
 class MainActivity : AppCompatActivity() {
+
+    private val movieViewModel: MovieViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +38,8 @@ class MainActivity : AppCompatActivity() {
                     intent = Intent(context, SimpleTextActivity::class.java),
                     buttonText = "Text Styling"
                 )
-
             }
+            MovieList(viewModel = movieViewModel, context = this)
         }
     }
 
