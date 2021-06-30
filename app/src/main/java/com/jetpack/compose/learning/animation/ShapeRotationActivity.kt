@@ -2,10 +2,19 @@ package com.mindorks.example.jetpack.compose.animation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.AnimationConstants
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.FloatPropKey
+import androidx.compose.animation.core.repeatable
+import androidx.compose.animation.core.transitionDefinition
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.transition
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.preferredSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier

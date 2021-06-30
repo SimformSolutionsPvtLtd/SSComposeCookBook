@@ -11,7 +11,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
 import androidx.ui.tooling.preview.Preview
-import com.jetpack.compose.learning.R
 
 class SimpleTextActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
