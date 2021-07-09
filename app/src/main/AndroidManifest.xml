@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".textstyle.SimpleTextActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".slider.SliderActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
     </application>
 
 </manifest>
