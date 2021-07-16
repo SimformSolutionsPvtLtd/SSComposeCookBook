@@ -3,20 +3,22 @@ package com.jetpack.compose.learning.textstyle
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.BlendMode.Companion.Color
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.Color.Companion.Green
-import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontFamily
@@ -26,8 +28,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jetpack.compose.learning.R
+import androidx.compose.runtime.getValue
 
-class SimpleTextActivity : AppCompatActivity() {
+
+class InputFieldActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,24 +51,30 @@ class SimpleTextActivity : AppCompatActivity() {
                 MultipleStylesInText()
                 SelectableText()
                 BackGroundText()
-                ShadowText()
             }
 
 
         }
     }
 }
-
-@Preview
+@ExperimentalFoundationApi
 @Composable
-fun SimpleText() {
-    // Text composable is used to display some text
-    Text(text = "This is Simple Text", Modifier.padding(bottom = 10.dp), fontSize = 30.sp)
+fun StyledTextField() {
+    var value ="Hello\nWorld\nInvisible"
+
+    TextField(
+        value = value,
+        onValueChange = { value = it },
+        label = { Text("Enter text") },
+        maxLines = 2,
+        textStyle = TextStyle(color = androidx.compose.ui.graphics.Color.Blue, fontWeight = FontWeight.Bold),
+        modifier = Modifier.padding(20.dp)
+    )
 }
 
 @Preview
 @Composable
-fun TextFromResource() {
+fun TextFromResource1() {
     // Text composable is used to display some text
     Text(
         stringResource(R.string.text_from_resource),
@@ -72,23 +82,10 @@ fun TextFromResource() {
         fontSize = 20.sp
     )
 }
-@Preview
-@Composable
-fun ShadowText() {
-    // Text composable is used to display some text
-    Text(
-       "Shadow on text",
-        Modifier.padding(bottom = 10.dp),
-        fontSize = 20.sp,style = TextStyle(shadow=Shadow(
-            color = androidx.compose.ui.graphics.Color.Cyan, blurRadius = 5f,
-            offset = Offset(2f, 2f)
-        )))
-
-}
 
 @Preview
 @Composable
-fun BoldText() {
+fun BoldText1() {
     Text(
         "Text style is bold",
         Modifier.padding(bottom = 10.dp),
@@ -98,7 +95,7 @@ fun BoldText() {
 }
 
 @Composable
-fun ColorText() {
+fun ColorText1() {
     Text(
         "Text color is Blue ",
         Modifier.padding(bottom = 10.dp),
@@ -108,7 +105,7 @@ fun ColorText() {
 }
 
 @Composable
-fun TextColorFromResource() {
+fun TextColorFromResource1() {
     Text(
         "Text color from colors.xml ",
         color = Color(R.color.teal_700),
@@ -118,7 +115,7 @@ fun TextColorFromResource() {
 }
 
 @Composable
-fun DifferentFonts() {
+fun DifferentFonts1() {
     Column {
         Text(
             "This is FontFamily.Serif",
@@ -130,7 +127,7 @@ fun DifferentFonts() {
 }
 
 @Composable
-fun TextUnderLine() {
+fun TextUnderLine1() {
     Column {
         Text(
             "This is text with under Line",
@@ -143,7 +140,7 @@ fun TextUnderLine() {
 }
 
 @Composable
-fun MultipleStylesInText() {
+fun MultipleStylesInText1() {
     Text(
         buildAnnotatedString {
             withStyle(style = SpanStyle(color = androidx.compose.ui.graphics.Color.Cyan)) {
@@ -166,7 +163,7 @@ fun MultipleStylesInText() {
 }
 
 @Composable
-fun SelectableText() {
+fun SelectableText1() {
         SelectionContainer {
             Text(
                 "Only this text is selectable",
@@ -178,7 +175,7 @@ fun SelectableText() {
 }
 
 @Composable
-fun BackGroundText() {
+fun BackGroundText1() {
     Surface(
         color = androidx.compose.ui.graphics.Color.Yellow,
         modifier = Modifier.padding(16.dp)
