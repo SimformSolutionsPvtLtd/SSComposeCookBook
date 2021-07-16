@@ -26,6 +26,7 @@
         <activity android:name=".navigationdrawer.NavigationDrawerTypesActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".navigationdrawer.ModalDrawerActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".navigationdrawer.BottomDrawerActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".dialog.DialogActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
     </application>
 
 </manifest>
