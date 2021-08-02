@@ -27,6 +27,10 @@
         <activity android:name=".navigationdrawer.ModalDrawerActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".navigationdrawer.BottomDrawerActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".dialog.DialogActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".constraintlayout.ConstraintLayoutActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".constraintlayout.BarrierActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".constraintlayout.GuidelineActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".constraintlayout.ChainActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
     </application>
 
 </manifest>
