@@ -23,6 +23,8 @@
         </activity>
         <activity android:name=".textstyle.SimpleTextActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".slider.SliderActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".radiobutton.RadioButtonActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".checkbox.CheckBoxActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".navigationdrawer.NavigationDrawerTypesActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".navigationdrawer.ModalDrawerActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".navigationdrawer.BottomDrawerActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
