@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.jetpack.compose.learning.bottomnav.BottomNavigationActivity
 import com.jetpack.compose.learning.checkbox.CheckBoxActivity
 import com.jetpack.compose.learning.constraintlayout.ConstraintLayoutActivity
 import com.jetpack.compose.learning.dialog.DialogActivity
@@ -72,6 +73,7 @@ class MainActivity : ComponentActivity() {
         Component("Radio Button", RadioButtonActivity::class.java),
         Component("Dialog", DialogActivity::class.java),
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
-        Component("Constraint Layout", ConstraintLayoutActivity::class.java)
+        Component("Constraint Layout", ConstraintLayoutActivity::class.java),
+        Component("Bottom Navigation", BottomNavigationActivity::class.java)
     )
 }
