@@ -36,7 +36,7 @@ class ConstraintLayoutActivity : ComponentActivity() {
         val spaceHeight = 24.dp
         Column {
             TopAppBar(
-                title = { Text("ConstraintLayout") },
+                title = { Text("Constraint Layout") },
                 navigationIcon = {
                     IconButton(onClick = { onBackPressed() }) {
                         Icon(Icons.Filled.ArrowBack, contentDescription = null)

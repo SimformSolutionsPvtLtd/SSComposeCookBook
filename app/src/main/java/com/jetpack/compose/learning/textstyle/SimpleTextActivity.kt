@@ -1,21 +1,18 @@
 package com.jetpack.compose.learning.textstyle
 
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.BlendMode.Companion.Color
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.White
-import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.*
@@ -27,30 +24,37 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jetpack.compose.learning.R
 
-class SimpleTextActivity : AppCompatActivity() {
+class SimpleTextActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-            Column(
-
-                modifier = Modifier.padding(10.dp),
-                verticalArrangement = Arrangement.Top,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                SimpleText()
-                TextFromResource()
-                ColorText()
-                TextColorFromResource()
-                DifferentFonts()
-                TextUnderLine()
-                MultipleStylesInText()
-                SelectableText()
-                BackGroundText()
-                ShadowText()
+            Column {
+                TopAppBar(
+                    title = { Text("Text") },
+                    navigationIcon = {
+                        IconButton(onClick = { onBackPressed() }) {
+                            Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                        }
+                    }
+                )
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.Top,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    SimpleText()
+                    TextFromResource()
+                    ColorText()
+                    TextColorFromResource()
+                    DifferentFonts()
+                    TextUnderLine()
+                    MultipleStylesInText()
+                    SelectableText()
+                    BackGroundText()
+                    ShadowText()
+                }
             }
-
-
         }
     }
 }
@@ -69,20 +73,24 @@ fun TextFromResource() {
     Text(
         stringResource(R.string.text_from_resource),
         Modifier.padding(bottom = 10.dp),
-        fontSize = 20.sp
+        fontSize = 18.sp
     )
 }
+
 @Preview
 @Composable
 fun ShadowText() {
     // Text composable is used to display some text
     Text(
-       "Shadow on text",
+        "Shadow on text",
         Modifier.padding(bottom = 10.dp),
-        fontSize = 20.sp,style = TextStyle(shadow=Shadow(
-            color = androidx.compose.ui.graphics.Color.Cyan, blurRadius = 5f,
-            offset = Offset(2f, 2f)
-        )))
+        fontSize = 20.sp, style = TextStyle(
+            shadow = Shadow(
+                color = androidx.compose.ui.graphics.Color.Cyan, blurRadius = 5f,
+                offset = Offset(2f, 2f)
+            )
+        )
+    )
 
 }
 
@@ -167,14 +175,13 @@ fun MultipleStylesInText() {
 
 @Composable
 fun SelectableText() {
-        SelectionContainer {
-            Text(
-                "Only this text is selectable",
-                modifier = Modifier.padding(bottom = 10.dp),
-                fontSize = 20.sp
-            )
-        }
-
+    SelectionContainer {
+        Text(
+            "Only this text is selectable",
+            modifier = Modifier.padding(bottom = 10.dp),
+            fontSize = 20.sp
+        )
+    }
 }
 
 @Composable
@@ -183,7 +190,6 @@ fun BackGroundText() {
         color = androidx.compose.ui.graphics.Color.Yellow,
         modifier = Modifier.padding(16.dp)
     ) {
-
         Text(
             "This text field has background",
             modifier = Modifier.padding(bottom = 10.dp),
