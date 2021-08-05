@@ -35,6 +35,7 @@
         <activity android:name=".constraintlayout.ChainActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".bottomnav.BottomNavigationActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".textfield.TextFieldActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".appbar.TopAppBarActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
     </application>
 
 </manifest>
