@@ -56,6 +56,8 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout-compose:$constraint_compose_version"
     // Compose Navigation
     implementation "androidx.navigation:navigation-compose:$navigation_compose_version"
+    // Material Icons
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

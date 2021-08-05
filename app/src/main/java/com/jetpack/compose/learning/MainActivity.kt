@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -23,8 +24,10 @@ import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivity
 import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
 import com.jetpack.compose.learning.slider.SliderActivity
+import com.jetpack.compose.learning.textfield.TextFieldActivity
 import com.jetpack.compose.learning.textstyle.SimpleTextActivity
 
+@ExperimentalComposeUiApi
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,6 +71,7 @@ class MainActivity : ComponentActivity() {
 
     private fun getComponents(): List<Component> = listOf<Component>(
         Component("Text", SimpleTextActivity::class.java),
+        Component("TextField", TextFieldActivity::class.java),
         Component("Slider", SliderActivity::class.java),
         Component("Checkbox", CheckBoxActivity::class.java),
         Component("Radio Button", RadioButtonActivity::class.java),
