@@ -16,7 +16,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.jetpack.compose.learning.appbar.TopAppBarActivity
 import com.jetpack.compose.learning.bottomnav.BottomNavigationActivity
 import com.jetpack.compose.learning.checkbox.CheckBoxActivity
 import com.jetpack.compose.learning.constraintlayout.ConstraintLayoutActivity
@@ -79,7 +78,6 @@ class MainActivity : ComponentActivity() {
         Component("Dialog", DialogActivity::class.java),
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
         Component("Constraint Layout", ConstraintLayoutActivity::class.java),
-        Component("Bottom Navigation", BottomNavigationActivity::class.java),
-        Component("App Bar", TopAppBarActivity::class.java)
+        Component("Bottom Navigation", BottomNavigationActivity::class.java)
     )
 }
