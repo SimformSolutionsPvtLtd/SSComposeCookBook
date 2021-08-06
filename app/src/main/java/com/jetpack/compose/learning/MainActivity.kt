@@ -24,6 +24,7 @@ import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.appbar.TopAppBarActivity
 import com.jetpack.compose.learning.bottomnav.BottomNavigationActivity
+import com.jetpack.compose.learning.button.ButtonActivity
 import com.jetpack.compose.learning.checkbox.CheckBoxActivity
 import com.jetpack.compose.learning.constraintlayout.ConstraintLayoutActivity
 import com.jetpack.compose.learning.dialog.DialogActivity
@@ -100,6 +101,7 @@ class MainActivity : ComponentActivity() {
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
         Component("Constraint Layout", ConstraintLayoutActivity::class.java),
         Component("Bottom Navigation", BottomNavigationActivity::class.java),
+        Component("Button", ButtonActivity::class.java),
         Component("Theme", ThemeActivity::class.java),
         Component("Bottom Navigation", BottomNavigationActivity::class.java),
         Component("App Bar", TopAppBarActivity::class.java),
