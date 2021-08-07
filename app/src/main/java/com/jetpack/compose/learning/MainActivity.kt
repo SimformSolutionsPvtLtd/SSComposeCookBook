@@ -25,6 +25,7 @@ import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivity
 import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
 import com.jetpack.compose.learning.slider.SliderActivity
+import com.jetpack.compose.learning.snackbar.SnackBarActivity
 import com.jetpack.compose.learning.textfield.TextFieldActivity
 import com.jetpack.compose.learning.textstyle.SimpleTextActivity
 
@@ -80,6 +81,7 @@ class MainActivity : ComponentActivity() {
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
         Component("Constraint Layout", ConstraintLayoutActivity::class.java),
         Component("Bottom Navigation", BottomNavigationActivity::class.java),
-        Component("App Bar", TopAppBarActivity::class.java)
+        Component("App Bar", TopAppBarActivity::class.java),
+        Component("Snackbar", SnackBarActivity::class.java)
     )
 }
