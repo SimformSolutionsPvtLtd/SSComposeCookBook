@@ -26,8 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.DialogProperties
 import com.jetpack.compose.learning.theme.AppThemeState
-import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.theme.BaseView
+import com.jetpack.compose.learning.theme.SystemUiController
 
 class DialogActivity : ComponentActivity() {
 

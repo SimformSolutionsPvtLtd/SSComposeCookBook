@@ -73,18 +73,28 @@ class SwitchActivity : ComponentActivity() {
                 .wrapContentSize(Alignment.TopCenter)
         ) {
             // Basic Switch
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth()) {
-               Text(text = "Simple Switch.", modifier = Modifier.padding(end = 5.dp))
-               Switch(
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
+                Text(text = "Simple Switch.", modifier = Modifier.padding(end = 5.dp))
+                Switch(
                     checked = simpleSwitchState,
                     onCheckedChange = { simpleSwitchState = it }
                 )
             }
 
             // Switch with selected thumb color
-            Row(verticalAlignment = Alignment.CenterVertically,  horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.padding(16.dp).fillMaxWidth()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
                 Text(text = "Custom selected thumb color.", modifier = Modifier.padding(end = 5.dp))
                 Switch(
                     checked = customEnableColorSwitchState,
@@ -97,8 +107,17 @@ class SwitchActivity : ComponentActivity() {
             }
 
             // Switch with unselected thumb color
-            Row(verticalAlignment = Alignment.CenterVertically,  horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.padding(16.dp).fillMaxWidth()) {
-                Text(text = "Custom unselected thumb color.", modifier = Modifier.padding(end = 5.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = "Custom unselected thumb color.",
+                    modifier = Modifier.padding(end = 5.dp)
+                )
                 Switch(
                     checked = customDisableColorSwitchState,
                     onCheckedChange = { customDisableColorSwitchState = it },
@@ -110,7 +129,13 @@ class SwitchActivity : ComponentActivity() {
             }
 
             // Switch with selected track color
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.padding(16.dp).fillMaxWidth()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
                 Text(text = "Custom selected track color.", modifier = Modifier.padding(end = 5.dp))
                 Switch(
                     checked = customEnableTrackColorSwitchState,
@@ -123,8 +148,17 @@ class SwitchActivity : ComponentActivity() {
             }
 
             // Switch with unselected track color
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.padding(16.dp).fillMaxWidth()) {
-                Text(text = "Custom unselected track color.", modifier = Modifier.padding(end = 5.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = "Custom unselected track color.",
+                    modifier = Modifier.padding(end = 5.dp)
+                )
                 Switch(
                     checked = customDisableTrackColorSwitchState,
                     onCheckedChange = { customDisableTrackColorSwitchState = it },
@@ -136,7 +170,13 @@ class SwitchActivity : ComponentActivity() {
             }
 
             // Disabled Switch in OFF state
-            Row(verticalAlignment = Alignment.CenterVertically,  horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.padding(16.dp).fillMaxWidth()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
                 Text(text = "Disabled switch in OFF state", modifier = Modifier.padding(end = 5.dp))
                 Switch(
                     checked = false,
@@ -147,7 +187,13 @@ class SwitchActivity : ComponentActivity() {
             }
 
             // Disabled Switch in ON state
-            Row(verticalAlignment = Alignment.CenterVertically,  horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.padding(16.dp).fillMaxWidth()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
                 Text(text = "Disabled switch in ON state.", modifier = Modifier.padding(end = 5.dp))
                 Switch(
                     checked = true,

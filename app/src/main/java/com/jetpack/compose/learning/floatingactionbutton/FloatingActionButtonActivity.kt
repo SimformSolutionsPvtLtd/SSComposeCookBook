@@ -4,12 +4,24 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.ExtendedFloatingActionButton
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -62,10 +74,12 @@ class FloatingActionButtonActivity : ComponentActivity() {
     @Composable
     private fun FabButtons() {
 
-        Column(horizontalAlignment = Alignment.CenterHorizontally,
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
-                .wrapContentSize(Alignment.Center)) {
+                .wrapContentSize(Alignment.Center)
+        ) {
             val spaceModifier = Modifier.height(30.dp)
 
             //Simple FAB
@@ -100,24 +114,24 @@ class FloatingActionButtonActivity : ComponentActivity() {
             FloatingActionButton(onClick = { onClick("Simple FAB with custom content") },
                 contentColor = Color.White,
                 backgroundColor = Color.Blue,
-            content = {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(start = 10.dp, end = 10.dp)
-                ) {
-                    Icon(Icons.Filled.Add, "")
-                    Spacer(modifier = Modifier.width(5.dp))
-                    Text(text = "Simple FAB with custom content")
-                }
-            })
+                content = {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(start = 10.dp, end = 10.dp)
+                    ) {
+                        Icon(Icons.Filled.Add, "")
+                        Spacer(modifier = Modifier.width(5.dp))
+                        Text(text = "Simple FAB with custom content")
+                    }
+                })
 
             Spacer(modifier = spaceModifier)
 
             //EXTENDED FAB
             ExtendedFloatingActionButton(
-                text = {  Text(text = "Extended FAB with icon") },
+                text = { Text(text = "Extended FAB with icon") },
                 onClick = { onClick("Extended FAB with icon") },
-                icon ={ Icon(Icons.Filled.Add,"")}
+                icon = { Icon(Icons.Filled.Add, "") }
             )
 
             Spacer(modifier = spaceModifier)

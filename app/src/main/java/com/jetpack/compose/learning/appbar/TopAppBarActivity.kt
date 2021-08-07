@@ -21,7 +21,7 @@ import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 
-class TopAppBarActivity: ComponentActivity() {
+class TopAppBarActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +64,13 @@ class TopAppBarActivity: ComponentActivity() {
             TopAppBar(
                 title = { Text("Left Action App Bar") },
                 navigationIcon = {
-                    IconButton(onClick = { Toast.makeText(applicationContext, "Menu Icon Clicked", Toast.LENGTH_SHORT).show() }) {
+                    IconButton(onClick = {
+                        Toast.makeText(
+                            applicationContext,
+                            "Menu Icon Clicked",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }) {
                         Icon(imageVector = Icons.Filled.Menu, contentDescription = null)
                     }
                 }
@@ -76,7 +82,13 @@ class TopAppBarActivity: ComponentActivity() {
             TopAppBar(
                 title = { Text("Right Action App Bar") },
                 actions = {
-                    IconButton(onClick = { Toast.makeText(applicationContext, "Search Icon Clicked", Toast.LENGTH_SHORT).show() }) {
+                    IconButton(onClick = {
+                        Toast.makeText(
+                            applicationContext,
+                            "Search Icon Clicked",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }) {
                         Icon(imageVector = Icons.Filled.Search, contentDescription = null)
                     }
                 }
@@ -88,12 +100,24 @@ class TopAppBarActivity: ComponentActivity() {
             TopAppBar(
                 title = { Text("Multiple Actions App Bar") },
                 navigationIcon = {
-                    IconButton(onClick = { Toast.makeText(applicationContext, "Menu Icon Clicked", Toast.LENGTH_SHORT).show() }) {
+                    IconButton(onClick = {
+                        Toast.makeText(
+                            applicationContext,
+                            "Menu Icon Clicked",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }) {
                         Icon(imageVector = Icons.Filled.Menu, contentDescription = null)
                     }
                 },
                 actions = {
-                    IconButton(onClick = { Toast.makeText(applicationContext, "Search Icon Clicked", Toast.LENGTH_SHORT).show() }) {
+                    IconButton(onClick = {
+                        Toast.makeText(
+                            applicationContext,
+                            "Search Icon Clicked",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }) {
                         Icon(imageVector = Icons.Filled.Search, contentDescription = null)
                     }
                 }
@@ -105,13 +129,25 @@ class TopAppBarActivity: ComponentActivity() {
             TopAppBar(
                 title = { Text("Multiple Right Actions App Bar") },
                 actions = {
-                    IconButton(onClick = { Toast.makeText(applicationContext, "Search Icon Clicked", Toast.LENGTH_SHORT).show() }) {
+                    IconButton(onClick = {
+                        Toast.makeText(
+                            applicationContext,
+                            "Search Icon Clicked",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }) {
                         Icon(imageVector = Icons.Filled.Search, contentDescription = null)
                     }
 
                     Spacer(modifier = Modifier.width(10.dp))
 
-                    IconButton(onClick = { Toast.makeText(applicationContext, "Refresh Icon Clicked", Toast.LENGTH_SHORT).show() }) {
+                    IconButton(onClick = {
+                        Toast.makeText(
+                            applicationContext,
+                            "Refresh Icon Clicked",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }) {
                         Icon(imageVector = Icons.Filled.Refresh, contentDescription = null)
                     }
                 }
@@ -120,14 +156,20 @@ class TopAppBarActivity: ComponentActivity() {
             Spacer(modifier = Modifier.height(20.dp))
 
             // Custom App Bar with Left icon action and Title text in Center
-            TopAppBar(modifier= Modifier.fillMaxWidth()) {
+            TopAppBar(modifier = Modifier.fillMaxWidth()) {
 
                 //TopAppBar Content
                 Box(Modifier.height(32.dp)) {
-                    
+
                     // Navigation Icon
                     IconButton(
-                        onClick = { Toast.makeText(applicationContext, "Custom Refresh Icon Clicked", Toast.LENGTH_SHORT).show() },
+                        onClick = {
+                            Toast.makeText(
+                                applicationContext,
+                                "Custom Refresh Icon Clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        },
                         enabled = true,
                         modifier = Modifier.width(60.dp),
                     ) {
@@ -138,8 +180,10 @@ class TopAppBarActivity: ComponentActivity() {
                     }
 
                     //Title
-                    Row(Modifier.fillMaxSize(),
-                    verticalAlignment = Alignment.CenterVertically) {
+                    Row(
+                        Modifier.fillMaxSize(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Text(
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.Center,
@@ -151,12 +195,20 @@ class TopAppBarActivity: ComponentActivity() {
 
                     //Action
                     Row(
-                        Modifier.fillMaxHeight().fillMaxWidth(),
+                        Modifier
+                            .fillMaxHeight()
+                            .fillMaxWidth(),
                         horizontalArrangement = Arrangement.End,
                         verticalAlignment = Alignment.CenterVertically,
                         content = {
                             IconButton(
-                                onClick = { Toast.makeText(applicationContext, "Custom Search Icon Clicked", Toast.LENGTH_SHORT).show() },
+                                onClick = {
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "Custom Search Icon Clicked",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                },
                                 enabled = true,
                                 modifier = Modifier.width(60.dp),
                             ) {

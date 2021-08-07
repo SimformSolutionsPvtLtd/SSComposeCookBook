@@ -62,7 +62,7 @@ class RadioButtonActivity : ComponentActivity() {
     @Preview
     @Composable
     fun MainContent() {
-        Scaffold (topBar = {
+        Scaffold(topBar = {
             TopAppBar(
                 title = { Text("Radio Button") },
                 navigationIcon = {
@@ -76,7 +76,8 @@ class RadioButtonActivity : ComponentActivity() {
                 Modifier
                     .fillMaxSize()
                     .wrapContentSize(Alignment.TopCenter)
-                    .padding(top = 10.dp)) {
+                    .padding(top = 10.dp)
+            ) {
                 RadioButtonsWithProperties()
                 RadioGroupSample()
             }
@@ -91,15 +92,20 @@ class RadioButtonActivity : ComponentActivity() {
         var customSelectedColorRadioButton by remember { mutableStateOf(false) }
         var customUnSelectedColorRadioButton by remember { mutableStateOf(false) }
 
-        Card(backgroundColor = pink200,
+        Card(
+            backgroundColor = pink200,
             modifier = Modifier
                 .padding(10.dp)
                 .fillMaxWidth(),
             elevation = 8.dp,
-            shape = RoundedCornerShape(8.dp)) {
+            shape = RoundedCornerShape(8.dp)
+        ) {
             Column(Modifier.padding(10.dp)) {
 
-                Text(text = "This are Radio Button with different properties", style = MaterialTheme.typography.h6)
+                Text(
+                    text = "This are Radio Button with different properties",
+                    style = MaterialTheme.typography.h6
+                )
 
                 Spacer(modifier = spaceModifier)
 
@@ -113,19 +119,28 @@ class RadioButtonActivity : ComponentActivity() {
                 // Simple Radio Button with Label
                 Row {
                     RadioButton(selected = simpleRadioButtonWithLabelSelectionState, onClick = {
-                        simpleRadioButtonWithLabelSelectionState = !simpleRadioButtonWithLabelSelectionState
+                        simpleRadioButtonWithLabelSelectionState =
+                            !simpleRadioButtonWithLabelSelectionState
                     }, Modifier.padding(end = 5.dp))
-                    Text(text = "Simple Radio button with label", Modifier.clickable { simpleRadioButtonWithLabelSelectionState = !simpleRadioButtonWithLabelSelectionState })
+                    Text(
+                        text = "Simple Radio button with label",
+                        Modifier.clickable {
+                            simpleRadioButtonWithLabelSelectionState =
+                                !simpleRadioButtonWithLabelSelectionState
+                        })
                 }
 
                 Spacer(modifier = spaceModifier)
 
                 // Disabled Radio Button
                 Row {
-                    RadioButton(selected = false, onClick = {
-                        simpleRadioButtonWithLabelSelectionState = !simpleRadioButtonWithLabelSelectionState
-                    },
-                        enabled = false, modifier = Modifier.padding(end = 5.dp))
+                    RadioButton(
+                        selected = false, onClick = {
+                            simpleRadioButtonWithLabelSelectionState =
+                                !simpleRadioButtonWithLabelSelectionState
+                        },
+                        enabled = false, modifier = Modifier.padding(end = 5.dp)
+                    )
                     Text(text = "Disabled unselected Radio button")
                 }
 
@@ -135,7 +150,7 @@ class RadioButtonActivity : ComponentActivity() {
                 Row {
                     RadioButton(selected = true, onClick = {
                         simpleRadioButtonSelectionState = !simpleRadioButtonSelectionState
-                    }, enabled = false, modifier =  Modifier.padding(end = 5.dp))
+                    }, enabled = false, modifier = Modifier.padding(end = 5.dp))
                     Text(text = "Disabled selected Radio button")
                 }
 
@@ -143,24 +158,36 @@ class RadioButtonActivity : ComponentActivity() {
 
                 // Custom selected color Radio Button
                 Row {
-                    RadioButton(selected = customSelectedColorRadioButton, onClick = {
-                        customSelectedColorRadioButton = !customSelectedColorRadioButton
-                    },
-                        colors = RadioButtonDefaults.colors(selectedColor = pink700), modifier =  Modifier.padding(end = 5.dp))
+                    RadioButton(
+                        selected = customSelectedColorRadioButton,
+                        onClick = {
+                            customSelectedColorRadioButton = !customSelectedColorRadioButton
+                        },
+                        colors = RadioButtonDefaults.colors(selectedColor = pink700),
+                        modifier = Modifier.padding(end = 5.dp)
+                    )
                     Text(text = "Custom selected color Radio button",
-                        Modifier.clickable { customSelectedColorRadioButton = !customSelectedColorRadioButton })
+                        Modifier.clickable {
+                            customSelectedColorRadioButton = !customSelectedColorRadioButton
+                        })
                 }
 
                 Spacer(modifier = spaceModifier)
 
                 // Custom unselected color Radio Button
                 Row {
-                    RadioButton(selected = customUnSelectedColorRadioButton, onClick = {
-                        customUnSelectedColorRadioButton = !customUnSelectedColorRadioButton
-                    },
-                        colors = RadioButtonDefaults.colors(unselectedColor = Color.White), modifier =  Modifier.padding(end = 5.dp))
+                    RadioButton(
+                        selected = customUnSelectedColorRadioButton,
+                        onClick = {
+                            customUnSelectedColorRadioButton = !customUnSelectedColorRadioButton
+                        },
+                        colors = RadioButtonDefaults.colors(unselectedColor = Color.White),
+                        modifier = Modifier.padding(end = 5.dp)
+                    )
                     Text(text = "Custom unselected color Radio button",
-                        Modifier.clickable { customUnSelectedColorRadioButton = !customUnSelectedColorRadioButton })
+                        Modifier.clickable {
+                            customUnSelectedColorRadioButton = !customUnSelectedColorRadioButton
+                        })
                 }
             }
         }
@@ -173,16 +200,21 @@ class RadioButtonActivity : ComponentActivity() {
         /* Here Create State of radioButton */
         var selectedOption by remember { mutableStateOf("") }
 
-        Card (backgroundColor = pink200,
+        Card(
+            backgroundColor = pink200,
             modifier = Modifier
                 .padding(10.dp)
                 .fillMaxWidth(),
             elevation = 8.dp,
-            shape = RoundedCornerShape(8.dp)) {
+            shape = RoundedCornerShape(8.dp)
+        ) {
 
             Column(Modifier.padding(10.dp)) {
 
-                Text(text = "This is an example of Radio Group", style = MaterialTheme.typography.h6)
+                Text(
+                    text = "This is an example of Radio Group",
+                    style = MaterialTheme.typography.h6
+                )
 
                 Spacer(spaceModifier)
 

@@ -50,7 +50,7 @@ class BottomDrawerActivity : ComponentActivity() {
         drawerState = rememberBottomDrawerState(BottomDrawerValue.Closed)
         scope = rememberCoroutineScope()
         val (isGestureEnable, toggleGesturesEnabled) = remember { mutableStateOf(true) }
-        Column{
+        Column {
             TopAppBar(
                 title = { Text("Bottom Drawer Sample") },
                 navigationIcon = {

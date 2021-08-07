@@ -1,6 +1,6 @@
 package com.jetpack.compose.learning.recyclerview.model
 
-data class MovieResponse (
+data class MovieResponse(
     var page: Int,
     var results: List<Movie>
 )

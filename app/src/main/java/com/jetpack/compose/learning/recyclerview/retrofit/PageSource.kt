@@ -15,8 +15,10 @@ class PageSource : PagingSource<Int, Movie>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         return try {
             val nextPage = params.key ?: 1
-            val userList = RetrofitClient.apiService.getMovieList(api_key = "8f3845576311ddddc2ae7f7801641fdb",
-                page = nextPage)
+            val userList = RetrofitClient.apiService.getMovieList(
+                api_key = "8f3845576311ddddc2ae7f7801641fdb",
+                page = nextPage
+            )
             LoadResult.Page(
                 data = userList.results,
                 prevKey = if (nextPage == 1) null else nextPage - 1,

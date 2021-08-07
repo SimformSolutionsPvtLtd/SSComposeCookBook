@@ -8,5 +8,6 @@ interface RetrofitService {
     @GET("popular")
     suspend fun getMovieList(
         @Query("api_key") api_key: String,
-        @Query("page") page: Int) : MovieResponse
+        @Query("page") page: Int
+    ): MovieResponse
 }
