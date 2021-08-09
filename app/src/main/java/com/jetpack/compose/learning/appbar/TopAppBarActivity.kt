@@ -9,29 +9,38 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jetpack.compose.learning.theme.AppThemeState
+import com.jetpack.compose.learning.theme.BaseView
+import com.jetpack.compose.learning.theme.SystemUiController
 
 class TopAppBarActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Scaffold(topBar = {
-                TopAppBar(
-                    title = { Text("TopApp Bar") },
-                    navigationIcon = {
-                        IconButton(onClick = { onBackPressed() }) {
-                            Icon(Icons.Filled.ArrowBack, contentDescription = null)
+            val systemUiController = remember { SystemUiController(window) }
+            val appTheme = remember { mutableStateOf(AppThemeState()) }
+            BaseView(appTheme.value, systemUiController) {
+                Scaffold(topBar = {
+                    TopAppBar(
+                        title = { Text("TopApp Bar") },
+                        navigationIcon = {
+                            IconButton(onClick = { onBackPressed() }) {
+                                Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                            }
                         }
-                    }
-                )
-            }) {
-                AppBar()
+                    )
+                }) {
+                    AppBar()
+                }
             }
         }
     }

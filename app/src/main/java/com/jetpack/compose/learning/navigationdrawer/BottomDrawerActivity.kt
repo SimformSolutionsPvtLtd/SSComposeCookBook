@@ -16,9 +16,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jetpack.compose.learning.theme.AppThemeState
+import com.jetpack.compose.learning.theme.SystemUiController
+import com.jetpack.compose.learning.theme.BaseView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -31,7 +35,11 @@ class BottomDrawerActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BottomDrawerSample()
+            val systemUiController = remember { SystemUiController(window) }
+            val appTheme = remember { mutableStateOf(AppThemeState()) }
+            BaseView(appTheme.value, systemUiController) {
+                BottomDrawerSample()
+            }
         }
     }
 
@@ -63,7 +71,14 @@ class BottomDrawerActivity : ComponentActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {
-                Checkbox(checked = isGestureEnable, null)
+                Checkbox(
+                    checked = isGestureEnable, onCheckedChange = null,
+                    colors = CheckboxDefaults.colors(
+                        checkedColor = MaterialTheme.colors.primaryVariant,
+                        uncheckedColor = Color.DarkGray,
+                        checkmarkColor = Color.White
+                    )
+                )
                 Text(
                     text = "Enable swipe up/down gesture",
                     Modifier.padding(start = 5.dp),

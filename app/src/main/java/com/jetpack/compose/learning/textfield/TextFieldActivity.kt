@@ -28,6 +28,9 @@ import androidx.compose.ui.text.input.*
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.jetpack.compose.learning.theme.AppThemeState
+import com.jetpack.compose.learning.theme.BaseView
+import com.jetpack.compose.learning.theme.SystemUiController
 
 @ExperimentalComposeUiApi
 class TextFieldActivity : ComponentActivity() {
@@ -35,17 +38,21 @@ class TextFieldActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Scaffold(topBar = {
-                TopAppBar(
-                    title = { Text("Text fields") },
-                    navigationIcon = {
-                        IconButton(onClick = { onBackPressed() }) {
-                            Icon(Icons.Filled.ArrowBack, contentDescription = null)
+            val systemUiController = remember { SystemUiController(window) }
+            val appTheme = remember { mutableStateOf(AppThemeState()) }
+            BaseView(appTheme.value, systemUiController) {
+                Scaffold(topBar = {
+                    TopAppBar(
+                        title = { Text("Text fields") },
+                        navigationIcon = {
+                            IconButton(onClick = { onBackPressed() }) {
+                                Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                            }
                         }
-                    }
-                )
-            }) {
-                TextFieldExamples()
+                    )
+                }) {
+                    TextFieldExamples()
+                }
             }
         }
     }

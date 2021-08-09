@@ -12,12 +12,17 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.jetpack.compose.learning.theme.AppThemeState
+import com.jetpack.compose.learning.theme.BaseView
+import com.jetpack.compose.learning.theme.SystemUiController
 import kotlinx.coroutines.launch
 
 class SnackBarActivity: ComponentActivity() {
@@ -32,20 +37,25 @@ class SnackBarActivity: ComponentActivity() {
     @Preview
     @Composable
     private fun MainContent() {
-        val scaffoldState = rememberScaffoldState()
-        Scaffold (topBar = {
-            TopAppBar(
-                title = { Text("Snackbars") },
-                navigationIcon = {
-                    IconButton(onClick = { onBackPressed() }) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
-                    }
-                }
-            )
-        },
-            scaffoldState = scaffoldState
-        ) {
-            SnackBarExample(scaffoldState)
+        val systemUiController = remember { SystemUiController(window) }
+        val appTheme = remember { mutableStateOf(AppThemeState()) }
+        BaseView(appTheme.value, systemUiController) {
+            val scaffoldState = rememberScaffoldState()
+            Scaffold(
+                topBar = {
+                    TopAppBar(
+                        title = { Text("Snackbars") },
+                        navigationIcon = {
+                            IconButton(onClick = { onBackPressed() }) {
+                                Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                            }
+                        }
+                    )
+                },
+                scaffoldState = scaffoldState
+            ) {
+                SnackBarExample(scaffoldState)
+            }
         }
     }
 
