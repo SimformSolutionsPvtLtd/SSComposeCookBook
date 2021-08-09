@@ -21,6 +21,7 @@ import com.jetpack.compose.learning.bottomnav.BottomNavigationActivity
 import com.jetpack.compose.learning.checkbox.CheckBoxActivity
 import com.jetpack.compose.learning.constraintlayout.ConstraintLayoutActivity
 import com.jetpack.compose.learning.dialog.DialogActivity
+import com.jetpack.compose.learning.floatingactionbutton.FloatingActionButtonActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivity
 import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
@@ -82,6 +83,7 @@ class MainActivity : ComponentActivity() {
         Component("Constraint Layout", ConstraintLayoutActivity::class.java),
         Component("Bottom Navigation", BottomNavigationActivity::class.java),
         Component("App Bar", TopAppBarActivity::class.java),
-        Component("Snackbar", SnackBarActivity::class.java)
+        Component("Snackbar", SnackBarActivity::class.java),
+        Component("Floating Action Buttons", FloatingActionButtonActivity::class.java)
     )
 }
