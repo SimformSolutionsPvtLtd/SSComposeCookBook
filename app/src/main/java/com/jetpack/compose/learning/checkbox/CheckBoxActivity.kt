@@ -17,13 +17,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jetpack.compose.learning.theme.AppThemeState
+import com.jetpack.compose.learning.theme.SystemUiController
+import com.jetpack.compose.learning.theme.BaseView
 
 class CheckBoxActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CheckBoxSample()
+            val systemUiController = remember { SystemUiController(window) }
+            val appTheme = remember { mutableStateOf(AppThemeState()) }
+            BaseView(appTheme.value, systemUiController) {
+                CheckBoxSample()
+            }
         }
     }
 
@@ -66,7 +73,7 @@ class CheckBoxActivity : ComponentActivity() {
                             onCheckedChange = { mItemsList.value[index].value.value = it },
                             enabled = true,
                             colors = CheckboxDefaults.colors(
-                                checkedColor = Color.Blue,
+                                checkedColor = MaterialTheme.colors.primaryVariant,
                                 uncheckedColor = Color.DarkGray,
                                 checkmarkColor = Color.White
                             )
@@ -78,7 +85,6 @@ class CheckBoxActivity : ComponentActivity() {
                 Text("Clickable label checkbox :", style = MaterialTheme.typography.h6)
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth()
                         .padding(top = 16.dp)
                         .toggleable(
                             value = isClick,
@@ -86,7 +92,14 @@ class CheckBoxActivity : ComponentActivity() {
                         ),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Checkbox(checked = isClick, null)
+                    Checkbox(
+                        checked = isClick, onCheckedChange = null,
+                        colors = CheckboxDefaults.colors(
+                            checkedColor = MaterialTheme.colors.primaryVariant,
+                            uncheckedColor = Color.DarkGray,
+                            checkmarkColor = Color.White
+                        )
+                    )
                     Text(
                         text = "Checkbox label",
                         Modifier.padding(start = 5.dp),

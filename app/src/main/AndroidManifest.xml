@@ -34,6 +34,7 @@
         <activity android:name=".constraintlayout.GuidelineActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".constraintlayout.ChainActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".bottomnav.BottomNavigationActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".theme.ThemeActivity" android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity android:name=".textfield.TextFieldActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".appbar.TopAppBarActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".snackbar.SnackBarActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>

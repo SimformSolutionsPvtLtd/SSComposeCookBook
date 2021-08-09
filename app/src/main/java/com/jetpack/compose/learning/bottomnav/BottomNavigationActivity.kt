@@ -9,17 +9,26 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import com.google.gson.Gson
+import com.jetpack.compose.learning.theme.AppThemeState
+import com.jetpack.compose.learning.theme.SystemUiController
+import com.jetpack.compose.learning.theme.BaseView
 
 class BottomNavigationActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainContent()
+            val systemUiController = remember { SystemUiController(window) }
+            val appTheme = remember { mutableStateOf(AppThemeState()) }
+            BaseView(appTheme.value, systemUiController) {
+                MainContent()
+            }
         }
     }
 

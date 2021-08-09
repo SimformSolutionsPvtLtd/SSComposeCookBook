@@ -10,12 +10,18 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.jetpack.compose.learning.theme.AppThemeState
+import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.appbar.TopAppBarActivity
 import com.jetpack.compose.learning.bottomnav.BottomNavigationActivity
 import com.jetpack.compose.learning.checkbox.CheckBoxActivity
@@ -29,6 +35,8 @@ import com.jetpack.compose.learning.slider.SliderActivity
 import com.jetpack.compose.learning.snackbar.SnackBarActivity
 import com.jetpack.compose.learning.textfield.TextFieldActivity
 import com.jetpack.compose.learning.textstyle.SimpleTextActivity
+import com.jetpack.compose.learning.theme.BaseView
+import com.jetpack.compose.learning.theme.ThemeActivity
 
 @ExperimentalComposeUiApi
 class MainActivity : ComponentActivity() {
@@ -37,15 +45,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            Column {
-                TopAppBar(
-                    title = { Text(text = "ComposeCookBook", color = Color.White) },
-                )
-                Spacer(Modifier.height(16.dp))
-                LazyColumn {
-                    items(getComponents()) {
-                        ButtonComponent(it.componentName, it.className)
-                    }
+            val systemUiController = remember { SystemUiController(window) }
+            val appTheme = remember { mutableStateOf(AppThemeState()) }
+            BaseView(appTheme.value, systemUiController){
+                MainScreen()
+            }
+        }
+    }
+
+    @Preview
+    @Composable
+    fun MainScreen(){
+        Column {
+            TopAppBar(
+                title = { Text(text = "ComposeCookBook", color = Color.White) },
+            )
+            LazyColumn {
+                items(getComponents()) {
+                    ButtonComponent(it.componentName, it.className)
                 }
             }
         }
@@ -66,6 +83,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier
                     .padding(8.dp),
                 text = buttonText,
+                fontSize = 16.sp,
                 textAlign = TextAlign.Center,
                 color = Color.White
             )
@@ -81,6 +99,8 @@ class MainActivity : ComponentActivity() {
         Component("Dialog", DialogActivity::class.java),
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
         Component("Constraint Layout", ConstraintLayoutActivity::class.java),
+        Component("Bottom Navigation", BottomNavigationActivity::class.java),
+        Component("Theme", ThemeActivity::class.java),
         Component("Bottom Navigation", BottomNavigationActivity::class.java),
         Component("App Bar", TopAppBarActivity::class.java),
         Component("Snackbar", SnackBarActivity::class.java),

@@ -25,6 +25,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.DialogProperties
+import com.jetpack.compose.learning.theme.AppThemeState
+import com.jetpack.compose.learning.theme.SystemUiController
+import com.jetpack.compose.learning.theme.BaseView
 
 class DialogActivity : ComponentActivity() {
 
@@ -35,7 +38,11 @@ class DialogActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            DialogTypes()
+            val systemUiController = remember { SystemUiController(window) }
+            val appTheme = remember { mutableStateOf(AppThemeState()) }
+            BaseView(appTheme.value, systemUiController) {
+                DialogTypes()
+            }
         }
     }
 
@@ -138,7 +145,14 @@ class DialogActivity : ComponentActivity() {
                 ),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Checkbox(checked = isDismiss, null)
+            Checkbox(
+                checked = isDismiss, onCheckedChange = null,
+                colors = CheckboxDefaults.colors(
+                    checkedColor = MaterialTheme.colors.primaryVariant,
+                    uncheckedColor = Color.DarkGray,
+                    checkmarkColor = Color.White
+                )
+            )
             Text(
                 text = propertyName,
                 Modifier.padding(start = 5.dp),

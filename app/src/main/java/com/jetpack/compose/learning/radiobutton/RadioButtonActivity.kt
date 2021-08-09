@@ -12,17 +12,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jetpack.compose.learning.theme.AppThemeState
+import com.jetpack.compose.learning.theme.SystemUiController
+import com.jetpack.compose.learning.theme.BaseView
 
 class RadioButtonActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            RadioGroupSample()
+            val systemUiController = remember { SystemUiController(window) }
+            val appTheme = remember { mutableStateOf(AppThemeState()) }
+            BaseView(appTheme.value, systemUiController) {
+                RadioGroupSample()
+            }
         }
     }
 
@@ -61,7 +67,7 @@ class RadioButtonActivity : ComponentActivity() {
                             onClick = {
                                 selectedOption.value = text
                             },
-                            colors = RadioButtonDefaults.colors(selectedColor = Color.Blue)
+                            colors = RadioButtonDefaults.colors(selectedColor = MaterialTheme.colors.primaryVariant)
                         )
                         Text(
                             text = text,

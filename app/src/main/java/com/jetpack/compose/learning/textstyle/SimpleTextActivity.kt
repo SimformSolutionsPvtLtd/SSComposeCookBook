@@ -3,12 +3,15 @@ package com.jetpack.compose.learning.textstyle
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -22,37 +25,44 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jetpack.compose.learning.theme.AppThemeState
+import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.R
+import com.jetpack.compose.learning.theme.BaseView
 
 class SimpleTextActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-            Column {
-                TopAppBar(
-                    title = { Text("Text") },
-                    navigationIcon = {
-                        IconButton(onClick = { onBackPressed() }) {
-                            Icon(Icons.Filled.ArrowBack, contentDescription = null)
+            val systemUiController = remember { SystemUiController(window) }
+            val appTheme = remember { mutableStateOf(AppThemeState()) }
+            BaseView(appTheme.value, systemUiController) {
+                Column(Modifier.background(Color.White)) {
+                    TopAppBar(
+                        title = { Text("Text") },
+                        navigationIcon = {
+                            IconButton(onClick = { onBackPressed() }) {
+                                Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                            }
                         }
+                    )
+                    Column(
+                        modifier = Modifier.padding(16.dp),
+                        verticalArrangement = Arrangement.Top,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        SimpleText()
+                        TextFromResource()
+                        ColorText()
+                        TextColorFromResource()
+                        DifferentFonts()
+                        TextUnderLine()
+                        MultipleStylesInText()
+                        SelectableText()
+                        BackGroundText()
+                        ShadowText()
                     }
-                )
-                Column(
-                    modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.Top,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    SimpleText()
-                    TextFromResource()
-                    ColorText()
-                    TextColorFromResource()
-                    DifferentFonts()
-                    TextUnderLine()
-                    MultipleStylesInText()
-                    SelectableText()
-                    BackGroundText()
-                    ShadowText()
                 }
             }
         }
