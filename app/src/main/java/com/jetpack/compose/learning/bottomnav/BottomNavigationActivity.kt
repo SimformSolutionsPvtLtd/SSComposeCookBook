@@ -4,7 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -13,11 +19,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
-import androidx.navigation.compose.*
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.rememberNavController
 import com.google.gson.Gson
 import com.jetpack.compose.learning.theme.AppThemeState
-import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.theme.BaseView
+import com.jetpack.compose.learning.theme.SystemUiController
 
 const val NOTIFICATION_ARGUMENT_KEY = "unreadNotification"
 const val PROFILE_ARGUMENT_KEY = "userModel"
@@ -103,7 +113,7 @@ class BottomNavigationActivity : ComponentActivity() {
                         },
                         icon = { Icon(screen.icon, "") },
                         label = { Text(text = screen.resourceId) },
-                        selected = when(screen.route) {
+                        selected = when (screen.route) {
                             ScreenType.Profile.route -> currentRoute == screen.route.plus("/{$PROFILE_ARGUMENT_KEY}")
                             ScreenType.Notifications.route -> currentRoute == screen.route.plus("/?$NOTIFICATION_ARGUMENT_KEY={$NOTIFICATION_ARGUMENT_KEY}")
                             else -> currentRoute == screen.route
@@ -129,16 +139,19 @@ class BottomNavigationActivity : ComponentActivity() {
 
             // Passing args with default values
             composable(ScreenType.Notifications.route.plus("/?$NOTIFICATION_ARGUMENT_KEY={$NOTIFICATION_ARGUMENT_KEY}"),
-            arguments = listOf( navArgument(NOTIFICATION_ARGUMENT_KEY) {
-                type = NavType.IntType
-                defaultValue = 50
-            } )) { backStackEntry ->
+                arguments = listOf(navArgument(NOTIFICATION_ARGUMENT_KEY) {
+                    type = NavType.IntType
+                    defaultValue = 50
+                })) { backStackEntry ->
                 NotificationScreen(backStackEntry.arguments?.getInt(NOTIFICATION_ARGUMENT_KEY))
             }
 
             // Passing User Model in string as an argument
             composable(ScreenType.Profile.route.plus("/{$PROFILE_ARGUMENT_KEY}")) { backStackEntry ->
-                val user = Gson().fromJson(backStackEntry.arguments?.getString(PROFILE_ARGUMENT_KEY), UserModel::class.java)
+                val user = Gson().fromJson(
+                    backStackEntry.arguments?.getString(PROFILE_ARGUMENT_KEY),
+                    UserModel::class.java
+                )
                 ProfileScreen(user)
             }
         }

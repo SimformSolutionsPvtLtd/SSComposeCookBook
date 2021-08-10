@@ -39,7 +39,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jetpack.compose.learning.R
-import com.jetpack.compose.learning.theme.*
+import com.jetpack.compose.learning.theme.AppThemeState
+import com.jetpack.compose.learning.theme.BaseView
+import com.jetpack.compose.learning.theme.SystemUiController
+import com.jetpack.compose.learning.theme.pink200
+import com.jetpack.compose.learning.theme.pink700
 
 @ExperimentalFoundationApi
 class SimpleTextActivity : ComponentActivity() {

@@ -8,8 +8,8 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class ScreenType(val icon: ImageVector, var route: String, val resourceId: String) {
-    object Home: ScreenType(Icons.Filled.Home,"home", "Home")
-    object Search: ScreenType(Icons.Filled.Search,"search", "Search")
-    object Notifications : ScreenType(Icons.Filled.Notifications,"notifications", "Notifications")
-    object Profile: ScreenType(Icons.Filled.Person,"profile", "Profile")
+    object Home : ScreenType(Icons.Filled.Home, "home", "Home")
+    object Search : ScreenType(Icons.Filled.Search, "search", "Search")
+    object Notifications : ScreenType(Icons.Filled.Notifications, "notifications", "Notifications")
+    object Profile : ScreenType(Icons.Filled.Person, "profile", "Profile")
 }

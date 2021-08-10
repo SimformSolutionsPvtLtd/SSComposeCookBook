@@ -3,9 +3,19 @@ package com.jetpack.compose.learning.checkbox
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material.*
+import androidx.compose.material.Checkbox
+import androidx.compose.material.CheckboxDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -18,8 +28,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jetpack.compose.learning.theme.AppThemeState
-import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.theme.BaseView
+import com.jetpack.compose.learning.theme.SystemUiController
 
 class CheckBoxActivity : ComponentActivity() {
 
@@ -34,7 +44,6 @@ class CheckBoxActivity : ComponentActivity() {
         }
     }
 
-    @Preview
     @Composable
     fun CheckBoxSample() {
 
@@ -54,20 +63,19 @@ class CheckBoxActivity : ComponentActivity() {
         val (isClick, toggleClick) = remember { mutableStateOf(true) }
 
         Column {
-            TopAppBar(
-                title = { Text("Checkbox") },
-                navigationIcon = {
-                    IconButton(onClick = { onBackPressed() }) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
-                    }
+            TopAppBar(title = { Text("Checkbox") }, navigationIcon = {
+                IconButton(onClick = { onBackPressed() }) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = null)
                 }
-            )
+            })
             Column(Modifier.padding(20.dp)) {
                 Text("Select your interested area :", style = MaterialTheme.typography.h6)
                 Spacer(Modifier.requiredHeight(24.dp))
                 mItemsList.value.forEachIndexed { index, items ->
-                    Row(modifier = Modifier.padding(bottom = 10.dp),
-                        verticalAlignment = Alignment.CenterVertically) {
+                    Row(
+                        modifier = Modifier.padding(bottom = 10.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Checkbox(
                             checked = mItemsList.value[index].value.value,
                             onCheckedChange = { mItemsList.value[index].value.value = it },
@@ -78,7 +86,11 @@ class CheckBoxActivity : ComponentActivity() {
                                 checkmarkColor = Color.White
                             )
                         )
-                        Text(text = items.text, modifier = Modifier.padding(start = 10.dp), fontSize = 16.sp)
+                        Text(
+                            text = items.text,
+                            modifier = Modifier.padding(start = 10.dp),
+                            fontSize = 16.sp
+                        )
                     }
                 }
                 Spacer(Modifier.requiredHeight(24.dp))
@@ -87,8 +99,7 @@ class CheckBoxActivity : ComponentActivity() {
                     modifier = Modifier
                         .padding(top = 16.dp)
                         .toggleable(
-                            value = isClick,
-                            onValueChange = toggleClick
+                            value = isClick, onValueChange = toggleClick
                         ),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
@@ -101,12 +112,16 @@ class CheckBoxActivity : ComponentActivity() {
                         )
                     )
                     Text(
-                        text = "Checkbox label",
-                        Modifier.padding(start = 5.dp),
-                        fontSize = 16.sp
+                        text = "Checkbox label", Modifier.padding(start = 5.dp), fontSize = 16.sp
                     )
                 }
             }
         }
+    }
+
+    @Preview
+    @Composable
+    private fun PreviewCheckBox() {
+        CheckBoxSample()
     }
 }

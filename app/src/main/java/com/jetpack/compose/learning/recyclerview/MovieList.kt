@@ -32,7 +32,11 @@ fun MovieInfoList(modifier: Modifier, userList: Flow<PagingData<Movie>>, context
         items(userListItems) { item ->
             item?.let {
                 MovieItem(data = it, onClick = {
-                    Toast.makeText(context, "Original Language:" + item.original_language, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        "Original Language:" + item.original_language,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 })
             }
         }

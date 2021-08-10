@@ -65,7 +65,8 @@ fun MovieItem(
             ) {
                 val image = rememberCoilPainter(
                     request = "https://image.tmdb.org/t/p/original" + data.backdrop_path,
-                    fadeIn = true)
+                    fadeIn = true
+                )
                 Image(
                     painter = image,
                     contentDescription = null,

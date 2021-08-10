@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jetpack.compose.learning">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -21,27 +21,90 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".textstyle.SimpleTextActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".switch.SwitchActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".slider.SliderActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".radiobutton.RadioButtonActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".checkbox.CheckBoxActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".navigationdrawer.NavigationDrawerTypesActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".navigationdrawer.ModalDrawerActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".navigationdrawer.BottomDrawerActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".dialog.DialogActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".constraintlayout.ConstraintLayoutActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".constraintlayout.BarrierActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".constraintlayout.GuidelineActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".constraintlayout.ChainActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".bottomnav.BottomNavigationActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".theme.ThemeActivity" android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <activity android:name=".textfield.TextFieldActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".appbar.TopAppBarActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".snackbar.SnackBarActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".floatingactionbutton.FloatingActionButtonActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".button.ButtonActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
-        <activity android:name=".dropdownmenu.DropDownMenuActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity
+            android:name=".animation.AnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".navigationdrawer.BottomDrawerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".button.ButtonActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".animation.BasicAnimation"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".checkbox.CheckBoxActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".constraintlayout.ConstraintLayoutActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".dialog.DialogActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".dropdownmenu.DropDownMenuActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".textstyle.SimpleTextActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".slider.SliderActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".radiobutton.RadioButtonActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".navigationdrawer.NavigationDrawerTypesActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".navigationdrawer.ModalDrawerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".constraintlayout.BarrierActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".constraintlayout.GuidelineActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".constraintlayout.ChainActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".bottomnav.BottomNavigationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".theme.ThemeActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".textfield.TextFieldActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".appbar.TopAppBarActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".snackbar.SnackBarActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".floatingactionbutton.FloatingActionButtonActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name="com.jetpack.compose.learning.animation.contentAnimation.ContentIconAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".animation.InfiniteTransitionActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".animation.GestureAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".animation.SimmerAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".animation.TabBarAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".switch.SwitchActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 
 </manifest>

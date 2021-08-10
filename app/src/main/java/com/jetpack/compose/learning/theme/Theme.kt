@@ -199,9 +199,11 @@ enum class ColorPalette {
 }
 
 @Composable
-fun ComposeCookBookTheme(darkTheme: Boolean = isSystemInDarkTheme(),
-                         colorPalette: ColorPalette = ColorPalette.GREEN,
-                         content: @Composable() () -> Unit) {
+fun ComposeCookBookTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    colorPalette: ColorPalette = ColorPalette.GREEN,
+    content: @Composable() () -> Unit
+) {
 
     val colors = colorPalette.getMaterialColors(darkTheme)
 
