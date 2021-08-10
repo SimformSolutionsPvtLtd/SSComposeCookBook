@@ -36,6 +36,7 @@ import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivi
 import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
 import com.jetpack.compose.learning.slider.SliderActivity
 import com.jetpack.compose.learning.snackbar.SnackBarActivity
+import com.jetpack.compose.learning.switch.SwitchActivity
 import com.jetpack.compose.learning.textfield.TextFieldActivity
 import com.jetpack.compose.learning.textstyle.SimpleTextActivity
 import com.jetpack.compose.learning.theme.BaseView
@@ -109,6 +110,7 @@ class MainActivity : ComponentActivity() {
         Component("App Bar", TopAppBarActivity::class.java),
         Component("Snackbar", SnackBarActivity::class.java),
         Component("Floating Action Buttons", FloatingActionButtonActivity::class.java),
-        Component("Dropdown menu", DropDownMenuActivity::class.java)
+        Component("Dropdown menu", DropDownMenuActivity::class.java),
+        Component("Switch", SwitchActivity::class.java)
     )
 }
