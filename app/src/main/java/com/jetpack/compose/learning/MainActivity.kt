@@ -103,7 +103,6 @@ class MainActivity : ComponentActivity() {
         Component("Bottom Navigation", BottomNavigationActivity::class.java),
         Component("Button", ButtonActivity::class.java),
         Component("Theme", ThemeActivity::class.java),
-        Component("Bottom Navigation", BottomNavigationActivity::class.java),
         Component("App Bar", TopAppBarActivity::class.java),
         Component("Snackbar", SnackBarActivity::class.java),
         Component("Floating Action Buttons", FloatingActionButtonActivity::class.java)

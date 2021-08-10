@@ -12,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".button.ButtonActivity"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyApplication.NoActionBar">
@@ -42,6 +39,7 @@
         <activity android:name=".appbar.TopAppBarActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".snackbar.SnackBarActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".floatingactionbutton.FloatingActionButtonActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".button.ButtonActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
     </application>
 
 </manifest>
