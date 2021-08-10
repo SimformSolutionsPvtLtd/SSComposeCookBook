@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".textstyle.SimpleTextActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity android:name=".switch.SwitchActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".slider.SliderActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".radiobutton.RadioButtonActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity android:name=".checkbox.CheckBoxActivity" android:theme="@style/Theme.MyApplication.NoActionBar"/>
