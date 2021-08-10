@@ -28,6 +28,7 @@ import com.jetpack.compose.learning.button.ButtonActivity
 import com.jetpack.compose.learning.checkbox.CheckBoxActivity
 import com.jetpack.compose.learning.constraintlayout.ConstraintLayoutActivity
 import com.jetpack.compose.learning.dialog.DialogActivity
+import com.jetpack.compose.learning.dropdownmenu.DropDownMenuActivity
 import com.jetpack.compose.learning.floatingactionbutton.FloatingActionButtonActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivity
@@ -105,6 +106,7 @@ class MainActivity : ComponentActivity() {
         Component("Theme", ThemeActivity::class.java),
         Component("App Bar", TopAppBarActivity::class.java),
         Component("Snackbar", SnackBarActivity::class.java),
-        Component("Floating Action Buttons", FloatingActionButtonActivity::class.java)
+        Component("Floating Action Buttons", FloatingActionButtonActivity::class.java),
+        Component("Dropdown menu", DropDownMenuActivity::class.java)
     )
 }
