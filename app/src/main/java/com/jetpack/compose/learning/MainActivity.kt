@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning
 
+import com.jetpack.compose.learning.zoomview.ZoomViewActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -118,6 +119,7 @@ class MainActivity : ComponentActivity() {
         Component("Switch", SwitchActivity::class.java),
         Component("Text", SimpleTextActivity::class.java),
         Component("TextField", TextFieldActivity::class.java),
-        Component("Theme", ThemeActivity::class.java)
+        Component("Theme", ThemeActivity::class.java),
+        Component("ZoomView", ZoomViewActivity::class.java)
     )
 }
