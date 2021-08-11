@@ -19,6 +19,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
@@ -92,7 +93,7 @@ class FloatingActionButtonActivity : ComponentActivity() {
             //FAB custom color
             FloatingActionButton(
                 onClick = { onClick("Fab with custom color") },
-                backgroundColor = Color.Blue,
+                backgroundColor = MaterialTheme.colors.primary,
                 contentColor = Color.White
             ) {
                 Icon(Icons.Filled.Add, "")
@@ -113,7 +114,7 @@ class FloatingActionButtonActivity : ComponentActivity() {
             //Simple FAB with custom content (similar of Exntended FAB)
             FloatingActionButton(onClick = { onClick("Simple FAB with custom content") },
                 contentColor = Color.White,
-                backgroundColor = Color.Blue,
+                backgroundColor = MaterialTheme.colors.primary,
                 content = {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,

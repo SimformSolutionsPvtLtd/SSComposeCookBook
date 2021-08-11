@@ -50,7 +50,7 @@ class ZoomViewActivity : ComponentActivity() {
         BaseView(appTheme.value, systemUiController) {
             Scaffold(
                 topBar = {
-                    TopAppBar(title = { Text("ZoomView Component") }, navigationIcon = {
+                    TopAppBar(title = { Text("ZoomView") }, navigationIcon = {
                         IconButton(onClick = { onBackPressed() }) {
                             Icon(Icons.Filled.ArrowBack, contentDescription = null)
                         }

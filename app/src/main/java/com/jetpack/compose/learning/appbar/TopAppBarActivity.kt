@@ -31,7 +31,7 @@ class TopAppBarActivity : ComponentActivity() {
             BaseView(appTheme.value, systemUiController) {
                 Scaffold(topBar = {
                     TopAppBar(
-                        title = { Text("TopApp Bar") },
+                        title = { Text("App Bar") },
                         navigationIcon = {
                             IconButton(onClick = { onBackPressed() }) {
                                 Icon(Icons.Filled.ArrowBack, contentDescription = null)
