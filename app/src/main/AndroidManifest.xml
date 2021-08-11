@@ -105,6 +105,9 @@
         <activity
             android:name=".switch.SwitchActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".zoomview.ZoomViewActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 
 </manifest>
