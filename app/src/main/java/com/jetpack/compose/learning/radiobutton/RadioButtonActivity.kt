@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -93,26 +94,20 @@ class RadioButtonActivity : ComponentActivity() {
         var customUnSelectedColorRadioButton by remember { mutableStateOf(false) }
 
         Card(
-            backgroundColor = pink200,
+            backgroundColor = MaterialTheme.colors.primary.copy(0.04f),
             modifier = Modifier
                 .padding(10.dp)
                 .fillMaxWidth(),
-            elevation = 8.dp,
-            shape = RoundedCornerShape(8.dp)
+            elevation = 0.dp,
+            shape = RoundedCornerShape(8.dp),
+            border = BorderStroke(2.dp, MaterialTheme.colors.primary.copy(0.5f)),
         ) {
             Column(Modifier.padding(10.dp)) {
 
                 Text(
-                    text = "This are Radio Button with different properties",
+                    text = "Radio Button with different properties:",
                     style = MaterialTheme.typography.h6
                 )
-
-                Spacer(modifier = spaceModifier)
-
-                // Simple Radio Button
-                RadioButton(selected = simpleRadioButtonSelectionState, onClick = {
-                    simpleRadioButtonSelectionState = !simpleRadioButtonSelectionState
-                })
 
                 Spacer(modifier = spaceModifier)
 
@@ -163,7 +158,7 @@ class RadioButtonActivity : ComponentActivity() {
                         onClick = {
                             customSelectedColorRadioButton = !customSelectedColorRadioButton
                         },
-                        colors = RadioButtonDefaults.colors(selectedColor = pink700),
+                        colors = RadioButtonDefaults.colors(selectedColor = MaterialTheme.colors.primaryVariant),
                         modifier = Modifier.padding(end = 5.dp)
                     )
                     Text(text = "Custom selected color Radio button",
@@ -181,7 +176,7 @@ class RadioButtonActivity : ComponentActivity() {
                         onClick = {
                             customUnSelectedColorRadioButton = !customUnSelectedColorRadioButton
                         },
-                        colors = RadioButtonDefaults.colors(unselectedColor = Color.White),
+                        colors = RadioButtonDefaults.colors(unselectedColor = MaterialTheme.colors.primaryVariant),
                         modifier = Modifier.padding(end = 5.dp)
                     )
                     Text(text = "Custom unselected color Radio button",
@@ -196,23 +191,24 @@ class RadioButtonActivity : ComponentActivity() {
     @Composable
     private fun RadioGroupSample() {
         /* Here Create List for radioButton */
-        val radioOptions = listOf("Red", "Blue", "Black", "White")
+        val radioOptions = listOf("Red Color", "Blue Color", "Black Color", "White Color")
         /* Here Create State of radioButton */
         var selectedOption by remember { mutableStateOf("") }
 
         Card(
-            backgroundColor = pink200,
+            backgroundColor = MaterialTheme.colors.primary.copy(0.04f),
             modifier = Modifier
                 .padding(10.dp)
                 .fillMaxWidth(),
-            elevation = 8.dp,
-            shape = RoundedCornerShape(8.dp)
+            elevation = 0.dp,
+            shape = RoundedCornerShape(8.dp),
+            border = BorderStroke(2.dp, MaterialTheme.colors.primary.copy(0.5f)),
         ) {
 
             Column(Modifier.padding(10.dp)) {
 
                 Text(
-                    text = "This is an example of Radio Group",
+                    text = "Radio Group example :",
                     style = MaterialTheme.typography.h6
                 )
 
@@ -226,7 +222,7 @@ class RadioButtonActivity : ComponentActivity() {
                             selected = (text == selectedOption),
                             onClick = {
                                 selectedOption = text
-                                showToast("$selectedOption color selected")
+                                showToast("$selectedOption selected")
                             }
                         )
                     ) {
@@ -234,7 +230,7 @@ class RadioButtonActivity : ComponentActivity() {
                             selected = (text == selectedOption),
                             onClick = {
                                 selectedOption = text
-                                showToast("$selectedOption color selected")
+                                showToast("$selectedOption selected")
                             },
                             colors = RadioButtonDefaults.colors(selectedColor = MaterialTheme.colors.primaryVariant)
                         )

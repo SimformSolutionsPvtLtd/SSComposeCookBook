@@ -74,7 +74,7 @@ class BasicAnimation : ComponentActivity() {
 
                     // View visible/hide with fadIn animation
                     // Experimental APIs can change in the future or may be removed entirely. (AnimatedVisibility)
-                    AnimatedVisibilityDemo(false)
+                    AnimatedVisibilityDemo(true)
 
                     Spacer(Modifier.height(50.dp))
 
