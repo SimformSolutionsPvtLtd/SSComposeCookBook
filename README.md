@@ -25,41 +25,41 @@ In this repository, there are number of UI components demonstrated which can be 
 
 | App Bar | Bottom Navigation | Button |
 | -- | -- | -- | 
-| ![](/gif/AppBar.gif) | ![](/gif/BottomNav.gif)| ![](/gif/Button.gif)
+| <img src="/gif/AppBar.gif" height="500px"/> | <img src="/gif/BottomNav.gif" height="500px"/>| <img src="/gif/Button.gif" height="500px"/>
 
 | Checkbox | Dialog | Dropdown |
 | -- | -- | -- | 
-| ![](/gif/Checkbox.gif) | ![](/gif/Dialog.gif)| ![](/gif/Dropdown.gif)
+| <img src="/gif/Checkbox.gif" height="600px"/> | <img src="/gif/Dialog.gif" height="600px"/>| <img src="/gif/Dropdown.gif" height="600px"/>
 
 | FAB | Modal Drawer | Bottom Drawer |
 | -- | -- | -- | 
-| ![](/gif/FAB.png) | ![](/gif/ModalDrawer.gif)| ![](/gif/BottomDrawer.gif)
+| <img src="/gif/FAB.png" height="600px"/> | <img src="/gif/ModalDrawer.gif" height="600px"/>| <img src="/gif/BottomDrawer.gif" height="600px"/>
 
 | Radio Button | Slider | Text |
 | -- | -- | -- | 
-| ![](/gif/Radio.png) | ![](/gif/Sliders.gif)| ![](/gif/Text.png)
+| <img src="/gif/Radio.png" height="600px"/> | <img src="/gif/Sliders.gif" height="600px"/>| <img src="/gif/Text.png" height="600px"/>
 
 | Textfield | Theme | ZoomView |
 | -- | -- | -- | 
-| ![](/gif/TextFields.png) | ![](/gif/Theme.gif)| ![](/gif/Zoomview.gif)
+| <img src="/gif/TextFields.png" height="600px"/> | <img src="/gif/Theme.gif" height="600px"/>| <img src="/gif/Zoomview.gif" height="600px"/>
 
 
 ## Constraint Layout
 
 | Barrier | Guideline | Chain |
 | -- | -- | -- | 
-| ![](/gif/Constraint/Barrier.png) | ![](/gif/Constraint/Guideline.png)| ![](/gif/Constraint/Chain.png)
+| <img src="/gif/Constraint/Barrier.png" height="600px"/> | <img src="/gif/Constraint/Guideline.png" height="600px"/>| <img src="/gif/Constraint/Chain.png" height="600px"/>
 
 
 ## Animation
 
 | Basic | Content | Gesture |
 | -- | -- | -- | 
-| ![](/gif/Animation/BasicAnim.gif) | ![](/gif/Animation/ContentAnim.gif)| ![](/gif/Animation/GestureAnim.gif)
+| <img src="/gif/Animation/BasicAnim.gif" height="600px"/> | <img src="/gif/Animation/ContentAnim.gif" height="600px"/>| <img src="/gif/Animation/GestureAnim.gif" height="600px"/>
 
 | Infinite | Shimmer | TabBar |
 | -- | -- | -- | 
-| ![](/gif/Animation/InfiniteAnim.gif) | ![](/gif/Animation/ShimmerAnim.gif)| ![](/gif/Animation/TabBarAnim.gif)
+| <img src="/gif/Animation/InfiniteAnim.gif" height="600px"/> | <img src="/gif/Animation/ShimmerAnim.gif" height="600px"/>| <img src="/gif/Animation/TabBarAnim.gif" height="600px"/>
 
 ## Our Library in JetPackCompose
 - [SSJetPackComposeProgressButton](https://github.com/SimformSolutionsPvtLtd/SSJetPackComposeProgressButton)
