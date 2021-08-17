@@ -84,10 +84,12 @@ For bugs, feature requests, and discussion please use __[GitHub Issues]__.
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/nikunj-b-simform"><img src="https://avatars.githubusercontent.com/u/86602550?s=100" width="50px;" alt=""/><br /><sub><b>Nikunj Buddhadev</b></sub></a></td>
-    <td align="center"><a href="https://github.com/mdhanif-simformsolutions"><img src="https://avatars.githubusercontent.com/u/63775307?s=100" width="50px;" alt=""/><br /><sub><b>Mohammed Hanif</b></sub></a></td>
-    <td align="center"><a href="https://github.com/shwetachauhan-simform"><img src="https://avatars.githubusercontent.com/u/63042002?s=100" width="50px;" alt=""/><br /><sub><b>Shweta Chauhan</b></sub></a></td>
-    <td align="center"><a href="https://github.com/MehulKK"><img src="https://avatars.githubusercontent.com/u/60209725?s=100" width="50px;" alt=""/><br /><sub><b>Mehul Kabariya</b></sub></a></td>         
+    <td align="center"><a href="https://github.com/nikunj-b-simform"><img src="https://avatars.githubusercontent.com/u/86602550?s=100" width="100px;" alt=""/><br /><sub><b>Nikunj Buddhadev</b></sub></a></td>
+    <td align="center"><a href="https://github.com/mdhanif-simformsolutions"><img src="https://avatars.githubusercontent.com/u/63775307?s=100" width="100px;" alt=""/><br /><sub><b>Mohammed Hanif</b></sub></a></td>
+    <td align="center"><a href="https://github.com/shwetachauhan-simform"><img src="https://avatars.githubusercontent.com/u/63042002?s=100" width="100px;" alt=""/><br /><sub><b>Shweta Chauhan</b></sub></a></td>
+    <td align="center"><a href="https://github.com/MehulKK"><img src="https://avatars.githubusercontent.com/u/60209725?s=100" width="100px;" alt=""/><br /><sub><b>Mehul Kabaria</b></sub></a></td> 
+    <td align="center"><a href="https://github.com/krupa-p-simformsolutions"><img src="https://avatars.githubusercontent.com/u/76939101?s=100" width="100px;" alt=""/><br /><sub><b>Krupa Parekh</b></sub></a></td>
+    <td align="center"><a href="https://github.com/priyal-p-simformsolutions"><img src="https://avatars.githubusercontent.com/u/75968888?s=100" width="100px;" alt=""/><br /><sub><b>Priyal Parmar</b></sub></a></td>
   </tr>
 </table>
 <br/>
