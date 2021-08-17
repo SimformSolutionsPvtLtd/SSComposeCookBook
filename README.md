@@ -84,10 +84,10 @@ For bugs, feature requests, and discussion please use __[GitHub Issues]__.
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/nikunj-b-simform"><img src="https://avatars.githubusercontent.com/u/86602550?s=50" width="50px;" alt=""/><br /><sub><b>Nikunj Buddhadev</b></sub></a></td>
-    <td align="center"><a href="https://github.com/mdhanif-simformsolutions"><img src="https://avatars.githubusercontent.com/u/63775307?s=50" width="50px;" alt=""/><br /><sub><b>Mohammed Hanif</b></sub></a></td>
-    <td align="center"><a href="https://github.com/shwetachauhan-simform"><img src="https://avatars.githubusercontent.com/u/63042002?s=50" width="50px;" alt=""/><br /><sub><b>Shweta Chauhan</b></sub></a></td>
-    <td align="center"><a href="https://github.com/MehulKK"><img src="https://avatars.githubusercontent.com/u/60209725?s=50" width="50px;" alt=""/><br /><sub><b>Mehul Kabariya</b></sub></a></td>         
+    <td align="center"><a href="https://github.com/nikunj-b-simform"><img src="https://avatars.githubusercontent.com/u/86602550?s=100" width="50px;" alt=""/><br /><sub><b>Nikunj Buddhadev</b></sub></a></td>
+    <td align="center"><a href="https://github.com/mdhanif-simformsolutions"><img src="https://avatars.githubusercontent.com/u/63775307?s=100" width="50px;" alt=""/><br /><sub><b>Mohammed Hanif</b></sub></a></td>
+    <td align="center"><a href="https://github.com/shwetachauhan-simform"><img src="https://avatars.githubusercontent.com/u/63042002?s=100" width="50px;" alt=""/><br /><sub><b>Shweta Chauhan</b></sub></a></td>
+    <td align="center"><a href="https://github.com/MehulKK"><img src="https://avatars.githubusercontent.com/u/60209725?s=100" width="50px;" alt=""/><br /><sub><b>Mehul Kabariya</b></sub></a></td>         
   </tr>
 </table>
 <br/>
