@@ -62,7 +62,7 @@ In this repository, there are number of UI components demonstrated which can be 
 | <img src="/gif/Animation/InfiniteAnim.gif" height="500px"/> | <img src="/gif/Animation/ShimmerAnim.gif" height="500px"/>| <img src="/gif/Animation/TabBarAnim.gif" height="500px"/>
 
 ## Our Library in JetPackCompose
-- [SSJetPackComposeProgressButton](https://github.com/SimformSolutionsPvtLtd/SSJetPackComposeProgressButton)
+- [SSJetPackComposeProgressButton](https://github.com/SimformSolutionsPvtLtd/SSJetPackComposeProgressButton) : SSJetPackComposeProgressButton is an elegant button with a different loading animations which makes your app attractive.
 
 ## Official Documentations
 - [Jetpack Compose](https://developer.android.com/jetpack/compose)
