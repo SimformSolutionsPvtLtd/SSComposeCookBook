@@ -29,37 +29,37 @@ In this repository, there are number of UI components demonstrated which can be 
 
 | Checkbox | Dialog | Dropdown |
 | -- | -- | -- | 
-| <img src="/gif/Checkbox.gif" height="600px"/> | <img src="/gif/Dialog.gif" height="600px"/>| <img src="/gif/Dropdown.gif" height="600px"/>
+| <img src="/gif/Checkbox.gif" height="500px"/> | <img src="/gif/Dialog.gif" height="500px"/>| <img src="/gif/Dropdown.gif" height="500px"/>
 
 | FAB | Modal Drawer | Bottom Drawer |
 | -- | -- | -- | 
-| <img src="/gif/FAB.png" height="600px"/> | <img src="/gif/ModalDrawer.gif" height="600px"/>| <img src="/gif/BottomDrawer.gif" height="600px"/>
+| <img src="/gif/FAB.png" height="500px"/> | <img src="/gif/ModalDrawer.gif" height="500px"/>| <img src="/gif/BottomDrawer.gif" height="500px"/>
 
 | Radio Button | Slider | Text |
 | -- | -- | -- | 
-| <img src="/gif/Radio.png" height="600px"/> | <img src="/gif/Sliders.gif" height="600px"/>| <img src="/gif/Text.png" height="600px"/>
+| <img src="/gif/Radio.png" height="500px"/> | <img src="/gif/Sliders.gif" height="500px"/>| <img src="/gif/Text.png" height="500px"/>
 
 | Textfield | Theme | ZoomView |
 | -- | -- | -- | 
-| <img src="/gif/TextFields.png" height="600px"/> | <img src="/gif/Theme.gif" height="600px"/>| <img src="/gif/Zoomview.gif" height="600px"/>
+| <img src="/gif/TextFields.png" height="500px"/> | <img src="/gif/Theme.gif" height="500px"/>| <img src="/gif/Zoomview.gif" height="500px"/>
 
 
 ## Constraint Layout
 
 | Barrier | Guideline | Chain |
 | -- | -- | -- | 
-| <img src="/gif/Constraint/Barrier.png" height="600px"/> | <img src="/gif/Constraint/Guideline.png" height="600px"/>| <img src="/gif/Constraint/Chain.png" height="600px"/>
+| <img src="/gif/Constraint/Barrier.png" height="500px"/> | <img src="/gif/Constraint/Guideline.png" height="500px"/>| <img src="/gif/Constraint/Chain.png" height="500px"/>
 
 
 ## Animation
 
 | Basic | Content | Gesture |
 | -- | -- | -- | 
-| <img src="/gif/Animation/BasicAnim.gif" height="600px"/> | <img src="/gif/Animation/ContentAnim.gif" height="600px"/>| <img src="/gif/Animation/GestureAnim.gif" height="600px"/>
+| <img src="/gif/Animation/BasicAnim.gif" height="500px"/> | <img src="/gif/Animation/ContentAnim.gif" height="500px"/>| <img src="/gif/Animation/GestureAnim.gif" height="500px"/>
 
 | Infinite | Shimmer | TabBar |
 | -- | -- | -- | 
-| <img src="/gif/Animation/InfiniteAnim.gif" height="600px"/> | <img src="/gif/Animation/ShimmerAnim.gif" height="600px"/>| <img src="/gif/Animation/TabBarAnim.gif" height="600px"/>
+| <img src="/gif/Animation/InfiniteAnim.gif" height="500px"/> | <img src="/gif/Animation/ShimmerAnim.gif" height="500px"/>| <img src="/gif/Animation/TabBarAnim.gif" height="500px"/>
 
 ## Our Library in JetPackCompose
 - [SSJetPackComposeProgressButton](https://github.com/SimformSolutionsPvtLtd/SSJetPackComposeProgressButton)
@@ -84,10 +84,10 @@ For bugs, feature requests, and discussion please use __[GitHub Issues]__.
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/nikunj-b-simform"><img src="https://avatars.githubusercontent.com/u/86602550?s=100" width="100px;" alt=""/><br /><sub><b>Nikunj Buddhadev</b></sub></a></td>
-    <td align="center"><a href="https://github.com/mdhanif-simformsolutions"><img src="https://avatars.githubusercontent.com/u/63775307?s=100" width="100px;" alt=""/><br /><sub><b>Mohammed Hanif</b></sub></a></td>
-    <td align="center"><a href="https://github.com/shwetachauhan-simform"><img src="https://avatars.githubusercontent.com/u/63042002?s=100" width="100px;" alt=""/><br /><sub><b>Shweta Chauhan</b></sub></a></td>
-    <td align="center"><a href="https://github.com/MehulKSimform"><img src="https://avatars.githubusercontent.com/u/60209725?s=100" width="100px;" alt=""/><br /><sub><b>Mehul Kabariya</b></sub></a></td>         
+    <td align="center"><a href="https://github.com/nikunj-b-simform"><img src="https://avatars.githubusercontent.com/u/86602550?s=50" width="50px;" alt=""/><br /><sub><b>Nikunj Buddhadev</b></sub></a></td>
+    <td align="center"><a href="https://github.com/mdhanif-simformsolutions"><img src="https://avatars.githubusercontent.com/u/63775307?s=50" width="50px;" alt=""/><br /><sub><b>Mohammed Hanif</b></sub></a></td>
+    <td align="center"><a href="https://github.com/shwetachauhan-simform"><img src="https://avatars.githubusercontent.com/u/63042002?s=50" width="50px;" alt=""/><br /><sub><b>Shweta Chauhan</b></sub></a></td>
+    <td align="center"><a href="https://github.com/MehulKK"><img src="https://avatars.githubusercontent.com/u/60209725?s=50" width="50px;" alt=""/><br /><sub><b>Mehul Kabariya</b></sub></a></td>         
   </tr>
 </table>
 <br/>
