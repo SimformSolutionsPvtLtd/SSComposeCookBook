@@ -44,6 +44,7 @@ import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
 import com.jetpack.compose.learning.slider.SliderActivity
 import com.jetpack.compose.learning.snackbar.SnackBarActivity
 import com.jetpack.compose.learning.switch.SwitchActivity
+import com.jetpack.compose.learning.tabarlayout.TabBarLayoutActivity
 import com.jetpack.compose.learning.textfield.TextFieldActivity
 import com.jetpack.compose.learning.textstyle.SimpleTextActivity
 import com.jetpack.compose.learning.theme.AppThemeState
@@ -125,6 +126,7 @@ class MainActivity : ComponentActivity() {
         Component("Text", SimpleTextActivity::class.java),
         Component("TextField", TextFieldActivity::class.java),
         Component("Theme", ThemeActivity::class.java),
-        Component("ZoomView", ZoomViewActivity::class.java)
+        Component("ZoomView", ZoomViewActivity::class.java),
+        Component("Tab Bar", TabBarLayoutActivity::class.java)
     )
 }

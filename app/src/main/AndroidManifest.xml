@@ -88,7 +88,7 @@
             android:name=".floatingactionbutton.FloatingActionButtonActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-            android:name="com.jetpack.compose.learning.animation.contentAnimation.ContentIconAnimationActivity"
+            android:name=".animation.contentAnimation.ContentIconAnimationActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".animation.InfiniteTransitionActivity"
@@ -107,6 +107,9 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".zoomview.ZoomViewActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".tabarlayout.TabBarLayoutActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 
