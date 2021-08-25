@@ -13,7 +13,13 @@ private val DarkPinkColorPalette = darkColors(
     primary = pink200,
     primaryVariant = pink500,
     secondary = teal200,
-    surface = Color.Black
+    background = Color.Black,
+    surface = Color.Black,
+    onPrimary = Color.Black,
+    onSecondary = Color.White,
+    onBackground = Color.White,
+    onSurface = Color.White,
+    error = Color.Red,
 )
 
 private val DarkGreenColorPalette = darkColors(
@@ -108,7 +114,12 @@ private val LightPinkColorPalette = lightColors(
     primary = pink500,
     primaryVariant = pink700,
     secondary = teal200,
-    surface = Color.White
+    background = Color.White,
+    surface = Color.White,
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onBackground = Color.Black,
+    onSurface = Color.Black
 )
 
 private val LightGreenColorPalette = lightColors(

@@ -10,10 +10,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -56,7 +58,7 @@ class SimpleTextActivity : ComponentActivity() {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
             BaseView(appTheme.value, systemUiController) {
-                Column(Modifier.background(Color.White)) {
+                Column(Modifier.background(MaterialTheme.colors.background)) {
                     TopAppBar(
                         title = { Text("Text") },
                         navigationIcon = {
@@ -76,7 +78,7 @@ class SimpleTextActivity : ComponentActivity() {
     @Composable
     fun TextExamples() {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(16.dp).fillMaxHeight(),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {

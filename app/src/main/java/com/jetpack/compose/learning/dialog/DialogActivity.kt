@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -56,7 +57,7 @@ class DialogActivity : ComponentActivity() {
         val (isDismissOnClickOutside, setDismissOnClickOutside) = remember { mutableStateOf(true) }
 
         val spaceHeight = 24.dp
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background).fillMaxHeight()) {
             TopAppBar(
                 title = { Text("Dialog") },
                 navigationIcon = {

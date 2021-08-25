@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -37,7 +38,7 @@ import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 
-class SimmerAnimationActivity : ComponentActivity() {
+class ShimmerAnimationActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -51,7 +52,7 @@ class SimmerAnimationActivity : ComponentActivity() {
 
     @Composable
     fun InitView() {
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background)) {
             TopAppBar(title = { Text(text = "Shimmer Animation", color = Color.White) },
                 navigationIcon = {
                     IconButton(onClick = { onBackPressed() }) {

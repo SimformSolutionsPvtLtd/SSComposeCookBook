@@ -3,6 +3,7 @@ package com.jetpack.compose.learning.navigationdrawer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -95,7 +96,7 @@ class ModalDrawerActivity : ComponentActivity() {
                 }
             },
             content = {
-                Column {
+                Column(Modifier.background(MaterialTheme.colors.background)) {
                     TopAppBar(
                         title = { Text("Modal Drawer Sample") },
                         navigationIcon = {

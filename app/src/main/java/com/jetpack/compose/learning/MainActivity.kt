@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -70,7 +71,7 @@ class MainActivity : ComponentActivity() {
     @Preview
     @Composable
     fun MainScreen() {
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background)) {
             TopAppBar(
                 title = { Text(text = "ComposeCookBook", color = Color.White) },
             )

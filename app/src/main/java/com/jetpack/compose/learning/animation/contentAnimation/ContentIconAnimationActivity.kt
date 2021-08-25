@@ -12,6 +12,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.with
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -62,7 +63,7 @@ class ContentIconAnimationActivity : ComponentActivity() {
     @ExperimentalAnimationApi
     @Composable
     fun InitView() {
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background)) {
             TopAppBar(title = { Text(text = "Content Animation", color = Color.White) },
                 navigationIcon = {
                     IconButton(onClick = { onBackPressed() }) {
@@ -87,7 +88,6 @@ class ContentIconAnimationActivity : ComponentActivity() {
     fun ContentWithIconAnimation() {
         var expanded by remember { mutableStateOf(false) }
         Surface(
-            color = MaterialTheme.colors.primarySurface,
             onClick = { expanded = !expanded },
             border = BorderStroke(1.dp, MaterialTheme.colors.primaryVariant),
             shape = RoundedCornerShape(10.dp),

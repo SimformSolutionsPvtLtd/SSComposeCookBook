@@ -3,8 +3,10 @@ package com.jetpack.compose.learning.slider
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.material.ExperimentalMaterialApi
@@ -49,7 +51,7 @@ class SliderActivity : ComponentActivity() {
     fun SliderExamples() {
         val headerStyle = MaterialTheme.typography.h6
         val spaceHeight = 24.dp
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background).fillMaxHeight()) {
             TopAppBar(title = { Text("Sliders") }, navigationIcon = {
                 IconButton(onClick = { onBackPressed() }) {
                     Icon(Icons.Filled.ArrowBack, contentDescription = null)

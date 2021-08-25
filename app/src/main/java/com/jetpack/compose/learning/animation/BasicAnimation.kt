@@ -4,12 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -45,7 +47,7 @@ class BasicAnimation : ComponentActivity() {
     @ExperimentalAnimationApi
     @Composable
     fun InitView() {
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background)) {
             TopAppBar(title = { Text(text = "Basic Animation", color = Color.White) },
                 navigationIcon = {
                     IconButton(onClick = { onBackPressed() }) {

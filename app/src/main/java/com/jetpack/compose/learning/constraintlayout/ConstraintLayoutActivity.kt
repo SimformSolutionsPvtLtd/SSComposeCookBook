@@ -5,9 +5,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,6 +20,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -55,7 +58,7 @@ class ConstraintLayoutActivity : ComponentActivity() {
     @Composable
     fun ConstraintLayoutComponents() {
         val spaceHeight = 24.dp
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background).fillMaxHeight()) {
             TopAppBar(
                 title = { Text("Constraint Layout") },
                 navigationIcon = {

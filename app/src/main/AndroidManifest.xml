@@ -97,7 +97,7 @@
             android:name=".animation.GestureAnimationActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-            android:name=".animation.SimmerAnimationActivity"
+            android:name=".animation.ShimmerAnimationActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".animation.TabBarAnimationActivity"
