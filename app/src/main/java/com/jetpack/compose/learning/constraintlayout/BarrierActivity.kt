@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -47,7 +48,7 @@ class BarrierActivity : ComponentActivity() {
     @Composable
     fun BarrierSample() {
 
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background)) {
             TopAppBar(
                 title = { Text("Barrier") },
                 navigationIcon = {

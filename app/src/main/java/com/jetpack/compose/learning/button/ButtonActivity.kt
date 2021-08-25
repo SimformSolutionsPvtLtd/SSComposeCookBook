@@ -44,7 +44,7 @@ class ButtonActivity : ComponentActivity() {
         val spaceHeight = 24.dp
         val buttonPadding = 10.dp
         val textPadding = 5.dp
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background).fillMaxHeight()) {
             TopAppBar(
                 title = { Text(text = "Button") },
                 navigationIcon = {

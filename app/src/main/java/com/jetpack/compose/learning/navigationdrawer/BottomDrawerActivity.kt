@@ -3,6 +3,7 @@ package com.jetpack.compose.learning.navigationdrawer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.toggleable
@@ -50,7 +51,7 @@ class BottomDrawerActivity : ComponentActivity() {
         drawerState = rememberBottomDrawerState(BottomDrawerValue.Closed)
         scope = rememberCoroutineScope()
         val (isGestureEnable, toggleGesturesEnabled) = remember { mutableStateOf(true) }
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background)) {
             TopAppBar(
                 title = { Text("Bottom Drawer Sample") },
                 navigationIcon = {

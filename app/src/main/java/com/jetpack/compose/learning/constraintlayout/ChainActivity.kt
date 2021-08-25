@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
@@ -50,7 +51,7 @@ class ChainActivity : ComponentActivity() {
     @Composable
     fun ChainSample() {
         val spaceHeight = 24.dp
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background).fillMaxHeight()) {
             TopAppBar(
                 title = { Text("Chain") },
                 navigationIcon = {

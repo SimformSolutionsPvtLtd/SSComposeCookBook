@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -46,7 +47,7 @@ class GuidelineActivity : ComponentActivity() {
     @Composable
     fun GuidelineSample() {
 
-        Column {
+        Column(Modifier.background(MaterialTheme.colors.background)) {
             TopAppBar(
                 title = { Text("Guideline") },
                 navigationIcon = {

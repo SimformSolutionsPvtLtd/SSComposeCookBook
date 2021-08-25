@@ -3,11 +3,13 @@ package com.jetpack.compose.learning.animation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -28,7 +30,7 @@ class GestureAnimationActivity : ComponentActivity() {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
             BaseView(appTheme.value, systemUiController) {
-                Column {
+                Column(Modifier.background(MaterialTheme.colors.background)) {
                     TopAppBar(title = { Text(text = "Gesture Animation", color = Color.White) },
                         navigationIcon = {
                             IconButton(onClick = { onBackPressed() }) {

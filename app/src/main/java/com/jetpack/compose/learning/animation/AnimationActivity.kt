@@ -88,7 +88,7 @@ class AnimationActivity : ComponentActivity() {
         Component("ContentAnimation", ContentIconAnimationActivity::class.java),
         Component("GestureAnimation", GestureAnimationActivity::class.java),
         Component("InfiniteAnimation", InfiniteTransitionActivity::class.java),
-        Component("ShimmerAnimation", SimmerAnimationActivity::class.java),
+        Component("ShimmerAnimation", ShimmerAnimationActivity::class.java),
         Component("TabBarAnimation", TabBarAnimationActivity::class.java)
     )
 }
