@@ -38,6 +38,7 @@ import com.jetpack.compose.learning.constraintlayout.ConstraintLayoutActivity
 import com.jetpack.compose.learning.dialog.DialogActivity
 import com.jetpack.compose.learning.dropdownmenu.DropDownMenuActivity
 import com.jetpack.compose.learning.floatingactionbutton.FloatingActionButtonActivity
+import com.jetpack.compose.learning.instagramui.InstagramScreenActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivity
 import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
@@ -125,6 +126,7 @@ class MainActivity : ComponentActivity() {
         Component("Text", SimpleTextActivity::class.java),
         Component("TextField", TextFieldActivity::class.java),
         Component("Theme", ThemeActivity::class.java),
-        Component("ZoomView", ZoomViewActivity::class.java)
+        Component("ZoomView", ZoomViewActivity::class.java),
+        Component("InstagramUI", InstagramScreenActivity::class.java)
     )
 }
