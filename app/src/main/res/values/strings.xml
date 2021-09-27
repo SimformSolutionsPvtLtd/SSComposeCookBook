@@ -39,4 +39,5 @@ All of these APIs are based on the more fundamental Animation API. Though most a
     <string name="edit">EDIT</string>
     <string name="edit_message">Edit feature is not supported</string>
     <string name="refresh">Refresh</string>
+    <string name="connection_alert">No internet connection. Please try again after sometime.</string>
 </resources>
