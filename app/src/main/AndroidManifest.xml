@@ -3,6 +3,7 @@
     package="com.jetpack.compose.learning">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -107,6 +108,18 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".zoomview.ZoomViewActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".list.LazyListActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".list.LazyColumnRowActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".list.LazyGridActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".list.AdvanceListActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 

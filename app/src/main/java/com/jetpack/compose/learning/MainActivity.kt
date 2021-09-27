@@ -1,6 +1,5 @@
 package com.jetpack.compose.learning
 
-import com.jetpack.compose.learning.zoomview.ZoomViewActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -39,6 +38,7 @@ import com.jetpack.compose.learning.constraintlayout.ConstraintLayoutActivity
 import com.jetpack.compose.learning.dialog.DialogActivity
 import com.jetpack.compose.learning.dropdownmenu.DropDownMenuActivity
 import com.jetpack.compose.learning.floatingactionbutton.FloatingActionButtonActivity
+import com.jetpack.compose.learning.list.LazyListActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivity
 import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
@@ -51,6 +51,7 @@ import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.theme.ThemeActivity
+import com.jetpack.compose.learning.zoomview.ZoomViewActivity
 
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
@@ -118,6 +119,7 @@ class MainActivity : ComponentActivity() {
         Component("Dialog", DialogActivity::class.java),
         Component("Dropdown menu", DropDownMenuActivity::class.java),
         Component("Floating Action Buttons", FloatingActionButtonActivity::class.java),
+        Component("List", LazyListActivity::class.java),
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
         Component("Radio Button", RadioButtonActivity::class.java),
         Component("Slider", SliderActivity::class.java),
