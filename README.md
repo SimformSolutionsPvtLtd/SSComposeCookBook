@@ -2,7 +2,7 @@
 
 # SSComposeCookBook
 
-[![Compose Version](https://img.shields.io/badge/Jetpack%20Compose-1.0.1-brightengreen)](https://img.shields.io/badge/Jetpack%20Compose-1.0.0-brightengreen)
+[![Compose Version](https://img.shields.io/badge/Jetpack%20Compose-1.0.2-brightengreen)](https://img.shields.io/badge/Jetpack%20Compose-1.0.0-brightengreen)
 [![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.5.21-blue.svg)](https://kotlinlang.org)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=flat)](https://www.android.com/) 
@@ -43,6 +43,11 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- | -- | -- | 
 | <img src="/gif/TextFields.png" height="500px"/> | <img src="/gif/Theme.gif" height="500px"/>| <img src="/gif/Zoomview.gif" height="500px"/>
 
+## List
+
+| LazyRow/Column | LazyVerticalGrid | Advance List |
+| -- | -- | -- | 
+| <img src="/gif/List/ListRowColumn.gif" height="500px"/> | <img src="/gif/List/ListGrid.gif" height="500px"/>| <img src="/gif/List/AdvanceList.gif" height="500px"/>
 
 ## Constraint Layout
 
@@ -63,7 +68,6 @@ In this repository, there are number of UI components demonstrated which can be 
 
 ## Coming Up
 - Tab Bar
-- Vertical, Horizontal and Grid List
 - Navigation
 - Theme enhancement
 - Demo Sample
