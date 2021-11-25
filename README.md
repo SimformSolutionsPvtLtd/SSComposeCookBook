@@ -43,9 +43,9 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- | -- | -- | 
 | <img src="/gif/TextFields.png" height="500px"/> | <img src="/gif/Theme.gif" height="500px"/>| <img src="/gif/Zoomview.gif" height="500px"/>
 
-| TabBar |
-| -- |
-| <img src="/gif/Tabbar.png" height="500px"/> |
+| TabBar | DatePicker |
+| -- | -- |
+| <img src="/gif/Tabbar.png" height="500px"/> | <img src="/gif/Datepicker.png" height="500px"/> |
 
 ## List
 

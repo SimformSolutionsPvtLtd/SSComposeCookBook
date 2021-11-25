@@ -35,6 +35,7 @@ import com.jetpack.compose.learning.bottomnav.BottomNavigationActivity
 import com.jetpack.compose.learning.button.ButtonActivity
 import com.jetpack.compose.learning.checkbox.CheckBoxActivity
 import com.jetpack.compose.learning.constraintlayout.ConstraintLayoutActivity
+import com.jetpack.compose.learning.datepicker.DatePickerActivity
 import com.jetpack.compose.learning.dialog.DialogActivity
 import com.jetpack.compose.learning.dropdownmenu.DropDownMenuActivity
 import com.jetpack.compose.learning.floatingactionbutton.FloatingActionButtonActivity
@@ -130,6 +131,7 @@ class MainActivity : ComponentActivity() {
         Component("TextField", TextFieldActivity::class.java),
         Component("Theme", ThemeActivity::class.java),
         Component("ZoomView", ZoomViewActivity::class.java),
-        Component("Tab Bar", TabBarLayoutActivity::class.java)
+        Component("Tab Bar", TabBarLayoutActivity::class.java),
+        Component("DatePicker", DatePickerActivity::class.java)
     )
 }
