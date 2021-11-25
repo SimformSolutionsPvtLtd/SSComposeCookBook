@@ -112,6 +112,9 @@
         <activity
             android:name=".tabarlayout.TabBarLayoutActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".datepicker.DatePickerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 
 </manifest>
