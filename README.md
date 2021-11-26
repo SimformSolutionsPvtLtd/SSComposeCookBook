@@ -43,10 +43,14 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- | -- | -- | 
 | <img src="/gif/TextFields.png" height="500px"/> | <img src="/gif/Theme.gif" height="500px"/>| <img src="/gif/Zoomview.gif" height="500px"/>
 
+| TabBar | DatePicker |
+| -- | -- |
+| <img src="/gif/Tabbar.png" height="500px"/> | <img src="/gif/Datepicker.png" height="500px"/> |
+
 ## List
 
 | LazyRow/Column | LazyVerticalGrid | Advance List |
-| -- | -- | -- | 
+| -- | -- | -- |
 | <img src="/gif/List/ListRowColumn.gif" height="500px"/> | <img src="/gif/List/ListGrid.gif" height="500px"/>| <img src="/gif/List/AdvanceList.gif" height="500px"/>
 
 ## Constraint Layout

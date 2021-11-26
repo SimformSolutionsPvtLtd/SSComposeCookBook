@@ -15,20 +15,22 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyApplication.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".instagramdemo.InstagramSplashActivity"
-            android:theme="@style/Theme.MyApplication.NoActionBar" >
+            android:theme="@style/Theme.MyApplication.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".instagramdemo.InstagramSplashActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -101,7 +103,7 @@
             android:name=".floatingactionbutton.FloatingActionButtonActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-            android:name="com.jetpack.compose.learning.animation.contentAnimation.ContentIconAnimationActivity"
+            android:name=".animation.contentAnimation.ContentIconAnimationActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".animation.InfiniteTransitionActivity"
@@ -132,6 +134,12 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".list.AdvanceListActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".tabarlayout.TabBarLayoutActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".datepicker.DatePickerActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 
