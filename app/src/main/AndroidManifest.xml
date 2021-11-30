@@ -144,6 +144,9 @@
         <activity
             android:name=".datepicker.DatePickerActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".timepicker.TimePickerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 
 </manifest>

@@ -54,6 +54,7 @@ import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.theme.ThemeActivity
 import com.jetpack.compose.learning.zoomview.ZoomViewActivity
+import com.jetpack.compose.learning.timepicker.TimePickerActivity
 
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
@@ -132,6 +133,7 @@ class MainActivity : ComponentActivity() {
         Component("Theme", ThemeActivity::class.java),
         Component("ZoomView", ZoomViewActivity::class.java),
         Component("Tab Bar", TabBarLayoutActivity::class.java),
-        Component("DatePicker", DatePickerActivity::class.java)
+        Component("DatePicker", DatePickerActivity::class.java),
+        Component("TimePicker", TimePickerActivity::class.java)
     )
 }
