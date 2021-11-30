@@ -44,7 +44,7 @@ class AnimationActivity : ComponentActivity() {
                 BaseView(appTheme.value, systemUiController) {
                     Scaffold(topBar = {
                         TopAppBar(
-                            title = { Text("TopApp Bar") },
+                            title = { Text("Animations") },
                             navigationIcon = {
                                 IconButton(onClick = { onBackPressed() }) {
                                     Icon(Icons.Filled.ArrowBack, contentDescription = null)

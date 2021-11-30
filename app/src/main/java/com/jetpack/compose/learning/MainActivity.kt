@@ -36,6 +36,7 @@ import com.jetpack.compose.learning.button.ButtonActivity
 import com.jetpack.compose.learning.checkbox.CheckBoxActivity
 import com.jetpack.compose.learning.constraintlayout.ConstraintLayoutActivity
 import com.jetpack.compose.learning.datepicker.DatePickerActivity
+import com.jetpack.compose.learning.demosamples.SampleUIActivity
 import com.jetpack.compose.learning.dialog.DialogActivity
 import com.jetpack.compose.learning.dropdownmenu.DropDownMenuActivity
 import com.jetpack.compose.learning.floatingactionbutton.FloatingActionButtonActivity
@@ -128,6 +129,7 @@ class MainActivity : ComponentActivity() {
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
         Component("Pull To Refresh", PullToRefreshActivity::class.java),
         Component("Radio Button", RadioButtonActivity::class.java),
+        Component("Sample UI", SampleUIActivity::class.java),
         Component("Slider", SliderActivity::class.java),
         Component("Snackbar", SnackBarActivity::class.java),
         Component("Switch", SwitchActivity::class.java),
