@@ -147,6 +147,18 @@
         <activity
             android:name=".timepicker.TimePickerActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".pulltorefresh.PullToRefreshActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".pulltorefresh.SimplePullToRefresh"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+
+        <activity android:name=".pulltorefresh.CustomBackgroundPullToRefreshActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+
+        <activity android:name=".pulltorefresh.CustomViewPullToRefreshActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 
 </manifest>
