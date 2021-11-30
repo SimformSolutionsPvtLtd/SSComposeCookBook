@@ -91,4 +91,6 @@ dependencies {
     implementation "androidx.compose.animation:animation:1.1.0-beta03"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+
+    implementation "com.google.accompanist:accompanist-swiperefresh:0.19.0"
 }

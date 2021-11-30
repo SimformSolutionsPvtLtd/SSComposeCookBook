@@ -42,6 +42,7 @@ import com.jetpack.compose.learning.floatingactionbutton.FloatingActionButtonAct
 import com.jetpack.compose.learning.list.LazyListActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivity
+import com.jetpack.compose.learning.pulltorefresh.PullToRefreshActivity
 import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
 import com.jetpack.compose.learning.slider.SliderActivity
 import com.jetpack.compose.learning.snackbar.SnackBarActivity
@@ -119,21 +120,22 @@ class MainActivity : ComponentActivity() {
         Component("Button", ButtonActivity::class.java),
         Component("Checkbox", CheckBoxActivity::class.java),
         Component("Constraint Layout", ConstraintLayoutActivity::class.java),
+        Component("DatePicker", DatePickerActivity::class.java),
         Component("Dialog", DialogActivity::class.java),
         Component("Dropdown menu", DropDownMenuActivity::class.java),
         Component("Floating Action Buttons", FloatingActionButtonActivity::class.java),
         Component("List", LazyListActivity::class.java),
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
+        Component("Pull To Refresh", PullToRefreshActivity::class.java),
         Component("Radio Button", RadioButtonActivity::class.java),
         Component("Slider", SliderActivity::class.java),
         Component("Snackbar", SnackBarActivity::class.java),
         Component("Switch", SwitchActivity::class.java),
+        Component("Tab Bar", TabBarLayoutActivity::class.java),
         Component("Text", SimpleTextActivity::class.java),
         Component("TextField", TextFieldActivity::class.java),
         Component("Theme", ThemeActivity::class.java),
-        Component("ZoomView", ZoomViewActivity::class.java),
-        Component("Tab Bar", TabBarLayoutActivity::class.java),
-        Component("DatePicker", DatePickerActivity::class.java),
-        Component("TimePicker", TimePickerActivity::class.java)
+        Component("TimePicker", TimePickerActivity::class.java),
+        Component("ZoomView", ZoomViewActivity::class.java)
     )
 }
