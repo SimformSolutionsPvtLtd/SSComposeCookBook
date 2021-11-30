@@ -20,7 +20,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -30,11 +30,14 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".instagramdemo.InstagramLoginActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".instagramdemo.InstagramHomeActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".animation.AnimationActivity"
@@ -140,6 +143,9 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".datepicker.DatePickerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".timepicker.TimePickerActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 

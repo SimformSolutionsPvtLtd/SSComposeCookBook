@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.instagramdemo
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.compose.ui.graphics.Color
 import android.widget.Toast
@@ -127,7 +128,7 @@ class InstagramLoginActivity: ComponentActivity() {
                             emptyPasswordError.value = true
                         }
                         else -> {
-                            Toast.makeText(context, "Login successfully", Toast.LENGTH_SHORT).show()
+                            context.startActivity(Intent(context, InstagramHomeActivity::class.java))
                         }
                     }
                 },
