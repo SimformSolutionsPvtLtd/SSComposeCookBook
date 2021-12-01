@@ -20,24 +20,17 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".instagramdemo.InstagramSplashActivity"
-            android:theme="@style/Theme.MyApplication.NoActionBar"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".instagramdemo.InstagramLoginActivity"
+            android:name="com.jetpack.compose.learning.demosamples.instagramdemo.InstagramSplashActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity
+            android:name="com.jetpack.compose.learning.demosamples.instagramdemo.InstagramLoginActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-            android:name=".instagramdemo.InstagramHomeActivity"
+            android:name="com.jetpack.compose.learning.demosamples.instagramdemo.InstagramHomeActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".animation.AnimationActivity"
@@ -158,6 +151,9 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
 
         <activity android:name=".pulltorefresh.CustomViewPullToRefreshActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+
+        <activity android:name=".demosamples.SampleUIActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 
