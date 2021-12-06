@@ -53,6 +53,11 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- | -- | -- |
 | <img src="/gif/List/ListRowColumn.gif" height="500px"/> | <img src="/gif/List/ListGrid.gif" height="500px"/>| <img src="/gif/List/AdvanceList.gif" height="500px"/>
 
+## Pull To Refresh
+| Simple Pull To Refresh | Custom Background Pull To Refresh | Custom View Pull To Refresh |
+| -- | -- | -- |
+| <img src="/gif/PullToRefresh/SimplePullToRefresh.gif" height="500px"/> | <img src="/gif/PullToRefresh/CustomViewPullToRefresh.gif" height="500px"/>| <img src="/gif/PullToRefresh/CustomBackgroundPullToRefresh.gif" height="500px"/>
+
 ## Constraint Layout
 
 | Barrier | Guideline | Chain |
@@ -70,11 +75,15 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- | -- | -- | 
 | <img src="/gif/Animation/InfiniteAnim.gif" height="500px"/> | <img src="/gif/Animation/ShimmerAnim.gif" height="500px"/>| <img src="/gif/Animation/TabBarAnim.gif" height="500px"/>
 
+## Sample UI
+
+| Instagram |
+| -- |
+| <img src="/gif/SampleUI/instagramdemo.gif" height="500px"/> |
+
 ## Coming Up
-- Tab Bar
 - Navigation
 - Theme enhancement
-- Demo Sample
 
 ## Our Library in JetPackCompose
 - [SSJetPackComposeProgressButton](https://github.com/SimformSolutionsPvtLtd/SSJetPackComposeProgressButton) : SSJetPackComposeProgressButton is an elegant button with a different loading animations which makes your app attractive.
