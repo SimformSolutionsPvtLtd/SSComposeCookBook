@@ -17,6 +17,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -47,6 +48,7 @@ import com.jetpack.compose.learning.pulltorefresh.PullToRefreshActivity
 import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
 import com.jetpack.compose.learning.slider.SliderActivity
 import com.jetpack.compose.learning.snackbar.SnackBarActivity
+import com.jetpack.compose.learning.swipetodelete.SwipeToDeleteListActivity
 import com.jetpack.compose.learning.switch.SwitchActivity
 import com.jetpack.compose.learning.tabarlayout.TabBarLayoutActivity
 import com.jetpack.compose.learning.textfield.TextFieldActivity
@@ -60,6 +62,7 @@ import com.jetpack.compose.learning.timepicker.TimePickerActivity
 
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
+@ExperimentalMaterialApi
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -132,6 +135,7 @@ class MainActivity : ComponentActivity() {
         Component("Sample UI", SampleUIActivity::class.java),
         Component("Slider", SliderActivity::class.java),
         Component("Snackbar", SnackBarActivity::class.java),
+        Component("Swipe To Delete", SwipeToDeleteListActivity::class.java),
         Component("Switch", SwitchActivity::class.java),
         Component("Tab Bar", TabBarLayoutActivity::class.java),
         Component("Text", SimpleTextActivity::class.java),
