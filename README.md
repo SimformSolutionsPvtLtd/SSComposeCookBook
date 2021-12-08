@@ -47,6 +47,10 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- | -- | -- |
 | <img src="/gif/Tabbar.png" height="500px"/> | <img src="/gif/Datepicker.png" height="500px"/> | <img src="/gif/Timepicker.png" height="500px"/>
 
+| ParallaxEffect |
+| -- |
+| <img src="/gif/ParallaxEffect.gif" height="500px"/> |
+
 ## List
 
 | LazyRow/Column | LazyVerticalGrid | Advance List |
