@@ -2,8 +2,8 @@
 
 # SSComposeCookBook
 
-[![Compose Version](https://img.shields.io/badge/Jetpack%20Compose-1.0.2-brightengreen)](https://img.shields.io/badge/Jetpack%20Compose-1.0.0-brightengreen)
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.5.21-blue.svg)](https://kotlinlang.org)
+[![Compose Version](https://img.shields.io/badge/Jetpack%20Compose-1.0.5-brightengreen)](https://img.shields.io/badge/Jetpack%20Compose-1.0.0-brightengreen)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.5.31-blue.svg)](https://kotlinlang.org)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=flat)](https://www.android.com/) 
 
@@ -45,7 +45,15 @@ In this repository, there are number of UI components demonstrated which can be 
 
 | TabBar | DatePicker | TimePicker |
 | -- | -- | -- |
-| <img src="/gif/Tabbar.png" height="500px"/> | <img src="/gif/Datepicker.png" height="500px"/> | <img src="/gif/Timepicker.png" height="500px"/>
+| <img src="/gif/TabBar.gif" height="500px"/> | <img src="/gif/DatePicker.gif" height="500px"/> | <img src="/gif/TimePicker.gif" height="500px"/>
+
+| ImagePicker |
+| -- |
+| <img src="/gif/ImagePicker.gif" height="500px"/> |
+
+| ParallaxEffect |
+| -- |
+| <img src="/gif/ParallaxEffect.gif" height="500px"/> |
 
 ## List
 
@@ -57,6 +65,11 @@ In this repository, there are number of UI components demonstrated which can be 
 | Simple Pull To Refresh | Custom Background Pull To Refresh | Custom View Pull To Refresh |
 | -- | -- | -- |
 | <img src="/gif/PullToRefresh/SimplePullToRefresh.gif" height="500px"/> | <img src="/gif/PullToRefresh/CustomViewPullToRefresh.gif" height="500px"/>| <img src="/gif/PullToRefresh/CustomBackgroundPullToRefresh.gif" height="500px"/>
+
+## Swipe To Delete
+| Swipe Left | Swipe Right | Swipe Left + Right |
+| -- | -- | -- |
+| <img src="/gif/SwipeToDelete/swipeLeft.gif" height="500px"/> | <img src="/gif/SwipeToDelete/swipeRight.gif" height="500px"/>| <img src="/gif/SwipeToDelete/swipeLeft+Right.gif" height="500px"/>
 
 ## Constraint Layout
 
