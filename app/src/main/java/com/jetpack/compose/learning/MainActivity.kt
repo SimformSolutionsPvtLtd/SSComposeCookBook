@@ -45,6 +45,7 @@ import com.jetpack.compose.learning.imagepicker.ImagePickerActivity
 import com.jetpack.compose.learning.list.LazyListActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivity
+import com.jetpack.compose.learning.parallaxeffect.ParallaxEffectActivity
 import com.jetpack.compose.learning.pulltorefresh.PullToRefreshActivity
 import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
 import com.jetpack.compose.learning.slider.SliderActivity
@@ -132,6 +133,7 @@ class MainActivity : ComponentActivity() {
         Component("ImagePicker", ImagePickerActivity::class.java),
         Component("List", LazyListActivity::class.java),
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
+        Component("Parallax effect", ParallaxEffectActivity::class.java),
         Component("Pull To Refresh", PullToRefreshActivity::class.java),
         Component("Radio Button", RadioButtonActivity::class.java),
         Component("Sample UI", SampleUIActivity::class.java),

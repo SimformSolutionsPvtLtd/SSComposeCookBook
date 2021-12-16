@@ -163,8 +163,11 @@
         <activity
             android:name=".swipetodelete.SwipeToDeleteDirectionActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
-
-        <activity android:name=".imagepicker.ImagePickerActivity"
+        <activity
+            android:name=".imagepicker.ImagePickerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity
+            android:name=".parallaxeffect.ParallaxEffectActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 
