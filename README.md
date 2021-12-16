@@ -45,7 +45,11 @@ In this repository, there are number of UI components demonstrated which can be 
 
 | TabBar | DatePicker | TimePicker |
 | -- | -- | -- |
-| <img src="/gif/Tabbar.png" height="500px"/> | <img src="/gif/Datepicker.png" height="500px"/> | <img src="/gif/Timepicker.png" height="500px"/>
+| <img src="/gif/TabBar.gif" height="500px"/> | <img src="/gif/DatePicker.gif" height="500px"/> | <img src="/gif/TimePicker.gif" height="500px"/>
+
+| ImagePicker |
+| -- |
+| <img src="/gif/ImagePicker.gif" height="500px"/> |
 
 | ParallaxEffect |
 | -- |
