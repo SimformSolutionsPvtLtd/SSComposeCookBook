@@ -92,7 +92,7 @@ In this repository, there are number of UI components demonstrated which can be 
 
 | Instagram |
 | -- |
-| <img src="/gif/SampleUI/instagramdemo.gif" height="500px"/> |
+| <img src="/gif/SampleUI/InstagramDemo.gif" height="500px"/> |
 
 ## Coming Up
 - Navigation
