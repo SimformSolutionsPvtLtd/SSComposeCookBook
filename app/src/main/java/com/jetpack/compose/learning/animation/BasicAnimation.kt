@@ -32,7 +32,7 @@ import com.jetpack.compose.learning.theme.SystemUiController
 
 class BasicAnimation : ComponentActivity() {
 
-    @ExperimentalAnimationApi
+    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
