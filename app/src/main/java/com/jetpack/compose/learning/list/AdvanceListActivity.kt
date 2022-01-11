@@ -33,7 +33,7 @@ class AdvanceListActivity : ComponentActivity() {
 
     private val movieViewModel: MovieViewModel by viewModels()
 
-    @ExperimentalFoundationApi
+    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

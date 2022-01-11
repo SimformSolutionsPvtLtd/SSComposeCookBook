@@ -2,8 +2,8 @@
 
 # SSComposeCookBook
 
-[![Compose Version](https://img.shields.io/badge/Jetpack%20Compose-1.0.5-brightengreen)](https://img.shields.io/badge/Jetpack%20Compose-1.0.0-brightengreen)
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.5.31-blue.svg)](https://kotlinlang.org)
+[![Compose Version](https://img.shields.io/badge/Jetpack%20Compose-1.1.0--rc01-brightgreen)](https://img.shields.io/badge/Jetpack%20Compose-1.0.0-brightengreen)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.6.10-blue.svg)](https://kotlinlang.org)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=flat)](https://www.android.com/) 
 
@@ -47,13 +47,9 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- | -- | -- |
 | <img src="/gif/TabBar.gif" height="500px"/> | <img src="/gif/DatePicker.gif" height="500px"/> | <img src="/gif/TimePicker.gif" height="500px"/>
 
-| ImagePicker |
-| -- |
-| <img src="/gif/ImagePicker.gif" height="500px"/> |
-
-| ParallaxEffect |
-| -- |
-| <img src="/gif/ParallaxEffect.gif" height="500px"/> |
+| ImagePicker | ParallaxEffect |
+| -- | -- |
+| <img src="/gif/ImagePicker.gif" height="500px"/> | <img src="/gif/ParallaxEffect.gif" height="500px"/> |
 
 ## List
 
@@ -64,7 +60,7 @@ In this repository, there are number of UI components demonstrated which can be 
 ## Pull To Refresh
 | Simple Pull To Refresh | Custom Background Pull To Refresh | Custom View Pull To Refresh |
 | -- | -- | -- |
-| <img src="/gif/PullToRefresh/SimplePullToRefresh.gif" height="500px"/> | <img src="/gif/PullToRefresh/CustomViewPullToRefresh.gif" height="500px"/>| <img src="/gif/PullToRefresh/CustomBackgroundPullToRefresh.gif" height="500px"/>
+| <img src="/gif/PullToRefresh/SimplePullToRefresh.gif" height="500px"/> | <img src="/gif/PullToRefresh/CustomBackgroundPullToRefresh.gif" height="500px"/> | <img src="/gif/PullToRefresh/CustomViewPullToRefresh.gif" height="500px"/>
 
 ## Swipe To Delete
 | Swipe Left | Swipe Right | Swipe Left + Right |
@@ -98,15 +94,16 @@ In this repository, there are number of UI components demonstrated which can be 
 - Navigation
 - Theme enhancement
 
-## Our Library in JetPackCompose
+## Our Libraries in JetPackCompose
 - [SSJetPackComposeProgressButton](https://github.com/SimformSolutionsPvtLtd/SSJetPackComposeProgressButton) : SSJetPackComposeProgressButton is an elegant button with a different loading animations which makes your app attractive.
+- [SSJetpackComposeSwipeableView](https://github.com/SimformSolutionsPvtLtd/SSJetpackComposeSwipeableView) : SSJetpackComposeSwipeableView is a small library which provides support for the swipeable views. You can use this in your lazyColumns or can add a simple view which contains swipe to edit/delete functionality.
 
 ## Official Documentations
 - [Jetpack Compose](https://developer.android.com/jetpack/compose)
 - [Jetpack Compose Pathways](https://developer.android.com/courses/pathways/compose)
 - [Jetpack Compose Samples](https://github.com/android/compose-samples)
 
-## Find this library useful? ❤️
+## Find this samples useful? ❤️
 Support it by joining __[stargazers]__ for this repository.⭐
 
 ## How to Contribute🤝
