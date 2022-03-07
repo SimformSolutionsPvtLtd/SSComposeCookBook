@@ -30,6 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jetpack.compose.learning.androidviews.AndroidViews
 import com.jetpack.compose.learning.animation.AnimationActivity
 import com.jetpack.compose.learning.appbar.TopAppBarActivity
 import com.jetpack.compose.learning.bottomnav.BottomNavigationActivity
@@ -61,6 +62,7 @@ import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.theme.ThemeActivity
 import com.jetpack.compose.learning.zoomview.ZoomViewActivity
 import com.jetpack.compose.learning.timepicker.TimePickerActivity
+import com.jetpack.compose.learning.xmls.ComposeInXmlViews
 
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
@@ -120,12 +122,14 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun getComponents(): List<Component> = listOf<Component>(
+        Component("Android Views (Xml in Compose View)", AndroidViews::class.java),
         Component("Animation", AnimationActivity::class.java),
         Component("App Bar", TopAppBarActivity::class.java),
         Component("Bottom Navigation", BottomNavigationActivity::class.java),
         Component("Button", ButtonActivity::class.java),
         Component("Checkbox", CheckBoxActivity::class.java),
         Component("Constraint Layout", ConstraintLayoutActivity::class.java),
+        Component("Compose In Xml Views", ComposeInXmlViews::class.java),
         Component("DatePicker", DatePickerActivity::class.java),
         Component("Dialog", DialogActivity::class.java),
         Component("Dropdown menu", DropDownMenuActivity::class.java),
