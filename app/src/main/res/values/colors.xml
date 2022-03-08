@@ -13,7 +13,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#0984e3</color>
     <color name="fruit">#6c5ce7</color>
-    <color name="pink">#ff7675</color>
+    <color name="pink">#EF5366</color>
     <color name="orange">#e17055</color>
-
+    <color name="pink40">#64EF5366</color>
+    <color name="pink50">#80EF5366</color>
 </resources>

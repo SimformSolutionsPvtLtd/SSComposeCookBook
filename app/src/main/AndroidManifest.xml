@@ -169,6 +169,12 @@
         <activity
             android:name=".parallaxeffect.ParallaxEffectActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".xmls.ComposeInXmlViews"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity
+            android:name=".androidviews.AndroidViews"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
     </application>
 
 </manifest>
