@@ -165,19 +165,51 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".imagepicker.ImagePickerActivity"
-            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".parallaxeffect.ParallaxEffectActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".xmls.ComposeInXmlViews"
-            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".androidviews.AndroidViews"
-            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <!--region Canvas-->
+        <activity
+            android:name=".canvas.CanvasActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".canvas.CanvasShapesActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".canvas.CanvasTextImageActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".canvas.CanvasBlendModesActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".canvas.CanvasPathsActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".canvas.BasicCanvasExampleActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".canvas.CanvasPathOperationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".canvas.CanvasDrawScopeOperationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".canvas.CanvasAndroidEasterEggActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".canvas.CanvasTouchOperationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".drawapp.DrawingBoardActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <!--endregion Canvas-->
     </application>
 
 </manifest>

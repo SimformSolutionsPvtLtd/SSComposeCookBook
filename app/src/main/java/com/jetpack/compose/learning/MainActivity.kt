@@ -35,6 +35,7 @@ import com.jetpack.compose.learning.animation.AnimationActivity
 import com.jetpack.compose.learning.appbar.TopAppBarActivity
 import com.jetpack.compose.learning.bottomnav.BottomNavigationActivity
 import com.jetpack.compose.learning.button.ButtonActivity
+import com.jetpack.compose.learning.canvas.CanvasActivity
 import com.jetpack.compose.learning.checkbox.CheckBoxActivity
 import com.jetpack.compose.learning.constraintlayout.ConstraintLayoutActivity
 import com.jetpack.compose.learning.datepicker.DatePickerActivity
@@ -61,9 +62,9 @@ import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.theme.ThemeActivity
-import com.jetpack.compose.learning.zoomview.ZoomViewActivity
 import com.jetpack.compose.learning.timepicker.TimePickerActivity
 import com.jetpack.compose.learning.xmls.ComposeInXmlViews
+import com.jetpack.compose.learning.zoomview.ZoomViewActivity
 
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
@@ -99,7 +100,7 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun ButtonComponent(buttonText: String, className: Class<*>) {
-        var context = LocalContext.current
+        val context = LocalContext.current
         OutlinedButton(
             onClick = {
                 context.startActivity(Intent(applicationContext, className))
@@ -122,12 +123,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun getComponents(): List<Component> = listOf<Component>(
+    private fun getComponents() = listOf(
         Component("Android Views (Xml in Compose View)", AndroidViews::class.java),
         Component("Animation", AnimationActivity::class.java),
         Component("App Bar", TopAppBarActivity::class.java),
         Component("Bottom Navigation", BottomNavigationActivity::class.java),
         Component("Button", ButtonActivity::class.java),
+        Component("Canvas", CanvasActivity::class.java),
         Component("Checkbox", CheckBoxActivity::class.java),
         Component("Constraint Layout", ConstraintLayoutActivity::class.java),
         Component("Compose In Xml Views", ComposeInXmlViews::class.java),

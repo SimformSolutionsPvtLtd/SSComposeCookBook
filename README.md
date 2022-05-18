@@ -51,9 +51,9 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- | -- | -- |
 | <img src="/gif/ImagePicker.gif" height="500px"/> | <img src="/gif/ParallaxEffect.gif" height="500px"/> | <img src="/gif/ComposeViewsInXml.gif" height="500px"/> |
 
-| XML views in Compose |
-| -- |
-| <img src="/gif/XmlViewInCompose.png" height="500px"/> |
+| XML views in Compose | Canvas |
+| -- | -- |
+| <img src="/gif/XmlViewInCompose.png" height="500px"/> | <img src="/gif/Canvas.gif" height="500px"/> |
 
 ## List
 
