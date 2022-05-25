@@ -165,16 +165,37 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".imagepicker.ImagePickerActivity"
-            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".parallaxeffect.ParallaxEffectActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".xmls.ComposeInXmlViews"
-            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".androidviews.AndroidViews"
-            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.ViewPagerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.HorizontalViewPager"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.ViewPagerWithTabActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.VerticalViewPagerWithIndicatorActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.ViewPagerWithSwipeAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.HorizontalPagerWithIndicator"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.AddRemovePagerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 
 </manifest>

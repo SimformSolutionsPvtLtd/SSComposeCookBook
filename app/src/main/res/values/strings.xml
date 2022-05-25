@@ -3,17 +3,9 @@
     <string name="action_settings">Settings</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="text_from_resource">This text is from resource file(strings.xml)</string>
     <string name="title_activity_simmer_animation">SimmerAnimationActivity</string>
-
-    <string name="expand_text">All the high-level animation APIs mentioned in the previous section are built on top of the foundation of the low-level animation APIs.
-
-The animate*AsState functions are the simplest APIs, that render an instant value change as an animation value. It is backed by Animatable, which is a coroutine-based API for animating a single value. updateTransition creates a transition object that can manage multiple animating values and run them based on a state change. rememberInfiniteTransition is similar, but it creates an infinite transition that can manage multiple animations that keep on running indefinitely. All of these APIs are composables except for Animatable, which means these animations can be created outside of composition.
-
-All of these APIs are based on the more fundamental Animation API. Though most apps will not interact directly with Animation, some of the customization capabilities for Animation are available through higher-level APIs. See Customize animations for more information on AnimationVector and AnimationSpec.</string>
-
-
+    <string name="expand_text">All the high-level animation APIs mentioned in the previous section are built on top of the foundation of the low-level animation APIs. The animate*AsState functions are the simplest APIs, that render an instant value change as an animation value. It is backed by Animatable, which is a coroutine-based API for animating a single value. updateTransition creates a transition object that can manage multiple animating values and run them based on a state change. rememberInfiniteTransition is similar, but it creates an infinite transition that can manage multiple animations that keep on running indefinitely. All of these APIs are composables except for Animatable, which means these animations can be created outside of composition. All of these APIs are based on the more fundamental Animation API. Though most apps will not interact directly with Animation, some of the customization capabilities for Animation are available through higher-level APIs. See Customize animations for more information on AnimationVector and AnimationSpec.</string>
     <string name="home">Home</string>
     <string name="work">Work</string>
     <string name="weather">Weather</string>
@@ -32,12 +24,24 @@ All of these APIs are based on the more fundamental Animation API. Though most a
     <string-array name="topics">
         <item>2 new packages arrived</item>
         <item>DIY project recommendation</item>
-        <!--<item>Festival next month</item>
-        <item>New flower seeds available</item>-->
+        <!-- <item>Festival next month</item>
+                <item>New flower seeds available</item> -->
     </string-array>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="edit">EDIT</string>
     <string name="edit_message">Edit feature is not supported</string>
     <string name="refresh">Refresh</string>
     <string name="connection_alert">No internet connection. Please try again after sometime.</string>
+    <string name="title_horizontal_pager">Horizontal Pager</string>
+    <string name="title_horizontal_pager_with_tabs">Horizontal Pager with Tabs</string>
+    <string name="title_vertical_pager">Vertical Pager With Indicator</string>
+    <string name="title_horizontal_pager_with_indicator">Horizontal Pager With Indicator</string>
+    <string name="title_pager_with_zoom_effect">Pager with Zoom-in Transformation</string>
+    <string name="title_add_or_remove_page_in_pager">Add/Remove Page In Pager</string>
+    <string name="title_reverse_horizontal_pager">Reverse Horizontal Pager</string>
+    <string name="description_music">Music is the art of arranging sound It is one of the universal cultural aspects of all human societies.Music may be defined with styles that emphasize, de-emphasize, or omit common elements of organized sound, such as rhythm, volume and pitch. Rhythm may be specified with tempos, sometimes organized using meters, and often coordinating the variation and juxtaposition of pitch. Individual sounds possess timbres or texture, which heavily contribute to the music\'s overall character.\n\nThe relationships and divisions between genres are inexact and sometimes hotly contested, as in taxonomy. The mere existence or legitimacy of a genre may be a topic of controversy. It is sometimes more valuable to categorize music by era, scene, intent, or artistic inspiration. Individual periods of music are separated into pieces, which can be categorized into numerous traditions, such as songs, tracks, symphonies, or so forth. Pieces may be composed and performed using a vast range of instruments, including the human voice. There are solely instrumental pieces, solely vocal pieces, pieces that combine singing and instruments, pieces with no sound, randomly generated pieces, and even pieces merely specifying an environment with no further sonic organization.\n\nIn some musical contexts, a performance or composition may be to some extent improvised. For instance, in Hindustani classical music, the performer plays spontaneously while following a partially defined structure and using characteristic motifs. In modal jazz the performers may take turns leading and responding, while sharing a changing set of notes. In a free jazz context, there may be no structure whatsoever, with each performer acting at their discretion. Music may be deliberately composed to be unperformable, or agglomerated electronically from many performances. Music is played in public and private areas, highlighted at events such as festivals, rock concerts, and orchestra performance, and heard incidentally as part of a score or soundtrack to a film, TV show, opera, or video game. Musical playback is the primary function of an MP3 player or CD player and a universal feature of radios and smartphones.</string>
+    <string name="description_market">A market is defined as the sum total of all the buyers and sellers in the area or region under consideration. The area may be the earth, or countries, regions, states, or cities.The value, cost and price of items traded are as per forces of supply and demand in a market. The market may be a physical entity, or may be virtual. It may be local or global, perfect and imperfect.</string>
+    <string name="description_films">Films also called motion picture or movie, series of still photographs on film, projected in rapid succession onto a screen by means of light. Because of the optical phenomenon known as persistence of vision, this gives the illusion of actual, smooth, and continuous movement.Film is a remarkably effective medium in conveying drama and especially in the evocation of emotion. The art of motion pictures is exceedingly complex, requiring contributions from nearly all the other arts as well as countless technical skills (for example, in sound recording, photography, and optics). Emerging at the end of the 19th century,this new art form became one of the most popular and influential media of the 20th century and beyond.</string>
+    <string name="description_books">In the 11th century, a Japanese woman known as Murasaki Shikibu wrote “The Tale of Genji,” a 54-chapter story of courtly seduction believed to be the world’s first novel.\n\nOver 1,000 years later, people the world over are still engrossed by novels — even in an era where stories appear on handheld screens and disappear 24 hours later.\n\nWhat exactly do human beings get from reading books? Is it just a matter of pleasure, or are there benefits beyond enjoyment? The scientific answer is a resounding “yes.”\n\nReading books benefits both your physical and mental health, and those benefits can last a lifetime. They begin in early childhood and continue through the senior years. Here’s a brief explanation of how reading books can change your brain — and your body — for the better.</string>
+    <string name="title_view_pager">View Pager</string>
 </resources>
