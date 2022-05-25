@@ -94,6 +94,15 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- |
 | <img src="/gif/SampleUI/InstagramDemo.gif" height="500px"/> |
 
+## View Pager
+| Simple Horizontal Pager | Horizontal Pager with Tabs | Vertical Pager | 
+| -- | -- | -- |
+| <img src="/gif/ViewPager/SimpleHorizonalPager.gif" height="500px"> | <img src="/gif/ViewPager/HorizontalPageWithTabs.gif" height="500px"> | <img src="/gif/ViewPager/VerticalPager.gif" height="500px"> |
+
+| Horizontal Pager with Zoom-in Transformation |
+| -- |
+| <img src="/gif/ViewPager/HorizontalPagerZoomInTransformation.gif" height="500px"> |
+
 ## Coming Up
 - Navigation
 - Theme enhancement

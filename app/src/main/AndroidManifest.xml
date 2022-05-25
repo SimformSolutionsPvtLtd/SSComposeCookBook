@@ -165,7 +165,7 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".imagepicker.ImagePickerActivity"
-            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".parallaxeffect.ParallaxEffectActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
@@ -175,6 +175,22 @@
         <activity
             android:name=".androidviews.AndroidViews"
             android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity
+            android:name=".viewpager.ViewPagerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.HorizontalViewPager"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.ViewPagerWithTabActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.VerticalViewPagerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.ViewPagerWithSwipeAnimation"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+
     </application>
 
 </manifest>

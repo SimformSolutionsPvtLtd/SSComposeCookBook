@@ -62,6 +62,7 @@ import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.theme.ThemeActivity
 import com.jetpack.compose.learning.zoomview.ZoomViewActivity
 import com.jetpack.compose.learning.timepicker.TimePickerActivity
+import com.jetpack.compose.learning.viewpager.ViewPagerActivity
 import com.jetpack.compose.learning.xmls.ComposeInXmlViews
 
 @ExperimentalComposeUiApi
@@ -150,6 +151,7 @@ class MainActivity : ComponentActivity() {
         Component("TextField", TextFieldActivity::class.java),
         Component("Theme", ThemeActivity::class.java),
         Component("TimePicker", TimePickerActivity::class.java),
-        Component("ZoomView", ZoomViewActivity::class.java)
+        Component("ZoomView", ZoomViewActivity::class.java),
+        Component("View Pager",ViewPagerActivity::class.java)
     )
 }

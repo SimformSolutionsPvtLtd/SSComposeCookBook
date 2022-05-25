@@ -40,4 +40,8 @@ All of these APIs are based on the more fundamental Animation API. Though most a
     <string name="edit_message">Edit feature is not supported</string>
     <string name="refresh">Refresh</string>
     <string name="connection_alert">No internet connection. Please try again after sometime.</string>
+    <string name="title_horizontal_pager">Horizontal Pager</string>
+    <string name="title_horizontal_pager_with_tabs">Horizontal Pager with tabs</string>
+    <string name="title_vertical_pager">Vertical Pager</string>
+    <string name="title_pager_with_zoom_effect">Pager with zoom effect</string>
 </resources>
