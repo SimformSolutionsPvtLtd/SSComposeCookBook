@@ -175,6 +175,9 @@
         <activity
             android:name=".androidviews.AndroidViews"
             android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity
+            android:name=".drawapp.DrawingBoardActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
     </application>
 
 </manifest>
