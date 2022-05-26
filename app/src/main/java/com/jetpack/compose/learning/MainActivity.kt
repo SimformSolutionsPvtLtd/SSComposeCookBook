@@ -13,12 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import com.jetpack.compose.learning.androidviews.AndroidViews
 import com.jetpack.compose.learning.animation.AnimationActivity
 import com.jetpack.compose.learning.appbar.TopAppBarActivity
+import com.jetpack.compose.learning.backdrop.BackdropScaffoldActivity
 import com.jetpack.compose.learning.bottomnav.BottomNavigationActivity
 import com.jetpack.compose.learning.button.ButtonActivity
 import com.jetpack.compose.learning.checkbox.CheckBoxActivity
@@ -60,9 +56,9 @@ import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.theme.ThemeActivity
-import com.jetpack.compose.learning.zoomview.ZoomViewActivity
 import com.jetpack.compose.learning.timepicker.TimePickerActivity
 import com.jetpack.compose.learning.xmls.ComposeInXmlViews
+import com.jetpack.compose.learning.zoomview.ZoomViewActivity
 
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
@@ -125,6 +121,7 @@ class MainActivity : ComponentActivity() {
         Component("Android Views (Xml in Compose View)", AndroidViews::class.java),
         Component("Animation", AnimationActivity::class.java),
         Component("App Bar", TopAppBarActivity::class.java),
+        Component("Backdrop Scaffold", BackdropScaffoldActivity::class.java),
         Component("Bottom Navigation", BottomNavigationActivity::class.java),
         Component("Button", ButtonActivity::class.java),
         Component("Checkbox", CheckBoxActivity::class.java),

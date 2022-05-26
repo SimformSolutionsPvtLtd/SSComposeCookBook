@@ -175,6 +175,9 @@
         <activity
             android:name=".androidviews.AndroidViews"
             android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity
+            android:name=".backdrop.BackdropScaffoldActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
     </application>
 
 </manifest>
