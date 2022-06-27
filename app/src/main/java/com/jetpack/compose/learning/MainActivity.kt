@@ -40,6 +40,7 @@ import com.jetpack.compose.learning.constraintlayout.ConstraintLayoutActivity
 import com.jetpack.compose.learning.datepicker.DatePickerActivity
 import com.jetpack.compose.learning.demosamples.SampleUIActivity
 import com.jetpack.compose.learning.dialog.DialogActivity
+import com.jetpack.compose.learning.drawapp.DrawingBoardActivity
 import com.jetpack.compose.learning.dropdownmenu.DropDownMenuActivity
 import com.jetpack.compose.learning.floatingactionbutton.FloatingActionButtonActivity
 import com.jetpack.compose.learning.imagepicker.ImagePickerActivity
@@ -132,6 +133,7 @@ class MainActivity : ComponentActivity() {
         Component("Compose In Xml Views", ComposeInXmlViews::class.java),
         Component("DatePicker", DatePickerActivity::class.java),
         Component("Dialog", DialogActivity::class.java),
+        Component("Drawing Board", DrawingBoardActivity::class.java),
         Component("Dropdown menu", DropDownMenuActivity::class.java),
         Component("Floating Action Buttons", FloatingActionButtonActivity::class.java),
         Component("ImagePicker", ImagePickerActivity::class.java),
