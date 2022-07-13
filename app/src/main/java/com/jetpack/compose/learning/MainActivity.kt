@@ -13,12 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -44,6 +39,7 @@ import com.jetpack.compose.learning.dropdownmenu.DropDownMenuActivity
 import com.jetpack.compose.learning.floatingactionbutton.FloatingActionButtonActivity
 import com.jetpack.compose.learning.imagepicker.ImagePickerActivity
 import com.jetpack.compose.learning.list.LazyListActivity
+import com.jetpack.compose.learning.maps.GoogleMapsActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivity
 import com.jetpack.compose.learning.parallaxeffect.ParallaxEffectActivity
@@ -60,9 +56,9 @@ import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.theme.ThemeActivity
-import com.jetpack.compose.learning.zoomview.ZoomViewActivity
 import com.jetpack.compose.learning.timepicker.TimePickerActivity
 import com.jetpack.compose.learning.xmls.ComposeInXmlViews
+import com.jetpack.compose.learning.zoomview.ZoomViewActivity
 
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
@@ -134,6 +130,7 @@ class MainActivity : ComponentActivity() {
         Component("Dialog", DialogActivity::class.java),
         Component("Dropdown menu", DropDownMenuActivity::class.java),
         Component("Floating Action Buttons", FloatingActionButtonActivity::class.java),
+        Component("Google Maps", GoogleMapsActivity::class.java),
         Component("ImagePicker", ImagePickerActivity::class.java),
         Component("List", LazyListActivity::class.java),
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
