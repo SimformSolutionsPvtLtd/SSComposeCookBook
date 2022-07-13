@@ -13,7 +13,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowRight
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -114,8 +113,7 @@ class DialogActivity : ComponentActivity() {
             shape = RoundedCornerShape(10.dp),
             border = BorderStroke(1.dp, Color.LightGray),
             elevation = 5.dp,
-            onClick = onClickEvent,
-            indication = rememberRipple()
+            onClick = onClickEvent
         ) {
             Row(
                 Modifier

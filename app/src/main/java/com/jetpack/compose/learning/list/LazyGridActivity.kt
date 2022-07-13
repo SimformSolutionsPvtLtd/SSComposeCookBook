@@ -14,9 +14,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -110,7 +110,7 @@ class LazyGridActivity : ComponentActivity() {
         val itemsList = (0..29).toList()
         LazyVerticalGrid(
             // set number of items in a row
-            cells = GridCells.Fixed(3),
+            columns = GridCells.Fixed(3),
             contentPadding = PaddingValues(10.dp)
         ) {
             items(itemsList.size) {

@@ -46,6 +46,7 @@ import com.jetpack.compose.learning.dropdownmenu.DropDownMenuActivity
 import com.jetpack.compose.learning.floatingactionbutton.FloatingActionButtonActivity
 import com.jetpack.compose.learning.imagepicker.ImagePickerActivity
 import com.jetpack.compose.learning.list.LazyListActivity
+import com.jetpack.compose.learning.maps.GoogleMapsActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivity
 import com.jetpack.compose.learning.parallaxeffect.ParallaxEffectActivity
@@ -138,6 +139,7 @@ class MainActivity : ComponentActivity() {
         Component("Drawing Board", DrawingBoardActivity::class.java),
         Component("Dropdown menu", DropDownMenuActivity::class.java),
         Component("Floating Action Buttons", FloatingActionButtonActivity::class.java),
+        Component("Google Maps", GoogleMapsActivity::class.java),
         Component("ImagePicker", ImagePickerActivity::class.java),
         Component("List", LazyListActivity::class.java),
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
