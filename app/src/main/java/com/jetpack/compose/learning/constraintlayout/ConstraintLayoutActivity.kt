@@ -26,7 +26,6 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowRight
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -97,8 +96,7 @@ class ConstraintLayoutActivity : ComponentActivity() {
             elevation = 5.dp,
             onClick = {
                 context.startActivity(intent)
-            },
-            indication = rememberRipple()
+            }
         ) {
             Row(
                 Modifier
