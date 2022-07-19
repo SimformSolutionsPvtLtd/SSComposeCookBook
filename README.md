@@ -100,7 +100,7 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- | -- | -- |
 | <img src="/gif/canvas/canvas.gif" height="500px"/> | <img src="/gif/canvas/shapes.jpg" height="500px"/> | <img src="/gif/canvas/text_and_image.jpg" height="500px"/> | 
 
-| Path | Path Operation | DrawScope Helpers |
+| Path | Path Operations | DrawScope Helpers |
 | -- | -- | -- |
 | <img src="/gif/canvas/path.jpg" height="500px"/> | <img src="/gif/canvas/path_operation.jpg" height="500px"/> | <img src="/gif/canvas/drawscope_helpers.jpg" height="500px"/> |
 
