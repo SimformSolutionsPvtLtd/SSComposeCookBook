@@ -51,9 +51,9 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- | -- | -- |
 | <img src="/gif/ImagePicker.gif" height="500px"/> | <img src="/gif/ParallaxEffect.gif" height="500px"/> | <img src="/gif/ComposeViewsInXml.gif" height="500px"/> |
 
-| XML views in Compose | Canvas |
-| -- | -- |
-| <img src="/gif/XmlViewInCompose.png" height="500px"/> | <img src="/gif/Canvas.gif" height="500px"/> |
+| XML views in Compose |
+| -- |
+| <img src="/gif/XmlViewInCompose.png" height="500px"/> |
 
 ## List
 
@@ -93,6 +93,24 @@ In this repository, there are number of UI components demonstrated which can be 
 | Instagram |
 | -- |
 | <img src="/gif/SampleUI/InstagramDemo.gif" height="500px"/> |
+
+## Canvas
+
+| Overview | Shapes | Text and Image |
+| -- | -- | -- |
+| <img src="/gif/canvas/canvas.gif" height="500px"/> | <img src="/gif/canvas/shapes.jpg" height="500px"/> | <img src="/gif/canvas/text_and_image.jpg" height="500px"/> | 
+
+| Path | Path Operation | DrawScope Helpers |
+| -- | -- | -- |
+| <img src="/gif/canvas/path.jpg" height="500px"/> | <img src="/gif/canvas/path_operation.jpg" height="500px"/> | <img src="/gif/canvas/drawscope_helpers.jpg" height="500px"/> |
+
+| Canvas + Touch | Blend Modes | Basic Example |
+| -- | -- | -- |
+| <img src="/gif/canvas/canvas_and_touch.jpg" height="500px"/> | <img src="/gif/canvas/blendmode.jpg" height="500px"/> | <img src="/gif/canvas/basic_example.jpg" height="500px"/> |
+
+| Android 11 Easter Egg |
+| -- |
+| <img src="/gif/canvas/android_easter_egg.gif" height="500px"/> |
 
 ## Coming Up
 - Navigation
