@@ -15,8 +15,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -70,7 +70,7 @@ class ThemeActivity : ComponentActivity() {
                 Text(text = "Change theme of this screen : ", style = MaterialTheme.typography.h6)
                 Spacer(Modifier.requiredHeight(spaceHeight))
                 val colorPallet = ColorPalette.values()
-                LazyVerticalGrid(cells = GridCells.Fixed(3)) {
+                LazyVerticalGrid(columns = GridCells.Fixed(3)) {
                     items(colorPallet.size, itemContent = {
                         val isSelected = colorPallet.get(it) == appTheme.value.pallet
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
