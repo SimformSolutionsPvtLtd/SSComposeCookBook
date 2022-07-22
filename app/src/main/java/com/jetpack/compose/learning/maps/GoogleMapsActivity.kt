@@ -28,8 +28,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jetpack.compose.learning.maps.basic.BasicMapActivity
+import com.jetpack.compose.learning.maps.basic.LiteMapInListActivity
+import com.jetpack.compose.learning.maps.basic.MapInScrollingActivity
 import com.jetpack.compose.learning.maps.circle.MapCircleActivity
+import com.jetpack.compose.learning.maps.indoorlevel.MapIndoorActivity
 import com.jetpack.compose.learning.maps.marker.MapMarkerActivity
+import com.jetpack.compose.learning.maps.overlay.MapGroundOverlayActivity
+import com.jetpack.compose.learning.maps.overlay.MapTileOverlayActivity
 import com.jetpack.compose.learning.maps.polygon.MapPolygonActivity
 import com.jetpack.compose.learning.maps.polyline.MapPolylineActivity
 import com.jetpack.compose.learning.model.Component
@@ -99,6 +104,11 @@ class GoogleMapsActivity : ComponentActivity() {
         Component("Markers", MapMarkerActivity::class.java),
         Component("Polyline", MapPolylineActivity::class.java),
         Component("Polygon", MapPolygonActivity::class.java),
-        Component("Circle", MapCircleActivity::class.java)
+        Component("Circle", MapCircleActivity::class.java),
+        Component("Ground Overlay", MapGroundOverlayActivity::class.java),
+        Component("Tile Overlay", MapTileOverlayActivity::class.java),
+        Component("Indoor Level", MapIndoorActivity::class.java),
+        Component("Lite Map", LiteMapInListActivity::class.java),
+        Component("Map in scroll screen", MapInScrollingActivity::class.java)
     )
 }
