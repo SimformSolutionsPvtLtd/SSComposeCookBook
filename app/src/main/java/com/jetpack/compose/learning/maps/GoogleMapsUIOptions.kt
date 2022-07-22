@@ -17,6 +17,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -533,3 +534,67 @@ fun GoogleMapCircleOptions(
     }
 }
 //endregion Circle Options
+
+//region Overlay Options
+/**
+ * View for different ground overlay style and properties options.
+ */
+@Composable
+fun GoogleMapGroundOverlayOptions(
+    uiState: GroundOverlayMapUIState,
+    onNextImageChange: () -> Unit,
+    onPreviousImageChange: () -> Unit,
+    onBearingChange: (Float) -> Unit,
+    onTransparencyChange: (Float) -> Unit,
+    onClickableChange: (Boolean) -> Unit,
+    onVisibilityChange: (Boolean) -> Unit,
+) {
+    val scrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .verticalScroll(scrollState),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        MapVerticalSpace()
+        Row {
+            OutlinedButton(onClick = onNextImageChange) {
+                Text("Next Image")
+            }
+            Spacer(modifier = Modifier.requiredWidth(10.dp))
+            OutlinedButton(onClick = onPreviousImageChange) {
+                Text("Previous Image")
+            }
+        }
+        MapVerticalSpace()
+        MapSliderProperty(uiState.bearing, "Bearing", onBearingChange)
+        MapSliderProperty(uiState.transparency, "Transparency", onTransparencyChange, max = 1f)
+        MapSwitchProperty(uiState.visible, "Visible", onVisibilityChange)
+        MapSwitchProperty(uiState.clickable, "Clickable", onClickableChange)
+    }
+}
+
+/**
+ * View for different tile overlay style and properties options.
+ */
+@Composable
+fun GoogleMapTileOverlayOptions(
+    uiState: TileOverlayMapUIState,
+    onTransparencyChange: (Float) -> Unit,
+    onFadeInChange: (Boolean) -> Unit,
+    onVisibilityChange: (Boolean) -> Unit
+) {
+    val scrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .verticalScroll(scrollState),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        MapVerticalSpace()
+        MapSliderProperty(uiState.transparency, "Transparency", onTransparencyChange, max = 1f)
+        MapSwitchProperty(uiState.fadeIn, "Fade In", onFadeInChange)
+        MapSwitchProperty(uiState.visible, "Visible", onVisibilityChange)
+    }
+}
+//endregion Overlay Options

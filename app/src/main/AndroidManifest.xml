@@ -231,6 +231,21 @@
         <activity
             android:name=".maps.circle.MapCircleActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.overlay.MapGroundOverlayActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.overlay.MapTileOverlayActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.indoorlevel.MapIndoorActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.basic.LiteMapInListActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.basic.MapInScrollingActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion Google Maps-->
 
         <meta-data

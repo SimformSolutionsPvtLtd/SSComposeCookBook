@@ -58,20 +58,11 @@ import com.google.accompanist.flowlayout.FlowRow
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.jetpack.compose.learning.data.DataProvider
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 val currentMarkerLatLong = LatLng(40.689247, -74.044502)
-val mapColorList = listOf(
-    Color.Black,
-    Color.Blue,
-    Color.Cyan,
-    Color.LightGray,
-    Color.Red,
-    Color.Green,
-    Color.Magenta,
-    Color.DarkGray
-)
 
 /**
  * Common screen for maps examples.
@@ -199,7 +190,7 @@ fun MapColorOptions(title: String, color: Color, onColorSelect: (Color) -> Unit)
             mainAxisAlignment = FlowMainAxisAlignment.Center,
             modifier = Modifier.fillMaxWidth()
         ) {
-            mapColorList.forEach {
+            DataProvider.getMapColors().forEach {
                 OutlinedButton(onClick = {
                     onColorSelect(it)
                 }) {

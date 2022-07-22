@@ -1,7 +1,12 @@
 package com.jetpack.compose.learning.maps
 
 import android.content.Context
+import android.content.res.Resources
+import android.graphics.BitmapFactory
+import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
+import androidx.core.graphics.drawable.toBitmap
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.ButtCap
@@ -159,3 +164,25 @@ data class CircleMapUIState(
     override val strokeWidth: Float = 10f,
     override val strokeColorAlpha: Float = 1f,
 ) : CommonShapeUIState()
+
+data class GroundOverlayMapUIState(
+    @DrawableRes val imageResource: Int,
+    val bearing: Float = 0f,
+    val transparency: Float = 0f,
+    val clickable: Boolean = false,
+    val visible: Boolean = true
+) {
+    fun getImageBitmap(resource: Resources): BitmapDescriptor {
+        val bitmap = BitmapFactory.decodeResource(resource, imageResource)
+        val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resource, bitmap)
+        roundedBitmapDrawable.setAntiAlias(true)
+        roundedBitmapDrawable.isCircular = true
+        return BitmapDescriptorFactory.fromBitmap(roundedBitmapDrawable.toBitmap())
+    }
+}
+
+data class TileOverlayMapUIState(
+    val fadeIn: Boolean = false,
+    val transparency: Float = 0f,
+    val visible: Boolean = true
+)
