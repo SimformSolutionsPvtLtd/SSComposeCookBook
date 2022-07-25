@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.demosamples.instagramdemo.components.InstaGramPostItem
 import com.jetpack.compose.learning.demosamples.instagramdemo.components.InstagramStoriesItem
-import com.jetpack.compose.learning.demosamples.instagramdemo.data.DataProvider
+import com.jetpack.compose.learning.data.DataProvider
 
 class InstagramHomeActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,12 +66,12 @@ class InstagramHomeActivity: ComponentActivity() {
 
     @Composable
     fun InstagramStories() {
-        val post = remember { DataProvider.itemList }
+        val stories = remember { DataProvider.postList }
         LazyRow(
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
         ) {
             items(
-                items = post,
+                items = stories,
                 itemContent = {
                     InstagramStoriesItem(it)
                 }
@@ -81,12 +81,12 @@ class InstagramHomeActivity: ComponentActivity() {
 
     @Composable
     fun InstagramPost() {
-        val movies = remember { DataProvider.itemList }
+        val posts = remember { DataProvider.postList }
         LazyColumn(
             contentPadding = PaddingValues(vertical = 8.dp)
         ) {
             items(
-                items = movies,
+                items = posts,
                 itemContent = {
                     InstaGramPostItem(it)
                 }
