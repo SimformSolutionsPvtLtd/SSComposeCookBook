@@ -51,14 +51,12 @@ import androidx.compose.ui.input.pointer.consumeDownChange
 import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 
-@OptIn(ExperimentalComposeUiApi::class)
-class DrawingBoardActivity: ComponentActivity() {
+class DrawingBoardActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,25 +74,25 @@ class DrawingBoardActivity: ComponentActivity() {
                         }
                     )
                 }) {
-                    DrawingSample()
+                    DrawingSample(Modifier.padding(it))
                 }
             }
         }
     }
 
     @Composable
-    fun DrawingSample() {
-
+    fun DrawingSample(
+        modifier: Modifier = Modifier
+    ) {
         var strokeWidth by remember {
             mutableStateOf(4f)
         }
-
         var penColor by remember {
             mutableStateOf(Color.Black)
         }
 
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = modifier.fillMaxSize()
         ) {
             DrawBoard(
                 modifier = Modifier
@@ -103,9 +101,10 @@ class DrawingBoardActivity: ComponentActivity() {
                 penStrokeWidth = strokeWidth,
                 penColor = penColor
             )
-            Column(modifier = Modifier
-                .fillMaxWidth()
-                .padding(5.dp)
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
             ) {
                 Text(text = "Color")
                 ColorPalette(
@@ -124,21 +123,18 @@ class DrawingBoardActivity: ComponentActivity() {
                 )
             }
         }
-
     }
 
     @Composable
     fun ColorPalette(
         onColorSelected: (Color) -> Unit
     ) {
-
         val colorList = listOf(
             Color.Black, Color.DarkGray, Color.Gray,
             Color.LightGray, Color(0xFFEE5366), Color.Red,
             Color.Green, Color.Blue, Color.Yellow,
             Color.Cyan, Color.Magenta,
         )
-
         var selectedIndex by remember { mutableStateOf(0) }
         val onItemClick = { index: Int, color: Color ->
             selectedIndex = index
@@ -169,7 +165,6 @@ class DrawingBoardActivity: ComponentActivity() {
         onClick: (Int, Color) -> Unit
     ) {
         val shape = RoundedCornerShape(50)
-
         val modifier = if (selected) {
             Modifier
                 .padding(3.dp)
@@ -197,16 +192,22 @@ class DrawingBoardActivity: ComponentActivity() {
         penStrokeWidth: Float = 4f,
         penColor: Color = Color.Black
     ) {
-
+        // Store path and path properties for individual path drawings
         val paths = remember { mutableStateListOf<Pair<Path, PathCharacteristics>>() }
         var motionEvent by remember { mutableStateOf(MotionEvent.Idle) }
         var currentPosition by remember { mutableStateOf(Offset.Unspecified) }
         var previousPosition by remember { mutableStateOf(Offset.Unspecified) }
         var currentPath by remember { mutableStateOf(Path()) }
-        var currentPathProperty by remember { mutableStateOf(PathCharacteristics(penStrokeWidth, penColor)) }.apply {
+        var currentPathProperty by remember {
+            mutableStateOf(
+                PathCharacteristics(
+                    penStrokeWidth,
+                    penColor
+                )
+            )
+        }.apply {
             value = PathCharacteristics(penStrokeWidth, penColor)
         }
-
 
         BoxWithConstraints(
             modifier = modifier
@@ -222,50 +223,35 @@ class DrawingBoardActivity: ComponentActivity() {
                             awaitPointerEventScope {
                                 // Wait for at least one pointer to press down, and set first contact position
                                 val down: PointerInputChange = awaitFirstDown()
-
                                 motionEvent = MotionEvent.Down
                                 currentPosition = down.position
-                                down.consumeDownChange()
-
-
+                                if (down.pressed != down.previousPressed) down.consume()
                                 var pointer = down
-
                                 val change: PointerInputChange? =
                                     awaitTouchSlopOrCancellation(down.id) { change: PointerInputChange, over: Offset ->
                                         if (change.positionChange() != Offset.Zero) change.consume()
                                     }
-
                                 if (change != null) {
-
                                     drag(change.id) { pointerInputChange: PointerInputChange ->
                                         pointer = pointerInputChange
-
                                         motionEvent = MotionEvent.Move
                                         currentPosition = pointer.position
-
-                                        pointer.consumePositionChange()
-
+                                        if (pointer.positionChange() != Offset.Zero) pointer.consume()
                                     }
-
                                     motionEvent = MotionEvent.Up
-                                    pointer.consumeDownChange()
+                                    if (pointer.pressed != pointer.previousPressed) pointer.consume()
                                 } else {
-
                                     motionEvent = MotionEvent.Up
-                                    pointer.consumeDownChange()
+                                    if (pointer.pressed != pointer.previousPressed) pointer.consume()
                                 }
                             }
                         }
                     }
             ) {
-
                 // Draw here
-
                 when (motionEvent) {
-
                     MotionEvent.Down -> {
                         currentPath.moveTo(currentPosition.x, currentPosition.y)
-
                         previousPosition = currentPosition
                     }
                     MotionEvent.Move -> {
@@ -276,12 +262,10 @@ class DrawingBoardActivity: ComponentActivity() {
                             (previousPosition.y + currentPosition.y) / 2
 
                         )
-
                         previousPosition = currentPosition
                     }
-
                     MotionEvent.Up -> {
-
+                        // Save path and rest all properties
                         currentPath.lineTo(currentPosition.x, currentPosition.y)
                         paths.add(Pair(currentPath, currentPathProperty))
                         currentPath = Path()
@@ -289,7 +273,6 @@ class DrawingBoardActivity: ComponentActivity() {
                             strokeWidth = currentPathProperty.strokeWidth,
                             color = currentPathProperty.color
                         )
-
                         currentPosition = Offset.Unspecified
                         previousPosition = currentPosition
                         motionEvent = MotionEvent.Idle
@@ -297,8 +280,8 @@ class DrawingBoardActivity: ComponentActivity() {
                     else -> Unit
                 }
 
+                // draw all the paths with individual stroke and color
                 paths.forEach {
-
                     val path = it.first
                     val property = it.second
                     drawPath(
@@ -312,6 +295,7 @@ class DrawingBoardActivity: ComponentActivity() {
                 }
 
                 if (motionEvent != MotionEvent.Idle) {
+                    // draw path based on current ongoing gesture
                     drawPath(
                         color = currentPathProperty.color,
                         path = currentPath,
@@ -321,11 +305,8 @@ class DrawingBoardActivity: ComponentActivity() {
                         )
                     )
                 }
-
             }
         }
-
-
     }
 
     enum class MotionEvent {
