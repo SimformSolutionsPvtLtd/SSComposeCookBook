@@ -88,5 +88,6 @@ class CanvasActivity : ComponentActivity() {
         Component("Blend Modes", CanvasBlendModesActivity::class.java),
         Component("Basic Example", BasicCanvasExampleActivity::class.java),
         Component("Android 11 Easter Egg", CanvasAndroidEasterEggActivity::class.java),
+        Component("Drawing Board", CanvasDrawingBoardActivity::class.java),
     )
 }
