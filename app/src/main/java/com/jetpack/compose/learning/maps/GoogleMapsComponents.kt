@@ -1,10 +1,5 @@
 package com.jetpack.compose.learning.maps
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.drawable.Drawable
-import androidx.annotation.DrawableRes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.scaleIn
@@ -48,19 +43,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
-import com.google.android.gms.maps.model.BitmapDescriptor
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.jetpack.compose.learning.data.DataProvider
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 
 val currentMarkerLatLong = LatLng(40.689247, -74.044502)
 
@@ -70,7 +59,7 @@ val currentMarkerLatLong = LatLng(40.689247, -74.044502)
  * The toolbar contains one common action item, which is used to expand the bottom sheet.
  * @param[actionItems] can be used to add extra action items in toolbar.
  */
-@OptIn(ExperimentalMaterialApi::class, ExperimentalAnimationApi::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MapScreen(
     title: String,
@@ -83,13 +72,50 @@ fun MapScreen(
     val modalBottomSheetState =
         rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
     val coroutineScope = rememberCoroutineScope()
-
     ModalBottomSheetLayout(
         sheetState = modalBottomSheetState,
         sheetShape = RoundedCornerShape(topStart = 15.dp, topEnd = 15.dp),
         sheetContent = sheetContent,
     ) {
-        Scaffold(topBar = {
+        MapScaffold(
+            title = title,
+            onBackPressed = onBackPressed,
+            showLoading = showLoading,
+            actionItems = {
+                IconButton(onClick = {
+                    coroutineScope.launch {
+                        if (modalBottomSheetState.isVisible) {
+                            modalBottomSheetState.hide()
+                        } else {
+                            modalBottomSheetState.show()
+                        }
+                    }
+                }) {
+                    Icon(Icons.Filled.Tune, contentDescription = "UI Option")
+                }
+                actionItems()
+            },
+            mainContent = mainContent,
+        )
+    }
+}
+
+/**
+ * Scaffold wrapper for map screens.
+ * The @param[mainContent] will be different for each screen.
+ * The @param[actionItems] can be used to display action items in toolbar.
+ */
+@Composable
+@OptIn(ExperimentalAnimationApi::class)
+fun MapScaffold(
+    title: String,
+    onBackPressed: () -> Unit,
+    showLoading: Boolean = true,
+    actionItems: @Composable RowScope.() -> Unit = {},
+    mainContent: @Composable ColumnScope.() -> Unit,
+) {
+    Scaffold(
+        topBar = {
             TopAppBar(
                 title = { Text(title) },
                 navigationIcon = {
@@ -97,34 +123,21 @@ fun MapScreen(
                         Icon(Icons.Filled.ArrowBack, contentDescription = null)
                     }
                 },
-                actions = {
-                    IconButton(onClick = {
-                        coroutineScope.launch {
-                            if (modalBottomSheetState.isVisible) {
-                                modalBottomSheetState.hide()
-                            } else {
-                                modalBottomSheetState.show()
-                            }
-                        }
-                    }) {
-                        Icon(Icons.Filled.Tune, contentDescription = "UI Option")
-                    }
-                    actionItems()
-                }
+                actions = actionItems
             )
-        }) {
-            Box(modifier = Modifier.padding(it), contentAlignment = Alignment.Center) {
-                Column(modifier = Modifier.fillMaxSize(), content = mainContent)
-                AnimatedVisibility(
-                    visible = showLoading,
-                    modifier = Modifier
-                        .matchParentSize()
-                        .background(MaterialTheme.colors.background),
-                    enter = scaleIn(),
-                    exit = scaleOut()
-                ) {
-                    CircularProgressIndicator(modifier = Modifier.wrapContentSize())
-                }
+        },
+    ) {
+        Box(modifier = Modifier.padding(it), contentAlignment = Alignment.Center) {
+            Column(modifier = Modifier.fillMaxSize(), content = mainContent)
+            AnimatedVisibility(
+                visible = showLoading,
+                modifier = Modifier
+                    .matchParentSize()
+                    .background(MaterialTheme.colors.background),
+                enter = scaleIn(),
+                exit = scaleOut()
+            ) {
+                CircularProgressIndicator(modifier = Modifier.wrapContentSize())
             }
         }
     }
@@ -331,19 +344,4 @@ fun MapStrokePatternOptions(
         }
         MapVerticalSpace()
     }
-}
-
-fun convertVectorToBitmap(context: Context, @DrawableRes id: Int, color: Color): BitmapDescriptor {
-    val vectorDrawable: Drawable = ResourcesCompat.getDrawable(context.resources, id, null)
-        ?: return BitmapDescriptorFactory.defaultMarker()
-    val bitmap = Bitmap.createBitmap(128, 128, Bitmap.Config.ARGB_8888)
-    val canvas = Canvas(bitmap)
-    vectorDrawable.setBounds(0, 0, canvas.width, canvas.height)
-    DrawableCompat.setTint(vectorDrawable, color.toArgb())
-    vectorDrawable.draw(canvas)
-    return BitmapDescriptorFactory.fromBitmap(bitmap)
-}
-
-fun getRandomColor(): Color {
-    return Color(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256))
 }

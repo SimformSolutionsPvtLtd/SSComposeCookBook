@@ -598,3 +598,37 @@ fun GoogleMapTileOverlayOptions(
     }
 }
 //endregion Overlay Options
+
+//region Navigation Viewer options
+/**
+ * View for navigation viewer. User can change the route related options from this view.
+ */
+@Composable
+fun GoogleMapNavigationViewerOptions(
+    uiState: NavigationViewerUIState,
+    onShowAllRouteChange: (Boolean) -> Unit,
+    onNextRouteClick: () -> Unit,
+    onPreviousRouteClick: () -> Unit
+) {
+    Column(modifier = Modifier.padding(horizontal = 16.dp)) {
+        MapVerticalSpace()
+        MapSwitchProperty(
+            checked = uiState.showAllRoutes,
+            title = "Show All Routes",
+            onCheckedChange = onShowAllRouteChange
+        )
+        AnimatedVisibility(visible = !uiState.showAllRoutes) {
+            Row {
+                OutlinedButton(onClick = onPreviousRouteClick, modifier = Modifier.weight(1f)) {
+                    Text("Previous Route")
+                }
+                Spacer(modifier = Modifier.requiredWidth(15.dp))
+                OutlinedButton(onClick = onNextRouteClick, modifier = Modifier.weight(1f)) {
+                    Text("Next Route")
+                }
+            }
+        }
+        MapVerticalSpace()
+    }
+}
+//endregion Navigation Viewer options
