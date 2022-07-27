@@ -20,9 +20,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLngBounds
 import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.Polygon
@@ -31,6 +29,7 @@ import com.jetpack.compose.learning.data.DataProvider
 import com.jetpack.compose.learning.maps.GoogleMapPolygonOptions
 import com.jetpack.compose.learning.maps.MapScreen
 import com.jetpack.compose.learning.maps.PolygonMapUIState
+import com.jetpack.compose.learning.maps.animateBound
 import com.jetpack.compose.learning.maps.currentMarkerLatLong
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
@@ -90,18 +89,8 @@ class MapPolygonActivity : ComponentActivity() {
                 textAlign = TextAlign.Center
             )
             MapsExample(uiState, cameraPositionState) {
-                val latLngBounds = LatLngBounds.Builder().apply {
-                    DataProvider.getPolygonPositions().forEach { position ->
-                        include(position)
-                    }
-                }.build()
                 coroutineScope.launch {
-                    cameraPositionState.animate(
-                        CameraUpdateFactory.newLatLngBounds(
-                            latLngBounds,
-                            50
-                        )
-                    )
+                    cameraPositionState.animateBound(*DataProvider.getPolygonPositions().toTypedArray())
                 }
                 showLoading = false
             }

@@ -16,6 +16,8 @@ import com.google.android.gms.maps.model.Dash
 import com.google.android.gms.maps.model.Dot
 import com.google.android.gms.maps.model.Gap
 import com.google.android.gms.maps.model.JointType
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.PatternItem
 import com.google.android.gms.maps.model.RoundCap
 import com.google.android.gms.maps.model.SquareCap
@@ -184,5 +186,48 @@ data class GroundOverlayMapUIState(
 data class TileOverlayMapUIState(
     val fadeIn: Boolean = false,
     val transparency: Float = 0f,
+    val visible: Boolean = true
+)
+
+data class PlacePickerUIState(
+    val showSearchResult: Boolean = false,
+    val showPlaceDetail: Boolean = false
+)
+
+data class NavigationViewerUIState(
+    val showLoading: Boolean = true,
+    val showAllRoutes: Boolean = false,
+    val showOverviewPolyline: Boolean = true,
+    val currentRoute: DirectionRoute = DirectionRoute(),
+    val allRoutes: List<DirectionRoute> = arrayListOf(),
+    val errorText: String = "",
+)
+
+data class DirectionRoute(
+    val overviewPolylineBound: LatLngBounds? = null,
+    val overviewPoints: List<LatLng> = arrayListOf(),
+    val distanceText: String = "",
+    val durationText: String = "",
+    val startAddress: String = "",
+    val endAddress: String = "",
+    val startLocation: LatLng = LatLng(0.0, 0.0),
+    val endLocation: LatLng = LatLng(0.0, 0.0),
+    val directionSteps: List<DirectionStep> = arrayListOf(),
+)
+
+data class DirectionStep(
+    val distanceText: String = "",
+    val durationText: String = "",
+    val startLocation: LatLng = LatLng(0.0, 0.0),
+    val endLocation: LatLng = LatLng(0.0, 0.0),
+    val htmlDescription: String = "",
+    val polylinePoints: List<LatLng> = arrayListOf(),
+)
+
+data class CarMarkerUIState(
+    val currentPosition: LatLng? = null,
+    val previousPosition: LatLng? = null,
+    val nextPosition: LatLng? = null,
+    val rotation: Float = 0f,
     val visible: Boolean = true
 )

@@ -32,11 +32,15 @@ import com.jetpack.compose.learning.maps.basic.LiteMapInListActivity
 import com.jetpack.compose.learning.maps.basic.MapInScrollingActivity
 import com.jetpack.compose.learning.maps.circle.MapCircleActivity
 import com.jetpack.compose.learning.maps.indoorlevel.MapIndoorActivity
+import com.jetpack.compose.learning.maps.interoperability.MapsInXMLActivity
 import com.jetpack.compose.learning.maps.marker.MapMarkerActivity
 import com.jetpack.compose.learning.maps.overlay.MapGroundOverlayActivity
 import com.jetpack.compose.learning.maps.overlay.MapTileOverlayActivity
+import com.jetpack.compose.learning.maps.place.ui.MapsNavigationActivity
+import com.jetpack.compose.learning.maps.place.ui.MapsPlaceActivity
 import com.jetpack.compose.learning.maps.polygon.MapPolygonActivity
 import com.jetpack.compose.learning.maps.polyline.MapPolylineActivity
+import com.jetpack.compose.learning.maps.projection.MapProjectionActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
@@ -109,6 +113,10 @@ class GoogleMapsActivity : ComponentActivity() {
         Component("Tile Overlay", MapTileOverlayActivity::class.java),
         Component("Indoor Level", MapIndoorActivity::class.java),
         Component("Lite Map", LiteMapInListActivity::class.java),
-        Component("Map in scroll screen", MapInScrollingActivity::class.java)
+        Component("Map in scroll screen", MapInScrollingActivity::class.java),
+        Component("Place Picker", MapsPlaceActivity::class.java),
+        Component("Navigation Viewer", MapsNavigationActivity::class.java),
+        Component("Projection", MapProjectionActivity::class.java),
+        Component("Compose Map In XML", MapsInXMLActivity::class.java)
     )
 }

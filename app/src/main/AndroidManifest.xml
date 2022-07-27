@@ -243,6 +243,18 @@
         <activity
             android:name=".maps.basic.MapInScrollingActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.place.ui.MapsPlaceActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.place.ui.MapsNavigationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.projection.MapProjectionActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.interoperability.MapsInXMLActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion Google Maps-->
 
         <meta-data

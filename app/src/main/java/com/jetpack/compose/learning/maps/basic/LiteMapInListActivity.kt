@@ -13,14 +13,8 @@ import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -36,6 +30,7 @@ import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.MarkerState
 import com.jetpack.compose.learning.data.DataProvider
+import com.jetpack.compose.learning.maps.MapScaffold
 import com.jetpack.compose.learning.maps.MapVerticalSpace
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
@@ -60,20 +55,12 @@ class LiteMapInListActivity : ComponentActivity() {
 
     @Composable
     fun MainContent() {
-        Scaffold(topBar = {
-            TopAppBar(
-                title = { Text("Lite Map") },
-                navigationIcon = {
-                    IconButton(onClick = { onBackPressed() }) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
-                    }
-                }
-            )
-        }) {
-            LazyColumn(
-                modifier = Modifier.padding(it),
-                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp)
-            ) {
+        MapScaffold(
+            title = "Lite Map",
+            onBackPressed = { onBackPressed() },
+            showLoading = false
+        ) {
+            LazyColumn(contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp)) {
                 items(items = placesList, key = { place -> place.id }) { place ->
                     PlaceItem(place)
                     MapVerticalSpace(15.dp)

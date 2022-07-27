@@ -31,6 +31,7 @@ android {
             it.buildConfigField 'String', 'IMAGE_URL_MOVIEDB', IMAGE_URL_MOVIEDB
             it.buildConfigField 'String', 'MOVIEDB_API_KEY', MOVIEDB_API_KEY
             it.buildConfigField 'String', 'BASE_URL_MAPS', BASE_URL_MAPS
+            it.buildConfigField 'String', 'MAP_PHOTOS_END_POINT', "${BASE_URL_MAPS}+${MAP_PHOTOS_END_POINT}"
         }
     }
     compileOptions {
