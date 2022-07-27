@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.RoundCap
 import com.google.android.gms.maps.model.SquareCap
 import com.google.maps.android.compose.MapProperties
 import com.google.maps.android.compose.MapUiSettings
+import com.google.maps.android.compose.widgets.DarkGray
 import com.jetpack.compose.learning.R
 
 enum class MapStyle {
@@ -186,7 +187,10 @@ data class GroundOverlayMapUIState(
 data class TileOverlayMapUIState(
     val fadeIn: Boolean = false,
     val transparency: Float = 0f,
-    val visible: Boolean = true
+    val visible: Boolean = true,
+    val heatMapRadius: Float = 20f,
+    val heatMapGradient: List<Color> = arrayListOf(Color.Red, Color.Blue, Color.Green),
+    val heatMapOpacity: Float = 0.7f
 )
 
 data class PlacePickerUIState(
@@ -230,4 +234,10 @@ data class CarMarkerUIState(
     val nextPosition: LatLng? = null,
     val rotation: Float = 0f,
     val visible: Boolean = true
+)
+
+data class ScaleBarMapUIState(
+    val textColor: Color = DarkGray,
+    val lineColor: Color = DarkGray,
+    val shadowColor: Color = Color.White
 )

@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.maps.overlay
 
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import com.jetpack.compose.learning.maps.TileOverlayMapUIState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,5 +21,17 @@ class MapTileOverlayViewModel : ViewModel() {
 
     fun setVisible(visible: Boolean) {
         _state.value = _state.value.copy(visible = visible)
+    }
+
+    fun setHeatMapRadius(radius: Float) {
+        _state.value = _state.value.copy(heatMapRadius = radius)
+    }
+
+    fun setHeatMapColors(colors: List<Color>) {
+        _state.value = _state.value.copy(heatMapGradient = colors)
+    }
+
+    fun setHeatMapOpacity(opacity: Float) {
+        _state.value = _state.value.copy(heatMapOpacity = opacity)
     }
 }

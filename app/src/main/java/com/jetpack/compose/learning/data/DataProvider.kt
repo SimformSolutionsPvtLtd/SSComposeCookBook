@@ -7,7 +7,9 @@ import com.google.android.gms.maps.model.UrlTileProvider
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.demosamples.instagramdemo.data.Items
 import com.jetpack.compose.learning.maps.basic.TouristPlace
+import com.jetpack.compose.learning.maps.cluster.SSClusterItem
 import com.jetpack.compose.learning.maps.currentMarkerLatLong
+import com.jetpack.compose.learning.maps.plus
 import java.net.MalformedURLException
 import java.net.URL
 
@@ -178,6 +180,20 @@ object DataProvider {
             Color.Magenta,
             Color.DarkGray
         )
+    }
+
+    fun getClusterItems(): List<SSClusterItem> {
+        val itemList = mutableListOf<SSClusterItem>()
+        repeat(50) {
+            val offset = (it + 1) / 1000.0
+            val ssClusterItem = SSClusterItem(
+                currentMarkerLatLong + offset,
+                "Statue Of Liberty",
+                "Offset from SL ${it + 1}"
+            )
+            itemList.add(ssClusterItem)
+        }
+        return itemList
     }
 }
 
