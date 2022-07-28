@@ -97,7 +97,8 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 
     //Google Maps
-    implementation "com.google.maps.android:maps-compose:2.4.0"
+    implementation "com.google.maps.android:maps-compose:2.5.2"
+    implementation 'com.google.maps.android:maps-compose-widgets:2.5.2'
     implementation "com.google.android.gms:play-services-maps:18.0.2"
     implementation 'com.google.maps.android:maps-ktx:3.3.0'
     implementation 'com.google.maps.android:maps-utils-ktx:3.4.0'

@@ -31,16 +31,22 @@ import com.jetpack.compose.learning.maps.basic.BasicMapActivity
 import com.jetpack.compose.learning.maps.basic.LiteMapInListActivity
 import com.jetpack.compose.learning.maps.basic.MapInScrollingActivity
 import com.jetpack.compose.learning.maps.circle.MapCircleActivity
+import com.jetpack.compose.learning.maps.cluster.MapClusterActivity
+import com.jetpack.compose.learning.maps.geojson.MapGeoJsonActivity
 import com.jetpack.compose.learning.maps.indoorlevel.MapIndoorActivity
 import com.jetpack.compose.learning.maps.interoperability.MapsInXMLActivity
 import com.jetpack.compose.learning.maps.marker.MapMarkerActivity
 import com.jetpack.compose.learning.maps.overlay.MapGroundOverlayActivity
+import com.jetpack.compose.learning.maps.overlay.MapHeatMapOverlayActivity
+import com.jetpack.compose.learning.maps.overlay.MapKMLOverlayActivity
 import com.jetpack.compose.learning.maps.overlay.MapTileOverlayActivity
 import com.jetpack.compose.learning.maps.place.ui.MapsNavigationActivity
 import com.jetpack.compose.learning.maps.place.ui.MapsPlaceActivity
 import com.jetpack.compose.learning.maps.polygon.MapPolygonActivity
 import com.jetpack.compose.learning.maps.polyline.MapPolylineActivity
 import com.jetpack.compose.learning.maps.projection.MapProjectionActivity
+import com.jetpack.compose.learning.maps.scalebar.MapScaleBarActivity
+import com.jetpack.compose.learning.maps.snapshot.MapSnapShotActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
@@ -117,6 +123,12 @@ class GoogleMapsActivity : ComponentActivity() {
         Component("Place Picker", MapsPlaceActivity::class.java),
         Component("Navigation Viewer", MapsNavigationActivity::class.java),
         Component("Projection", MapProjectionActivity::class.java),
-        Component("Compose Map In XML", MapsInXMLActivity::class.java)
+        Component("Compose Map In XML", MapsInXMLActivity::class.java),
+        Component("Cluster", MapClusterActivity::class.java),
+        Component("Heat Map", MapHeatMapOverlayActivity::class.java),
+        Component("GeoJSON", MapGeoJsonActivity::class.java),
+        Component("KML", MapKMLOverlayActivity::class.java),
+        Component("ScaleBar", MapScaleBarActivity::class.java),
+        Component("Snapshot", MapSnapShotActivity::class.java),
     )
 }

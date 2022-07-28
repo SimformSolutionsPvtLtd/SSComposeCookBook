@@ -582,13 +582,11 @@ fun GoogleMapTileOverlayOptions(
     uiState: TileOverlayMapUIState,
     onTransparencyChange: (Float) -> Unit,
     onFadeInChange: (Boolean) -> Unit,
-    onVisibilityChange: (Boolean) -> Unit
+    onVisibilityChange: (Boolean) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    val scrollState = rememberScrollState()
     Column(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .verticalScroll(scrollState),
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         MapVerticalSpace()
@@ -632,3 +630,85 @@ fun GoogleMapNavigationViewerOptions(
     }
 }
 //endregion Navigation Viewer options
+
+//region Heat Map options
+/**
+ * View for different heat map style and properties options.
+ */
+@Composable
+fun GoogleMapHeatMapOptions(
+    uiState: TileOverlayMapUIState,
+    onTransparencyChange: (Float) -> Unit,
+    onFadeInChange: (Boolean) -> Unit,
+    onVisibilityChange: (Boolean) -> Unit,
+    onHeatMapRadiusChange: ((Float) -> Unit),
+    onHeatMapColorChange: ((List<Color>) -> Unit),
+    onHeatMapOpacityChange: ((Float) -> Unit)
+) {
+    val scrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .verticalScroll(scrollState),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        GoogleMapTileOverlayOptions(
+            uiState,
+            onTransparencyChange,
+            onFadeInChange,
+            onVisibilityChange
+        )
+        MapSliderProperty(uiState.heatMapRadius, "Heatmap Radius", onHeatMapRadiusChange, 10f, 50f)
+        OutlinedButton(onClick = {
+            onHeatMapColorChange(
+                listOf(
+                    getRandomColor(),
+                    getRandomColor(),
+                    getRandomColor()
+                )
+            )
+        }) {
+            Text("Change Colors")
+        }
+        MapVerticalSpace()
+        MapSliderProperty(uiState.heatMapOpacity, "Opacity", onHeatMapOpacityChange, max = 1f)
+    }
+}
+//endregion Heat Map options
+
+//region Scale Bar Options
+/**
+ * View for different scale bar styles.
+ */
+@Composable
+fun GoogleMapScaleBarOptions(
+    uiState: ScaleBarMapUIState,
+    onTextColorChange: (Color) -> Unit,
+    onLineColorChange: (Color) -> Unit,
+    onShadowColorAlpha: (Color) -> Unit
+) {
+    val scrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .verticalScroll(scrollState)
+    ) {
+        MapVerticalSpace()
+        MapColorOptions(
+            title = "Text Color",
+            color = uiState.textColor,
+            onColorSelect = onTextColorChange
+        )
+        MapColorOptions(
+            title = "Line Color",
+            color = uiState.lineColor,
+            onColorSelect = onLineColorChange
+        )
+        MapColorOptions(
+            title = "Shadow Color",
+            color = uiState.shadowColor,
+            onColorSelect = onShadowColorAlpha
+        )
+    }
+}
+//endregion Scale Bar Options

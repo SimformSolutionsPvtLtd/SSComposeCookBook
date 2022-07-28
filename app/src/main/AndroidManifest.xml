@@ -255,6 +255,24 @@
         <activity
             android:name=".maps.interoperability.MapsInXMLActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.cluster.MapClusterActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.overlay.MapHeatMapOverlayActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.overlay.MapKMLOverlayActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.scalebar.MapScaleBarActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.geojson.MapGeoJsonActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".maps.snapshot.MapSnapShotActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion Google Maps-->
 
         <meta-data

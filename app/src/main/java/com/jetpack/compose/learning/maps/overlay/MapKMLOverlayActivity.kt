@@ -9,35 +9,38 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
-import com.google.maps.android.compose.TileOverlay
+import com.google.maps.android.compose.MapEffect
+import com.google.maps.android.compose.MapsComposeExperimentalApi
 import com.google.maps.android.compose.rememberCameraPositionState
-import com.jetpack.compose.learning.data.MapTileProvider
-import com.jetpack.compose.learning.maps.GoogleMapTileOverlayOptions
-import com.jetpack.compose.learning.maps.MapScreen
-import com.jetpack.compose.learning.maps.TileOverlayMapUIState
+import com.google.maps.android.data.kml.KmlLayer
+import com.jetpack.compose.learning.R
+import com.jetpack.compose.learning.maps.MapScaffold
+import com.jetpack.compose.learning.maps.animateBound
 import com.jetpack.compose.learning.maps.currentMarkerLatLong
+import com.jetpack.compose.learning.maps.getBound
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
- * Tile Overlay example.
- * All the options can be modified via clicking toolbar icon.
+ * KML Example.
+ * It includes the MapEffect side effect to get the map object and create kml layer.
  */
-class MapTileOverlayActivity : ComponentActivity() {
+class MapKMLOverlayActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,58 +54,61 @@ class MapTileOverlayActivity : ComponentActivity() {
     }
 
     @Composable
-    fun MainContent(mapsViewModel: MapTileOverlayViewModel = viewModel()) {
+    fun MainContent() {
         var showLoading by remember { mutableStateOf(true) }
-        val uiState by mapsViewModel.state.collectAsState()
         val cameraPositionState = rememberCameraPositionState {
-            position = CameraPosition.fromLatLngZoom(currentMarkerLatLong, 15f)
+            position = CameraPosition.fromLatLngZoom(currentMarkerLatLong, 14f)
         }
 
-        MapScreen(
-            title = "Tile Overlay",
-            onBackPressed = { onBackPressed() },
-            showLoading = showLoading,
-            sheetContent = {
-                GoogleMapTileOverlayOptions(
-                    uiState,
-                    mapsViewModel::setTransparency,
-                    mapsViewModel::setFadeIn,
-                    mapsViewModel::setVisible,
-                    Modifier.padding(horizontal = 16.dp)
-                )
-            },
-        ) {
+        MapScaffold(title = "KML", onBackPressed = { onBackPressed() }, showLoading = showLoading) {
             Text(
-                "A tile overlay is a collection of images that are displayed on top of the base map tiles. Random images will be displayed in size of 250px*250px.",
+                "KML Objects on google maps",
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
                 style = MaterialTheme.typography.subtitle1,
                 textAlign = TextAlign.Center
             )
-            MapsExample(uiState, cameraPositionState) { showLoading = false }
+            MapsExample(cameraPositionState) { showLoading = false }
         }
     }
 
     @Composable
-    fun MapsExample(
-        uiState: TileOverlayMapUIState,
-        cameraPositionState: CameraPositionState,
-        onMapLoaded: () -> Unit
-    ) {
-        val context = LocalContext.current
+    fun MapsExample(cameraPositionState: CameraPositionState, onMapLoaded: () -> Unit) {
+        val scope = rememberCoroutineScope()
+
         GoogleMap(
             modifier = Modifier.fillMaxSize(),
-            cameraPositionState,
+            cameraPositionState = cameraPositionState,
             onMapLoaded = onMapLoaded
         ) {
-            TileOverlay(
-                tileProvider = MapTileProvider(context),
-                transparency = uiState.transparency,
-                visible = uiState.visible,
-                fadeIn = uiState.fadeIn,
-                onClick = {
-                    Toast.makeText(context, "On ground overlay click", Toast.LENGTH_LONG).show()
+            KMLComponent {
+                scope.launch {
+                    delay(300)
+                    cameraPositionState.animateBound(it.getBound(), 150)
                 }
-            )
+            }
+        }
+    }
+
+    @OptIn(MapsComposeExperimentalApi::class)
+    @Composable
+    private fun KMLComponent(onKMLLayer: (KmlLayer) -> Unit) {
+        val context = LocalContext.current
+        var kmlLayer by remember { mutableStateOf<KmlLayer?>(null) }
+
+        MapEffect(Unit) { map ->
+            if (kmlLayer == null) {
+                runCatching {
+                    kmlLayer = KmlLayer(map, R.raw.kml_sample, context)
+                }
+                kmlLayer?.apply {
+                    addLayerToMap()
+                    setOnFeatureClickListener {
+                        Toast.makeText(context, "Feature clicked ${it.id}", Toast.LENGTH_LONG)
+                            .show()
+                    }
+                    onKMLLayer(this)
+                }
+            }
         }
     }
 }
