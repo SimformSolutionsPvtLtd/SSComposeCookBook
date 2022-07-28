@@ -208,6 +208,9 @@
         <activity
             android:name=".canvas.CanvasTouchOperationActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".canvas.CanvasDrawingBoardActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion Canvas-->
         <!--region Google Maps-->
         <activity
