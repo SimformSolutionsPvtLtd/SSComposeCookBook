@@ -157,7 +157,7 @@ To run the google map samples, you'll have to:
 ## Our Libraries in JetPackCompose
 - [SSJetPackComposeProgressButton](https://github.com/SimformSolutionsPvtLtd/SSJetPackComposeProgressButton) : SSJetPackComposeProgressButton is an elegant button with a different loading animations which makes your app attractive.
 - [SSJetpackComposeSwipeableView](https://github.com/SimformSolutionsPvtLtd/SSJetpackComposeSwipeableView) : SSJetpackComposeSwipeableView is a small library which provides support for the swipeable views. You can use this in your lazyColumns or can add a simple view which contains swipe to edit/delete functionality.
-- [SSComposeOTPPinView](https://github.com/SimformSolutionsPvtLtd/SSComposeOTPPinView) : A custom OTP view to enter a code usually used in Authentication. It includes different types of OTPViews which is easy to use and configure your own view and character of OTP using all the attributes.
+- [SSComposeOTPPinView](https://github.com/SimformSolutionsPvtLtd/SSComposeOTPPinView) : A custom OTP view to enter a code usually used in authentication. It includes different types of OTPViews which is easy to use and configure your own view and character of OTP using all the attributes.
 
 ## Official Documentations
 - [Jetpack Compose](https://developer.android.com/jetpack/compose)
