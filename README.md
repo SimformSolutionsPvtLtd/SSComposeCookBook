@@ -2,10 +2,10 @@
 
 # SSComposeCookBook
 
-[![Compose Version](https://img.shields.io/badge/Jetpack%20Compose-1.1.0--rc01-brightgreen)](https://img.shields.io/badge/Jetpack%20Compose-1.0.0-brightengreen)
-[![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.6.10-blue.svg)](https://kotlinlang.org)
+[![Compose Version](https://img.shields.io/badge/Jetpack%20Compose-1.2.0--beta03-brightgreen)](https://developer.android.com/jetpack/compose)
+[![Kotlin Version](https://img.shields.io/badge/Kotlin-v1.6.21-blue.svg)](https://kotlinlang.org)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)
-[![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=flat)](https://www.android.com/) 
+[![Platform](https://img.shields.io/badge/Platform-Android-green.svg?style=flat)](https://www.android.com/)
 
 A Collection of major Jetpack compose UI components which are commonly used.
 
@@ -19,7 +19,15 @@ In this repository, there are number of UI components demonstrated which can be 
 - Experience with Kotlin syntax, including lambdas
 
 ## What you'll need
-- [Android Studio Arctic Fox](https://developer.android.com/studio)
+- [Latest Stable Android Studio](https://developer.android.com/studio)
+- [Google Maps Key](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
+
+## Setup (For Google Map Implementation)
+To run the google map samples, you'll have to:
+
+1. Get a Maps API key
+2. Add an entry in `local.properties` or `local.defaults.properties` that looks like `MAPS_API_KEY=YOUR_MAPS_KEY`
+3. Build and run
 
 ## Components
 
@@ -112,6 +120,36 @@ In this repository, there are number of UI components demonstrated which can be 
 | -- |
 | <img src="/gif/canvas/android_easter_egg.gif" height="500px"/> |
 
+## Google Maps
+
+| Basic | Marker | Polyline |
+| -- | -- | -- |
+| <img src="/gif/map/basic_map.gif" height="500px"/> | <img src="/gif/map/marker.jpg" height="500px"/>| <img src="/gif/map/polyline.jpg" height="500px"/>
+
+| Polygon | Circle | Ground Overlay |
+| -- | -- | -- |
+| <img src="/gif/map/polygon.jpg" height="500px"/> | <img src="/gif/map/circle.jpg" height="500px"/>| <img src="/gif/map/ground_overlay.jpg" height="500px"/>
+
+| Tile Overlay | Indoor Level | Lite Map |
+| -- | -- | -- |
+| <img src="/gif/map/tile_overlay.jpg" height="500px"/> | <img src="/gif/map/indoor_level.jpg" height="500px"/>| <img src="/gif/map/lite_map.jpg" height="500px"/>
+
+| Place Picker | Navigation Viewer | Projection |
+| -- | -- | -- |
+| <img src="/gif/map/place_picker.jpg" height="500px"/> | <img src="/gif/map/navigation_viewer.gif" height="500px"/>| <img src="/gif/map/projection.jpg" height="500px"/>
+
+| Cluster | Heat Map | KML |
+| -- | -- | -- |
+| <img src="/gif/map/cluster.jpg" height="500px"/> | <img src="/gif/map/heat_map.jpg" height="500px"/>| <img src="/gif/map/kml.jpg" height="500px"/>
+
+| GeoJSON | ScaleBar | Snapshot |
+| -- | -- | -- |
+| <img src="/gif/map/geo_json.jpg" height="500px"/> | <img src="/gif/map/scale_bar.gif" height="500px"/>| <img src="/gif/map/snapshot.gif" height="500px"/>
+
+| Map in scrollable view | Compose Map In XML |
+| -- | -- |
+| <img src="/gif/map/map_in_scrollable_view.jpg" height="500px"/> | <img src="/gif/map/compose_maps_in_xml.jpg" height="500px"/> |
+
 ## Coming Up
 - Navigation
 - Theme enhancement
@@ -119,6 +157,7 @@ In this repository, there are number of UI components demonstrated which can be 
 ## Our Libraries in JetPackCompose
 - [SSJetPackComposeProgressButton](https://github.com/SimformSolutionsPvtLtd/SSJetPackComposeProgressButton) : SSJetPackComposeProgressButton is an elegant button with a different loading animations which makes your app attractive.
 - [SSJetpackComposeSwipeableView](https://github.com/SimformSolutionsPvtLtd/SSJetpackComposeSwipeableView) : SSJetpackComposeSwipeableView is a small library which provides support for the swipeable views. You can use this in your lazyColumns or can add a simple view which contains swipe to edit/delete functionality.
+- [SSComposeOTPPinView](https://github.com/SimformSolutionsPvtLtd/SSComposeOTPPinView) : A custom OTP view to enter a code usually used in authentication. It includes different types of OTPViews which is easy to use and configure your own view and character of OTP using all the attributes.
 
 ## Official Documentations
 - [Jetpack Compose](https://developer.android.com/jetpack/compose)
@@ -136,6 +175,9 @@ Check out our __[Contributing Guide]__ for ideas on contributing.
 ## Bugs and Feedback
 For bugs, feature requests, and discussion please use __[GitHub Issues]__.
 
+## Awesome Mobile Libraries
+- Check out our other available [awesome mobile libraries](https://github.com/SimformSolutionsPvtLtd/Awesome-Mobile-Libraries)
+
 ## Main Contributors
 
 <table>
@@ -150,22 +192,35 @@ For bugs, feature requests, and discussion please use __[GitHub Issues]__.
   <tr>
     <td align="center"><a href="https://github.com/krupa-p-simformsolutions"><img src="https://avatars.githubusercontent.com/u/76939101?s=100" width="100px;" alt=""/><br /><sub><b>Krupa Parekh</b></sub></a></td>
     <td align="center"><a href="https://github.com/priyal-p-simformsolutions"><img src="https://avatars.githubusercontent.com/u/75968888?s=100" width="100px;" alt=""/><br /><sub><b>Priyal Parmar</b></sub></a></td>
+    <td align="center"><a href="https://github.com/yashwantGowla"><img src="https://avatars.githubusercontent.com/u/66367742?s=100" width="100px;" alt=""/><br /><sub><b>Yashwant Gowla</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Priyankkjain"><img src="https://avatars.githubusercontent.com/u/20212314?s=100" width="100px;" alt=""/><br /><sub><b>Priyank Jain</b></sub></a></td>
   </tr>
 </table>
 <br/>
 
 ## License
 ```
-Copyright 2021 Simform Solutions
+MIT License
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and limitations under the License.
+Copyright (c) 2022 Simform Solutions
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
