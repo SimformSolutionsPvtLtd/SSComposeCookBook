@@ -289,7 +289,7 @@ class CanvasTextImageActivity : ComponentActivity() {
 
     @Composable
     fun Image2Example() {
-        val bitmap = ImageBitmap.imageResource(id = R.drawable.wp9)
+        val bitmap = ImageBitmap.imageResource(id = R.drawable.ic_post_image_9)
         var filterQuality by remember { mutableStateOf(FilterQuality.High) }
         var colorFilter by remember { mutableStateOf(ColorFilterStyle.NONE) }
         val renderWidth = bitmap.width * 0.5
