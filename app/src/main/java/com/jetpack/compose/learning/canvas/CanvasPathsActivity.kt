@@ -130,13 +130,11 @@ class CanvasPathsActivity : ComponentActivity() {
                 val halfCanvasWidth = canvasWidth / 2
                 val halfCanvasHeight = canvasHeight / 2
                 val path = Path().apply {
+                    moveTo(halfCanvasWidth, canvasHeight)
                     lineTo(0f, halfCanvasHeight)
-                    lineTo(canvasWidth, halfCanvasHeight)
-                    lineTo(canvasWidth, canvasHeight)
-                    moveTo(canvasWidth, 0f)
                     lineTo(halfCanvasWidth, 0f)
+                    lineTo(canvasWidth, halfCanvasHeight)
                     lineTo(halfCanvasWidth, canvasHeight)
-                    lineTo(0f, canvasHeight)
                 }
                 drawPath(
                     path,
