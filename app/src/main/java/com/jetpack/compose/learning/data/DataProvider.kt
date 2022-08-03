@@ -20,49 +20,49 @@ object DataProvider {
             title = "icecampus",
             subTitle = "2013 film",
             image = R.drawable.ic_post_image_1,
-            profilePic = R.drawable.dp1
+            profilePic = R.drawable.ic_profile_image_1
         ),
         Items(
             id = 2,
             title = "tasteecho",
             subTitle = "2020 film",
             image = R.drawable.ic_post_image_2,
-            profilePic = R.drawable.dp2
+            profilePic = R.drawable.ic_profile_image_2
         ),
         Items(
             id = 3,
             title = "clamexercise",
             subTitle = "2019 film",
             image = R.drawable.ic_post_image_3,
-            profilePic = R.drawable.dp3
+            profilePic = R.drawable.ic_profile_image_3
         ),
         Items(
             id = 4,
             title = "glandford",
             subTitle = "2018 film",
             image = R.drawable.ic_post_image_4,
-            profilePic = R.drawable.dp4
+            profilePic = R.drawable.ic_profile_image_4
         ),
         Items(
             id = 5,
             title = "worldbus",
             subTitle = "2002 film",
             image = R.drawable.ic_post_image_5,
-            profilePic = R.drawable.dp5
+            profilePic = R.drawable.ic_profile_image_5
         ),
         Items(
             id = 6,
             title = "cheesays",
             subTitle = "2001 film",
             image = R.drawable.ic_post_image_6,
-            profilePic = R.drawable.dp6
+            profilePic = R.drawable.ic_profile_image_6
         ),
         Items(
             id = 7,
             title = "skimaker",
             subTitle = "2001 film",
             image = R.drawable.ic_post_image_7,
-            profilePic = R.drawable.dp7
+            profilePic = R.drawable.ic_profile_image_7
         ),
         Items(
             id = 8,
@@ -194,6 +194,18 @@ object DataProvider {
             itemList.add(ssClusterItem)
         }
         return itemList
+    }
+
+    fun getViewPagerImages(): List<Int> {
+        return listOf(
+            R.drawable.ic_profile_image_1,
+            R.drawable.ic_profile_image_2,
+            R.drawable.ic_profile_image_3,
+            R.drawable.ic_profile_image_4,
+            R.drawable.ic_profile_image_5,
+            R.drawable.ic_profile_image_6,
+            R.drawable.ic_profile_image_7
+        )
     }
 }
 
