@@ -33,11 +33,11 @@ To run the google map samples, you'll have to:
 
 | App Bar | Bottom Navigation | Button |
 | -- | -- | -- | 
-| <img src="/gif/AppBar.gif" height="500px"/> | <img src="/gif/BottomNav.gif" height="500px"/>| <img src="/gif/Button.gif" height="500px"/>
+| <img src="/gif/AppBar.jpg" height="500px"/> | <img src="/gif/BottomNav.gif" height="500px"/>| <img src="/gif/Button.jpg" height="500px"/>
 
 | Checkbox | Dialog | Dropdown |
 | -- | -- | -- | 
-| <img src="/gif/Checkbox.gif" height="500px"/> | <img src="/gif/Dialog.gif" height="500px"/>| <img src="/gif/Dropdown.gif" height="500px"/>
+| <img src="/gif/Checkbox.jpg" height="500px"/> | <img src="/gif/Dialog.gif" height="500px"/>| <img src="/gif/Dropdown.gif" height="500px"/>
 
 | FAB | Modal Drawer | Bottom Drawer |
 | -- | -- | -- | 
@@ -67,7 +67,7 @@ To run the google map samples, you'll have to:
 
 | LazyRow/Column | LazyVerticalGrid | Advance List |
 | -- | -- | -- |
-| <img src="/gif/List/ListRowColumn.gif" height="500px"/> | <img src="/gif/List/ListGrid.gif" height="500px"/>| <img src="/gif/List/AdvanceList.gif" height="500px"/>
+| <img src="/gif/List/ListRowColumn.jpg" height="500px"/> | <img src="/gif/List/ListGrid.jpg" height="500px"/>| <img src="/gif/List/AdvanceList.gif" height="500px"/>
 
 ## Pull To Refresh
 | Simple Pull To Refresh | Custom Background Pull To Refresh | Custom View Pull To Refresh |
@@ -144,7 +144,7 @@ To run the google map samples, you'll have to:
 
 | GeoJSON | ScaleBar | Snapshot |
 | -- | -- | -- |
-| <img src="/gif/map/geo_json.jpg" height="500px"/> | <img src="/gif/map/scale_bar.gif" height="500px"/>| <img src="/gif/map/snapshot.gif" height="500px"/>
+| <img src="/gif/map/geo_json.jpg" height="500px"/> | <img src="/gif/map/scale_bar.gif" height="500px"/>| <img src="/gif/map/snapshot.jpg" height="500px"/>
 
 | Map in scrollable view | Compose Map In XML |
 | -- | -- |
