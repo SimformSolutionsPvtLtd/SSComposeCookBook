@@ -284,6 +284,33 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <!--region ViewPager-->
+        <activity
+            android:name=".viewpager.ViewPagerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.HorizontalViewPager"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.ViewPagerWithTabActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.VerticalViewPagerWithIndicatorActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.ViewPagerWithSwipeAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.HorizontalPagerWithIndicator"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.AddRemovePagerActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".viewpager.HorizontalPagerWithFlingBehaviorActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <!--endregion ViewPager-->
     </application>
 
 </manifest>

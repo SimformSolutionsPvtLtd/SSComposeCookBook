@@ -150,6 +150,20 @@ To run the google map samples, you'll have to:
 | -- | -- |
 | <img src="/gif/map/map_in_scrollable_view.jpg" height="500px"/> | <img src="/gif/map/compose_maps_in_xml.jpg" height="500px"/> |
 
+## ViewPager
+
+| Horizontal Pager | Horizontal Pager with Tabs | Horizontal Pager with indicator |
+| -- | -- | -- |
+| <img src="/gif/ViewPager/horizontal_pager.gif" height="500px"/> | <img src="/gif/ViewPager/horizontal_page_with_tab.gif" height="500px"/> | <img src="/gif/ViewPager/horizontal_pager_with_indicator.gif" height="500px"/> |
+
+| Vertical Pager with indicator | Pager with Zoom-in transformation | Pager with Fling Behavior |
+| -- | -- | -- |
+| <img src="/gif/ViewPager/vertical_pager_with_indicator.gif" height="500px"/> | <img src="/gif/ViewPager/pager_with_zoom_in_transformation.gif" height="500px"/> | <img src="/gif/ViewPager/pager_with_fling_behavior.gif" height="500px"/> |
+
+| Add/Remove pager |
+| -- |
+| <img src="/gif/ViewPager/add_remove_pager.gif" height="500px"/> | 
+
 ## Coming Up
 - Navigation
 - Theme enhancement
