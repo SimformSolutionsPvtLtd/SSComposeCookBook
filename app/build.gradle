@@ -105,6 +105,12 @@ dependencies {
 
     implementation "com.google.accompanist:accompanist-swiperefresh:0.19.0"
     implementation "com.google.accompanist:accompanist-flowlayout:0.24.10-beta"
+
+    //viewpager
+    implementation "com.google.accompanist:accompanist-pager:0.23.1"
+
+    //pager indicator
+    implementation 'com.google.accompanist:accompanist-pager-indicators:0.23.1'
 }
 
 secrets {
