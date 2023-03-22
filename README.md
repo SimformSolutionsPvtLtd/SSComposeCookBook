@@ -51,6 +51,10 @@ To run the google map samples, you'll have to:
 | -- | -- | -- | 
 | <img src="/gif/TextFields.png" height="500px"/> | <img src="/gif/Theme.gif" height="500px"/>| <img src="/gif/Zoomview.gif" height="500px"/>
 
+| Textfield | Theme | MagnifierView |
+| -- | -- | -- |
+| <img src="/gif/TextFields.png" height="500px"/> | <img src="/gif/Theme.gif" height="500px"/>| <img src="/gif/magnifierView.gif" height="500px"/>
+
 | TabBar | DatePicker | TimePicker |
 | -- | -- | -- |
 | <img src="/gif/TabBar.gif" height="500px"/> | <img src="/gif/DatePicker.gif" height="500px"/> | <img src="/gif/TimePicker.gif" height="500px"/>
