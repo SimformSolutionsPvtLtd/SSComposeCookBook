@@ -5,13 +5,30 @@ import android.os.Bundle
 import android.view.MotionEvent
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.MagnifierStyle
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.magnifier
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -34,10 +51,16 @@ import com.jetpack.compose.learning.theme.SystemUiController
 class MagnifierViewActivity : AppCompatActivity() {
 
     companion object {
+        //zoom factor i.e how much image should be scaled in magnifier
+        //in this case it twice to the image size
         const val MAGNIFIER_ZOOM_FACTOR = 2F
     }
+
+    //default offset to get magnifier out of screen on Y-Axis
+    //when user releases press and it is not needed.
     private val Offset.Companion.default
         get() = Offset(0F, 1000F)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +83,7 @@ class MagnifierViewActivity : AppCompatActivity() {
                     })
                 }
             ) {
-                MagnifierScreen()
+                MagnifierViewComposable()
             }
         }
     }
@@ -69,13 +92,13 @@ class MagnifierViewActivity : AppCompatActivity() {
 
     @OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
     @Composable
-    fun MagnifierScreen() {
+    fun MagnifierViewComposable() {
 
+        //center offset of image and magnifier both so that magnifier is shown center in center
+        //where user clicks.
         var centerOffset by remember { mutableStateOf(Offset.default) }
 
-        /**
-         * size of Magnifier should be hidden at beginning.
-         */
+        //size of Magnifier should be hidden at beginning.
         var size by remember { mutableStateOf(DpSize(2.dp, 2.dp)) }
 
         Column(
