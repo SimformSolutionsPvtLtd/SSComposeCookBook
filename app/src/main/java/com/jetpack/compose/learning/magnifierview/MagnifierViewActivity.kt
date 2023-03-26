@@ -45,8 +45,6 @@ import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
-
-
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 class MagnifierViewActivity : AppCompatActivity() {
 
@@ -60,7 +58,6 @@ class MagnifierViewActivity : AppCompatActivity() {
     //when user releases press and it is not needed.
     private val Offset.Companion.default
         get() = Offset(0F, 1000F)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,8 +84,6 @@ class MagnifierViewActivity : AppCompatActivity() {
             }
         }
     }
-
-
 
     @OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
     @Composable
@@ -132,15 +127,15 @@ class MagnifierViewActivity : AppCompatActivity() {
                                 size = DpSize(200.dp, 200.dp)
                                 //offset.x and offset.y are coerced within viewport
                                 centerOffset = Offset(
-                                    it.x.coerceAtLeast(0f),
-                                    it.y.coerceAtLeast(0f)
+                                    it.x.coerceAtLeast(minimumValue = 0f),
+                                    it.y.coerceAtLeast(minimumValue = 0f)
                                 )
                             }
                             MotionEvent.ACTION_MOVE -> {
-                                //user keeps move finger on the image
+                                //user keeps moving finger on the image.
                                 centerOffset = Offset(
-                                    it.x.coerceAtLeast(0f),
-                                    it.y.coerceAtLeast(0f)
+                                    it.x.coerceAtLeast(minimumValue = 0f),
+                                    it.y.coerceAtLeast(minimumValue = 0f)
                                 )
                             }
                             MotionEvent.ACTION_UP -> {
@@ -156,5 +151,4 @@ class MagnifierViewActivity : AppCompatActivity() {
             )
         }
     }
-
 }
