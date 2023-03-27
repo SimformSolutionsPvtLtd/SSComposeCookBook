@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.zoomview
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -27,6 +28,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.jetpack.compose.learning.R
@@ -43,6 +46,7 @@ class ZoomViewActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
     private fun MainContent() {
         val systemUiController = remember { SystemUiController(window) }
@@ -75,6 +79,9 @@ class ZoomViewActivity : ComponentActivity() {
         var offsetX by remember { mutableStateOf(0f) }
         var offsetY by remember { mutableStateOf(0f) }
 
+        val height =
+            with(LocalDensity.current) { LocalConfiguration.current.screenHeightDp.toDp().toPx() }
+
         // Column is a composable that places its children in a vertical sequence. You
         // can think of it similar to a LinearLayout with the vertical orientation.
         // In addition we also pass a few modifiers to it.
@@ -92,10 +99,26 @@ class ZoomViewActivity : ComponentActivity() {
                             awaitFirstDown()
                             do {
                                 val event = awaitPointerEvent()
-                                scale *= event.calculateZoom()
+                                scale = (scale * event.calculateZoom()).coerceIn(1F, 3F)
                                 val offset = event.calculatePan()
-                                offsetX += offset.x
-                                offsetY += offset.y
+                                //when zooms in or out image so here [coerceIn] coerces image width and height
+                                //and limiting its zoom.
+                                offsetX = (offsetX + offset.x)
+                                    .coerceIn(
+                                        -((scale - 1F).coerceIn(
+                                            0F,
+                                            1F
+                                        ) * (size.width.toFloat() * .33F) * scale),
+                                        ((scale - 1F).coerceIn(
+                                            0F,
+                                            1F
+                                        ) * (size.width.toFloat() * .33F) * scale)
+                                    )
+                                offsetY = (offsetY + offset.y)
+                                    .coerceIn(
+                                        -((scale - 1F).coerceIn(0F, 1F) * (height * .33F) * scale),
+                                        ((scale - 1F).coerceIn(0F, 1F) * (height * .33F) * scale)
+                                    )
                             } while (event.changes.any { it.pressed })
                         }
                     }
@@ -109,12 +132,14 @@ class ZoomViewActivity : ComponentActivity() {
             // We use the graphicsLayer modifier to modify the scale & translation of the image.
             // This is read from the state properties that we created above.
             Image(
-                modifier = Modifier.fillMaxSize().graphicsLayer(
-                    scaleX = scale,
-                    scaleY = scale,
-                    translationX = offsetX,
-                    translationY = offsetY
-                ),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .graphicsLayer(
+                        scaleX = scale,
+                        scaleY = scale,
+                        translationX = offsetX,
+                        translationY = offsetY
+                    ),
                 painter = imagepainter,
                 contentDescription = "Landscape Image"
             )
