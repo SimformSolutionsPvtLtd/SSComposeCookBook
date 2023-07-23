@@ -7,6 +7,7 @@ plugins {
 android {
     compileSdkVersion 32
     buildToolsVersion "30.0.3"
+    namespace 'com.jetpack.compose.learning'
 
     defaultConfig {
         applicationId "com.simform.sscomposecookbook"
@@ -45,6 +46,7 @@ android {
     }
     buildFeatures {
         compose true
+        buildConfig true
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
