@@ -52,6 +52,7 @@ import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivi
 import com.jetpack.compose.learning.parallaxeffect.ParallaxEffectActivity
 import com.jetpack.compose.learning.pulltorefresh.PullToRefreshActivity
 import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
+import com.jetpack.compose.learning.readmoretextview.ReadMoreTextViewActivity
 import com.jetpack.compose.learning.slider.SliderActivity
 import com.jetpack.compose.learning.snackbar.SnackBarActivity
 import com.jetpack.compose.learning.swipetodelete.SwipeToDeleteListActivity
@@ -158,6 +159,7 @@ class MainActivity : ComponentActivity() {
         Component("Theme", ThemeActivity::class.java),
         Component("TimePicker", TimePickerActivity::class.java),
         Component("ZoomView", ZoomViewActivity::class.java),
-        Component("View Pager", ViewPagerActivity::class.java)
+        Component("View Pager", ViewPagerActivity::class.java),
+        Component("ReadMoreTextView", ReadMoreTextViewActivity::class.java)
     )
 }

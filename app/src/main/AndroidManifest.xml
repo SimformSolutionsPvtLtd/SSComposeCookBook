@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jetpack.compose.learning">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -16,6 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity
+            android:name=".readmoretextview.ui.RecyclerViewActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recycler_view"
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -176,8 +185,7 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".androidviews.AndroidViews"
-            android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <!--region Canvas-->
+            android:theme="@style/Theme.MyApplication.NoActionBar" /> <!-- region Canvas -->
         <activity
             android:name=".canvas.CanvasActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
@@ -210,9 +218,8 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".canvas.CanvasDrawingBoardActivity"
-            android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <!--endregion Canvas-->
-        <!--region Google Maps-->
+            android:theme="@style/Theme.MyApplication.NoActionBar" /> <!-- endregion Canvas -->
+        <!-- region Google Maps -->
         <activity
             android:name=".maps.GoogleMapsActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
@@ -275,16 +282,13 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".maps.snapshot.MapSnapShotActivity"
-            android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <!--endregion Google Maps-->
-
+            android:theme="@style/Theme.MyApplication.NoActionBar" /> <!-- endregion Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <!--region ViewPager-->
+            android:value="@integer/google_play_services_version" /> <!-- region ViewPager -->
         <activity
             android:name=".viewpager.ViewPagerActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
@@ -312,7 +316,9 @@
         <activity
             android:name=".magnifierview.MagnifierViewActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <!--endregion ViewPager-->
+        <activity
+            android:name=".readmoretextview.ReadMoreTextViewActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
     </application>
 
 </manifest>

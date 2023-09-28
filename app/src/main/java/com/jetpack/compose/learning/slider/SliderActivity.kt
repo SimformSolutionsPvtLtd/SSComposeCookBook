@@ -108,7 +108,7 @@ class SliderActivity : ComponentActivity() {
             fontSize = 16.sp
         )
         RangeSlider(
-            values = sliderPosition,
+            value = sliderPosition,
             onValueChange = { it -> sliderPosition = it },
             valueRange = 0f..100f,
             onValueChangeFinished = {
@@ -127,7 +127,7 @@ class SliderActivity : ComponentActivity() {
         )
         RangeSlider(
             steps = 5,
-            values = sliderPosition,
+            value = sliderPosition,
             onValueChange = { it -> sliderPosition = it },
             valueRange = 0f..100f,
             onValueChangeFinished = {
