@@ -112,6 +112,10 @@ dependencies {
 
     //pager indicator
     implementation 'com.google.accompanist:accompanist-pager-indicators:0.23.1'
+
+    // material3
+    implementation 'androidx.compose.material3:material3'
+
 }
 
 secrets {
