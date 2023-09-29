@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jetpack.compose.learning">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -311,6 +315,9 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".magnifierview.MagnifierViewActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".readmoretextview.ReadMoreTextViewActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion ViewPager-->
     </application>

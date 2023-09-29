@@ -40,7 +40,6 @@ fun ExpandableTextView(
     text: String,
     textSize: TextUnit = 16.sp,
     enableCollapse: Boolean = true,
-//    composableCTA: @Composable () -> Unit = {},
     expandConfig: ExpandConfig = ExpandConfig(expandText = "Read More", expandTextSize = textSize, expandTextColor = Color.Blue, showUnderline = true, expandIcon = Icons.Outlined.KeyboardArrowDown),
     collapseConfig: CollapseConfig = CollapseConfig(
         collapseText = "Read Less", collapseTextSize = textSize, collapseTextColor = Color.Blue, showUnderline = true, collapseIcon = Icons.Outlined.KeyboardArrowUp

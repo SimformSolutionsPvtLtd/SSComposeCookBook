@@ -3,18 +3,11 @@ package com.jetpack.compose.learning.readmoretextview
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Card
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.readmoretextview.components.ExpandableTextView
 
 
-class MainActivity : ComponentActivity() {
+class ReadMoreTextViewActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
