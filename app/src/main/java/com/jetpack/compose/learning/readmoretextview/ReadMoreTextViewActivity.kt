@@ -118,8 +118,6 @@ class ReadMoreTextViewActivity : ComponentActivity() {
                         )
 
 
-
-
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(text = "Custom Action Text Color", Modifier.padding(horizontal = 10.dp), fontSize = 18.sp)
                         ExpandableTextView(
