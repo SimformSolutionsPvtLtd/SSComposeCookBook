@@ -72,7 +72,7 @@ class ThemeActivity : ComponentActivity() {
                 val colorPallet = ColorPalette.values()
                 LazyVerticalGrid(columns = GridCells.Fixed(3)) {
                     items(colorPallet.size, itemContent = {
-                        val isSelected = colorPallet.get(it) == appTheme.value.pallet
+                        val isSelected = colorPallet[it] == appTheme.value.pallet
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Box(
                                 Modifier
