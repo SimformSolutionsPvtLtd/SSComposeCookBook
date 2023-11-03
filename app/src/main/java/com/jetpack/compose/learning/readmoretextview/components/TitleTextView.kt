@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.sp
 fun TitleTextView(titleText: String) {
     Text(
         text = titleText,
-        Modifier.padding(horizontal = 10.dp),
+        modifier = Modifier.padding(horizontal = 10.dp),
         fontSize = 18.sp
     )
 }

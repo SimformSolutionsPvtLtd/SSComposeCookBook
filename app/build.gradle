@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -95,6 +96,8 @@ dependencies {
     //Animation
     implementation "androidx.compose.animation:animation:$compose_version"
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.core:core-ktx:+'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 
     //Google Maps
@@ -120,7 +123,6 @@ dependencies {
 
     // material3
     implementation 'androidx.compose.material3:material3'
-
 }
 
 secrets {
