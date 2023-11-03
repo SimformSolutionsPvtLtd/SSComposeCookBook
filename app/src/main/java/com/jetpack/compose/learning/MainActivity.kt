@@ -45,12 +45,14 @@ import com.jetpack.compose.learning.dropdownmenu.DropDownMenuActivity
 import com.jetpack.compose.learning.floatingactionbutton.FloatingActionButtonActivity
 import com.jetpack.compose.learning.imagepicker.ImagePickerActivity
 import com.jetpack.compose.learning.list.LazyListActivity
+import com.jetpack.compose.learning.magnifierview.MagnifierViewActivity
 import com.jetpack.compose.learning.maps.GoogleMapsActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.navigationdrawer.NavigationDrawerTypesActivity
 import com.jetpack.compose.learning.parallaxeffect.ParallaxEffectActivity
 import com.jetpack.compose.learning.pulltorefresh.PullToRefreshActivity
 import com.jetpack.compose.learning.radiobutton.RadioButtonActivity
+import com.jetpack.compose.learning.readmoretextview.ReadMoreTextViewActivity
 import com.jetpack.compose.learning.slider.SliderActivity
 import com.jetpack.compose.learning.snackbar.SnackBarActivity
 import com.jetpack.compose.learning.swipetodelete.SwipeToDeleteListActivity
@@ -142,6 +144,7 @@ class MainActivity : ComponentActivity() {
         Component("ImagePicker", ImagePickerActivity::class.java),
         Component("List", LazyListActivity::class.java),
         Component("Navigation Drawer", NavigationDrawerTypesActivity::class.java),
+        Component("MagnifierView", MagnifierViewActivity::class.java),
         Component("Parallax effect", ParallaxEffectActivity::class.java),
         Component("Pull To Refresh", PullToRefreshActivity::class.java),
         Component("Radio Button", RadioButtonActivity::class.java),
@@ -156,6 +159,7 @@ class MainActivity : ComponentActivity() {
         Component("Theme", ThemeActivity::class.java),
         Component("TimePicker", TimePickerActivity::class.java),
         Component("ZoomView", ZoomViewActivity::class.java),
-        Component("View Pager", ViewPagerActivity::class.java)
+        Component("View Pager", ViewPagerActivity::class.java),
+        Component("ReadMoreTextView", ReadMoreTextViewActivity::class.java)
     )
 }
