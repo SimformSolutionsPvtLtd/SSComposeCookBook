@@ -71,13 +71,12 @@ fun MovieItem(
                 shape = RoundedCornerShape(12.dp),
                 color = MaterialTheme.colors.surface.copy(alpha = 0.2f)
             ) {
-                val image = rememberImagePainter(
-                    data = BuildConfig.IMAGE_URL_MOVIEDB + data.backdrop_path,
-                    builder = {
-                        crossfade(true)
-                        placeholder(R.drawable.ic_movie_placeholder)
-                    }
-                )
+                val image =
+                    rememberImagePainter(data = BuildConfig.IMAGE_URL_MOVIEDB + data.backdrop_path,
+                        builder = {
+                            crossfade(true)
+                            placeholder(R.drawable.ic_movie_placeholder)
+                        })
                 Image(
                     painter = image,
                     contentDescription = null,
@@ -88,8 +87,7 @@ fun MovieItem(
                 )
             }
             Column(
-                modifier = Modifier
-                    .padding(10.dp)
+                modifier = Modifier.padding(10.dp)
             ) {
                 Text(
                     text = data.original_title,
@@ -101,11 +99,11 @@ fun MovieItem(
                     LocalContentAlpha provides ContentAlpha.medium
                 ) {
                     var lines by remember { mutableStateOf(0) }
-                    Text(
-                        modifier = Modifier.padding(top = 5.dp),
+                    Text(modifier = Modifier.padding(top = 5.dp),
                         text = data.overview,
                         style = typography.body2,
-                        maxLines = 4, overflow = TextOverflow.Ellipsis,
+                        maxLines = 4,
+                        overflow = TextOverflow.Ellipsis,
                         onTextLayout = { res -> lines = res.lineCount })
                     for (i in lines..3) { // set minimum lines = 4
                         Text(" ", style = MaterialTheme.typography.body2)
@@ -117,9 +115,7 @@ fun MovieItem(
                     modifier = Modifier.padding(top = 10.dp)
                 ) {
                     Icon(
-                        Icons.Default.Star,
-                        contentDescription = "rating icon",
-                        tint = amber700
+                        Icons.Default.Star, contentDescription = "rating icon", tint = amber700
                     )
                     Text(
                         buildAnnotatedString {
@@ -167,9 +163,7 @@ fun LoadingNextPageItem(modifier: Modifier) {
 
 @Composable
 fun ErrorMessage(
-    message: String,
-    modifier: Modifier = Modifier,
-    onClickRetry: () -> Unit
+    message: String, modifier: Modifier = Modifier, onClickRetry: () -> Unit
 ) {
     Row(
         modifier = modifier.padding(10.dp),
@@ -177,10 +171,7 @@ fun ErrorMessage(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = message,
-            color = Color.Red,
-            modifier = Modifier.weight(1f),
-            maxLines = 2
+            text = message, color = Color.Red, modifier = Modifier.weight(1f), maxLines = 2
         )
         OutlinedButton(onClick = onClickRetry) {
             Text(text = "Retry")
