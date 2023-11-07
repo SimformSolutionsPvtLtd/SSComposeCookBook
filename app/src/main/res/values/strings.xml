@@ -65,4 +65,20 @@ All of these APIs are based on the more fundamental Animation API. Though most a
     <string name="text_book">BOOK</string>
     <string name="validation_max_auto_scroll_delay">You have reach maximum AutoScroll value</string>
     <string name="validation_min_auto_scroll_delay">You have reach minimum AutoScroll value</string>
+    <string name="expandable_text">There many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</string>
+    <string name="show_more">Show More</string>
+    <string name="show_less">Show Less</string>
+    <string name="read_more_text_view">ReadMoreTextView</string>
+    <string name="read_more">Read More</string>
+    <string name="read_less">Read Less</string>
+    <string name="only_action_text">Only Action Text</string>
+    <string name="only_action_icon">Only Action Icon</string>
+    <string name="action_text_icon">Action Text+Icon</string>
+    <string name="custom_action_icon">Custom Action Icon</string>
+    <string name="custom_action_text">Custom Action Text</string>
+    <string name="custom_action_text_color">Custom Action Text Color</string>
+    <string name="title_activity_recycler_view">RecyclerViewActivity</string>
+    <string name="recycler_view">RecyclerView Example</string>
+    <string name="custom_font_for_expand_collapse">Custom FontFamily for Expand &amp; Collapse Text</string>
+    <string name="recyclerview_usage_example">RecyclerView Usage Example</string>
 </resources>
