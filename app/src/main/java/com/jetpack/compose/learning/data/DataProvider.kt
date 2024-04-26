@@ -10,6 +10,7 @@ import com.jetpack.compose.learning.maps.basic.TouristPlace
 import com.jetpack.compose.learning.maps.cluster.SSClusterItem
 import com.jetpack.compose.learning.maps.currentMarkerLatLong
 import com.jetpack.compose.learning.maps.plus
+import com.jetpack.compose.learning.sharedelementtransition.model.TabInfoModel
 import java.net.MalformedURLException
 import java.net.URL
 
@@ -205,6 +206,19 @@ object DataProvider {
             R.drawable.ic_profile_image_5,
             R.drawable.ic_profile_image_6,
             R.drawable.ic_profile_image_7
+        )
+    }
+
+    fun getTabPreviewItems(): List<TabInfoModel> {
+        return listOf(
+            TabInfoModel(R.drawable.ic_album_image_1, "It happened Quiet", "Aurora", 2018),
+            TabInfoModel(R.drawable.ic_album_image_2, "All My Daemons", "Aurora", 2016),
+            TabInfoModel(R.drawable.ic_album_image_3, "Running", "Aurora", 2015),
+            TabInfoModel(R.drawable.ic_album_image_4, "Paradis", "Aurora", 2015),
+            TabInfoModel(R.drawable.ic_album_image_5, "Heroz Falling", "Aurora", 2015),
+            TabInfoModel(R.drawable.ic_album_image_6, "Better World", "Aurora", 2015),
+            TabInfoModel(R.drawable.ic_album_image_7, "Memories", "Aurora", 2015),
+            TabInfoModel(R.drawable.ic_album_image_8, "Chamber", "Aurora", 2015)
         )
     }
 }

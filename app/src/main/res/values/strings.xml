@@ -65,4 +65,5 @@ All of these APIs are based on the more fundamental Animation API. Though most a
     <string name="text_book">BOOK</string>
     <string name="validation_max_auto_scroll_delay">You have reach maximum AutoScroll value</string>
     <string name="validation_min_auto_scroll_delay">You have reach minimum AutoScroll value</string>
+    <string name="tab_preview_detail_title">Now Playing</string>
 </resources>
