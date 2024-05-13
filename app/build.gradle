@@ -5,14 +5,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
-    buildToolsVersion "30.0.3"
     namespace 'com.jetpack.compose.learning'
 
     defaultConfig {
         applicationId "com.simform.sscomposecookbook"
+        compileSdk 34
         minSdkVersion 21
-        targetSdkVersion 32
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
 
@@ -41,7 +40,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-        useIR = true
+//        useIR = true
         freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
     }
     buildFeatures {
@@ -49,8 +48,8 @@ android {
         buildConfig true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion kotlin_gradle_version
+        kotlinCompilerExtensionVersion = "1.5.13"
+//        kotlinCompilerVersion kotlin_gradle_version
     }
     packagingOptions {
         resources {

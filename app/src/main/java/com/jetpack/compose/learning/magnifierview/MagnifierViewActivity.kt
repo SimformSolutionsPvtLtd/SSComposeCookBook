@@ -7,7 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.MagnifierStyle
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -114,11 +113,9 @@ class MagnifierViewActivity : AppCompatActivity() {
                         sourceCenter = { centerOffset },
                         magnifierCenter = { centerOffset },
                         zoom = MAGNIFIER_ZOOM_FACTOR,
-                        style = MagnifierStyle(
-                            size = size,
-                            fishEyeEnabled = true,
-                            elevation = 0.dp
-                        )
+                        size = size,
+                        elevation = 0.dp,
+                        clip = true
                     )
                     .pointerInteropFilter {
                         when (it.action) {
