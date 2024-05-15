@@ -10,6 +10,7 @@ import com.jetpack.compose.learning.maps.basic.TouristPlace
 import com.jetpack.compose.learning.maps.cluster.SSClusterItem
 import com.jetpack.compose.learning.maps.currentMarkerLatLong
 import com.jetpack.compose.learning.maps.plus
+import com.jetpack.compose.learning.sharedelementtransition.AlbumInfoModel
 import java.net.MalformedURLException
 import java.net.URL
 
@@ -205,6 +206,19 @@ object DataProvider {
             R.drawable.ic_profile_image_5,
             R.drawable.ic_profile_image_6,
             R.drawable.ic_profile_image_7
+        )
+    }
+
+    fun getAlbumsData(): List<AlbumInfoModel> {
+        return listOf(
+            AlbumInfoModel(0,R.drawable.img_album_01, "It happened Quiet", "Aurora", 2018),
+            AlbumInfoModel(1, R.drawable.img_album_02, "All My Daemons", "Aurora", 2016),
+            AlbumInfoModel(2,R.drawable.img_album_03, "Running", "Aurora", 2015),
+            AlbumInfoModel(3,R.drawable.img_album_04, "Paradise", "Aurora", 2015),
+            AlbumInfoModel(4,R.drawable.img_album_05, "Heroz Falling", "Aurora", 2015),
+            AlbumInfoModel(5,R.drawable.img_album_06, "Better World", "Aurora", 2015),
+            AlbumInfoModel(6,R.drawable.img_album_07, "Master Memories", "Aurora", 2015),
+            AlbumInfoModel(7,R.drawable.img_album_08, "Chamber", "Aurora", 2015)
         )
     }
 }

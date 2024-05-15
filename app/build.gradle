@@ -40,7 +40,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-//        useIR = true
         freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
     }
     buildFeatures {
@@ -49,7 +48,6 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.13"
-//        kotlinCompilerVersion kotlin_gradle_version
     }
     packagingOptions {
         resources {
@@ -69,6 +67,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation "androidx.navigation:navigation-compose:2.7.7"
     implementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation "androidx.compose.foundation:foundation:$compose_version"
