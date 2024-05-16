@@ -318,6 +318,9 @@
         <activity
             android:name=".sharedelementtransition.SharedElementTransitionWithNavigationActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".sharedelementtransition.TextTransformAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion ViewPager-->
     </application>
 
