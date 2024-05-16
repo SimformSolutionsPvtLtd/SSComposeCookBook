@@ -56,7 +56,7 @@ import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 
-private const val boundsAnimationDurationMillis = 500
+private const val boundsAnimationDurationMillis = 1000
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 private val boundsTransform = BoundsTransform { _: Rect, _: Rect ->
