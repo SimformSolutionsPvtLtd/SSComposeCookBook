@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.sharedelementtransition
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -62,6 +63,7 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun SharedElementTransitionWithNavigation() {

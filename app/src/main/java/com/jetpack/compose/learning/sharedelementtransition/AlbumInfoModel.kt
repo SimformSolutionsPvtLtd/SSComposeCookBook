@@ -9,3 +9,9 @@ data class AlbumInfoModel(
     val author: String,
     val year: Int,
 )
+
+data class ImageModel(
+    val id: Int,
+    val title: String,
+    @DrawableRes val image: Int,
+)

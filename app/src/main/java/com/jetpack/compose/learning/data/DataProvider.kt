@@ -11,6 +11,7 @@ import com.jetpack.compose.learning.maps.cluster.SSClusterItem
 import com.jetpack.compose.learning.maps.currentMarkerLatLong
 import com.jetpack.compose.learning.maps.plus
 import com.jetpack.compose.learning.sharedelementtransition.AlbumInfoModel
+import com.jetpack.compose.learning.sharedelementtransition.ImageModel
 import java.net.MalformedURLException
 import java.net.URL
 
@@ -206,6 +207,17 @@ object DataProvider {
             R.drawable.ic_profile_image_5,
             R.drawable.ic_profile_image_6,
             R.drawable.ic_profile_image_7
+        )
+    }
+
+    fun getImagesData(): List<ImageModel> {
+        return listOf(
+            ImageModel(0,"Recent Highlights", R.drawable.dp8),
+            ImageModel(1,"Few Months Ago", R.drawable.dp9),
+            ImageModel(2,"1 year ago", R.drawable.ic_post_image_1),
+            ImageModel(3,"2 years ago", R.drawable.dp11),
+            ImageModel(4,"4 years ago", R.drawable.dp12),
+            ImageModel(5,"5 years ago", R.drawable.dp13)
         )
     }
 
