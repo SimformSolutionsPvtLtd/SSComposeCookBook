@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.animation.SharedTransitionScope
+import androidx.compose.animation.core.ExperimentalAnimationSpecApi
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -64,7 +65,7 @@ class ImageAnimationActivity : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalSharedTransitionApi::class)
+    @OptIn(ExperimentalSharedTransitionApi::class, ExperimentalAnimationSpecApi::class)
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
     fun ImageAnimationExample() {
@@ -85,49 +86,54 @@ class ImageAnimationActivity : ComponentActivity() {
             SharedTransitionLayout {
                 NavHost(navController = navController, startDestination = "preview") {
                     composable("preview") {
-                        LazyVerticalGrid(columns = GridCells.Fixed(2)) {
-                            itemsIndexed(images) { index, item ->
-                                Image(painter = painterResource(id = item.image), contentDescription = "", contentScale = ContentScale.Crop)
-                            }
-                        }
-                        LazyRow(
-                            contentPadding = PaddingValues(10.dp),
-                            horizontalArrangement = Arrangement.spacedBy(10.dp),
-                        ) {
-                            items(images) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(100.dp, 150.dp)
-                                        .background(
-                                            Color.White,
-                                            shape = RoundedCornerShape(10.dp)
-                                        )
-                                        .clickable { navController.navigate("details/${it.id}") }
-                                        .sharedElement(
-                                            rememberSharedContentState(key = "image-${it.id}"),
-                                            animatedVisibilityScope = this@composable,
-                                            boundsTransform = boundsTransform,
-                                            placeHolderSize = SharedTransitionScope.PlaceHolderSize.animatedSize
-                                        )
-                                ) {
-                                    Image(
-                                        painter = painterResource(id = it.image),
-                                        contentDescription = "",
-                                        contentScale = ContentScale.Crop,
+                        Column {
+                            LazyRow(
+                                contentPadding = PaddingValues(10.dp),
+                                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                            ) {
+                                items(images) {
+                                    Box(
                                         modifier = Modifier
-                                            .fillMaxSize()
-                                            .clip(RoundedCornerShape(10.dp))
-                                    )
-                                    Text(
-                                        text = it.title,
-                                        color = Color.White,
-                                        modifier = Modifier.align(Alignment.BottomStart)
+                                            .size(100.dp, 150.dp)
+                                            .background(
+                                                Color.White,
+                                                shape = RoundedCornerShape(10.dp)
+                                            )
+                                            .clickable { navController.navigate("details/${it.id}") }
+                                            .sharedElement(
+                                                rememberSharedContentState(key = "image-${it.id}"),
+                                                animatedVisibilityScope = this@composable,
+                                                boundsTransform = boundsTransform,
+                                                placeHolderSize = SharedTransitionScope.PlaceHolderSize.animatedSize
+                                            )
+                                    ) {
+                                        Image(
+                                            painter = painterResource(id = it.image),
+                                            contentDescription = "",
+                                            contentScale = ContentScale.Crop,
+                                            modifier = Modifier
+                                                .fillMaxSize()
+                                                .clip(RoundedCornerShape(10.dp))
+                                        )
+                                        Text(
+                                            text = it.title,
+                                            color = Color.White,
+                                            modifier = Modifier.align(Alignment.BottomStart)
+                                        )
+                                    }
+                                }
+                            }
+
+                            LazyVerticalGrid(columns = GridCells.Fixed(2), contentPadding = PaddingValues(10.dp)) {
+                                itemsIndexed(images) { index, item ->
+                                    Image(
+                                        painter = painterResource(id = item.image),
+                                        contentDescription = "",
+                                        contentScale = ContentScale.Crop
                                     )
                                 }
                             }
                         }
-
-
                     }
 
                     composable("details/{item}", arguments = listOf(navArgument("item") { type = NavType.IntType })) {
