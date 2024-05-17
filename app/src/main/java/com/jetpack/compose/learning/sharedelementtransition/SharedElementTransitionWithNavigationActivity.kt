@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
+import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -99,7 +100,8 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
                                         .sharedElement(
                                             rememberSharedContentState(key = "image-$index"),
                                             animatedVisibilityScope = this@composable,
-                                            boundsTransform = boundsTransform
+                                            boundsTransform = boundsTransform,
+                                            placeHolderSize = SharedTransitionScope.PlaceHolderSize.animatedSize
                                         )
                                         .clickable {
                                             navController.navigate("details/$index")
@@ -132,7 +134,7 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
                                 .sharedElement(
                                     rememberSharedContentState(key = "image-$albumId"),
                                     animatedVisibilityScope = this@composable,
-                                    boundsTransform = boundsTransform
+                                    boundsTransform = boundsTransform,
                                 )
                                 .clickable { navController.navigate("preview") }
                         ) {
