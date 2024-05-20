@@ -233,6 +233,14 @@ object DataProvider {
             AlbumInfoModel(7,R.drawable.img_album_08, "Chamber", "Aurora", 2015)
         )
     }
+
+    fun getSearchSuggestionsData() : List<String> {
+        return listOf("Conference Invitations", "Dinner with Dinner Club", "Herilooom Recepeies")
+    }
+
+    fun getSearchProfiles(): List<String> {
+        return listOf("Lily", "Thea", "Lily", "Thea", "Lily", "Thea", "Lily", "Thea")
+    }
 }
 
 class MapTileProvider(private val context: Context) : UrlTileProvider(250, 250) {
