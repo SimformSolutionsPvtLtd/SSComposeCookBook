@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.animation.SharedTransitionScope
@@ -15,10 +16,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -31,6 +34,8 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,6 +45,9 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavType
@@ -47,19 +55,27 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.data.DataProvider
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 
 class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
+
+    private val boundsTransform = { _: Rect, _: Rect ->
+        tween<Rect>(500)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
+            val albums = remember { mutableStateOf(DataProvider.getAlbumsData()) }
+
             BaseView(appTheme.value, systemUiController) {
-                SharedElementTransitionWithNavigation()
+                SharedElementTransitionWithNavigation(albums.value)
             }
         }
     }
@@ -67,10 +83,8 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
-    fun SharedElementTransitionWithNavigation() {
+    fun SharedElementTransitionWithNavigation(albums: List<AlbumInfoModel>) {
         val navController = rememberNavController()
-        val albums = DataProvider.getAlbumsData()
-        val boundsTransform = { _: Rect, _: Rect -> tween<Rect>(500) }
 
         Scaffold(topBar = {
             TopAppBar(
@@ -85,38 +99,11 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
             SharedTransitionLayout {
                 NavHost(navController = navController, startDestination = "preview") {
                     composable("preview") {
-                        LazyVerticalGrid(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(Color.White),
-                            columns = GridCells.Fixed(2),
-                            contentPadding = PaddingValues(10.dp),
-                            verticalArrangement = Arrangement.spacedBy(10.dp),
-                            horizontalArrangement = Arrangement.spacedBy(10.dp)
-                        ) {
-                            itemsIndexed(albums) { index, album ->
-                                Box(
-                                    modifier = Modifier
-                                        .sharedElement(
-                                            rememberSharedContentState(key = "image-$index"),
-                                            animatedVisibilityScope = this@composable,
-                                            boundsTransform = boundsTransform,
-                                            placeHolderSize = SharedTransitionScope.PlaceHolderSize.animatedSize
-                                        )
-                                        .clickable {
-                                            navController.navigate("details/$index")
-                                        }
-                                ) {
-                                    Image(
-                                        painter = painterResource(id = album.cover),
-                                        contentDescription = "",
-                                        contentScale = ContentScale.Crop,
-                                        modifier = Modifier
-                                            .aspectRatio(1f)
-                                            .clip(RoundedCornerShape(10.dp))
-                                    )
-                                }
-                            }
+                        PreviewContent(
+                            albums = albums,
+                            animatedVisibilityScope = this@composable
+                        ) { index ->
+                            navController.navigate("details/$index")
                         }
                     }
 
@@ -127,44 +114,156 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
                         val albumId = navBackStackEntry.arguments?.getInt("item")
                         val album = albums[albumId!!]
 
-                        Column(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(Color.White)
-                                .sharedElement(
-                                    rememberSharedContentState(key = "image-$albumId"),
-                                    animatedVisibilityScope = this@composable,
-                                    boundsTransform = boundsTransform,
-                                )
-                                .clickable { navController.navigate("preview") }
+                        PreviewDetailContent(
+                            album = album,
+                            animatedVisibilityScope = this@composable
                         ) {
-                            Image(
-                                painterResource(id = album.cover),
-                                contentDescription = null,
-                                contentScale = ContentScale.Crop,
-                                modifier = Modifier.size(500.dp)
-                            )
-
-                            Spacer(modifier = Modifier.height(20.dp))
-                            Text(
-                                text = album.title,
-                                fontSize = 20.sp,
-                            )
-
-                            Spacer(modifier = Modifier.height(20.dp))
-                            Text(
-                                text = album.author,
-                                fontSize = 20.sp,
-                            )
-
-                            Spacer(modifier = Modifier.height(20.dp))
-                            Text(
-                                text = album.year.toString(),
-                                fontSize = 20.sp,
-                            )
+                            navController.navigate("preview")
                         }
                     }
                 }
+            }
+        }
+    }
+
+    @OptIn(ExperimentalSharedTransitionApi::class)
+    @Composable
+    fun SharedTransitionScope.PreviewContent(
+        albums: List<AlbumInfoModel>,
+        animatedVisibilityScope: AnimatedVisibilityScope,
+        onItemClick: (Int) -> Unit
+    ) {
+        LazyVerticalGrid(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.White),
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(10.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            itemsIndexed(albums) { index, album ->
+                Box(
+                    modifier = Modifier
+                        .sharedElement(
+                            rememberSharedContentState(key = "image-$index"),
+                            animatedVisibilityScope = animatedVisibilityScope,
+                            boundsTransform = boundsTransform
+                        )
+                        .clickable {
+                            onItemClick(index)
+                        }
+                ) {
+                    Image(
+                        painter = painterResource(id = album.cover),
+                        contentDescription = "",
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .aspectRatio(1f)
+                            .clip(RoundedCornerShape(10.dp))
+                    )
+                }
+            }
+        }
+    }
+
+    @OptIn(ExperimentalSharedTransitionApi::class)
+    @Composable
+    fun SharedTransitionScope.PreviewDetailContent(
+        album: AlbumInfoModel,
+        animatedVisibilityScope: AnimatedVisibilityScope,
+        onBackClick: () -> Unit
+    ) {
+        Box(
+            modifier = Modifier
+                .sharedElement(
+                    rememberSharedContentState(key = "image-${album.id}"),
+                    animatedVisibilityScope = animatedVisibilityScope,
+                    boundsTransform = boundsTransform,
+                )
+                .fillMaxSize()
+                .padding(10.dp)
+                .clip(RoundedCornerShape(30.dp))
+                .background(Color.LightGray.copy(0.5f))
+        ) {
+            Column {
+                Box {
+                    Image(
+                        painterResource(id = album.cover),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .size(400.dp)
+                            .clip(RoundedCornerShape(30.dp))
+                    )
+
+                    Box(
+                        modifier = Modifier
+                            .padding(start = 10.dp, top = 10.dp)
+                            .clip(RoundedCornerShape(50.dp))
+                            .background(Color.White)
+                            .clickable { onBackClick() }
+                    ) {
+                        Icon(
+                            Icons.Outlined.ArrowBack,
+                            modifier = Modifier
+                                .size(50.dp)
+                                .padding(10.dp),
+                            contentDescription = null
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Row {
+                    Column(modifier = Modifier.padding(start = 10.dp)) {
+                        Text(
+                            text = album.title,
+                            fontFamily = FontFamily.Serif,
+                            fontWeight = FontWeight.ExtraBold,
+                            fontSize = 24.sp,
+                        )
+                        Text(
+                            text = "${album.author}, ${album.year}",
+                            fontSize = 20.sp,
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.weight(1f))
+
+                    Box(
+                        modifier = Modifier
+                            .padding(end = 10.dp)
+                            .clip(RoundedCornerShape(50.dp))
+                            .background(Color.Magenta.copy(alpha = 0.3f))
+                    ) {
+                        Icon(
+                            Icons.Filled.PlayArrow,
+                            modifier = Modifier
+                                .size(50.dp)
+                                .padding(10.dp),
+                            contentDescription = null
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Text(
+                    text = "About",
+                    fontFamily = FontFamily.Monospace,
+                    fontWeight = FontWeight.ExtraBold,
+                    fontSize = 26.sp,
+                    modifier = Modifier.padding(start = 10.dp)
+                )
+
+                Text(
+                    text = stringResource(R.string.album_description),
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .skipToLookaheadSize()
+                )
             }
         }
     }
