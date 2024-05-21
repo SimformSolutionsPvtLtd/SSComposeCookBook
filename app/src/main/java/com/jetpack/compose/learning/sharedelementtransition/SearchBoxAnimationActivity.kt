@@ -6,6 +6,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -44,6 +46,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -86,7 +89,7 @@ class SearchBoxAnimationActivity : ComponentActivity() {
         modifier: Modifier = Modifier,
         isEnabled: (Boolean) = true,
         height: Dp = 50.dp,
-        elevation: Dp = 3.dp,
+        elevation: Dp = 1.dp,
         backgroundColor: Color = Color.White,
         onTextChange: (String) -> Unit = {},
     ) {
@@ -184,10 +187,14 @@ class SearchBoxAnimationActivity : ComponentActivity() {
             }
         }
         AnimatedVisibility(
-            visible = expanded
+            visible = expanded,
+            enter = expandVertically(),
+            exit = shrinkVertically()
         ) {
-            Spacer(modifier = Modifier.height(2.dp).background(Color.Gray))
-            Column(
+            Spacer(modifier = Modifier
+                .height(2.dp)
+                .background(Color.Gray))
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .shadow(elevation)
@@ -196,34 +203,38 @@ class SearchBoxAnimationActivity : ComponentActivity() {
                         shape = RoundedCornerShape(bottomStart = 10.dp, bottomEnd = 10.dp)
                     )
             ) {
+                Column(modifier = Modifier.padding(10.dp)) {
+                    Text(text = "Recent")
 
-                Text(text = "Recent")
+                    Spacer(modifier = Modifier.height(10.dp))
 
-                LazyColumn {
-                    items(DataProvider.getSearchSuggestionsData()) {
-                        Row {
-                            Icon(
-                                painter = painterResource(id = R.drawable.baseline_clear_24),
-                                contentDescription = ""
-                            )
-                            Text(it)
+                    LazyColumn {
+                        items(DataProvider.getSearchSuggestionsData()) {
+                            Row {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.baseline_clear_24),
+                                    contentDescription = ""
+                                )
+                                Text(it)
+                            }
                         }
                     }
-                }
 
-                Text(text = "Contacts")
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(text = "Contacts")
+                    Spacer(modifier = Modifier.height(10.dp))
 
-                LazyRow {
-                    items(DataProvider.getSearchProfiles()) {
-                        Column {
-                            Icon(
-                                painter = painterResource(id = R.drawable.dp12),
-                                contentDescription = "",
-                                modifier = Modifier
-                                    .size(60.dp)
-                            )
-
-                            Text(text = it)
+                    LazyRow {
+                        items(DataProvider.getSearchProfiles()) {
+                            Column(modifier = Modifier.fillMaxSize()) {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.dp12),
+                                    contentDescription = "",
+                                    modifier = Modifier
+                                        .size(60.dp)
+                                )
+                                Text(text = it, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+                            }
                         }
                     }
                 }
