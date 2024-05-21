@@ -49,6 +49,7 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jetpack.compose.learning.R
@@ -62,6 +63,16 @@ private const val boundsAnimationDurationMillis = 1000
 private val boundsTransform = BoundsTransform { _: Rect, _: Rect ->
     tween(durationMillis = boundsAnimationDurationMillis, easing = FastOutSlowInEasing)
 }
+
+@OptIn(ExperimentalSharedTransitionApi::class, ExperimentalAnimationSpecApi::class)
+private val textBoundsTransform = BoundsTransform { initialBounds, targetBounds ->
+    keyframes {
+        durationMillis = boundsAnimationDurationMillis
+        initialBounds at 0 using ArcMode.ArcBelow using FastOutSlowInEasing
+        targetBounds at boundsAnimationDurationMillis
+    }
+}
+
 @OptIn(ExperimentalSharedTransitionApi::class)
 class TextTransformAnimationActivity : ComponentActivity() {
 
@@ -71,17 +82,16 @@ class TextTransformAnimationActivity : ComponentActivity() {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
             BaseView(appTheme.value, systemUiController) {
-                TextTransformationExample()
+                TextTransformationAnimationDemo()
             }
         }
     }
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
-    fun TextTransformationExample() {
-        var showDetails by remember {
-            mutableStateOf(false)
-        }
+    fun TextTransformationAnimationDemo() {
+        var showDetails by remember { mutableStateOf(false) }
+
         Scaffold(topBar = {
             TopAppBar(
                 title = { Text("Text Transform Animation") },
@@ -97,18 +107,18 @@ class TextTransformAnimationActivity : ComponentActivity() {
                     showDetails,
                     label = "basic_transition"
                 ) { targetState ->
-                    if (!targetState) {
-                        MainContent(
-                            onShowDetails = {
-                                showDetails = true
+                    if (targetState) {
+                        DetailsContent(
+                            onBack = {
+                                showDetails = false
                             },
                             animatedVisibilityScope = this@AnimatedContent,
                             sharedTransitionScope = this@SharedTransitionLayout
                         )
                     } else {
-                        DetailsContent(
-                            onBack = {
-                                showDetails = false
+                        MainContent(
+                            onShowDetails = {
+                                showDetails = true
                             },
                             animatedVisibilityScope = this@AnimatedContent,
                             sharedTransitionScope = this@SharedTransitionLayout
@@ -119,12 +129,10 @@ class TextTransformAnimationActivity : ComponentActivity() {
         }
     }
 
-    @SuppressLint("RememberReturnType")
     @OptIn(ExperimentalAnimationSpecApi::class)
     @Composable
     private fun MainContent(
         onShowDetails: () -> Unit,
-        modifier: Modifier = Modifier,
         sharedTransitionScope: SharedTransitionScope,
         animatedVisibilityScope: AnimatedVisibilityScope
     ) {
@@ -151,8 +159,8 @@ class TextTransformAnimationActivity : ComponentActivity() {
                             ),
                             boundsTransform = boundsTransform
                         )
-                        .border(1.dp, Color.Gray.copy(alpha = 0.5f), RoundedCornerShape(8.dp))
-                        .background(Color.Gray, RoundedCornerShape(8.dp))
+                        .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
+                        .background(Color.LightGray, RoundedCornerShape(8.dp))
                         .clickable(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = null
@@ -182,7 +190,7 @@ class TextTransformAnimationActivity : ComponentActivity() {
                         }
                     }
                     Text(
-                        "Cupcake", fontSize = 21.sp,
+                        "Emojis", fontSize = 21.sp,
                         modifier = Modifier.sharedBounds(
                             rememberSharedContentState(key = "title"),
                             animatedVisibilityScope = animatedVisibilityScope,
@@ -194,10 +202,8 @@ class TextTransformAnimationActivity : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalAnimationSpecApi::class)
     @Composable
     private fun DetailsContent(
-        modifier: Modifier = Modifier,
         onBack: () -> Unit,
         sharedTransitionScope: SharedTransitionScope,
         animatedVisibilityScope: AnimatedVisibilityScope
@@ -224,8 +230,8 @@ class TextTransformAnimationActivity : ComponentActivity() {
                             ),
                             boundsTransform = boundsTransform
                         )
-                        .border(1.dp, Color.Gray.copy(alpha = 0.5f), RoundedCornerShape(8.dp))
-                        .background(Color.Gray, RoundedCornerShape(8.dp))
+                        .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
+                        .background(Color.LightGray, RoundedCornerShape(8.dp))
                         .clickable(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = null
@@ -236,7 +242,7 @@ class TextTransformAnimationActivity : ComponentActivity() {
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.dp10),
-                        contentDescription = "Cupcake",
+                        contentDescription = "Emojis",
                         modifier = Modifier
                             .sharedElement(
                                 rememberSharedContentState(key = "image"),
@@ -247,29 +253,18 @@ class TextTransformAnimationActivity : ComponentActivity() {
                             .clip(CircleShape),
                         contentScale = ContentScale.Crop
                     )
-                    // [START android_compose_shared_element_text_bounds_transform]
-                    val textBoundsTransform = BoundsTransform { initialBounds, targetBounds ->
-                        keyframes {
-                            durationMillis = boundsAnimationDurationMillis
-                            initialBounds at 0 using ArcMode.ArcBelow using FastOutSlowInEasing
-                            targetBounds at boundsAnimationDurationMillis
-                        }
-                    }
+
                     Text(
-                        "Cupcake", fontSize = 28.sp,
+                        text = "Emojis",
+                        fontSize = 28.sp,
                         modifier = Modifier.sharedBounds(
                             rememberSharedContentState(key = "title"),
                             animatedVisibilityScope = animatedVisibilityScope,
                             boundsTransform = textBoundsTransform
                         )
                     )
-                    // [END android_compose_shared_element_text_bounds_transform]
                     Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet lobortis velit. " +
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit." +
-                                " Curabitur sagittis, lectus posuere imperdiet facilisis, nibh massa " +
-                                "molestie est, quis dapibus orci ligula non magna. Pellentesque rhoncus " +
-                                "hendrerit massa quis ultricies. Curabitur congue ullamcorper leo, at maximus",
+                        text = stringResource(id = R.string.album_description),
                         modifier = Modifier.skipToLookaheadSize()
                     )
                 }

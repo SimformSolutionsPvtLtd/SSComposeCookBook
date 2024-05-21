@@ -73,7 +73,6 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
             val albums = remember { mutableStateOf(DataProvider.getAlbumsData()) }
-
             BaseView(appTheme.value, systemUiController) {
                 SharedElementTransitionWithNavigation(albums.value)
             }
