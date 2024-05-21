@@ -191,9 +191,6 @@ class SearchBoxAnimationActivity : ComponentActivity() {
             enter = expandVertically(),
             exit = shrinkVertically()
         ) {
-            Spacer(modifier = Modifier
-                .height(2.dp)
-                .background(Color.Gray))
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -226,7 +223,7 @@ class SearchBoxAnimationActivity : ComponentActivity() {
 
                     LazyRow {
                         items(DataProvider.getSearchProfiles()) {
-                            Column(modifier = Modifier.fillMaxSize()) {
+                            Column {
                                 Icon(
                                     painter = painterResource(id = R.drawable.dp12),
                                     contentDescription = "",
