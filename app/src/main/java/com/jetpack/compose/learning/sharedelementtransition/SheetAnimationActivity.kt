@@ -181,10 +181,13 @@ class SheetAnimationActivity : ComponentActivity() {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(20.dp)
+                .padding(10.dp)
                 .clip(RoundedCornerShape(20.dp))
                 .background(Color.White)
-                .clickable { onShowDetails() }
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null
+                ) { onShowDetails() }
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
