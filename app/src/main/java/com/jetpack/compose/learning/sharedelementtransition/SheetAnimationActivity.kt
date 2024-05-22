@@ -118,29 +118,33 @@ class SheetAnimationActivity : ComponentActivity() {
                 }
         ) {
             Row(
-                modifier = Modifier
-                    .padding(10.dp)
-                    .sharedBounds(
-                        rememberSharedContentState(key = "bounds"),
-                        animatedVisibilityScope = animatedVisibilityScope,
-                        boundsTransform = boundsTransform
-                    ),
+                modifier = Modifier.padding(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_post_image_6),
-                    contentDescription = "",
+                Row(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(20.dp))
-                        .size(height = 100.dp, width = 80.dp)
-                        .sharedElement(
-                            rememberSharedContentState(key = "image"),
-                            animatedVisibilityScope
-                        ),
-                    contentScale = ContentScale.Crop
-                )
+                        .sharedBounds(
+                            rememberSharedContentState(key = "bounds"),
+                            animatedVisibilityScope = animatedVisibilityScope,
+                            boundsTransform = boundsTransform
+                        )
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_post_image_6),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(height = 100.dp, width = 80.dp)
+                            .sharedElement(
+                                state = rememberSharedContentState(key = "image"),
+                                animatedVisibilityScope = animatedVisibilityScope,
+                                boundsTransform = boundsTransform
+                            )
+                            .clip(RoundedCornerShape(20.dp)),
+                        contentScale = ContentScale.Crop
+                    )
 
-                Spacer(modifier = Modifier.width(10.dp))
+                    Spacer(modifier = Modifier.width(10.dp))
+                }
 
                 Column(modifier = Modifier.padding(vertical = 15.dp)) {
                     Text(
@@ -156,7 +160,8 @@ class SheetAnimationActivity : ComponentActivity() {
                         fontFamily = FontFamily.Serif,
                     )
                 }
-                Spacer(modifier = Modifier.weight(2f))
+
+                Spacer(modifier = Modifier.weight(1f))
 
                 Row {
                     Image(imageVector = Icons.Filled.SkipPrevious, contentDescription = "")
@@ -195,12 +200,13 @@ class SheetAnimationActivity : ComponentActivity() {
                     painter = painterResource(id = R.drawable.ic_post_image_6),
                     contentDescription = "",
                     modifier = Modifier
-                        .clip(RoundedCornerShape(20.dp))
                         .size(300.dp)
                         .sharedElement(
-                            rememberSharedContentState(key = "image"),
-                            animatedVisibilityScope, boundsTransform
-                        ),
+                            state = rememberSharedContentState(key = "image"),
+                            animatedVisibilityScope = animatedVisibilityScope,
+                            boundsTransform = boundsTransform
+                        )
+                        .clip(RoundedCornerShape(20.dp)),
                     contentScale = ContentScale.Crop
                 )
 
