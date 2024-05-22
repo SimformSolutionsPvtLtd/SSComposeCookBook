@@ -327,6 +327,9 @@
         <activity
             android:name=".sharedelementtransition.SearchBoxAnimationActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".sharedelementtransition.SheetAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion ViewPager-->
     </application>
 
