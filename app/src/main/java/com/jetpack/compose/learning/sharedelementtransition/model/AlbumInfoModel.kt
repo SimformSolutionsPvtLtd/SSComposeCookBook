@@ -1,4 +1,4 @@
-package com.jetpack.compose.learning.sharedelementtransition
+package com.jetpack.compose.learning.sharedelementtransition.model
 
 import androidx.annotation.DrawableRes
 
@@ -8,10 +8,4 @@ data class AlbumInfoModel(
     val title: String,
     val author: String,
     val year: Int,
-)
-
-data class ImageModel(
-    val id: Int,
-    val title: String,
-    @DrawableRes val image: Int,
 )

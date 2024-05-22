@@ -10,8 +10,8 @@ import com.jetpack.compose.learning.maps.basic.TouristPlace
 import com.jetpack.compose.learning.maps.cluster.SSClusterItem
 import com.jetpack.compose.learning.maps.currentMarkerLatLong
 import com.jetpack.compose.learning.maps.plus
-import com.jetpack.compose.learning.sharedelementtransition.AlbumInfoModel
-import com.jetpack.compose.learning.sharedelementtransition.ImageModel
+import com.jetpack.compose.learning.sharedelementtransition.model.AlbumInfoModel
+import com.jetpack.compose.learning.sharedelementtransition.model.ImageModel
 import java.net.MalformedURLException
 import java.net.URL
 

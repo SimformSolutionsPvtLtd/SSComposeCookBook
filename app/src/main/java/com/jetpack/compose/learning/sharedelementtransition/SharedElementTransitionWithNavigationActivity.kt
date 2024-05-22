@@ -57,6 +57,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.data.DataProvider
+import com.jetpack.compose.learning.sharedelementtransition.model.AlbumInfoModel
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
