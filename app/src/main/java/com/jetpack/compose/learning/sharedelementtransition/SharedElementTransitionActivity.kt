@@ -102,6 +102,7 @@ class SharedElementTransitionActivity : ComponentActivity() {
         Component("Text Transform Animation", TextTransformAnimationActivity::class.java),
         Component("Image Animation", ImageAnimationActivity::class.java),
         Component("Search Box Animation", SearchBoxAnimationActivity::class.java),
-        Component("Sheet Animation", SheetAnimationActivity::class.java)
+        Component("Sheet Animation", SheetAnimationActivity::class.java),
+        Component("Nested Column", NestedLazyColumnActivity::class.java)
     )
 }
