@@ -27,6 +27,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -108,9 +109,8 @@ class SearchBoxAnimationActivity : ComponentActivity() {
                 .fillMaxWidth()
                 .background(
                     color = backgroundColor,
-                )
-                ,
-            verticalAlignment = Alignment.CenterVertically,
+                ),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
                 modifier = modifier
@@ -169,7 +169,7 @@ class SearchBoxAnimationActivity : ComponentActivity() {
                         }
                     },
             ) {
-                if(text.text.isNotEmpty()) {
+                if (text.text.isNotEmpty()) {
                     Icon(
                         modifier = modifier
                             .padding(10.dp),
@@ -202,6 +202,7 @@ class SearchBoxAnimationActivity : ComponentActivity() {
                         color = backgroundColor
                     )
             ) {
+                Divider(color = Color.LightGray.copy(alpha = 0.9f))
                 Column(modifier = Modifier.padding(10.dp)) {
                     Text(
                         text = "Recent",
