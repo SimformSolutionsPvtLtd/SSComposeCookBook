@@ -5,9 +5,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -38,10 +37,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -75,6 +76,7 @@ class SearchBoxAnimationActivity : ComponentActivity() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(Color.LightGray)
                 .padding(16.dp)
         ) {
             Column {
@@ -89,7 +91,6 @@ class SearchBoxAnimationActivity : ComponentActivity() {
         modifier: Modifier = Modifier,
         isEnabled: (Boolean) = true,
         height: Dp = 50.dp,
-        elevation: Dp = 1.dp,
         backgroundColor: Color = Color.White,
         onTextChange: (String) -> Unit = {},
     ) {
@@ -99,31 +100,35 @@ class SearchBoxAnimationActivity : ComponentActivity() {
         Row(
             modifier = Modifier
                 .height(height)
+                .clip(
+                    if (expanded) RoundedCornerShape(
+                        topStart = 30.dp, topEnd = 30.dp
+                    ) else RoundedCornerShape(30.dp)
+                )
                 .fillMaxWidth()
-                .shadow(
-                    elevation = elevation,
-                    shape = if (expanded) RoundedCornerShape(
-                        topStart = 10.dp, topEnd = 10.dp
-                    ) else RoundedCornerShape(10.dp)
-                )
                 .background(
-                    color = backgroundColor, shape = if (expanded) RoundedCornerShape(
-                        topStart = 10.dp, topEnd = 10.dp
-                    ) else RoundedCornerShape(10.dp)
+                    color = backgroundColor,
                 )
-                .animateContentSize()
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() }, indication = null
-                ) {
-                    expanded = !expanded
-                },
+                ,
             verticalAlignment = Alignment.CenterVertically,
         ) {
+            Icon(
+                modifier = modifier
+                    .padding(start = 20.dp)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null
+                    ) {
+                        expanded = !expanded
+                    },
+                painter = painterResource(id = R.drawable.baseline_search_24),
+                contentDescription = "Search",
+                tint = MaterialTheme.colors.primary,
+            )
             BasicTextField(
                 modifier = modifier
-                    .weight(5f)
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp),
+                    .weight(1f)
+                    .padding(horizontal = 10.dp),
                 value = text,
                 onValueChange = {
                     text = it
@@ -155,9 +160,8 @@ class SearchBoxAnimationActivity : ComponentActivity() {
             )
             Box(
                 modifier = modifier
-                    .weight(1f)
-                    .size(40.dp)
-                    .background(color = Color.Transparent, shape = CircleShape)
+                    .size(50.dp)
+                    .background(color = Color.Transparent)
                     .clickable {
                         if (text.text.isNotEmpty()) {
                             text = TextFieldValue(text = "")
@@ -165,23 +169,22 @@ class SearchBoxAnimationActivity : ComponentActivity() {
                         }
                     },
             ) {
-                if (text.text.isNotEmpty()) {
+                if(text.text.isNotEmpty()) {
                     Icon(
                         modifier = modifier
-                            .fillMaxSize()
                             .padding(10.dp),
                         painter = painterResource(id = R.drawable.baseline_clear_24),
                         contentDescription = "Search",
                         tint = MaterialTheme.colors.primary,
                     )
                 } else {
-                    Icon(
-                        modifier = modifier
-                            .fillMaxSize()
-                            .padding(10.dp),
-                        painter = painterResource(id = R.drawable.baseline_search_24),
-                        contentDescription = "Search",
-                        tint = MaterialTheme.colors.primary,
+                    Image(
+                        painter = painterResource(id = R.drawable.dp8),
+                        contentDescription = "",
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .clip(RoundedCornerShape(20.dp))
                     )
                 }
             }
@@ -194,20 +197,24 @@ class SearchBoxAnimationActivity : ComponentActivity() {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .shadow(elevation)
+                    .clip(RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp))
                     .background(
-                        color = backgroundColor,
-                        shape = RoundedCornerShape(bottomStart = 10.dp, bottomEnd = 10.dp)
+                        color = backgroundColor
                     )
             ) {
                 Column(modifier = Modifier.padding(10.dp)) {
-                    Text(text = "Recent")
+                    Text(
+                        text = "Recent",
+                        fontSize = 14.sp,
+                        fontFamily = FontFamily.Serif,
+                        fontWeight = FontWeight.Bold
+                    )
 
                     Spacer(modifier = Modifier.height(10.dp))
 
-                    LazyColumn {
+                    LazyColumn(modifier = Modifier.padding(10.dp)) {
                         items(DataProvider.getSearchSuggestionsData()) {
-                            Row {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
                                 Icon(
                                     painter = painterResource(id = R.drawable.baseline_clear_24),
                                     contentDescription = ""
@@ -218,19 +225,35 @@ class SearchBoxAnimationActivity : ComponentActivity() {
                     }
 
                     Spacer(modifier = Modifier.height(10.dp))
-                    Text(text = "Contacts")
+
+                    Text(
+                        text = "Contacts",
+                        fontSize = 14.sp,
+                        fontFamily = FontFamily.Serif,
+                        fontWeight = FontWeight.Bold
+                    )
+
                     Spacer(modifier = Modifier.height(10.dp))
 
                     LazyRow {
                         items(DataProvider.getSearchProfiles()) {
-                            Column {
-                                Icon(
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                modifier = Modifier.padding(5.dp)
+                            ) {
+                                Image(
                                     painter = painterResource(id = R.drawable.dp12),
                                     contentDescription = "",
+                                    contentScale = ContentScale.Crop,
                                     modifier = Modifier
-                                        .size(60.dp)
+                                        .clip(RoundedCornerShape(60.dp))
+                                        .size(80.dp)
                                 )
-                                Text(text = it, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+                                Text(
+                                    text = it,
+                                    modifier = Modifier.fillMaxWidth(),
+                                    textAlign = TextAlign.Center
+                                )
                             }
                         }
                     }
