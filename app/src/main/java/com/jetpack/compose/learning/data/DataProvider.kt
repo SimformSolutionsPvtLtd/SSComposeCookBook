@@ -11,6 +11,7 @@ import com.jetpack.compose.learning.maps.cluster.SSClusterItem
 import com.jetpack.compose.learning.maps.currentMarkerLatLong
 import com.jetpack.compose.learning.maps.plus
 import com.jetpack.compose.learning.sharedelementtransition.model.AlbumInfoModel
+import com.jetpack.compose.learning.sharedelementtransition.model.CoffeeModel
 import com.jetpack.compose.learning.sharedelementtransition.model.ImageModel
 import java.net.MalformedURLException
 import java.net.URL
@@ -240,6 +241,71 @@ object DataProvider {
 
     fun getSearchProfiles(): List<String> {
         return listOf("Lily", "Thea", "Lily", "Thea", "Lily", "Thea", "Lily", "Thea")
+    }
+
+    fun getCoffeDetails(): List<CoffeeModel> {
+        return listOf(
+            CoffeeModel(
+                id = 0,
+                name = "Espresso",
+                description = "Espresso as a standalone coffee is served everywhere. It contains literally the basic essence. Coffee and water.Ideal serving: 30ml Espresso in a 90ml cup.",
+                image = R.drawable.ic_espresso
+            ),
+            CoffeeModel(
+                id = 1,
+                name = "Doppio",
+                description = "Doppio in Italian literally means ‘double.’ It is a double shot of Espresso coffee.Ideal serving: 60ml Espresso in a 90ml cup.",
+                image = R.drawable.ic_doppio
+            ),
+            CoffeeModel(
+                id = 2,
+                name = "Macchiato",
+                description = "Macchiato in Italian means ‘stained.’ This is because a serving of Macchiato is a normal Espresso shot with a little-foamed milk on the top.Ideal serving: 30ml Espresso + Foamed milk on top in a 90ml cup.",
+                image = R.drawable.ic_espresso_macchiato
+            ),
+            CoffeeModel(
+                id = 3,
+                name = "Cappuccino",
+                description = "Everyone’s favourite and the most well-known and standard coffee drink, cappuccino contains more milk-to-coffee ratio.Ideal serving: 60ml Espresso + 60ml steamed milk + 60ml foamed milk (in that order) in a 200ml cup.",
+                image = R.drawable.ic_cappuccino
+            ),
+            CoffeeModel(
+                id = 4,
+                name = "Café au Lait",
+                description = "Café au Lait literally means ‘coffee with milk.’ It is a French press coffee preparation with equal amounts coffee brew and scalded milk. Scalded milk is milk that is heated to 82° C to kill off bacteria and remove many proteins.\n" +
+                        "Ideal serving: 90ml French press coffee + 90ml scalded milk in a 200ml cup.",
+                image = R.drawable.ic_cafe_au_lait
+            ),
+            CoffeeModel(
+                id = 5,
+                name = "Turkish",
+                description = "The Turkish like their coffee light and sweet. Hence, a majority of this coffee is sugar water.\n" +
+                        "Ideal serving: 10g (or 2 tsp.) ground coffee + 180ml sugar water + köpük (foam) (in that order) in a 200ml cup.\n" +
+                        "\n",
+                image = R.drawable.ic_turkish
+            ),
+            CoffeeModel(
+                id = 6,
+                name = "Americano",
+                description = "Those who say they like their coffee black talk about Café Americano. If you might have seen in Western media, Americans like to drink their coffee straight out of the pot.\n" +
+                        "Ideal serving: 60ml Espresso + 120ml hot water in a 200ml cup.",
+                image = R.drawable.ic_americano
+            ),
+            CoffeeModel(
+                id = 7,
+                name = "Vienna Mocha",
+                description = "Or simply known as Vienna Coffee, this coffee is a fun-loving twist to your regular Espresso shot. What’s the twist, you ask? WHIPPED CREAM!\n" +
+                        "Ideal serving: 60ml Espresso + Whipped cream on the top in a 150ml cup.",
+                image = R.drawable.ic_vienna_mocha
+            ),
+            CoffeeModel(
+                id = 8,
+                name = "Latte",
+                description = "Caffé Latte can be seen as the more mainstream brother of Café au Lait. The name literally means, yes, you guessed it right, ‘milk coffee.’\n" +
+                        "Ideal serving: 60ml Espresso + 180-300ml steamed milk (depending on container)",
+                image = R.drawable.ic_caffe_latte
+            )
+        )
     }
 }
 

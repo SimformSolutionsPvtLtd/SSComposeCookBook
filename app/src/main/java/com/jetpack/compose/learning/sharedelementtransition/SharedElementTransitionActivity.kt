@@ -99,6 +99,7 @@ class SharedElementTransitionActivity : ComponentActivity() {
 
     private fun getComponent(): List<Component> = listOf(
         Component("SET With Navigation", SharedElementTransitionWithNavigationActivity::class.java),
+        Component("SET Without Navigation", SharedElementTransitionWithoutNavigationActivity::class.java),
         Component("Text Transform Animation", TextTransformAnimationActivity::class.java),
         Component("Image Animation", ImageAnimationActivity::class.java),
         Component("Search Box Animation", SearchBoxAnimationActivity::class.java),

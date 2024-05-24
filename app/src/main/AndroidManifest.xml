@@ -333,6 +333,9 @@
         <activity
             android:name=".sharedelementtransition.NestedLazyColumnActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".sharedelementtransition.SharedElementTransitionWithoutNavigationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion ViewPager-->
     </application>
 
