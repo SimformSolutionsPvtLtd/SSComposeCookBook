@@ -13,6 +13,7 @@ import com.jetpack.compose.learning.maps.plus
 import com.jetpack.compose.learning.sharedelementtransition.model.AlbumInfoModel
 import com.jetpack.compose.learning.sharedelementtransition.model.CoffeeModel
 import com.jetpack.compose.learning.sharedelementtransition.model.ImageModel
+import com.jetpack.compose.learning.sharedelementtransition.model.ProfileModel
 import java.net.MalformedURLException
 import java.net.URL
 
@@ -241,6 +242,15 @@ object DataProvider {
 
     fun getSearchProfiles(): List<String> {
         return listOf("Lily", "Thea", "Lily", "Thea", "Lily", "Thea", "Lily", "Thea")
+    }
+
+    fun getFabProfiles(): List<ProfileModel> {
+        return listOf(
+            ProfileModel(0, R.drawable.ic_profile_image_1, "Lily Thea"),
+            ProfileModel(1, R.drawable.ic_profile_image_2, "Lily Thea"),
+            ProfileModel(2, R.drawable.ic_profile_image_3, "Lily Thea"),
+            ProfileModel(3, R.drawable.ic_profile_image_4, "Lily Thea")
+        )
     }
 
     fun getCoffeDetails(): List<CoffeeModel> {
