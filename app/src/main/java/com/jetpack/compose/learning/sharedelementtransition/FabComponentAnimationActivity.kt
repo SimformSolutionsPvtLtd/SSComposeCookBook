@@ -87,13 +87,19 @@ class FabComponentAnimationActivity : ComponentActivity() {
         animatedVisibilityScope: AnimatedVisibilityScope,
         onFabClick: () -> Unit
     ) {
-        Column {
+        Column(
+            modifier = Modifier.sharedBounds(
+                rememberSharedContentState(key = "fab1"),
+                animatedVisibilityScope
+            )
+        ) {
             FloatingActionButton(
                 onClick = {
                     onFabClick()
                 },
                 backgroundColor = colorResource(id = R.color.bright_cyan),
                 shape = RoundedCornerShape(16.dp),
+                elevation = FloatingActionButtonDefaults.elevation(0.dp),
                 modifier = Modifier
                     .size(100.dp)
                     .padding(start = 20.dp, top = 20.dp)
@@ -114,10 +120,15 @@ class FabComponentAnimationActivity : ComponentActivity() {
         animatedVisibilityScope: AnimatedVisibilityScope,
         onClick: () -> Unit
     ) {
-        Column {
+        Column(
+            modifier = Modifier.sharedBounds(
+                rememberSharedContentState(key = "fab1"),
+                animatedVisibilityScope
+            )
+        ) {
             LazyColumn(modifier = Modifier
                 .padding(start = 20.dp, top = 20.dp)
-                .width(180.dp)
+                .width(160.dp)
                 .clip(RoundedCornerShape(20.dp))
                 .background(Color.LightGray.copy(alpha = 0.5f))
                 .clickable {
@@ -130,21 +141,18 @@ class FabComponentAnimationActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(
                                 colorResource(id = R.color.bright_cyan),
-                                RoundedCornerShape(40)
+                                shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp),
                             ),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Spacer(modifier = Modifier.width(32.dp))
-                        Text(text = "Edit", color = Color.Black, fontSize = 16.sp)
-                        Spacer(modifier = Modifier.width(32.dp))
                         FloatingActionButton(
-                            onClick = {},
+                            onClick = { },
                             backgroundColor = colorResource(id = R.color.bright_cyan),
                             shape = RoundedCornerShape(16.dp),
                             elevation = FloatingActionButtonDefaults.elevation(0.dp),
                             modifier = Modifier
                                 .clickable(false) {}
-                                .size(70.dp)
+                                .size(80.dp)
                                 .sharedElement(
                                     rememberSharedContentState(key = "fab"),
                                     animatedVisibilityScope
@@ -152,6 +160,8 @@ class FabComponentAnimationActivity : ComponentActivity() {
                         ) {
                             Icon(Icons.Filled.Edit, contentDescription = "")
                         }
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Text(text = "Edit", color = Color.Black, fontSize = 16.sp)
                     }
                 }
                 items(DataProvider.getFabProfiles()) { profile: ProfileModel ->
