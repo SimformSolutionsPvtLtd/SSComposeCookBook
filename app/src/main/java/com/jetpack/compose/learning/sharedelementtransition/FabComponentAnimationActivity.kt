@@ -4,17 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.AnimatedVisibilityScope
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
-import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -22,7 +20,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.FloatingActionButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -37,8 +34,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jetpack.compose.learning.R
@@ -67,67 +64,41 @@ class FabComponentAnimationActivity : ComponentActivity() {
         var showDetails by remember { mutableStateOf(false) }
 
         SharedTransitionLayout {
-            AnimatedContent(targetState = showDetails, label = "transition") { targetState ->
-                if (!targetState) {
-                    FabMainContent(this) {
-                        showDetails = !showDetails
+            Column {
+                FloatingActionButton(onClick = { showDetails = !showDetails }) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Edit, contentDescription = null
+                        )
+                        AnimatedVisibility(visible = showDetails) {
+                            Text(
+                                text = stringResource(R.string.edit),
+                                modifier = Modifier.padding(start = 8.dp, top = 3.dp)
+                            )
+                        }
                     }
-                } else {
-                    FabDetailContent(this) {
-                        showDetails = !showDetails
+                }
+
+                AnimatedContent(targetState = showDetails, label = "transition") { targetState ->
+                    if (targetState) {
+                        FabDetailContent {
+                            showDetails = !showDetails
+                        }
                     }
                 }
             }
         }
     }
 
-    @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
-    fun SharedTransitionScope.FabMainContent(
-        animatedVisibilityScope: AnimatedVisibilityScope,
-        onFabClick: () -> Unit
-    ) {
-        Column(
-            modifier = Modifier.sharedBounds(
-                rememberSharedContentState(key = "fab1"),
-                animatedVisibilityScope
-            )
-        ) {
-            FloatingActionButton(
-                onClick = {
-                    onFabClick()
-                },
-                backgroundColor = colorResource(id = R.color.bright_cyan),
-                shape = RoundedCornerShape(16.dp),
-                elevation = FloatingActionButtonDefaults.elevation(0.dp),
-                modifier = Modifier
-                    .size(100.dp)
-                    .padding(start = 20.dp, top = 20.dp)
-                    .sharedElement(
-                        rememberSharedContentState(key = "fab"),
-                        animatedVisibilityScope
-                    )
-            ) {
-                Icon(Icons.Filled.Edit, contentDescription = "")
-            }
-        }
-
-    }
-
-    @OptIn(ExperimentalSharedTransitionApi::class)
-    @Composable
-    fun SharedTransitionScope.FabDetailContent(
-        animatedVisibilityScope: AnimatedVisibilityScope,
+    fun FabDetailContent(
         onClick: () -> Unit
     ) {
-        Column(
-            modifier = Modifier.sharedBounds(
-                rememberSharedContentState(key = "fab1"),
-                animatedVisibilityScope
-            )
-        ) {
+        Column {
             LazyColumn(modifier = Modifier
-                .padding(start = 20.dp, top = 20.dp)
+                .padding(end = 20.dp, bottom = 20.dp)
                 .width(160.dp)
                 .clip(RoundedCornerShape(20.dp))
                 .background(Color.LightGray.copy(alpha = 0.5f))
@@ -135,35 +106,6 @@ class FabComponentAnimationActivity : ComponentActivity() {
                     onClick()
                 }
             ) {
-                item {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(
-                                colorResource(id = R.color.bright_cyan),
-                                shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp),
-                            ),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        FloatingActionButton(
-                            onClick = { },
-                            backgroundColor = colorResource(id = R.color.bright_cyan),
-                            shape = RoundedCornerShape(16.dp),
-                            elevation = FloatingActionButtonDefaults.elevation(0.dp),
-                            modifier = Modifier
-                                .clickable(false) {}
-                                .size(80.dp)
-                                .sharedElement(
-                                    rememberSharedContentState(key = "fab"),
-                                    animatedVisibilityScope
-                                )
-                        ) {
-                            Icon(Icons.Filled.Edit, contentDescription = "")
-                        }
-                        Spacer(modifier = Modifier.width(16.dp))
-                        Text(text = "Edit", color = Color.Black, fontSize = 16.sp)
-                    }
-                }
                 items(DataProvider.getFabProfiles()) { profile: ProfileModel ->
                     Row(
                         modifier = Modifier.padding(10.dp),
