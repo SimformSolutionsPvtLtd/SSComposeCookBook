@@ -102,9 +102,10 @@ class SearchBoxAnimationActivity : ComponentActivity() {
             modifier = Modifier
                 .height(height)
                 .clip(
-                    if (expanded) RoundedCornerShape(
-                        topStart = 30.dp, topEnd = 30.dp
-                    ) else RoundedCornerShape(30.dp)
+                    if (expanded)
+                        RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp)
+                    else
+                        RoundedCornerShape(30.dp)
                 )
                 .fillMaxWidth()
                 .background(
@@ -162,7 +163,10 @@ class SearchBoxAnimationActivity : ComponentActivity() {
                 modifier = modifier
                     .size(50.dp)
                     .background(color = Color.Transparent)
-                    .clickable {
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null
+                    ) {
                         if (text.text.isNotEmpty()) {
                             text = TextFieldValue(text = "")
                             onTextChange("")
@@ -194,68 +198,73 @@ class SearchBoxAnimationActivity : ComponentActivity() {
             enter = expandVertically(),
             exit = shrinkVertically()
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp))
-                    .background(
-                        color = backgroundColor
-                    )
-            ) {
-                Divider(color = Color.LightGray.copy(alpha = 0.9f))
-                Column(modifier = Modifier.padding(10.dp)) {
-                    Text(
-                        text = "Recent",
-                        fontSize = 14.sp,
-                        fontFamily = FontFamily.Serif,
-                        fontWeight = FontWeight.Bold
-                    )
+            SearchSuggestions(backgroundColor = backgroundColor)
+        }
+    }
 
-                    Spacer(modifier = Modifier.height(10.dp))
+    @Composable
+    fun SearchSuggestions(backgroundColor: Color) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp))
+                .background(
+                    color = backgroundColor
+                )
+        ) {
+            Divider(color = Color.LightGray.copy(alpha = 0.9f))
+            Column(modifier = Modifier.padding(10.dp)) {
+                Text(
+                    text = "Recent",
+                    fontSize = 14.sp,
+                    fontFamily = FontFamily.Serif,
+                    fontWeight = FontWeight.Bold
+                )
 
-                    LazyColumn(modifier = Modifier.padding(10.dp)) {
-                        items(DataProvider.getSearchSuggestionsData()) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.baseline_clear_24),
-                                    contentDescription = ""
-                                )
-                                Text(it)
-                            }
+                Spacer(modifier = Modifier.height(10.dp))
+
+                LazyColumn(modifier = Modifier.padding(10.dp)) {
+                    items(DataProvider.getSearchSuggestionsData()) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_clear_24),
+                                contentDescription = ""
+                            )
+                            Text(it)
                         }
                     }
+                }
 
-                    Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
-                    Text(
-                        text = "Contacts",
-                        fontSize = 14.sp,
-                        fontFamily = FontFamily.Serif,
-                        fontWeight = FontWeight.Bold
-                    )
+                Text(
+                    text = "Contacts",
+                    fontSize = 14.sp,
+                    fontFamily = FontFamily.Serif,
+                    fontWeight = FontWeight.Bold
+                )
 
-                    Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
-                    LazyRow {
-                        items(DataProvider.getSearchProfiles()) {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier.padding(5.dp)
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.dp12),
-                                    contentDescription = "",
-                                    contentScale = ContentScale.Crop,
-                                    modifier = Modifier
-                                        .clip(RoundedCornerShape(60.dp))
-                                        .size(80.dp)
-                                )
-                                Text(
-                                    text = it,
-                                    modifier = Modifier.fillMaxWidth(),
-                                    textAlign = TextAlign.Center
-                                )
-                            }
+                LazyRow {
+                    items(DataProvider.getSearchProfiles()) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier.padding(5.dp)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.dp12),
+                                contentDescription = "",
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(60.dp))
+                                    .size(80.dp)
+                            )
+                            Text(
+                                text = it,
+                                modifier = Modifier.fillMaxWidth(),
+                                textAlign = TextAlign.Center
+                            )
                         }
                     }
                 }
