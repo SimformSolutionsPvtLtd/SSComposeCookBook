@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -73,9 +74,8 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
         setContent {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
-            val albums = remember { mutableStateOf(DataProvider.getAlbumsData()) }
             BaseView(appTheme.value, systemUiController) {
-                SharedElementTransitionWithNavigation(albums.value)
+                SharedElementTransitionWithNavigation()
             }
         }
     }
@@ -83,7 +83,8 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
-    fun SharedElementTransitionWithNavigation(albums: List<AlbumInfoModel>) {
+    fun SharedElementTransitionWithNavigation() {
+        val albums = DataProvider.getAlbumsData()
         val navController = rememberNavController()
 
         Scaffold(topBar = {
@@ -101,7 +102,7 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
                     composable("preview") {
                         PreviewContent(
                             albums = albums,
-                            animatedVisibilityScope = this@composable
+                            animatedVisibilityScope = this
                         ) { index ->
                             navController.navigate("details/$index")
                         }
@@ -143,27 +144,38 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             itemsIndexed(albums) { index, album ->
-                Box(
-                    modifier = Modifier
-                        .sharedElement(
-                            rememberSharedContentState(key = "image-$index"),
-                            animatedVisibilityScope = animatedVisibilityScope,
-                            boundsTransform = boundsTransform
-                        )
-                        .clickable {
-                            onItemClick(index)
-                        }
-                ) {
-                    Image(
-                        painter = painterResource(id = album.cover),
-                        contentDescription = "",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .aspectRatio(1f)
-                            .clip(RoundedCornerShape(10.dp))
-                    )
+                AlbumItem(album.cover, index, animatedVisibilityScope) {
+                    onItemClick(index)
                 }
             }
+        }
+    }
+
+    @OptIn(ExperimentalSharedTransitionApi::class)
+    @Composable
+    fun SharedTransitionScope.AlbumItem(
+        coverRes: Int,
+        index: Int,
+        animatedVisibilityScope: AnimatedVisibilityScope,
+        onClick: () -> Unit
+    ) {
+        Box(
+            modifier = Modifier
+                .sharedElement(
+                    rememberSharedContentState(key = "image-$index"),
+                    animatedVisibilityScope = animatedVisibilityScope,
+                    boundsTransform = boundsTransform
+                )
+                .clickable(onClick = onClick)
+        ) {
+            Image(
+                painter = painterResource(id = coverRes),
+                contentDescription = "",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .clip(RoundedCornerShape(10.dp))
+            )
         }
     }
 
@@ -179,92 +191,106 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
                 .sharedElement(
                     rememberSharedContentState(key = "image-${album.id}"),
                     animatedVisibilityScope = animatedVisibilityScope,
-                    boundsTransform = boundsTransform,
+                    boundsTransform = boundsTransform
                 )
                 .fillMaxSize()
                 .padding(10.dp)
                 .clip(RoundedCornerShape(30.dp))
-                .background(Color.LightGray.copy(0.5f))
+                .background(Color.LightGray.copy(alpha = 0.5f))
         ) {
             Column {
-                Box {
-                    Image(
-                        painterResource(id = album.cover),
-                        contentDescription = null,
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(400.dp)
-                            .clip(RoundedCornerShape(30.dp))
-                    )
+                AlbumDetailHeader(album.cover, onBackClick)
+                AlbumDetailInfo(album)
+                AlbumDetailDescription()
+            }
+        }
+    }
 
-                    Box(
-                        modifier = Modifier
-                            .padding(start = 10.dp, top = 10.dp)
-                            .clip(RoundedCornerShape(50.dp))
-                            .background(Color.White)
-                            .clickable { onBackClick() }
-                    ) {
-                        Icon(
-                            Icons.Outlined.ArrowBack,
-                            modifier = Modifier
-                                .size(50.dp)
-                                .padding(10.dp),
-                            contentDescription = null
-                        )
-                    }
-                }
+    @Composable
+    fun AlbumDetailHeader(coverRes: Int, onBackClick: () -> Unit) {
+        Box {
+            Image(
+                painterResource(id = coverRes),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(400.dp)
+                    .clip(RoundedCornerShape(30.dp))
+            )
 
-                Spacer(modifier = Modifier.height(20.dp))
-
-                Row {
-                    Column(modifier = Modifier.padding(start = 10.dp)) {
-                        Text(
-                            text = album.title,
-                            fontFamily = FontFamily.Serif,
-                            fontWeight = FontWeight.ExtraBold,
-                            fontSize = 24.sp,
-                        )
-                        Text(
-                            text = "${album.author}, ${album.year}",
-                            fontSize = 20.sp,
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.weight(1f))
-
-                    Box(
-                        modifier = Modifier
-                            .padding(end = 10.dp)
-                            .clip(RoundedCornerShape(50.dp))
-                            .background(Color.Magenta.copy(alpha = 0.3f))
-                    ) {
-                        Icon(
-                            Icons.Filled.PlayArrow,
-                            modifier = Modifier
-                                .size(50.dp)
-                                .padding(10.dp),
-                            contentDescription = null
-                        )
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(20.dp))
-
-                Text(
-                    text = "About",
-                    fontFamily = FontFamily.Monospace,
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 26.sp,
-                    modifier = Modifier.padding(start = 10.dp)
-                )
-
-                Text(
-                    text = stringResource(R.string.album_description),
+            Box(
+                modifier = Modifier
+                    .padding(start = 10.dp, top = 10.dp)
+                    .clip(RoundedCornerShape(50.dp))
+                    .background(Color.White)
+                    .clickable(onClick = onBackClick)
+            ) {
+                Icon(
+                    Icons.Outlined.ArrowBack,
                     modifier = Modifier
-                        .padding(10.dp)
-                        .skipToLookaheadSize()
+                        .size(50.dp)
+                        .padding(10.dp),
+                    contentDescription = null
                 )
             }
+        }
+    }
+
+    @Composable
+    fun AlbumDetailInfo(album: AlbumInfoModel) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 10.dp)
+        ) {
+            Spacer(modifier = Modifier.height(20.dp))
+            Row {
+                Column {
+                    Text(
+                        text = album.title,
+                        fontFamily = FontFamily.Serif,
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 24.sp
+                    )
+                    Text(
+                        text = "${album.author}, ${album.year}",
+                        fontSize = 20.sp
+                    )
+                }
+                Spacer(modifier = Modifier.weight(1f))
+                IconButton(
+                    onClick = { /* Handle play action */ },
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(50.dp))
+                        .background(Color.Magenta.copy(alpha = 0.3f))
+                ) {
+                    Icon(
+                        Icons.Filled.PlayArrow,
+                        contentDescription = null,
+                        modifier = Modifier.size(50.dp)
+                    )
+                }
+            }
+        }
+    }
+
+    @OptIn(ExperimentalSharedTransitionApi::class)
+    @Composable
+    fun SharedTransitionScope.AlbumDetailDescription() {
+        Column(modifier = Modifier.padding(10.dp)) {
+            Text(
+                text = "About",
+                fontFamily = FontFamily.Monospace,
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 26.sp,
+                modifier = Modifier.padding(start = 10.dp)
+            )
+            Text(
+                text = stringResource(R.string.album_description),
+                modifier = Modifier
+                    .padding(10.dp)
+                    .skipToLookaheadSize()
+            )
         }
     }
 }

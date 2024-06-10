@@ -42,8 +42,9 @@ class SharedElementTransitionActivity : ComponentActivity() {
                         TopAppBar(
                             title = { Text("Shared Element Transition") },
                             navigationIcon = {
-                                IconButton(onClick = { onBackPressed() })
-                                { Icon(Icons.Filled.ArrowBack, contentDescription = "") }
+                                IconButton(onClick = { onBackPressed() }) {
+                                    Icon(Icons.Filled.ArrowBack, contentDescription = "")
+                                }
                             }
                         )
                     }
