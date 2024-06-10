@@ -58,7 +58,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.data.DataProvider
-import com.jetpack.compose.learning.sharedelementtransition.model.AlbumInfoModel
+import com.jetpack.compose.learning.sharedelementtransition.model.AlbumModel
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
@@ -130,7 +130,7 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun SharedTransitionScope.PreviewContent(
-        albums: List<AlbumInfoModel>,
+        albums: List<AlbumModel>,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onItemClick: (Int) -> Unit
     ) {
@@ -182,7 +182,7 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun SharedTransitionScope.PreviewDetailContent(
-        album: AlbumInfoModel,
+        album: AlbumModel,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onBackClick: () -> Unit
     ) {
@@ -237,7 +237,7 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
     }
 
     @Composable
-    fun AlbumDetailInfo(album: AlbumInfoModel) {
+    fun AlbumDetailInfo(album: AlbumModel) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()

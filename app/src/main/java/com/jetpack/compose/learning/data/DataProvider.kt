@@ -10,7 +10,7 @@ import com.jetpack.compose.learning.maps.basic.TouristPlace
 import com.jetpack.compose.learning.maps.cluster.SSClusterItem
 import com.jetpack.compose.learning.maps.currentMarkerLatLong
 import com.jetpack.compose.learning.maps.plus
-import com.jetpack.compose.learning.sharedelementtransition.model.AlbumInfoModel
+import com.jetpack.compose.learning.sharedelementtransition.model.AlbumModel
 import com.jetpack.compose.learning.sharedelementtransition.model.CoffeeModel
 import com.jetpack.compose.learning.sharedelementtransition.model.ProfileModel
 import java.net.MalformedURLException
@@ -211,16 +211,64 @@ object DataProvider {
         )
     }
 
-    fun getAlbumsData(): List<AlbumInfoModel> {
+    fun getAlbumsData(): List<AlbumModel> {
         return listOf(
-            AlbumInfoModel(0,R.drawable.img_album_01, "It happened Quiet", "Aurora", 2018),
-            AlbumInfoModel(1, R.drawable.img_album_02, "All My Daemons", "Aurora", 2016),
-            AlbumInfoModel(2,R.drawable.img_album_03, "Running", "Aurora", 2015),
-            AlbumInfoModel(3,R.drawable.img_album_04, "Paradise", "Aurora", 2015),
-            AlbumInfoModel(4,R.drawable.img_album_05, "Heroz Falling", "Aurora", 2015),
-            AlbumInfoModel(5,R.drawable.img_album_06, "Better World", "Aurora", 2015),
-            AlbumInfoModel(6,R.drawable.img_album_07, "Master Memories", "Aurora", 2015),
-            AlbumInfoModel(7,R.drawable.img_album_08, "Chamber", "Aurora", 2015)
+            AlbumModel(
+                id = 0,
+                cover = R.drawable.img_album_01,
+                title = "It happened Quiet",
+                author = "Aurora",
+                year = 2018
+            ),
+            AlbumModel(
+                id = 1,
+                cover = R.drawable.img_album_02,
+                title = "All My Daemons",
+                author = "Aurora",
+                year = 2016
+            ),
+            AlbumModel(
+                id = 2,
+                cover = R.drawable.img_album_03,
+                title = "Running",
+                author = "Aurora",
+                year = 2015
+            ),
+            AlbumModel(
+                id = 3,
+                cover = R.drawable.img_album_04,
+                title = "Paradise",
+                author = "Aurora",
+                year = 2015
+            ),
+            AlbumModel(
+                id = 4,
+                cover = R.drawable.img_album_05,
+                title = "Heroz Falling",
+                author = "Aurora",
+                year = 2015
+            ),
+            AlbumModel(
+                id = 5,
+                cover = R.drawable.img_album_06,
+                title = "Better World",
+                author = "Aurora",
+                year = 2015
+            ),
+            AlbumModel(
+                id = 6,
+                cover = R.drawable.img_album_07,
+                title = "Master Memories",
+                author = "Aurora",
+                year = 2015
+            ),
+            AlbumModel(
+                id = 7,
+                cover = R.drawable.img_album_08,
+                title = "Chamber",
+                author = "Aurora",
+                year = 2015
+            )
         )
     }
 
@@ -234,10 +282,10 @@ object DataProvider {
 
     fun getFabProfiles(): List<ProfileModel> {
         return listOf(
-            ProfileModel(0, R.drawable.ic_profile_image_1, "Lily Thea"),
-            ProfileModel(1, R.drawable.ic_profile_image_2, "Lily Thea"),
-            ProfileModel(2, R.drawable.ic_profile_image_3, "Lily Thea"),
-            ProfileModel(3, R.drawable.ic_profile_image_4, "Lily Thea")
+            ProfileModel(id = 0, name = "Lily Thea", image = R.drawable.ic_profile_image_1),
+            ProfileModel(id = 1, name = "Lily Thea", image = R.drawable.ic_profile_image_2),
+            ProfileModel(id = 2, name = "Lily Thea", image = R.drawable.ic_profile_image_3),
+            ProfileModel(id = 3, name = "Lily Thea", image = R.drawable.ic_profile_image_4)
         )
     }
 
