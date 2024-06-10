@@ -104,24 +104,22 @@ class TextTransformAnimationActivity : ComponentActivity() {
         }) {
             SharedTransitionLayout {
                 AnimatedContent(
-                    showDetails,
+                    targetState = showDetails,
                     label = "basic_transition"
                 ) { targetState ->
                     if (targetState) {
                         DetailsContent(
+                            animatedVisibilityScope = this@AnimatedContent,
                             onBack = {
                                 showDetails = false
-                            },
-                            animatedVisibilityScope = this@AnimatedContent,
-                            sharedTransitionScope = this@SharedTransitionLayout
+                            }
                         )
                     } else {
                         MainContent(
+                            animatedVisibilityScope = this@AnimatedContent,
                             onShowDetails = {
                                 showDetails = true
-                            },
-                            animatedVisibilityScope = this@AnimatedContent,
-                            sharedTransitionScope = this@SharedTransitionLayout
+                            }
                         )
                     }
                 }
@@ -129,145 +127,129 @@ class TextTransformAnimationActivity : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalAnimationSpecApi::class)
     @Composable
-    private fun MainContent(
-        onShowDetails: () -> Unit,
-        sharedTransitionScope: SharedTransitionScope,
-        animatedVisibilityScope: AnimatedVisibilityScope
+    private fun SharedTransitionScope.MainContent(
+        animatedVisibilityScope: AnimatedVisibilityScope,
+        onShowDetails: () -> Unit
     ) {
-        with(sharedTransitionScope) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                Row(
+        Box(modifier = Modifier.fillMaxSize()) {
+            Row(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth()
+                    .sharedBounds(
+                        rememberSharedContentState(key = "bounds"),
+                        animatedVisibilityScope = animatedVisibilityScope,
+                        enter = fadeIn(
+                            tween(
+                                boundsAnimationDurationMillis,
+                                easing = FastOutSlowInEasing
+                            )
+                        ),
+                        exit = fadeOut(
+                            tween(
+                                boundsAnimationDurationMillis,
+                                easing = FastOutSlowInEasing
+                            )
+                        ),
+                        boundsTransform = boundsTransform
+                    )
+                    .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
+                    .background(Color.LightGray, RoundedCornerShape(8.dp))
+                    .clickable {
+                        onShowDetails()
+                    }
+                    .padding(8.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.dp10),
+                    contentDescription = "Cupcake",
                     modifier = Modifier
-                        .padding(8.dp)
-                        .fillMaxWidth()
-                        .sharedBounds(
-                            rememberSharedContentState(key = "bounds"),
+                        .sharedElement(
+                            state = rememberSharedContentState(key = "image"),
                             animatedVisibilityScope = animatedVisibilityScope,
-                            enter = fadeIn(
-                                tween(
-                                    boundsAnimationDurationMillis,
-                                    easing = FastOutSlowInEasing
-                                )
-                            ),
-                            exit = fadeOut(
-                                tween(
-                                    boundsAnimationDurationMillis,
-                                    easing = FastOutSlowInEasing
-                                )
-                            ),
                             boundsTransform = boundsTransform
                         )
-                        .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
-                        .background(Color.LightGray, RoundedCornerShape(8.dp))
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = null
-                        ) {
-                            onShowDetails()
-                        }
-                        .padding(8.dp)
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.dp10),
-                        contentDescription = "Cupcake",
-                        modifier = Modifier
-                            .sharedElement(
-                                rememberSharedContentState(key = "image"),
-                                animatedVisibilityScope = animatedVisibilityScope,
-                                boundsTransform = boundsTransform
-                            )
-                            .size(100.dp)
-                            .clip(CircleShape),
-                        contentScale = ContentScale.Crop
+                        .size(100.dp)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Crop
+                )
+                Text(
+                    text = "Emojis",
+                    fontSize = 21.sp,
+                    modifier = Modifier.sharedBounds(
+                        sharedContentState = rememberSharedContentState(key = "title"),
+                        animatedVisibilityScope = animatedVisibilityScope,
+                        boundsTransform = textBoundsTransform
                     )
-                    val textBoundsTransform = BoundsTransform { initialBounds, targetBounds ->
-                        keyframes {
-                            durationMillis = boundsAnimationDurationMillis
-                            initialBounds at 0 using ArcMode.ArcBelow using FastOutSlowInEasing
-                            targetBounds at boundsAnimationDurationMillis
-                        }
-                    }
-                    Text(
-                        "Emojis", fontSize = 21.sp,
-                        modifier = Modifier.sharedBounds(
-                            rememberSharedContentState(key = "title"),
-                            animatedVisibilityScope = animatedVisibilityScope,
-                            boundsTransform = textBoundsTransform
-                        )
-                    )
-                }
+                )
             }
         }
     }
 
     @Composable
-    private fun DetailsContent(
-        onBack: () -> Unit,
-        sharedTransitionScope: SharedTransitionScope,
-        animatedVisibilityScope: AnimatedVisibilityScope
+    private fun SharedTransitionScope.DetailsContent(
+        animatedVisibilityScope: AnimatedVisibilityScope,
+        onBack: () -> Unit
     ) {
-        with(sharedTransitionScope) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                Column(
+        Box(modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier
+                    .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+                    .sharedBounds(
+                        sharedContentState = rememberSharedContentState(key = "bounds"),
+                        animatedVisibilityScope = animatedVisibilityScope,
+                        enter = fadeIn(
+                            tween(
+                                durationMillis = boundsAnimationDurationMillis,
+                                easing = FastOutSlowInEasing
+                            )
+                        ),
+                        exit = fadeOut(
+                            tween(
+                                durationMillis = boundsAnimationDurationMillis,
+                                easing = FastOutSlowInEasing
+                            )
+                        ),
+                        boundsTransform = boundsTransform
+                    )
+                    .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
+                    .background(Color.LightGray, RoundedCornerShape(8.dp))
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null
+                    ) {
+                        onBack()
+                    }
+                    .padding(8.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.dp10),
+                    contentDescription = "Emojis",
                     modifier = Modifier
-                        .padding(top = 200.dp, start = 16.dp, end = 16.dp)
-                        .sharedBounds(
-                            rememberSharedContentState(key = "bounds"),
+                        .sharedElement(
+                            rememberSharedContentState(key = "image"),
                             animatedVisibilityScope = animatedVisibilityScope,
-                            enter = fadeIn(
-                                tween(
-                                    durationMillis = boundsAnimationDurationMillis,
-                                    easing = FastOutSlowInEasing
-                                )
-                            ),
-                            exit = fadeOut(
-                                tween(
-                                    durationMillis = boundsAnimationDurationMillis,
-                                    easing = FastOutSlowInEasing
-                                )
-                            ),
                             boundsTransform = boundsTransform
                         )
-                        .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
-                        .background(Color.LightGray, RoundedCornerShape(8.dp))
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = null
-                        ) {
-                            onBack()
-                        }
-                        .padding(8.dp)
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.dp10),
-                        contentDescription = "Emojis",
-                        modifier = Modifier
-                            .sharedElement(
-                                rememberSharedContentState(key = "image"),
-                                animatedVisibilityScope = animatedVisibilityScope,
-                                boundsTransform = boundsTransform
-                            )
-                            .size(200.dp)
-                            .clip(CircleShape),
-                        contentScale = ContentScale.Crop
-                    )
+                        .size(200.dp)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Crop
+                )
 
-                    Text(
-                        text = "Emojis",
-                        fontSize = 28.sp,
-                        modifier = Modifier.sharedBounds(
-                            rememberSharedContentState(key = "title"),
-                            animatedVisibilityScope = animatedVisibilityScope,
-                            boundsTransform = textBoundsTransform
-                        )
+                Text(
+                    text = "Emojis",
+                    fontSize = 28.sp,
+                    modifier = Modifier.sharedBounds(
+                        rememberSharedContentState(key = "title"),
+                        animatedVisibilityScope = animatedVisibilityScope,
+                        boundsTransform = textBoundsTransform
                     )
-                    Text(
-                        text = stringResource(id = R.string.album_description),
-                        modifier = Modifier.skipToLookaheadSize()
-                    )
-                }
+                )
+                Text(
+                    text = stringResource(id = R.string.album_description),
+                    modifier = Modifier.skipToLookaheadSize()
+                )
             }
         }
     }
