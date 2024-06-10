@@ -121,30 +121,21 @@ class SheetAnimationActivity : ComponentActivity() {
                 modifier = Modifier.padding(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(
+                Image(
+                    painter = painterResource(id = R.drawable.ic_post_image_6),
+                    contentDescription = "",
                     modifier = Modifier
-                        .sharedBounds(
-                            rememberSharedContentState(key = "bounds"),
+                        .size(height = 100.dp, width = 80.dp)
+                        .sharedElement(
+                            state = rememberSharedContentState(key = "image"),
                             animatedVisibilityScope = animatedVisibilityScope,
                             boundsTransform = boundsTransform
                         )
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_post_image_6),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .size(height = 100.dp, width = 80.dp)
-                            .sharedElement(
-                                state = rememberSharedContentState(key = "image"),
-                                animatedVisibilityScope = animatedVisibilityScope,
-                                boundsTransform = boundsTransform
-                            )
-                            .clip(RoundedCornerShape(20.dp)),
-                        contentScale = ContentScale.Crop
-                    )
+                        .clip(RoundedCornerShape(20.dp)),
+                    contentScale = ContentScale.Crop
+                )
 
-                    Spacer(modifier = Modifier.width(10.dp))
-                }
+                Spacer(modifier = Modifier.width(20.dp))
 
                 Column(modifier = Modifier.padding(vertical = 15.dp)) {
                     Text(
@@ -153,7 +144,9 @@ class SheetAnimationActivity : ComponentActivity() {
                         fontFamily = FontFamily.Serif,
                         fontWeight = FontWeight.ExtraBold
                     )
+
                     Spacer(modifier = Modifier.height(5.dp))
+
                     Text(
                         text = "Trilogy",
                         fontSize = 14.sp,
