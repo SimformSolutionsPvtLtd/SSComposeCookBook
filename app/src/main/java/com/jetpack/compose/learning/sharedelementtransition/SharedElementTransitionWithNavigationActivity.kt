@@ -104,7 +104,11 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
                             albums = albums,
                             animatedVisibilityScope = this
                         ) { index ->
-                            navController.navigate("details/$index")
+                            navController.navigate("details/$index") {
+                                popUpTo("preview") {
+                                    inclusive = true
+                                }
+                            }
                         }
                     }
 
@@ -119,7 +123,11 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
                             album = album,
                             animatedVisibilityScope = this@composable
                         ) {
-                            navController.navigate("preview")
+                            navController.navigate("preview") {
+                                popUpTo("details/$albumId") {
+                                    inclusive = true
+                                }
+                            }
                         }
                     }
                 }

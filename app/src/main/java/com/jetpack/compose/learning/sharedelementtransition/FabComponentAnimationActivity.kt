@@ -220,8 +220,8 @@ class FabComponentAnimationActivity : ComponentActivity() {
         ) {
             LazyColumn(modifier = Modifier
                 .width(160.dp)
-                .skipToLookaheadSize()
                 .clip(RoundedCornerShape(20.dp))
+                .skipToLookaheadSize()
                 .background(Color.LightGray.copy(alpha = 0.5f))
                 .clickable {
                     onBack()
