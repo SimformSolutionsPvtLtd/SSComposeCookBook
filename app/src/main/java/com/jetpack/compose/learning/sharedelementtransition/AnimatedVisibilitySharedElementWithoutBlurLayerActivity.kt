@@ -74,7 +74,7 @@ private val listSnacks = listOf(
 
 private val shapeForSharedElement = RoundedCornerShape(16.dp)
 
-class AnimatedVisibilitySharedElementShortenedExample : ComponentActivity() {
+class AnimatedVisibilitySharedElementWithoutBlurLayerActivity : ComponentActivity() {
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {

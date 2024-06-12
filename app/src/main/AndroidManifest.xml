@@ -340,10 +340,10 @@
             android:name=".sharedelementtransition.CircularRevealActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-            android:name=".sharedelementtransition.AnimatedVisibilitySharedElementShortenedExample"
+            android:name=".sharedelementtransition.AnimatedVisibilitySharedElementWithoutBlurLayerActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-            android:name=".sharedelementtransition.AnimatedVisibilitySharedElementBlurLayer"
+            android:name=".sharedelementtransition.AnimatedVisibilitySharedElementBlurLayerActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion ViewPager-->
     </application>

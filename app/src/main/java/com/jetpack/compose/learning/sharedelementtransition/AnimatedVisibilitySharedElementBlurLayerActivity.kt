@@ -64,7 +64,7 @@ private fun <T> animationSpec() = tween<T>(durationMillis = 500)
 private val boundsTransition = BoundsTransform { _, _ -> animationSpec() }
 private val shapeForSharedElement = RoundedCornerShape(16.dp)
 
-class AnimatedVisibilitySharedElementBlurLayer : ComponentActivity() {
+class AnimatedVisibilitySharedElementBlurLayerActivity : ComponentActivity() {
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
