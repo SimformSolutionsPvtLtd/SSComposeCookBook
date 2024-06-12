@@ -104,6 +104,7 @@ class SharedElementTransitionActivity : ComponentActivity() {
         Component("Text Transform Animation", TextTransformAnimationActivity::class.java),
         Component("Search Box Animation", SearchBoxAnimationActivity::class.java),
         Component("Sheet Animation", SheetAnimationActivity::class.java),
-        Component("Fab Component Animation", FabComponentAnimationActivity::class.java)
+        Component("Fab Component Animation", FabComponentAnimationActivity::class.java),
+        Component("Circular Reveal Animation", AnimatedVisibilitySharedElementBlurLayer::class.java)
     )
 }

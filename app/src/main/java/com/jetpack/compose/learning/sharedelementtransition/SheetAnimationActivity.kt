@@ -156,7 +156,13 @@ class SheetAnimationActivity : ComponentActivity() {
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                Row {
+                Row(
+                    modifier = Modifier
+                        .sharedBounds(
+                            sharedContentState = rememberSharedContentState(key = "icons"),
+                            animatedVisibilityScope
+                        )
+                ) {
                     Image(imageVector = Icons.Filled.SkipPrevious, contentDescription = "")
                     Image(imageVector = Icons.Filled.PlayCircleFilled, contentDescription = "")
                     Image(imageVector = Icons.Filled.SkipNext, contentDescription = "")
@@ -221,7 +227,13 @@ class SheetAnimationActivity : ComponentActivity() {
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                Row {
+                Row(
+                    modifier = Modifier
+                        .sharedBounds(
+                            sharedContentState = rememberSharedContentState(key = "icons"),
+                            animatedVisibilityScope
+                        )
+                ) {
                     Image(
                         imageVector = Icons.Filled.SkipPrevious,
                         contentDescription = "",
