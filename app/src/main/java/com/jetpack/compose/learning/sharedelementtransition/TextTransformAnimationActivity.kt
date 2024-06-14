@@ -1,6 +1,5 @@
 package com.jetpack.compose.learning.sharedelementtransition
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -82,46 +81,47 @@ class TextTransformAnimationActivity : ComponentActivity() {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
             BaseView(appTheme.value, systemUiController) {
-                TextTransformationAnimationDemo()
+                Scaffold(topBar = {
+                    TopAppBar(
+                        title = { Text("Text Transform Animation") },
+                        navigationIcon = {
+                            IconButton(onClick = { onBackPressed() }) {
+                                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                            }
+                        }
+                    )
+                }) {
+                    TextTransformationAnimationDemo(Modifier.padding(it))
+                }
             }
         }
     }
 
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
-    fun TextTransformationAnimationDemo() {
+    fun TextTransformationAnimationDemo(modifier: Modifier = Modifier) {
         var showDetails by remember { mutableStateOf(false) }
 
-        Scaffold(topBar = {
-            TopAppBar(
-                title = { Text("Text Transform Animation") },
-                navigationIcon = {
-                    IconButton(onClick = { onBackPressed() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
-                    }
-                }
-            )
-        }) {
-            SharedTransitionLayout {
-                AnimatedContent(
-                    targetState = showDetails,
-                    label = "basic_transition"
-                ) { targetState ->
-                    if (targetState) {
-                        DetailsContent(
-                            animatedVisibilityScope = this@AnimatedContent,
-                            onBack = {
-                                showDetails = false
-                            }
-                        )
-                    } else {
-                        MainContent(
-                            animatedVisibilityScope = this@AnimatedContent,
-                            onShowDetails = {
-                                showDetails = true
-                            }
-                        )
-                    }
+        SharedTransitionLayout {
+            AnimatedContent(
+                targetState = showDetails,
+                label = "basic_transition"
+            ) { targetState ->
+                if (targetState) {
+                    DetailsContent(
+                        modifier = modifier,
+                        animatedVisibilityScope = this@AnimatedContent,
+                        onBack = {
+                            showDetails = false
+                        }
+                    )
+                } else {
+                    MainContent(
+                        modifier = modifier,
+                        animatedVisibilityScope = this@AnimatedContent,
+                        onShowDetails = {
+                            showDetails = true
+                        }
+                    )
                 }
             }
         }
@@ -129,12 +129,13 @@ class TextTransformAnimationActivity : ComponentActivity() {
 
     @Composable
     private fun SharedTransitionScope.MainContent(
+        modifier: Modifier = Modifier,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onShowDetails: () -> Unit
     ) {
-        Box(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = modifier.fillMaxSize()) {
             Row(
-                modifier = Modifier
+                modifier = modifier
                     .padding(8.dp)
                     .fillMaxWidth()
                     .sharedBounds(
@@ -164,7 +165,7 @@ class TextTransformAnimationActivity : ComponentActivity() {
                 Image(
                     painter = painterResource(id = R.drawable.dp10),
                     contentDescription = "Cupcake",
-                    modifier = Modifier
+                    modifier = modifier
                         .sharedElement(
                             state = rememberSharedContentState(key = "image"),
                             animatedVisibilityScope = animatedVisibilityScope,
@@ -177,11 +178,12 @@ class TextTransformAnimationActivity : ComponentActivity() {
                 Text(
                     text = "Emojis",
                     fontSize = 21.sp,
-                    modifier = Modifier.sharedBounds(
-                        sharedContentState = rememberSharedContentState(key = "title"),
-                        animatedVisibilityScope = animatedVisibilityScope,
-                        boundsTransform = textBoundsTransform
-                    )
+                    modifier = modifier
+                        .sharedBounds(
+                            sharedContentState = rememberSharedContentState(key = "title"),
+                            animatedVisibilityScope = animatedVisibilityScope,
+                            boundsTransform = textBoundsTransform
+                        )
                 )
             }
         }
@@ -189,12 +191,13 @@ class TextTransformAnimationActivity : ComponentActivity() {
 
     @Composable
     private fun SharedTransitionScope.DetailsContent(
+        modifier: Modifier = Modifier,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onBack: () -> Unit
     ) {
-        Box(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = modifier.fillMaxSize()) {
             Column(
-                modifier = Modifier
+                modifier = modifier
                     .padding(top = 16.dp, start = 16.dp, end = 16.dp)
                     .sharedBounds(
                         sharedContentState = rememberSharedContentState(key = "bounds"),
@@ -226,7 +229,7 @@ class TextTransformAnimationActivity : ComponentActivity() {
                 Image(
                     painter = painterResource(id = R.drawable.dp10),
                     contentDescription = "Emojis",
-                    modifier = Modifier
+                    modifier = modifier
                         .sharedElement(
                             rememberSharedContentState(key = "image"),
                             animatedVisibilityScope = animatedVisibilityScope,
@@ -240,15 +243,17 @@ class TextTransformAnimationActivity : ComponentActivity() {
                 Text(
                     text = "Emojis",
                     fontSize = 28.sp,
-                    modifier = Modifier.sharedBounds(
-                        rememberSharedContentState(key = "title"),
-                        animatedVisibilityScope = animatedVisibilityScope,
-                        boundsTransform = textBoundsTransform
-                    )
+                    modifier = modifier
+                        .sharedBounds(
+                            rememberSharedContentState(key = "title"),
+                            animatedVisibilityScope = animatedVisibilityScope,
+                            boundsTransform = textBoundsTransform
+                        )
                 )
+
                 Text(
                     text = stringResource(id = R.string.album_description),
-                    modifier = Modifier.skipToLookaheadSize()
+                    modifier = modifier.skipToLookaheadSize()
                 )
             }
         }

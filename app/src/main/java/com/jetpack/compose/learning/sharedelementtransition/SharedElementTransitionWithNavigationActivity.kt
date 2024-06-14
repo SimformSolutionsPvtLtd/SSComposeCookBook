@@ -1,6 +1,5 @@
 package com.jetpack.compose.learning.sharedelementtransition
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -75,58 +74,59 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
             BaseView(appTheme.value, systemUiController) {
-                SharedElementTransitionWithNavigation()
+                Scaffold(topBar = {
+                    TopAppBar(
+                        title = { Text("Shared Element Transition with Navigation") },
+                        navigationIcon = {
+                            IconButton(onClick = { onBackPressed() }) {
+                                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                            }
+                        }
+                    )
+                }) {
+                    SharedElementTransitionWithNavigation(Modifier.padding(it))
+                }
             }
         }
     }
 
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
-    fun SharedElementTransitionWithNavigation() {
+    fun SharedElementTransitionWithNavigation(modifier: Modifier) {
         val albums = DataProvider.getAlbumsData()
         val navController = rememberNavController()
 
-        Scaffold(topBar = {
-            TopAppBar(
-                title = { Text("Shared Element Transition with Navigation") },
-                navigationIcon = {
-                    IconButton(onClick = { onBackPressed() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
-                    }
-                }
-            )
-        }) {
-            SharedTransitionLayout {
-                NavHost(navController = navController, startDestination = "preview") {
-                    composable("preview") {
-                        PreviewContent(
-                            albums = albums,
-                            animatedVisibilityScope = this
-                        ) { index ->
-                            navController.navigate("details/$index") {
-                                popUpTo("preview") {
-                                    inclusive = true
-                                }
+        SharedTransitionLayout {
+            NavHost(navController = navController, startDestination = "preview") {
+                composable("preview") {
+                    PreviewContent(
+                        modifier = modifier,
+                        albums = albums,
+                        animatedVisibilityScope = this
+                    ) { index ->
+                        navController.navigate("details/$index") {
+                            popUpTo("preview") {
+                                inclusive = true
                             }
                         }
                     }
+                }
 
-                    composable(
-                        "details/{item}",
-                        arguments = listOf(navArgument("item") { type = NavType.IntType })
-                    ) { navBackStackEntry ->
-                        val albumId = navBackStackEntry.arguments?.getInt("item")
-                        val album = albums[albumId!!]
+                composable(
+                    "details/{item}",
+                    arguments = listOf(navArgument("item") { type = NavType.IntType })
+                ) { navBackStackEntry ->
+                    val albumId = navBackStackEntry.arguments?.getInt("item")
+                    val album = albums[albumId!!]
 
-                        PreviewDetailContent(
-                            album = album,
-                            animatedVisibilityScope = this@composable
-                        ) {
-                            navController.navigate("preview") {
-                                popUpTo("details/$albumId") {
-                                    inclusive = true
-                                }
+                    PreviewDetailContent(
+                        modifier = modifier,
+                        album = album,
+                        animatedVisibilityScope = this@composable
+                    ) {
+                        navController.navigate("preview") {
+                            popUpTo("details/$albumId") {
+                                inclusive = true
                             }
                         }
                     }
@@ -138,12 +138,13 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun SharedTransitionScope.PreviewContent(
+        modifier: Modifier,
         albums: List<AlbumModel>,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onItemClick: (Int) -> Unit
     ) {
         LazyVerticalGrid(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
                 .background(Color.White),
             columns = GridCells.Fixed(2),
@@ -190,12 +191,13 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun SharedTransitionScope.PreviewDetailContent(
+        modifier: Modifier,
         album: AlbumModel,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onBackClick: () -> Unit
     ) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .sharedElement(
                     rememberSharedContentState(key = "image-${album.id}"),
                     animatedVisibilityScope = animatedVisibilityScope,
@@ -207,27 +209,31 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
                 .background(Color.LightGray.copy(alpha = 0.5f))
         ) {
             Column {
-                AlbumDetailHeader(album.cover, onBackClick)
-                AlbumDetailInfo(album)
-                AlbumDetailDescription()
+                AlbumDetailHeader(
+                    modifier = modifier,
+                    coverRes = album.cover,
+                    onBackClick = onBackClick
+                )
+                AlbumDetailInfo(modifier = modifier, album = album)
+                AlbumDetailDescription(modifier = modifier)
             }
         }
     }
 
     @Composable
-    fun AlbumDetailHeader(coverRes: Int, onBackClick: () -> Unit) {
+    fun AlbumDetailHeader(modifier: Modifier, coverRes: Int, onBackClick: () -> Unit) {
         Box {
             Image(
                 painterResource(id = coverRes),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier
+                modifier = modifier
                     .size(400.dp)
                     .clip(RoundedCornerShape(30.dp))
             )
 
             Box(
-                modifier = Modifier
+                modifier = modifier
                     .padding(start = 10.dp, top = 10.dp)
                     .clip(RoundedCornerShape(50.dp))
                     .background(Color.White)
@@ -235,7 +241,7 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
             ) {
                 Icon(
                     Icons.Outlined.ArrowBack,
-                    modifier = Modifier
+                    modifier = modifier
                         .size(50.dp)
                         .padding(10.dp),
                     contentDescription = null
@@ -245,9 +251,9 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
     }
 
     @Composable
-    fun AlbumDetailInfo(album: AlbumModel) {
+    fun AlbumDetailInfo(modifier: Modifier, album: AlbumModel) {
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(horizontal = 10.dp)
         ) {
@@ -265,7 +271,7 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
                         fontSize = 20.sp
                     )
                 }
-                Spacer(modifier = Modifier.weight(1f))
+                Spacer(modifier = modifier.weight(1f))
                 IconButton(
                     onClick = { /* Handle play action */ },
                     modifier = Modifier
@@ -284,18 +290,18 @@ class SharedElementTransitionWithNavigationActivity : ComponentActivity() {
 
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
-    fun SharedTransitionScope.AlbumDetailDescription() {
-        Column(modifier = Modifier.padding(10.dp)) {
+    fun SharedTransitionScope.AlbumDetailDescription(modifier: Modifier) {
+        Column(modifier = modifier.padding(10.dp)) {
             Text(
                 text = "About",
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.ExtraBold,
                 fontSize = 26.sp,
-                modifier = Modifier.padding(start = 10.dp)
+                modifier = modifier.padding(start = 10.dp)
             )
             Text(
                 text = stringResource(R.string.album_description),
-                modifier = Modifier
+                modifier = modifier
                     .padding(10.dp)
                     .skipToLookaheadSize()
             )

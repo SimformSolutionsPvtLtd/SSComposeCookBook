@@ -1,6 +1,5 @@
 package com.jetpack.compose.learning.sharedelementtransition
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -74,55 +73,60 @@ class FabComponentAnimationActivity : ComponentActivity() {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
             BaseView(appThemeState = appTheme.value, systemUiController = systemUiController) {
-                FabComponentAnimation()
+                Scaffold(topBar = {
+                    TopAppBar(
+                        title = { Text("Fab Component Animation") },
+                        navigationIcon = {
+                            IconButton(onClick = { onBackPressed() }) {
+                                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                            }
+                        }
+                    )
+                }) {
+                    FabComponentAnimation(Modifier.padding(it))
+                }
             }
         }
     }
 
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
-    fun FabComponentAnimation() {
+    fun FabComponentAnimation(modifier: Modifier = Modifier) {
         var showDetails by remember { mutableStateOf(false) }
 
-        Scaffold(topBar = {
-            TopAppBar(
-                title = { Text("Fab Component Animation") },
-                navigationIcon = {
-                    IconButton(onClick = { onBackPressed() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+        SharedTransitionLayout {
+            AnimatedContent(
+                targetState = showDetails,
+                label = "basic_transition"
+            ) { targetState ->
+                if (targetState) {
+                    DetailsContent(
+                        modifier = modifier,
+                        animatedVisibilityScope = this@AnimatedContent
+                    ) {
+                        showDetails = false
                     }
-                }
-            )
-        }) {
-            SharedTransitionLayout {
-                AnimatedContent(
-                    targetState = showDetails,
-                    label = "basic_transition"
-                ) { targetState ->
-                    if (targetState) {
-                        DetailsContent(animatedVisibilityScope = this) {
-                            showDetails = false
-                        }
-                    } else {
-                        MainContent(animatedVisibilityScope = this) {
-                            showDetails = true
-                        }
+                } else {
+                    MainContent(
+                        modifier = modifier,
+                        animatedVisibilityScope = this@AnimatedContent
+                    ) {
+                        showDetails = true
                     }
                 }
             }
         }
     }
-
 
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun SharedTransitionScope.MainContent(
+        modifier: Modifier = Modifier,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onShowDetails: () -> Unit
     ) {
         Row(
-            modifier = Modifier
+            modifier = modifier
                 .padding(start = 20.dp, top = 20.dp)
                 .size(70.dp)
                 .background(Color.Cyan, shape = RoundedCornerShape(20.dp))
@@ -154,7 +158,7 @@ class FabComponentAnimationActivity : ComponentActivity() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Card(
-                modifier = Modifier
+                modifier = modifier
                     .size(50.dp)
                     .skipToLookaheadSize()
                     .sharedBounds(
@@ -188,48 +192,51 @@ class FabComponentAnimationActivity : ComponentActivity() {
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun SharedTransitionScope.DetailsContent(
+        modifier: Modifier = Modifier,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onBack: () -> Unit
     ) {
-        Column(modifier = Modifier
-            .padding(top = 16.dp, start = 16.dp)
-            .skipToLookaheadSize()
-            .sharedBounds(
-                sharedContentState = rememberSharedContentState(key = "bounds"),
-                animatedVisibilityScope = animatedVisibilityScope,
-                enter = fadeIn(
-                    tween(
-                        durationMillis = boundsAnimationDurationMillis,
-                        easing = FastOutSlowInEasing
-                    )
-                ),
-                exit = fadeOut(
-                    tween(
-                        durationMillis = boundsAnimationDurationMillis,
-                        easing = FastOutSlowInEasing
-                    )
-                ),
-                boundsTransform = boundsTransform
-            )
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null
-            ) {
-                onBack()
-            }
-        ) {
-            LazyColumn(modifier = Modifier
-                .width(160.dp)
-                .clip(RoundedCornerShape(20.dp))
+        Column(
+            modifier = modifier
+                .padding(top = 16.dp, start = 16.dp)
                 .skipToLookaheadSize()
-                .background(Color.LightGray.copy(alpha = 0.5f))
-                .clickable {
+                .sharedBounds(
+                    sharedContentState = rememberSharedContentState(key = "bounds"),
+                    animatedVisibilityScope = animatedVisibilityScope,
+                    enter = fadeIn(
+                        tween(
+                            durationMillis = boundsAnimationDurationMillis,
+                            easing = FastOutSlowInEasing
+                        )
+                    ),
+                    exit = fadeOut(
+                        tween(
+                            durationMillis = boundsAnimationDurationMillis,
+                            easing = FastOutSlowInEasing
+                        )
+                    ),
+                    boundsTransform = boundsTransform
+                )
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null
+                ) {
                     onBack()
                 }
+        ) {
+            LazyColumn(
+                modifier = modifier
+                    .width(160.dp)
+                    .clip(RoundedCornerShape(20.dp))
+                    .skipToLookaheadSize()
+                    .background(Color.LightGray.copy(alpha = 0.5f))
+                    .clickable {
+                        onBack()
+                    }
             ) {
                 item {
                     Row(
-                        modifier = Modifier
+                        modifier = modifier
                             .clip(RoundedCornerShape(bottomStart = 25.dp, bottomEnd = 25.dp))
                             .height(70.dp)
                             .fillMaxWidth()
@@ -255,28 +262,28 @@ class FabComponentAnimationActivity : ComponentActivity() {
                             ),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Spacer(modifier = Modifier.width(20.dp))
+                        Spacer(modifier = modifier.width(20.dp))
 
                         Image(
-                            modifier = Modifier
+                            modifier = modifier
                                 .size(50.dp),
                             imageVector = Icons.Filled.Edit,
                             contentDescription = "",
                             contentScale = ContentScale.Crop
                         )
 
-                        Spacer(modifier = Modifier.width(20.dp))
+                        Spacer(modifier = modifier.width(20.dp))
 
                         Text(text = "Edit", fontSize = 14.sp)
                     }
                 }
                 items(DataProvider.getFabProfiles()) { profile: ProfileModel ->
                     Row(
-                        modifier = Modifier.padding(10.dp),
+                        modifier = modifier.padding(10.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Image(
-                            modifier = Modifier
+                            modifier = modifier
                                 .size(50.dp)
                                 .clip(RoundedCornerShape(25.dp)),
                             painter = painterResource(id = profile.image),
@@ -284,7 +291,7 @@ class FabComponentAnimationActivity : ComponentActivity() {
                             contentScale = ContentScale.Crop
                         )
 
-                        Spacer(modifier = Modifier.width(10.dp))
+                        Spacer(modifier = modifier.width(10.dp))
 
                         Text(text = profile.name, fontSize = 14.sp)
                     }

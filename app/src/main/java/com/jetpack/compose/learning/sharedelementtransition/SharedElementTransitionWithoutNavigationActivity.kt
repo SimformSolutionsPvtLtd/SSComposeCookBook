@@ -1,6 +1,5 @@
 package com.jetpack.compose.learning.sharedelementtransition
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -72,41 +71,48 @@ class SharedElementTransitionWithoutNavigationActivity : ComponentActivity() {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
             BaseView(appTheme.value, systemUiController) {
-                SharedElementTransitionWithoutNavigation()
+                Scaffold(topBar = {
+                    TopAppBar(
+                        title = { Text("Shared Element Transition without Navigation") },
+                        navigationIcon = {
+                            IconButton(onClick = { onBackPressed() }) {
+                                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                            }
+                        }
+                    )
+                }) {
+                    SharedElementTransitionWithoutNavigation(Modifier.padding(it))
+                }
             }
         }
     }
 
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
-    fun SharedElementTransitionWithoutNavigation() {
+    fun SharedElementTransitionWithoutNavigation(modifier: Modifier) {
         var selectedCoffee by remember { mutableStateOf<CoffeeModel?>(null) }
         var showDetails by remember { mutableStateOf(false) }
         val coffeeList = DataProvider.getCoffeeDetails()
 
-        Scaffold(topBar = {
-            TopAppBar(
-                title = { Text("Shared Element Transition without Navigation") },
-                navigationIcon = {
-                    IconButton(onClick = { onBackPressed() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+        SharedTransitionLayout {
+            AnimatedContent(targetState = showDetails, label = "transition") { targetState ->
+                if (!targetState) {
+                    PreviewContent(
+                        modifier = modifier,
+                        coffeeList = coffeeList,
+                        animatedVisibilityScope = this
+                    ) {
+                        selectedCoffee = it
+                        showDetails = true
                     }
-                }
-            )
-        }) {
-            SharedTransitionLayout {
-                AnimatedContent(targetState = showDetails, label = "transition") { targetState ->
-                    if (!targetState) {
-                        PreviewContent(coffeeList = coffeeList, animatedVisibilityScope = this) {
-                            selectedCoffee = it
-                            showDetails = true
-                        }
-                    } else {
-                        selectedCoffee?.let { coffee ->
-                            PreviewDetailContent(coffee = coffee, animatedVisibilityScope = this) {
-                                showDetails = false
-                            }
+                } else {
+                    selectedCoffee?.let { coffee ->
+                        PreviewDetailContent(
+                            modifier = modifier,
+                            coffee = coffee,
+                            animatedVisibilityScope = this
+                        ) {
+                            showDetails = false
                         }
                     }
                 }
@@ -117,11 +123,13 @@ class SharedElementTransitionWithoutNavigationActivity : ComponentActivity() {
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun SharedTransitionScope.PreviewContent(
+        modifier: Modifier,
         coffeeList: List<CoffeeModel>,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onShowDetails: (CoffeeModel) -> Unit,
     ) {
         LazyColumn(
+            modifier = modifier.fillMaxSize(),
             contentPadding = PaddingValues(
                 horizontal = 20.dp,
                 vertical = 10.dp
@@ -183,12 +191,13 @@ class SharedElementTransitionWithoutNavigationActivity : ComponentActivity() {
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun SharedTransitionScope.PreviewDetailContent(
+        modifier: Modifier,
         coffee: CoffeeModel,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onBack: () -> Unit,
     ) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .sharedElement(
                     state = rememberSharedContentState(key = coffee.id),
                     animatedVisibilityScope = animatedVisibilityScope,
@@ -200,26 +209,33 @@ class SharedElementTransitionWithoutNavigationActivity : ComponentActivity() {
                 .background(Color.LightGray.copy(alpha = 0.5f))
         ) {
             Column {
-                CoffeeDetailHeader(coverRes = coffee.image, onBackClick = onBack)
-                CoffeeDetailDescription(coffee = coffee)
+                CoffeeDetailHeader(
+                    modifier = modifier,
+                    coverRes = coffee.image,
+                    onBackClick = onBack
+                )
+                CoffeeDetailDescription(
+                    modifier = modifier,
+                    coffee = coffee
+                )
             }
         }
     }
 
     @Composable
-    fun CoffeeDetailHeader(coverRes: Int, onBackClick: () -> Unit) {
+    fun CoffeeDetailHeader(modifier: Modifier, coverRes: Int, onBackClick: () -> Unit) {
         Box {
             Image(
                 painterResource(id = coverRes),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier
+                modifier = modifier
                     .size(400.dp)
                     .clip(RoundedCornerShape(30.dp))
             )
 
             Box(
-                modifier = Modifier
+                modifier = modifier
                     .padding(start = 10.dp, top = 10.dp)
                     .clip(RoundedCornerShape(50.dp))
                     .background(Color.White)
@@ -227,7 +243,7 @@ class SharedElementTransitionWithoutNavigationActivity : ComponentActivity() {
             ) {
                 Icon(
                     Icons.Outlined.ArrowBack,
-                    modifier = Modifier
+                    modifier = modifier
                         .size(50.dp)
                         .padding(10.dp),
                     contentDescription = null
@@ -238,22 +254,22 @@ class SharedElementTransitionWithoutNavigationActivity : ComponentActivity() {
 
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
-    fun SharedTransitionScope.CoffeeDetailDescription(coffee: CoffeeModel) {
-        Column(modifier = Modifier.padding(5.dp)) {
+    fun SharedTransitionScope.CoffeeDetailDescription(modifier: Modifier, coffee: CoffeeModel) {
+        Column(modifier = modifier.padding(5.dp)) {
             Text(
                 text = "About",
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.ExtraBold,
                 fontSize = 26.sp,
-                modifier = Modifier.padding(start = 10.dp)
+                modifier = modifier.padding(start = 10.dp)
             )
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = modifier.height(20.dp))
             Text(
                 text = coffee.name,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
-                modifier = Modifier.padding(start = 10.dp)
+                modifier = modifier.padding(start = 10.dp)
             )
             Text(
                 text = coffee.description,

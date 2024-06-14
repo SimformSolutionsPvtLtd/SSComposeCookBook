@@ -335,9 +335,6 @@
         <activity
             android:name=".sharedelementtransition.FabComponentAnimationActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <activity
-            android:name=".sharedelementtransition.AnimatedVisibilitySharedElementActivity"
-            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion Shared Element Transition API-->
     </application>
 

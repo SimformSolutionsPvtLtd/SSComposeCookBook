@@ -357,12 +357,12 @@ object DataProvider {
 
     fun getSnackDetails() : List<SnackModel> {
         return listOf(
-            SnackModel("Cupcake", "", R.drawable.cupcake),
-            SnackModel("Donut", "", R.drawable.donut),
-            SnackModel("Eclair", "", R.drawable.eclair),
-            SnackModel("Froyo", "", R.drawable.froyo),
-            SnackModel("Gingerbread", "", R.drawable.gingerbread),
-            SnackModel("Honeycomb", "", R.drawable.honeycomb),
+            SnackModel(name = "Cupcake", image = R.drawable.cupcake),
+            SnackModel(name = "Donut", image = R.drawable.donut),
+            SnackModel(name = "Eclair", image = R.drawable.eclair),
+            SnackModel(name = "Froyo", image = R.drawable.froyo),
+            SnackModel(name = "Gingerbread", image = R.drawable.gingerbread),
+            SnackModel(name = "Honeycomb", image = R.drawable.honeycomb)
         )
     }
 }

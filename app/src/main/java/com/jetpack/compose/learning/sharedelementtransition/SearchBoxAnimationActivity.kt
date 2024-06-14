@@ -1,6 +1,5 @@
 package com.jetpack.compose.learning.sharedelementtransition
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -29,8 +28,13 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -66,18 +70,35 @@ class SearchBoxAnimationActivity : ComponentActivity() {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
             BaseView(appTheme.value, systemUiController) {
-                SearchBoxAnimation()
+                Scaffold(topBar = {
+                    TopAppBar(
+                        title = { Text("Search box and Animated Visibility Shared Element") },
+                        navigationIcon = {
+                            IconButton(onClick = { onBackPressed() }) {
+                                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                            }
+                        }
+                    )
+                }) {
+                    SearchBoxAnimation(Modifier.padding(it))
+                }
             }
         }
     }
 
-    @SuppressLint("RememberReturnType")
     @Composable
-    fun SearchBoxAnimation() {
+    fun SearchBoxAnimation(modifier: Modifier = Modifier) {
+        Column(modifier = modifier.fillMaxSize()) {
+            SearchComponent(modifier)
+            AnimatedVisibilitySharedElement()
+        }
+    }
+
+    @Composable
+    fun SearchComponent(modifier: Modifier = Modifier) {
         Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.LightGray)
+            modifier = modifier
+                .background(Color.LightGray.copy(0.5f))
                 .padding(16.dp)
         ) {
             Column {
@@ -99,7 +120,7 @@ class SearchBoxAnimationActivity : ComponentActivity() {
         var expanded by remember { mutableStateOf(false) }
 
         Row(
-            modifier = Modifier
+            modifier = modifier
                 .height(height)
                 .clip(
                     if (expanded)
@@ -203,9 +224,12 @@ class SearchBoxAnimationActivity : ComponentActivity() {
     }
 
     @Composable
-    fun SearchSuggestions(backgroundColor: Color) {
+    fun SearchSuggestions(
+        modifier: Modifier = Modifier,
+        backgroundColor: Color
+    ) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp))
                 .background(
@@ -213,7 +237,7 @@ class SearchBoxAnimationActivity : ComponentActivity() {
                 )
         ) {
             Divider(color = Color.LightGray.copy(alpha = 0.9f))
-            Column(modifier = Modifier.padding(10.dp)) {
+            Column(modifier = modifier.padding(10.dp)) {
                 Text(
                     text = "Recent",
                     fontSize = 14.sp,
@@ -221,9 +245,9 @@ class SearchBoxAnimationActivity : ComponentActivity() {
                     fontWeight = FontWeight.Bold
                 )
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = modifier.height(10.dp))
 
-                LazyColumn(modifier = Modifier.padding(10.dp)) {
+                LazyColumn(modifier = modifier.padding(10.dp)) {
                     items(DataProvider.getSearchSuggestionsData()) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
@@ -235,7 +259,7 @@ class SearchBoxAnimationActivity : ComponentActivity() {
                     }
                 }
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = modifier.height(10.dp))
 
                 Text(
                     text = "Contacts",
@@ -244,25 +268,25 @@ class SearchBoxAnimationActivity : ComponentActivity() {
                     fontWeight = FontWeight.Bold
                 )
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = modifier.height(10.dp))
 
                 LazyRow {
                     items(DataProvider.getSearchProfiles()) {
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier.padding(5.dp)
+                            modifier = modifier.padding(5.dp)
                         ) {
                             Image(
                                 painter = painterResource(id = R.drawable.dp12),
                                 contentDescription = "",
                                 contentScale = ContentScale.Crop,
-                                modifier = Modifier
+                                modifier = modifier
                                     .clip(RoundedCornerShape(60.dp))
                                     .size(80.dp)
                             )
                             Text(
                                 text = it,
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = modifier.fillMaxWidth(),
                                 textAlign = TextAlign.Center
                             )
                         }

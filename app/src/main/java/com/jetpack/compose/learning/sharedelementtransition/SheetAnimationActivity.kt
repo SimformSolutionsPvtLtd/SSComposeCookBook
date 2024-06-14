@@ -26,8 +26,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.PlayCircleFilled
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.SkipPrevious
@@ -59,7 +64,6 @@ private val boundsTransform = BoundsTransform { _: Rect, _: Rect ->
     tween(durationMillis = boundsAnimationDurationMillis, easing = FastOutSlowInEasing)
 }
 
-
 class SheetAnimationActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,14 +72,25 @@ class SheetAnimationActivity : ComponentActivity() {
             val systemUiController = remember { SystemUiController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
             BaseView(appTheme.value, systemUiController) {
-                SheetAnimation()
+                Scaffold(topBar = {
+                    TopAppBar(
+                        title = { Text("Sheet Component Animation") },
+                        navigationIcon = {
+                            IconButton(onClick = { onBackPressed() }) {
+                                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                            }
+                        }
+                    )
+                }) {
+                    SheetAnimation(Modifier.padding(it))
+                }
             }
         }
     }
 
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
-    fun SheetAnimation() {
+    fun SheetAnimation(modifier: Modifier) {
         var showDetails by remember { mutableStateOf(false) }
 
         SharedTransitionLayout(
@@ -85,11 +100,17 @@ class SheetAnimationActivity : ComponentActivity() {
         ) {
             AnimatedContent(targetState = showDetails, label = "transition") { targetState ->
                 if (targetState) {
-                    DetailContent(this@AnimatedContent) {
+                    DetailContent(
+                        modifier = modifier,
+                        animatedVisibilityScope = this@AnimatedContent
+                    ) {
                         showDetails = false
                     }
                 } else {
-                    MainContent(this@AnimatedContent) {
+                    MainContent(
+                        modifier = modifier,
+                        animatedVisibilityScope = this@AnimatedContent
+                    ) {
                         showDetails = true
                     }
                 }
@@ -100,11 +121,12 @@ class SheetAnimationActivity : ComponentActivity() {
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun SharedTransitionScope.MainContent(
+        modifier: Modifier,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onShowDetails: () -> Unit
     ) {
         Card(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(10.dp)
                 .clip(RoundedCornerShape(20.dp))
@@ -118,13 +140,13 @@ class SheetAnimationActivity : ComponentActivity() {
                 }
         ) {
             Row(
-                modifier = Modifier.padding(10.dp),
+                modifier = modifier.padding(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_post_image_6),
                     contentDescription = "",
-                    modifier = Modifier
+                    modifier = modifier
                         .size(height = 100.dp, width = 80.dp)
                         .sharedElement(
                             state = rememberSharedContentState(key = "image"),
@@ -135,9 +157,9 @@ class SheetAnimationActivity : ComponentActivity() {
                     contentScale = ContentScale.Crop
                 )
 
-                Spacer(modifier = Modifier.width(20.dp))
+                Spacer(modifier = modifier.width(20.dp))
 
-                Column(modifier = Modifier.padding(vertical = 15.dp)) {
+                Column(modifier = modifier.padding(vertical = 15.dp)) {
                     Text(
                         text = "Angel Beach",
                         fontSize = 16.sp,
@@ -145,7 +167,7 @@ class SheetAnimationActivity : ComponentActivity() {
                         fontWeight = FontWeight.ExtraBold
                     )
 
-                    Spacer(modifier = Modifier.height(5.dp))
+                    Spacer(modifier = modifier.height(5.dp))
 
                     Text(
                         text = "Trilogy",
@@ -154,10 +176,10 @@ class SheetAnimationActivity : ComponentActivity() {
                     )
                 }
 
-                Spacer(modifier = Modifier.weight(1f))
+                Spacer(modifier = modifier.weight(1f))
 
                 Row(
-                    modifier = Modifier
+                    modifier = modifier
                         .sharedBounds(
                             sharedContentState = rememberSharedContentState(key = "icons"),
                             animatedVisibilityScope
@@ -174,11 +196,12 @@ class SheetAnimationActivity : ComponentActivity() {
     @OptIn(ExperimentalSharedTransitionApi::class)
     @Composable
     fun SharedTransitionScope.DetailContent(
+        modifier: Modifier,
         animatedVisibilityScope: AnimatedVisibilityScope,
         onShowDetails: () -> Unit
     ) {
         Card(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(10.dp)
                 .clip(RoundedCornerShape(20.dp))
@@ -190,18 +213,18 @@ class SheetAnimationActivity : ComponentActivity() {
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.sharedBounds(
+                modifier = modifier.sharedBounds(
                     rememberSharedContentState(key = "bounds"),
                     animatedVisibilityScope = animatedVisibilityScope,
                     boundsTransform = boundsTransform
                 )
             ) {
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = modifier.height(10.dp))
 
                 Image(
                     painter = painterResource(id = R.drawable.ic_post_image_6),
                     contentDescription = "",
-                    modifier = Modifier
+                    modifier = modifier
                         .size(300.dp)
                         .sharedElement(
                             state = rememberSharedContentState(key = "image"),
@@ -212,7 +235,7 @@ class SheetAnimationActivity : ComponentActivity() {
                     contentScale = ContentScale.Crop
                 )
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = modifier.height(10.dp))
 
                 Text(
                     text = "Angel Beach",
@@ -225,10 +248,10 @@ class SheetAnimationActivity : ComponentActivity() {
                     fontSize = 18.sp
                 )
 
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = modifier.height(20.dp))
 
                 Row(
-                    modifier = Modifier
+                    modifier = modifier
                         .sharedBounds(
                             sharedContentState = rememberSharedContentState(key = "icons"),
                             animatedVisibilityScope
@@ -237,17 +260,17 @@ class SheetAnimationActivity : ComponentActivity() {
                     Image(
                         imageVector = Icons.Filled.SkipPrevious,
                         contentDescription = "",
-                        modifier = Modifier.size(80.dp)
+                        modifier = modifier.size(80.dp)
                     )
                     Image(
                         imageVector = Icons.Filled.PlayCircleFilled,
                         contentDescription = "",
-                        modifier = Modifier.size(80.dp)
+                        modifier = modifier.size(80.dp)
                     )
                     Image(
                         imageVector = Icons.Filled.SkipNext,
                         contentDescription = "",
-                        modifier = Modifier.size(80.dp)
+                        modifier = modifier.size(80.dp)
                     )
                 }
             }
