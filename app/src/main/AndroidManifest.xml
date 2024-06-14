@@ -312,6 +312,8 @@
         <activity
             android:name=".magnifierview.MagnifierViewActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <!--endregion ViewPager-->
+        <!--region Shared Element Transition API-->
         <activity
             android:name=".sharedelementtransition.SharedElementTransitionActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
@@ -334,18 +336,9 @@
             android:name=".sharedelementtransition.FabComponentAnimationActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-            android:name=".sharedelementtransition.CircularRevealAnimationActivity"
+            android:name=".sharedelementtransition.AnimatedVisibilitySharedElementActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <activity
-            android:name=".sharedelementtransition.CircularRevealActivity"
-            android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <activity
-            android:name=".sharedelementtransition.AnimatedVisibilitySharedElementWithoutBlurLayerActivity"
-            android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <activity
-            android:name=".sharedelementtransition.AnimatedVisibilitySharedElementBlurLayerActivity"
-            android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <!--endregion ViewPager-->
+        <!--endregion Shared Element Transition API-->
     </application>
 
 </manifest>

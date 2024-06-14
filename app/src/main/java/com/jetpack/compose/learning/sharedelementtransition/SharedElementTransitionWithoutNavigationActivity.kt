@@ -83,7 +83,7 @@ class SharedElementTransitionWithoutNavigationActivity : ComponentActivity() {
     fun SharedElementTransitionWithoutNavigation() {
         var selectedCoffee by remember { mutableStateOf<CoffeeModel?>(null) }
         var showDetails by remember { mutableStateOf(false) }
-        val coffeeList = DataProvider.getCoffeDetails()
+        val coffeeList = DataProvider.getCoffeeDetails()
 
         Scaffold(topBar = {
             TopAppBar(

@@ -105,8 +105,6 @@ class SharedElementTransitionActivity : ComponentActivity() {
         Component("Search Box Animation", SearchBoxAnimationActivity::class.java),
         Component("Sheet Animation", SheetAnimationActivity::class.java),
         Component("Fab Component Animation", FabComponentAnimationActivity::class.java),
-        Component("Animated Visibility with SET without blur layer", AnimatedVisibilitySharedElementWithoutBlurLayerActivity::class.java),
-        Component("Animated Visibility with SET with blur layer", AnimatedVisibilitySharedElementBlurLayerActivity::class.java),
-        Component("Circular Reveal Animation", CircularRevealActivity::class.java)
+        Component("Animated Visibility with SET with blur layer", AnimatedVisibilitySharedElementActivity::class.java),
     )
 }

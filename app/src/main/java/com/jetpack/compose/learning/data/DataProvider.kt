@@ -13,6 +13,7 @@ import com.jetpack.compose.learning.maps.plus
 import com.jetpack.compose.learning.sharedelementtransition.model.AlbumModel
 import com.jetpack.compose.learning.sharedelementtransition.model.CoffeeModel
 import com.jetpack.compose.learning.sharedelementtransition.model.ProfileModel
+import com.jetpack.compose.learning.sharedelementtransition.model.SnackModel
 import java.net.MalformedURLException
 import java.net.URL
 
@@ -289,7 +290,7 @@ object DataProvider {
         )
     }
 
-    fun getCoffeDetails(): List<CoffeeModel> {
+    fun getCoffeeDetails(): List<CoffeeModel> {
         return listOf(
             CoffeeModel(
                 id = 0,
@@ -351,6 +352,17 @@ object DataProvider {
                         "Ideal serving: 60ml Espresso + 180-300ml steamed milk (depending on container)",
                 image = R.drawable.ic_caffe_latte
             )
+        )
+    }
+
+    fun getSnackDetails() : List<SnackModel> {
+        return listOf(
+            SnackModel("Cupcake", "", R.drawable.cupcake),
+            SnackModel("Donut", "", R.drawable.donut),
+            SnackModel("Eclair", "", R.drawable.eclair),
+            SnackModel("Froyo", "", R.drawable.froyo),
+            SnackModel("Gingerbread", "", R.drawable.gingerbread),
+            SnackModel("Honeycomb", "", R.drawable.honeycomb),
         )
     }
 }
