@@ -69,4 +69,11 @@ All of these APIs are based on the more fundamental Animation API. Though most a
     <string name="shared_element_transition_with_navigation">Shared Element Transition With Navigation</string>
     <string name="shared_element_transition_without_navigation">Shared Element Transition without Navigation</string>
     <string name="about">About</string>
+    <string name="text_transform_animation">Text Transform Animation</string>
+    <string name="emojis">Emojis</string>
+    <string name="search_box_and_animated_visibility_shared_element">Search box and Animated Visibility Shared Element</string>
+    <string name="search_box">Search Box</string>
+    <string name="recent">Recent</string>
+    <string name="contacts">Contacts</string>
+    <string name="search">Search</string>
 </resources>

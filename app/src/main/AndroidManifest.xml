@@ -323,6 +323,12 @@
         <activity
             android:name=".sharedelementtransition.SharedElementTransitionWithoutNavigationActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".sharedelementtransition.TextTransformAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".sharedelementtransition.SearchBoxAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion Shared Element Transition API-->
     </application>
 
