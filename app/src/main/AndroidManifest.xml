@@ -313,6 +313,17 @@
             android:name=".magnifierview.MagnifierViewActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion ViewPager-->
+        <!--region Shared Element Transition API-->
+        <activity
+            android:name=".sharedelementtransition.SharedElementTransitionActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".sharedelementtransition.SharedElementTransitionWithNavigationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".sharedelementtransition.SharedElementTransitionWithoutNavigationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <!--endregion Shared Element Transition API-->
     </application>
 
 </manifest>
