@@ -329,6 +329,12 @@
         <activity
             android:name=".sharedelementtransition.SearchBoxAnimationActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".sharedelementtransition.SheetAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".sharedelementtransition.FabComponentAnimationActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <!--endregion Shared Element Transition API-->
     </application>
 

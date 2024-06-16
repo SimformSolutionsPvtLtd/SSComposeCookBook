@@ -12,6 +12,7 @@ import com.jetpack.compose.learning.maps.currentMarkerLatLong
 import com.jetpack.compose.learning.maps.plus
 import com.jetpack.compose.learning.sharedelementtransition.model.AlbumModel
 import com.jetpack.compose.learning.sharedelementtransition.model.CoffeeModel
+import com.jetpack.compose.learning.sharedelementtransition.model.ProfileModel
 import com.jetpack.compose.learning.sharedelementtransition.model.SnackModel
 import java.net.MalformedURLException
 import java.net.URL
@@ -350,6 +351,16 @@ object DataProvider {
             SnackModel(name = "Gingerbread", image = R.drawable.gingerbread),
             SnackModel(name = "Honeycomb", image = R.drawable.honeycomb)
         )
+
+    fun getFabProfiles(): List<ProfileModel> {
+        return listOf(
+            ProfileModel(id = 0, name = "Lily Thea", image = R.drawable.ic_profile_image_1),
+            ProfileModel(id = 1, name = "Lily Thea", image = R.drawable.ic_profile_image_2),
+            ProfileModel(id = 2, name = "Lily Thea", image = R.drawable.ic_profile_image_3),
+            ProfileModel(id = 3, name = "Lily Thea", image = R.drawable.ic_profile_image_4)
+        )
+    }
+
 }
 
 class MapTileProvider(private val context: Context) : UrlTileProvider(250, 250) {

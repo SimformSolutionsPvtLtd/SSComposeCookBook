@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="SSComposeCookBook.My_Application.app" target="17" />
+      <module name="StudioProjects.SSComposeCookBook.My_Application.app" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
