@@ -102,7 +102,7 @@ Draw ester egg animation.
 
 [Outline Shape]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasShapesActivity.kt#L544
 
-[Text]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasTextImageActivity.kt#
+[Text]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasTextImageActivity.kt#L106
 
 [Image 1]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasTextImageActivity.kt#L207
 
@@ -125,7 +125,7 @@ Draw ester egg animation.
 [Rotate]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasDrawScopeOperationActivity.kt#L188
 
 
-[Clip Path]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasDrawScopeOperationActivity.kt#L225
+[Clip Path]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasDrawScopeOperationActivity.kt#L255
 
 [Clip Rect]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasDrawScopeOperationActivity.kt#L298
 
@@ -133,7 +133,7 @@ Draw ester egg animation.
 
 [With Pointer Loop]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasTouchOperationActivity.kt#L222
 
-[On Image]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasTouchOperationActivity.kt#:312
+[On Image]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasTouchOperationActivity.kt#:L312
 
 [With Shapes]: /app/src/main/java/com/jetpack/compose/learning/canvas/CanvasBlendModesActivity.kt#L126
 
