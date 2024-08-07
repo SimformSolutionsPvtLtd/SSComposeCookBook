@@ -51,9 +51,9 @@ This code demonstrates various dropdown menu implementations in Jetpack Compose.
 
 - [Custom background color dropdown]
 
-- [Custom dropdown with icons in dropdown item]:
+- [Custom dropdown with icons in dropdown item]
 
-- [Disable selection dropdown]:
+- [Disable selection dropdown]
 
 | FAB | Modal Drawer | Bottom Drawer |
 | -- | -- | -- |
@@ -299,7 +299,7 @@ Checkout some other cool stuff for components of Jetpack Compose.
 
 [Simple text tabBar]: /app/src/main/java/com/jetpack/compose/learning/tabarlayout/TabBarLayoutActivity.kt#L84
 
-[Simple Icon tabBar with indicator]: /app/src/main/java/com/jetpack/compose/learning/tabarlayout/TabBarLayoutActivity.kt#L06
+[Simple Icon tabBar with indicator]: /app/src/main/java/com/jetpack/compose/learning/tabarlayout/TabBarLayoutActivity.kt#L106
 
 [TabBar with text,icon,indicator and divider]: /app/src/main/java/com/jetpack/compose/learning/tabarlayout/TabBarLayoutActivity.kt#L136
 
