@@ -39,7 +39,6 @@ import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
-import java.util.*
 
 @ExperimentalMaterialApi
 
@@ -66,15 +65,15 @@ class ImagePickerActivity : ComponentActivity() {
                             }
                         }
                     )
-                }) {
-                    MainContent(bitmap)
+                }) { contentPadding ->
+                    MainContent(modifier = Modifier.padding(contentPadding), bitmap)
                 }
             }
         }
     }
 
     @Composable
-    private fun MainContent(bitmap: Bitmap?) {
+    private fun MainContent(modifier: Modifier, bitmap: Bitmap?) {
 
         val context = LocalContext.current
         val bottomSheetModalState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
@@ -186,7 +185,7 @@ class ImagePickerActivity : ComponentActivity() {
                 }
             },
             sheetShape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp),
-            modifier = Modifier.background(MaterialTheme.colors.background)
+            modifier = modifier.background(MaterialTheme.colors.background)
 
         ) {
             Box(
@@ -288,7 +287,7 @@ class ImagePickerActivity : ComponentActivity() {
                         )
                     }) {
                         // Change bitmap value after crop functionality is completed
-                        MainContent(this.bitmap)
+                        MainContent(Modifier, this.bitmap)
                     }
                 }
             }

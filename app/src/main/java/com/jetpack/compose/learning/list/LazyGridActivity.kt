@@ -63,8 +63,8 @@ class LazyGridActivity : ComponentActivity() {
                     }
                 }
             )
-        }) {
-            Column() {
+        }) { contentPadding ->
+            Column(modifier = Modifier.padding(contentPadding)) {
                 Text(
                     "LazyVerticalGrid :",
                     modifier = Modifier.padding(20.dp),

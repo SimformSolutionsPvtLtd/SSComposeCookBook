@@ -58,8 +58,8 @@ class SwipeToDeleteListActivity : ComponentActivity() {
                     }
                 }
             )
-        }) {
-            Column() {
+        }) { contentPadding ->
+            Column(Modifier.padding(contentPadding)) {
                 Button(
                     onClick = {
                         navigateToSwipeToDeleteActivity(context, SwipeDirection.LEFT)

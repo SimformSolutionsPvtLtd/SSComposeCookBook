@@ -60,8 +60,8 @@ class LazyColumnRowActivity : ComponentActivity() {
                     }
                 }
             )
-        }) {
-            Column() {
+        }) { contentPadding ->
+            Column(modifier = Modifier.padding(contentPadding)) {
                 Text(
                     "Lazy Row :",
                     modifier = Modifier.padding(20.dp),

@@ -14,7 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jetpack.compose.learning.theme.AppThemeState
@@ -38,18 +37,17 @@ class TopAppBarActivity : ComponentActivity() {
                             }
                         }
                     )
-                }) {
-                    AppBar()
+                }) { contentPadding ->
+                    AppBar(modifier = Modifier.padding(contentPadding))
                 }
             }
         }
     }
 
-    @Preview
     @Composable
-    private fun AppBar() {
+    private fun AppBar(modifier: Modifier) {
 
-        Column {
+        Column(modifier) {
 
             Spacer(modifier = Modifier.height(80.dp))
 

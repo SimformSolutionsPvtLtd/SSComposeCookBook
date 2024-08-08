@@ -55,7 +55,6 @@ class LazyListActivity : ComponentActivity() {
 
     @Preview
     @Composable
-    @OptIn(ExperimentalMaterialApi::class)
     fun LazyComposables() {
         val spaceHeight = 24.dp
         Column(

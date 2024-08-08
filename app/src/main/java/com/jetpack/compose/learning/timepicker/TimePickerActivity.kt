@@ -13,12 +13,9 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.jetpack.compose.learning.theme.AppThemeState
@@ -55,20 +52,20 @@ class TimePickerActivity : AppCompatActivity() {
                         }
                     })
                 }
-            ) {
-                DatePickerView(datePicked, updatedTime)
+            ) { contentPadding ->
+                DatePickerView(modifier = Modifier.padding(contentPadding), datePicked, updatedTime)
             }
         }
     }
 
-    @Preview
     @Composable
     fun DatePickerView(
+        modifier: Modifier = Modifier,
         datePicked: String?,
         updatedDate: (hour: String, min: String, time: String) -> Unit,
     ) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
                 .wrapContentSize(Alignment.Center)
                 .padding(horizontal = 25.dp)

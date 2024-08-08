@@ -55,8 +55,8 @@ class PullToRefreshActivity : ComponentActivity() {
                     }
                 }
             )
-        }) {
-            Column() {
+        }) { contentPadding ->
+            Column(modifier = Modifier.padding(contentPadding)) {
                 Button(
                         onClick = {
                             startActivity(Intent(context, SimplePullToRefresh::class.java))

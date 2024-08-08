@@ -51,9 +51,9 @@ class AnimationActivity : ComponentActivity() {
                                 }
                             }
                         )
-                    }) {
+                    }) { contentPadding ->
                         Spacer(Modifier.height(16.dp))
-                        LazyColumn {
+                        LazyColumn(Modifier.padding(contentPadding)) {
                             items(getComponents()) {
                                 ButtonComponent(it.componentName, it.className)
                             }
@@ -83,7 +83,7 @@ class AnimationActivity : ComponentActivity() {
         }
     }
 
-    private fun getComponents(): List<Component> = listOf<Component>(
+    private fun getComponents(): List<Component> = listOf(
         Component("BasicAnimation", BasicAnimation::class.java),
         Component("ContentAnimation", ContentIconAnimationActivity::class.java),
         Component("GestureAnimation", GestureAnimationActivity::class.java),

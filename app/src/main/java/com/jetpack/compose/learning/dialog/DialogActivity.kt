@@ -161,7 +161,6 @@ class DialogActivity : ComponentActivity() {
     }
 
     @Composable
-    @OptIn(ExperimentalComposeUiApi::class)
     fun AlertDialogSample(closeOnBackPress: Boolean, closeOnOutsideClick: Boolean) {
         AlertDialog(
             properties = DialogProperties(

@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Divider
 import androidx.compose.material.DropdownMenu
@@ -92,13 +93,13 @@ class DropDownMenuActivity: ComponentActivity() {
                     }
                 )
             }
-        ) {
-            DropDownContents()
+        ) { contentPadding ->
+            DropDownContents(modifier = Modifier.padding(contentPadding))
         }
     }
 
     @Composable
-    fun DropDownContents() {
+    fun DropDownContents(modifier: Modifier = Modifier) {
         var isSimpleDropDownExpanded by remember { mutableStateOf(false) }
         var isCustomBackgroundDropDownExpanded by remember { mutableStateOf(false) }
         var isCustomDropDownExpanded by remember { mutableStateOf(false) }
@@ -109,7 +110,7 @@ class DropDownMenuActivity: ComponentActivity() {
         var disabledCountry by remember { mutableStateOf("") }
         val countryList = listOf("USA", "INDIA", "JAPAN", "CHINA")
 
-        Column(modifier = Modifier
+        Column(modifier = modifier
             .fillMaxWidth()
             .wrapContentSize(Alignment.Center),
         horizontalAlignment = Alignment.CenterHorizontally) {

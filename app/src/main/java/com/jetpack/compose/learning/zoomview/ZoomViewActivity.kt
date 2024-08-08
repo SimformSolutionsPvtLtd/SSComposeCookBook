@@ -1,6 +1,5 @@
 package com.jetpack.compose.learning.zoomview
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,6 +11,7 @@ import androidx.compose.foundation.gestures.forEachGesture
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
@@ -46,7 +46,6 @@ class ZoomViewActivity : ComponentActivity() {
         }
     }
 
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
     private fun MainContent() {
         val systemUiController = remember { SystemUiController(window) }
@@ -60,14 +59,14 @@ class ZoomViewActivity : ComponentActivity() {
                         }
                     })
                 }
-            ) {
-                ZoomViewComposable()
+            ) { contentPadding ->
+                ZoomViewComposable(Modifier.padding(contentPadding))
             }
         }
     }
 
     @Composable
-    fun ZoomViewComposable() {
+    fun ZoomViewComposable(modifier: Modifier = Modifier) {
         // Reacting to state changes is the core behavior of Compose. We use the state composable
         // that is used for holding a state value in this composable for representing the current
         // value scale(for zooming in the image) & translation(for panning across the image). Any
@@ -92,7 +91,7 @@ class ZoomViewActivity : ComponentActivity() {
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
+            modifier = modifier
                 .pointerInput(Unit) {
                     forEachGesture {
                         awaitPointerEventScope {

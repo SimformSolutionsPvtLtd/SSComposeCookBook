@@ -66,18 +66,18 @@ class SnackBarActivity : ComponentActivity() {
                         }
                     })
                 }, scaffoldState = scaffoldState
-            ) {
-                SnackBarExample(scaffoldState)
+            ) { contentPadding ->
+                SnackBarExample(modifier = Modifier.padding(contentPadding), scaffoldState)
             }
         }
     }
 
     @Composable
-    private fun SnackBarExample(scaffoldState: ScaffoldState) {
+    private fun SnackBarExample(modifier: Modifier, scaffoldState: ScaffoldState) {
 
         val spaceModifier = Modifier.height(30.dp)
 
-        Column {
+        Column(modifier) {
 
             val coroutineScope = rememberCoroutineScope()
 

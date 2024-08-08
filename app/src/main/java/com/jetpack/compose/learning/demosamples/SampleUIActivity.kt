@@ -58,9 +58,9 @@ class SampleUIActivity : ComponentActivity() {
                                 }
                             }
                         )
-                    }) {
+                    }) { contentPadding ->
                         Spacer(Modifier.height(16.dp))
-                        LazyColumn {
+                        LazyColumn(modifier = Modifier.padding(contentPadding)) {
                             items(getComponents()) {
                                 ButtonComponent(it.componentName, it.className)
                             }

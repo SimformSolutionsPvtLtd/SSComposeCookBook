@@ -14,7 +14,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
@@ -52,21 +51,21 @@ class DatePickerActivity : AppCompatActivity() {
                         }
                     })
                 }
-            ) {
-                DatePickerView(datePicked, updatedDate)
+            ) { contentPadding ->
+                DatePickerView(modifier = Modifier.padding(contentPadding), datePicked, updatedDate)
             }
         }
     }
 
-    @Preview
     @Composable
     fun DatePickerView(
+        modifier: Modifier,
         datePicked: String?,
         updatedDate: (date: Long?) -> Unit,
     ) {
         val activity = LocalContext.current as AppCompatActivity
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
                 .wrapContentSize(Alignment.Center)
                 .padding(horizontal = 25.dp)

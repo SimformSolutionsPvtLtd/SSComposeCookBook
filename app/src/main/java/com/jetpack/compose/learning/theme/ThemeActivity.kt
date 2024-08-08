@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -52,7 +51,6 @@ class ThemeActivity : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalFoundationApi::class)
     @Preview
     @Composable
     fun ThemeSample() {

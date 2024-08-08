@@ -70,8 +70,8 @@ class TextFieldActivity : ComponentActivity() {
                             Icon(Icons.Filled.ArrowBack, contentDescription = null)
                         }
                     })
-                }) {
-                    TextFieldExamples()
+                }) { contentPadding ->
+                    TextFieldExamples(Modifier.padding(contentPadding))
                 }
             }
         }
@@ -79,11 +79,11 @@ class TextFieldActivity : ComponentActivity() {
 
     @Preview
     @Composable
-    private fun TextFieldExamples() {
+    private fun TextFieldExamples(modifier: Modifier = Modifier) {
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
                 .wrapContentSize(Alignment.TopCenter)
         ) {

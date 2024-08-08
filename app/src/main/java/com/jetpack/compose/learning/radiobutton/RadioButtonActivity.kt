@@ -50,8 +50,8 @@ class RadioButtonActivity : ComponentActivity() {
                     }
                 }
             )
-        }) {
-            LazyColumn(contentPadding = PaddingValues(10.dp)) {
+        }) { padding ->
+            LazyColumn(modifier = Modifier.padding(padding), contentPadding = PaddingValues(10.dp)) {
                 item {
                     RadioButtonsWithProperties()
                 }

@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.ExperimentalPagerApi
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.theme.AppThemeState
@@ -56,7 +55,6 @@ class ViewPagerActivity : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalPagerApi::class)
     @Composable
     fun ViewPagerExample(modifier: Modifier = Modifier) {
         LazyColumn(

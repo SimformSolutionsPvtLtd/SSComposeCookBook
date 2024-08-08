@@ -66,18 +66,18 @@ class FloatingActionButtonActivity : ComponentActivity() {
                         Icon(Icons.Filled.Add, "")
                     }
                 }
-            ) {
-                FabButtons()
+            ) { contentPadding ->
+                FabButtons(modifier = Modifier.padding(contentPadding))
             }
         }
     }
 
     @Composable
-    private fun FabButtons() {
+    private fun FabButtons(modifier: Modifier = Modifier) {
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
                 .wrapContentSize(Alignment.Center)
         ) {

@@ -1,7 +1,6 @@
 package com.jetpack.compose.learning.animation
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.calculateTargetValue
 import androidx.compose.animation.splineBasedDecay
@@ -59,8 +58,9 @@ fun SwipeToDelete() {
 
     val lazyListState = rememberLazyListState()
 
-    Scaffold {
+    Scaffold { contentPadding ->
         LazyColumn(
+            modifier = Modifier.padding(contentPadding),
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
             state = lazyListState
         ) {
@@ -89,7 +89,6 @@ fun SwipeToDelete() {
 /**
  * Shows a separator for topics.
  */
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun TopicRowSpacer(visible: Boolean) {
     AnimatedVisibility(visible = visible) {

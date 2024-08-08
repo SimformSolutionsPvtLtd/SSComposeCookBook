@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -17,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -60,8 +62,8 @@ class BottomNavigationActivity : ComponentActivity() {
                 )
             },
             bottomBar = { BottomNavBar(navController) }
-        ) {
-            Navigation(navController)
+        ) { contentPadding ->
+            Navigation(Modifier.padding(contentPadding),navController)
         }
     }
 
@@ -73,8 +75,8 @@ class BottomNavigationActivity : ComponentActivity() {
             ScreenType.Notifications,
             ScreenType.Profile
         )
-        Column() {
-            BottomNavigation() {
+        Column {
+            BottomNavigation {
                 val navBackStackEntry by navHostController.currentBackStackEntryAsState()
                 val currentRoute = navBackStackEntry?.destination?.route
                 items.forEach { screen ->
@@ -125,8 +127,8 @@ class BottomNavigationActivity : ComponentActivity() {
     }
 
     @Composable
-    fun Navigation(navController: NavHostController) {
-        NavHost(navController, startDestination = ScreenType.Home.route) {
+    fun Navigation(modifier: Modifier, navController: NavHostController) {
+        NavHost(modifier = modifier, navController = navController, startDestination = ScreenType.Home.route) {
             // Home Screen
             composable(ScreenType.Home.route) {
                 HomeScreen()

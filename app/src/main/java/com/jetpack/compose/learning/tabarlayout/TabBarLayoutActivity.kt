@@ -43,16 +43,16 @@ class TabBarLayoutActivity : AppCompatActivity() {
                         }
                     })
                 }
-            ) {
-                TabBarSample()
+            ) { contentPadding ->
+                TabBarSample(Modifier.padding(contentPadding))
             }
         }
     }
 
     @Preview
     @Composable
-    private fun TabBarSample() {
-        Column {
+    private fun TabBarSample(modifier: Modifier = Modifier) {
+        Column(modifier) {
             AddSpaceBetweenTab()
             /** simple text tabBar */
             SimpleTabBar()

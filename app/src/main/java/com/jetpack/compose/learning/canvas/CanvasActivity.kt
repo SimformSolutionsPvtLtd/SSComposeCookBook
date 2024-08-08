@@ -48,8 +48,8 @@ class CanvasActivity : ComponentActivity() {
                                 }
                             }
                         )
-                    }) {
-                        LazyColumn(modifier = Modifier.padding(it)) {
+                    }) { contentPadding ->
+                        LazyColumn(modifier = Modifier.padding(contentPadding)) {
                             items(getComponents()) { component ->
                                 ButtonComponent(component)
                             }

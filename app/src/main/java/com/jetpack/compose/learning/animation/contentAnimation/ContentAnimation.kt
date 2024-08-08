@@ -16,7 +16,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -37,7 +36,7 @@ import com.jetpack.compose.learning.animation.Header
 import com.jetpack.compose.learning.animation.TopicRowSpacer
 
 @Composable
-fun ContentAnimation() {
+fun ContentAnimation(modifier: Modifier) {
 
     val lazyListState = rememberLazyListState()
 
@@ -46,23 +45,21 @@ fun ContentAnimation() {
     // Holds the topic that is currently expanded to show its body.
     var expandedTopic by remember { mutableStateOf<String?>(null) }
 
-    Scaffold {
-        LazyColumn(
-            modifier = Modifier.wrapContentHeight(),
-            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 32.dp),
-            state = lazyListState
-        ) {
-            // Weather
-            item { Spacer(modifier = Modifier.height(16.dp)) }
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 32.dp),
+        state = lazyListState
+    ) {
+        // Weather
+        item { Spacer(modifier = Modifier.height(16.dp)) }
 
-            // Topics
-            item { Header(title = stringResource(R.string.topics)) }
-            item { Spacer(modifier = Modifier.height(16.dp)) }
-            items(allTopics) { topic ->
-                TopicRow(topic = topic, expanded = expandedTopic == topic, onClick = {
-                    expandedTopic = if (expandedTopic == topic) null else topic
-                })
-            }
+        // Topics
+        item { Header(title = stringResource(R.string.topics)) }
+        item { Spacer(modifier = Modifier.height(16.dp)) }
+        items(allTopics) { topic ->
+            TopicRow(topic = topic, expanded = expandedTopic == topic, onClick = {
+                expandedTopic = if (expandedTopic == topic) null else topic
+            })
         }
     }
 }
@@ -104,5 +101,5 @@ private fun TopicRow(topic: String, expanded: Boolean, onClick: () -> Unit) {
 @Preview
 @Composable
 private fun PreviewContentAnimation() {
-    ContentAnimation()
+    ContentAnimation(modifier = Modifier.wrapContentHeight())
 }
