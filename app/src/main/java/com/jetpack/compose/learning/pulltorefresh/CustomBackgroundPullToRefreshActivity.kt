@@ -3,24 +3,30 @@ package com.jetpack.compose.learning.pulltorefresh
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.pullrefresh.PullRefreshState
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -30,12 +36,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithCache
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.swiperefresh.SwipeRefresh
-import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
-import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
@@ -53,6 +58,7 @@ class CustomBackgroundPullToRefreshActivity : ComponentActivity() {
         }
     }
 
+    @OptIn(ExperimentalMaterialApi::class)
     @Preview
     @Composable
     fun MainContent() {
@@ -60,7 +66,21 @@ class CustomBackgroundPullToRefreshActivity : ComponentActivity() {
         val items = remember { mutableStateListOf<Int>() }
         items.addAll(0..10)
         var isRefreshing by remember { mutableStateOf(false) }
-        val swipeRefreshState = rememberSwipeRefreshState(isRefreshing)
+//        val swipeRefreshState = rememberSwipeRefreshState(isRefreshing)
+        val refreshState = rememberPullRefreshState(
+            refreshing = isRefreshing,
+            onRefresh = {
+                isRefreshing = true
+            })
+
+        LaunchedEffect(isRefreshing) {
+            if (isRefreshing) {
+                delay(1000L)
+                items.clear()
+                items.addAll((1..10).map { (0..100).random() })
+                isRefreshing = false
+            }
+        }
 
         Scaffold(topBar = {
             TopAppBar(
@@ -72,40 +92,60 @@ class CustomBackgroundPullToRefreshActivity : ComponentActivity() {
                     }
             )
         }) { contentPadding ->
-            Column(modifier = Modifier.padding(contentPadding)) {
-                SwipeRefresh(
-                        state = swipeRefreshState,
-                        onRefresh = {
-                            isRefreshing = true
-                        },
-                        indicator = { state, trigger ->
-                            SwipeRefreshIndicator(
-                                    state = state,
-                                    refreshTriggerDistance = trigger,
-                                    scale = true,
-                                    backgroundColor = MaterialTheme.colors.primary,
-                                    contentColor = Color.White,
-                                    shape = CircleShape,
-                            )
-                        }) {
-                    LazyColumn(
-                            contentPadding = PaddingValues(10.dp),
-                            verticalArrangement = Arrangement.spacedBy(10.dp)
-                    ) {
-                        items(items.size) {
-                            ColumnItem(number = items[it])
-                        }
-                    }
-                    LaunchedEffect(isRefreshing) {
-                        if (isRefreshing) {
-                            delay(1000L)
-                            items.clear()
-                            items.addAll((1..10).map { (0..100).random() })
-                            isRefreshing= false
-                        }
+            Box(modifier = Modifier.padding(contentPadding)) {
+                LazyColumn(
+                    modifier = Modifier.pullRefresh(refreshState),
+                    contentPadding = PaddingValues(10.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    items(items.size) {
+                        ColumnItem(number = items[it])
                     }
                 }
+                CustomPullRefreshView(refreshState)
+//                PullRefreshIndicator(
+//                    modifier = Modifier.align(Alignment.TopCenter),
+//                    refreshing = isRefreshing,
+//                    state = refreshState,
+//                    backgroundColor = MaterialTheme.colors.primary,
+//                    contentColor = Color.White,
+//                    scale = true
+//                )
             }
+//            Column(modifier = Modifier.padding(contentPadding)) {
+//                SwipeRefresh(
+//                        state = swipeRefreshState,
+//                        onRefresh = {
+//                            isRefreshing = true
+//                        },
+//                        indicator = { state, trigger ->
+//                            SwipeRefreshIndicator(
+//                                    state = state,
+//                                    refreshTriggerDistance = trigger,
+//                                    scale = true,
+//                                    backgroundColor = MaterialTheme.colors.primary,
+//                                    contentColor = Color.White,
+//                                    shape = CircleShape,
+//                            )
+//                        }) {
+//                    LazyColumn(
+//                            contentPadding = PaddingValues(10.dp),
+//                            verticalArrangement = Arrangement.spacedBy(10.dp)
+//                    ) {
+//                        items(items.size) {
+//                            ColumnItem(number = items[it])
+//                        }
+//                    }
+//                    LaunchedEffect(isRefreshing) {
+//                        if (isRefreshing) {
+//                            delay(1000L)
+//                            items.clear()
+//                            items.addAll((1..10).map { (0..100).random() })
+//                            isRefreshing= false
+//                        }
+//                    }
+//                }
+//            }
         }
     }
 
@@ -113,10 +153,10 @@ class CustomBackgroundPullToRefreshActivity : ComponentActivity() {
     fun ColumnItem(number: Int) {
         Column(
                 modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp)
-                        .background(MaterialTheme.colors.background)
-                        .border(1.dp, MaterialTheme.colors.primary),
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .background(MaterialTheme.colors.background)
+                    .border(1.dp, MaterialTheme.colors.primary),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
 
@@ -125,4 +165,40 @@ class CustomBackgroundPullToRefreshActivity : ComponentActivity() {
         }
     }
 
+}
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun CustomPullRefreshView(
+    swipeRefreshState: PullRefreshState,
+    color: Color = MaterialTheme.colors.primary,
+) {
+    Box(
+        Modifier
+            .drawWithCache {
+                onDrawBehind {
+                    val progress = swipeRefreshState.progress
+                    // We draw a translucent glow
+                    val brush = Brush.verticalGradient(
+                        0f to color.copy(alpha = 0.45f),
+                        1f to color.copy(alpha = 0f)
+                    )
+                    // And fade the glow in/out based on the swipe progress
+                    drawRect(brush = brush, alpha = FastOutSlowInEasing.transform(progress))
+                }
+            }
+            .fillMaxWidth()
+            .height(80.dp)
+    ) {
+        if (swipeRefreshState.progress == 1f) {
+            // If we're refreshing, show an indeterminate progress indicator
+            LinearProgressIndicator(Modifier.fillMaxWidth())
+        } else {
+            // Otherwise we display a determinate progress indicator with the current swipe progress
+            val progress = swipeRefreshState.progress
+            LinearProgressIndicator(
+                progress = progress,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+    }
 }

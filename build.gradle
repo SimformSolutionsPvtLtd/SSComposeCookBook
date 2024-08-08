@@ -1,9 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        kotlin_gradle_version = '1.6.21'
+        kotlin_gradle_version = '1.9.24'
         kotlin_stdlib_version = '1.6.21'
-        compose_version = '1.2.0-beta03'
+        compose_version = '1.5.14'
         activity_version = '1.4.0'
         constraint_compose_version = '1.0.1'
         navigation_compose_version = '2.4.2'

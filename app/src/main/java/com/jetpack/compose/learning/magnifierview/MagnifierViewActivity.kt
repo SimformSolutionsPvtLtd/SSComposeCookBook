@@ -7,7 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.MagnifierStyle
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -56,6 +55,7 @@ class MagnifierViewActivity : AppCompatActivity() {
 
     //default offset to get magnifier out of screen on Y-Axis
     //when user releases press and it is not needed.
+    //EDIT: This will not work in smaller screen. the magnifier still stays on top of the image a little. suggestion: move it in (-1000, -1000) position
     private val Offset.Companion.default
         get() = Offset(0F, 1000F)
 
@@ -114,11 +114,8 @@ class MagnifierViewActivity : AppCompatActivity() {
                         sourceCenter = { centerOffset },
                         magnifierCenter = { centerOffset },
                         zoom = MAGNIFIER_ZOOM_FACTOR,
-                        style = MagnifierStyle(
-                            size = size,
-                            fishEyeEnabled = true,
-                            elevation = 0.dp
-                        )
+                        size = size,
+                        elevation = 0.dp
                     )
                     .pointerInteropFilter {
                         when (it.action) {

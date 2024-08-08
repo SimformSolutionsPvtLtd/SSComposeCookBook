@@ -1,17 +1,20 @@
 package com.jetpack.compose.learning.pulltorefresh
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -20,6 +23,9 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -50,6 +56,7 @@ class SimplePullToRefresh : ComponentActivity() {
         }
     }
 
+    @OptIn(ExperimentalMaterialApi::class)
     @Preview
     @Composable
     fun MainContent() {
@@ -57,8 +64,22 @@ class SimplePullToRefresh : ComponentActivity() {
         val items = remember { mutableStateListOf<Int>() }
         items.addAll(0..10)
         var isRefreshing by remember { mutableStateOf(false) }
-        val swipeRefreshState = rememberSwipeRefreshState(isRefreshing)
+//        val swipeRefreshState = rememberSwipeRefreshState(isRefreshing)
+        val refreshState = rememberPullRefreshState(
+            refreshing = isRefreshing,
+            onRefresh = {
+                isRefreshing = true
+            }
+        )
 
+        LaunchedEffect(isRefreshing) {
+            if (isRefreshing) {
+                delay(1000L)
+                items.clear()
+                items.addAll((1..10).map { (0..100).random() })
+                isRefreshing= false
+            }
+        }
 
         Scaffold(topBar = {
             TopAppBar(
@@ -70,28 +91,46 @@ class SimplePullToRefresh : ComponentActivity() {
                     }
             )
         }) { contentPadding ->
-            Column(modifier = Modifier.padding(contentPadding)) {
-                SwipeRefresh(state = swipeRefreshState, onRefresh = {
-                    isRefreshing = true
-                }) {
-                    LazyColumn(
-                            contentPadding = PaddingValues(10.dp),
-                            verticalArrangement = Arrangement.spacedBy(10.dp)
-                    ) {
-                        items(items.size) {
-                            ColumnItem(number = items[it])
-                        }
-                    }
-                    LaunchedEffect(isRefreshing) {
-                        if (isRefreshing) {
-                            delay(1000L)
-                            items.clear()
-                            items.addAll((1..10).map { (0..100).random() })
-                            isRefreshing= false
-                        }
+            Box(Modifier.padding(contentPadding)) {
+                LazyColumn(
+                    modifier = Modifier
+                        .pullRefresh(refreshState),
+                    contentPadding = PaddingValues(10.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    items(items.size) {
+                        ColumnItem(number = items[it])
                     }
                 }
+                PullRefreshIndicator(
+                    modifier = Modifier.align(Alignment.TopCenter),
+                    refreshing = isRefreshing,
+                    state = refreshState
+                )
             }
+//            Column(modifier = Modifier.padding(contentPadding)) {
+
+//                SwipeRefresh(state = swipeRefreshState, onRefresh = {
+//                    isRefreshing = true
+//                }) {
+//                    LazyColumn(
+//                            contentPadding = PaddingValues(10.dp),
+//                            verticalArrangement = Arrangement.spacedBy(10.dp)
+//                    ) {
+//                        items(items.size) {
+//                            ColumnItem(number = items[it])
+//                        }
+//                    }
+//                    LaunchedEffect(isRefreshing) {
+//                        if (isRefreshing) {
+//                            delay(1000L)
+//                            items.clear()
+//                            items.addAll((1..10).map { (0..100).random() })
+//                            isRefreshing= false
+//                        }
+//                    }
+//                }
+//            }
         }
     }
 
@@ -99,10 +138,10 @@ class SimplePullToRefresh : ComponentActivity() {
     fun ColumnItem(number: Int) {
         Column(
                 modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp)
-                        .background(MaterialTheme.colors.background)
-                        .border(1.dp, MaterialTheme.colors.primary),
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .background(MaterialTheme.colors.background)
+                    .border(1.dp, MaterialTheme.colors.primary),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
 
