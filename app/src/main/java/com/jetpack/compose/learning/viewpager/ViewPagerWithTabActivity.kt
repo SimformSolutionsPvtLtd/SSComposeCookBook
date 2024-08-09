@@ -3,19 +3,21 @@ package com.jetpack.compose.learning.viewpager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.Text
 import androidx.compose.material.TabRow
-import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Tab
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,10 +28,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.pagerTabIndicatorOffset
-import com.google.accompanist.pager.rememberPagerState
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
@@ -50,7 +48,7 @@ class ViewPagerWithTabActivity : ComponentActivity() {
                             title = { Text(stringResource(id = R.string.title_horizontal_pager_with_tabs)) },
                             navigationIcon = {
                                 IconButton(onClick = { onBackPressed() }) {
-                                    Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                                 }
                             }
                         )
@@ -62,10 +60,9 @@ class ViewPagerWithTabActivity : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalPagerApi::class)
+    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     fun ViewPagerWithTab(modifier: Modifier = Modifier) {
-        val pagerState = rememberPagerState()
         val coroutineScope = rememberCoroutineScope()
         val tabDataList = listOf(
             stringResource(R.string.text_music) to R.string.description_music,
@@ -73,17 +70,15 @@ class ViewPagerWithTabActivity : ComponentActivity() {
             stringResource(R.string.text_films) to R.string.description_films,
             stringResource(R.string.text_book) to R.string.description_books,
         )
+        val pagerState = rememberPagerState(pageCount =  {
+            tabDataList.size
+        })
 
         Column(
             modifier = modifier
         ) {
             TabRow(
-                selectedTabIndex = pagerState.currentPage,
-                indicator = { tabPosition ->
-                    TabRowDefaults.Indicator(
-                        Modifier.pagerTabIndicatorOffset(pagerState, tabPosition)
-                    )
-                },
+                selectedTabIndex = pagerState.currentPage
             ) {
                 tabDataList.forEachIndexed { index, tab ->
                     Tab(
@@ -105,7 +100,6 @@ class ViewPagerWithTabActivity : ComponentActivity() {
                 }
             }
             HorizontalPager(
-                count = tabDataList.count(),
                 state = pagerState,
             ) { page ->
                 Text(

@@ -3,6 +3,7 @@ package com.jetpack.compose.learning.viewpager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -15,6 +16,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
@@ -27,11 +30,12 @@ import androidx.compose.material.Card
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -40,6 +44,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
@@ -50,13 +56,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.rememberPagerState
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 import com.jetpack.compose.learning.viewpager.viewmodel.AddRemovePagerViewModel
+import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 
 /**
@@ -79,12 +84,14 @@ class AddRemovePagerActivity : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalPagerApi::class)
+    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     fun AddRemovePager() {
-        val pagerState = rememberPagerState()
-        val scope = rememberCoroutineScope()
         val composableList by viewModel.composableListFlow.collectAsState(initial = viewModel.getComposableList())
+        val pagerState = rememberPagerState(pageCount = {
+            composableList.size
+        })
+        val scope = rememberCoroutineScope()
         val dropdownSelectedState by viewModel.selectedDropdownValue.collectAsState()
 
         Column(
@@ -101,15 +108,16 @@ class AddRemovePagerActivity : ComponentActivity() {
                 ) {
                     Text(stringResource(R.string.text_empty_pager), color = Color.Gray)
                 }
+            } else {
+                HorizontalPager(
+                    state = pagerState,
+                    modifier = Modifier.fillMaxSize()
+                ) { page ->
+                    currentIndex = page
+                    composableList[page].first.invoke()
+                }
             }
-            PreviewHorizontalPager(
-                pageCount = composableList.size,
-                pagerState = pagerState,
-                modifier = Modifier.fillMaxSize()
-            ) { page ->
-                currentIndex = page
-                composableList[page].first.invoke()
-            }
+
             if (dropdownSelectedState.isNotEmpty()) {
                 AddOrRemovePageDialog(
                     dropdownSelectedState,
@@ -143,19 +151,21 @@ class AddRemovePagerActivity : ComponentActivity() {
     @Composable
     fun DynamicAddedItem() {
         val number = viewModel.getComposableNumber(currentIndex)
-        Box(
-            modifier = Modifier
-                .width(220.dp)
-                .height(220.dp)
-                .background(MaterialTheme.colors.background)
-                .border(1.dp, MaterialTheme.colors.primary),
-        ) {
-            Text(
-                text = "Page $number",
-                color = MaterialTheme.colors.primary,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.align(Alignment.Center)
-            )
+        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Box(
+                modifier = Modifier
+                    .width(220.dp)
+                    .height(220.dp)
+                    .background(MaterialTheme.colors.background)
+                    .border(1.dp, MaterialTheme.colors.primary),
+            ) {
+                Text(
+                    text = "Page $number",
+                    color = MaterialTheme.colors.primary,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
         }
     }
 
@@ -191,7 +201,7 @@ class AddRemovePagerActivity : ComponentActivity() {
             },
             navigationIcon = {
                 IconButton(onClick = { onBackPressed() }) {
-                    Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                 }
             }
         )
@@ -206,7 +216,17 @@ class AddRemovePagerActivity : ComponentActivity() {
     ) {
         val positionValueTextField by viewModel.positionValueTextField.collectAsState()
         val isShowPositionError by viewModel.isShowPositionError.collectAsState()
+        val focusRequester = remember {
+            FocusRequester()
+        }
 
+        // Request focus for the dialog text field.
+        LaunchedEffect(Unit) {
+            this.coroutineContext.job.invokeOnCompletion {
+                // Make sure to invoke the requestFocus once the composition is finished
+                focusRequester.requestFocus()
+            }
+        }
         Dialog(
             onDismissRequest = {
                 dismissDialog()
@@ -231,7 +251,7 @@ class AddRemovePagerActivity : ComponentActivity() {
                             if (it.isDigitsOnly())
                                 viewModel.positionValueTextField.value = it
                         },
-                        modifier = Modifier.padding(start = 15.dp),
+                        modifier = Modifier.padding(start = 15.dp).focusRequester(focusRequester),
                         keyboardOptions = KeyboardOptions.Default.copy(
                             keyboardType = KeyboardType.Number,
                             imeAction = ImeAction.Done

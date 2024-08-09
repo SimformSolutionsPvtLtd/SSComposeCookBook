@@ -3,6 +3,7 @@ package com.jetpack.compose.learning.viewpager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.IconButton
@@ -19,10 +22,10 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.Checkbox
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.SkipPrevious
-import androidx.compose.material.icons.filled.ArrowBackIos
-import androidx.compose.material.icons.filled.ArrowForwardIos
+import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateOf
@@ -37,9 +40,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.data.DataProvider
 import com.jetpack.compose.learning.theme.AppThemeState
@@ -64,7 +64,7 @@ class HorizontalViewPager : ComponentActivity() {
                         TopAppBar(
                             title = { Text(stringResource(id = R.string.title_horizontal_pager)) },
                             navigationIcon = {
-                                IconButtonComponent(icon = Icons.Filled.ArrowBack) {
+                                IconButtonComponent(icon = Icons.AutoMirrored.Filled.ArrowBack) {
                                     onBackPressed()
                                 }
                             }
@@ -77,14 +77,16 @@ class HorizontalViewPager : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalPagerApi::class)
+    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     fun SimpleHorizontalViewPager(modifier: Modifier = Modifier) {
-        val pagerState = rememberPagerState()
+        val imageList = DataProvider.getViewPagerImages()
+        val pagerState = rememberPagerState(pageCount = {
+            imageList.size
+        })
         val scope = rememberCoroutineScope()
         var isReversePageChecked by remember { mutableStateOf(false) }
         var isDisableSwipeChecked by remember { mutableStateOf(false) }
-        val imageList = DataProvider.getViewPagerImages()
 
         Column(
             verticalArrangement = Arrangement.Center,
@@ -111,10 +113,9 @@ class HorizontalViewPager : ComponentActivity() {
                 }
             }
             HorizontalPager(
-                count = imageList.size,
                 state = pagerState,
                 reverseLayout = isReversePageChecked,
-                itemSpacing = 60.dp,
+                pageSpacing = 60.dp,
                 modifier = Modifier.disabledHorizontalPointerInputScroll(isDisableSwipeChecked)
             ) {
                 Image(
@@ -137,14 +138,14 @@ class HorizontalViewPager : ComponentActivity() {
                         pagerState.animateScrollToPage(0)
                     }
                 }
-                IconButtonComponent(Icons.Filled.ArrowBackIos) {
+                IconButtonComponent(Icons.Filled.ArrowBackIosNew) {
                     scope.launch {
                         if (pagerState.currentPage > 0) {
                             pagerState.animateScrollToPage(pagerState.currentPage - 1)
                         }
                     }
                 }
-                IconButtonComponent(Icons.Filled.ArrowForwardIos) {
+                IconButtonComponent(Icons.AutoMirrored.Filled.ArrowForwardIos) {
                     scope.launch {
                         if (pagerState.currentPage < imageList.size - 1)
                             pagerState.animateScrollToPage(pagerState.currentPage + 1)

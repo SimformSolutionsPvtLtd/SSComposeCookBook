@@ -3,13 +3,17 @@ package com.jetpack.compose.learning.viewpager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
@@ -17,7 +21,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,10 +32,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.HorizontalPagerIndicator
-import com.google.accompanist.pager.rememberPagerState
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.data.DataProvider
 import com.jetpack.compose.learning.theme.AppThemeState
@@ -52,7 +52,7 @@ class HorizontalPagerWithIndicator : ComponentActivity() {
                             title = { Text(stringResource(id = R.string.title_horizontal_pager_with_indicator)) },
                             navigationIcon = {
                                 IconButton(onClick = { onBackPressed() }) {
-                                    Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                                 }
                             }
                         )
@@ -64,17 +64,19 @@ class HorizontalPagerWithIndicator : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalPagerApi::class)
+    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     private fun PagerWithIndicator(modifier: Modifier = Modifier) {
-        val pagerState = rememberPagerState()
         val imageList = DataProvider.getViewPagerImages()
+        val pagerState = rememberPagerState(pageCount = {
+            imageList.size
+        })
 
         Column(
-            modifier.fillMaxSize()
+            modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             HorizontalPager(
-                count = imageList.size,
                 state = pagerState,
                 modifier = Modifier
                     .weight(1f)
@@ -94,10 +96,8 @@ class HorizontalPagerWithIndicator : ComponentActivity() {
              * horizontal pager indicator create circle indicator and change according to horizontal pager
              */
             HorizontalPagerIndicator(
-                pagerState = pagerState,
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(16.dp),
+                modifier = Modifier.padding(bottom = 16.dp),
+                pagerState = pagerState
             )
         }
     }

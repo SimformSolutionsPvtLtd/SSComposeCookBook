@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.viewpager.viewmodel
 
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import com.jetpack.compose.learning.viewpager.ComposableFun
 import kotlinx.coroutines.channels.Channel
@@ -8,13 +9,13 @@ import kotlinx.coroutines.flow.receiveAsFlow
 
 class AddRemovePagerViewModel : ViewModel() {
 
-    private val composableList = ArrayList<Pair<ComposableFun, Int>>()
+    private val composableList = mutableStateListOf<Pair<ComposableFun, Int>>()
     var selectedDropdownValue = MutableStateFlow("")
     var isShowDropdown = MutableStateFlow(false)
     var positionValueTextField = MutableStateFlow("")
     var isShowPositionError = MutableStateFlow(false)
 
-    private val composableListChannel = Channel<ArrayList<Pair<ComposableFun, Int>>>()
+    private val composableListChannel = Channel<List<Pair<ComposableFun, Int>>>()
     val composableListFlow = composableListChannel.receiveAsFlow()
 
     suspend fun addComposable(position: Int, item: ComposableFun) {
@@ -31,7 +32,7 @@ class AddRemovePagerViewModel : ViewModel() {
         return composableList[index].second
     }
 
-    fun getComposableList(): ArrayList<Pair<ComposableFun, Int>> {
+    fun getComposableList(): List<Pair<ComposableFun, Int>> {
         return composableList
     }
 }
