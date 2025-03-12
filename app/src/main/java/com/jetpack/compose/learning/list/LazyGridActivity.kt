@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.list
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -50,6 +51,7 @@ class LazyGridActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @ExperimentalFoundationApi
     @Preview
     @Composable

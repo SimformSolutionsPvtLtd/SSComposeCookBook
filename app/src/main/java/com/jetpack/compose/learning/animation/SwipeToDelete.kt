@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.animation
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.Animatable
@@ -49,6 +50,7 @@ import kotlinx.coroutines.launch
 /**
  * Shows the entire screen.
  */
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SwipeToDelete() {
     // String resources.

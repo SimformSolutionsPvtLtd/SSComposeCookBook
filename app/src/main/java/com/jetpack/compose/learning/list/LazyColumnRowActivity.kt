@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.list
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -48,6 +49,7 @@ class LazyColumnRowActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Preview
     @Composable
     fun MainContent() {

@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.snackbar
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -51,6 +52,7 @@ class SnackBarActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Preview
     @Composable
     private fun MainContent() {

@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.animation
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -35,6 +36,7 @@ import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 
 class AnimationActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

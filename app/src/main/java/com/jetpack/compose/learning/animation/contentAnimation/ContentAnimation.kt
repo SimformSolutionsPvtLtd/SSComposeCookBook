@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.animation.contentAnimation
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -36,6 +37,7 @@ import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.animation.Header
 import com.jetpack.compose.learning.animation.TopicRowSpacer
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ContentAnimation() {
 

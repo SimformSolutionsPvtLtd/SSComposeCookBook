@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.datepicker
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -14,7 +15,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
@@ -33,6 +33,7 @@ class DatePickerActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
     private fun MainContent() {
         var datePicked: String? by remember {
@@ -58,7 +59,6 @@ class DatePickerActivity : AppCompatActivity() {
         }
     }
 
-    @Preview
     @Composable
     fun DatePickerView(
         datePicked: String?,

@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.bottomnav
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -45,6 +46,7 @@ class BottomNavigationActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
     fun MainContent() {
         val navController = rememberNavController()

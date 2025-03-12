@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.radiobutton
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -38,6 +39,7 @@ class RadioButtonActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Preview
     @Composable
     fun MainContent() {

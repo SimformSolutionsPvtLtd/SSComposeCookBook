@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.parallaxeffect
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -56,6 +57,7 @@ class ParallaxEffectActivity: ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Preview
     @Composable
     fun MainContent() {

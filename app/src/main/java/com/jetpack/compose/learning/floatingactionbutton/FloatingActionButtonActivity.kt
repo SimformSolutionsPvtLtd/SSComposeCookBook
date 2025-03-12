@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.floatingactionbutton
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -45,6 +46,7 @@ class FloatingActionButtonActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Preview
     @Composable
     private fun MainContent() {

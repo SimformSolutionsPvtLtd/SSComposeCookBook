@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.swipetodelete
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.activity.ComponentActivity
 import android.content.Intent
@@ -45,6 +46,7 @@ class SwipeToDeleteListActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Preview
     @Composable
     fun MainContent() {

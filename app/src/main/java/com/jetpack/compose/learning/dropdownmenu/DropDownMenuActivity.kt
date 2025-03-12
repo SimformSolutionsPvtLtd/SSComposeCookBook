@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.dropdownmenu
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -57,6 +58,7 @@ class DropDownMenuActivity: ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Preview
     @Composable
     fun MainContent() {

@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.demosamples
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -28,12 +29,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.jetpack.compose.learning.animation.BasicAnimation
-import com.jetpack.compose.learning.animation.GestureAnimationActivity
-import com.jetpack.compose.learning.animation.InfiniteTransitionActivity
-import com.jetpack.compose.learning.animation.ShimmerAnimationActivity
-import com.jetpack.compose.learning.animation.TabBarAnimationActivity
-import com.jetpack.compose.learning.animation.contentAnimation.ContentIconAnimationActivity
 import com.jetpack.compose.learning.demosamples.instagramdemo.InstagramSplashActivity
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.theme.AppThemeState
@@ -42,6 +37,7 @@ import com.jetpack.compose.learning.theme.SystemUiController
 
 class SampleUIActivity : ComponentActivity() {
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

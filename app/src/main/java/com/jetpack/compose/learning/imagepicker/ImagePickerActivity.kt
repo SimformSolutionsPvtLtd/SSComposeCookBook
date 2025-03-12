@@ -1,6 +1,7 @@
 package com.jetpack.compose.learning.imagepicker
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -50,6 +51,7 @@ class ImagePickerActivity : ComponentActivity() {
     var imageUri: Uri? = null
     var bitmap: Bitmap? = null
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

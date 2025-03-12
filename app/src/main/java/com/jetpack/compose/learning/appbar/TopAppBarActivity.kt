@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.appbar
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -23,6 +24,7 @@ import com.jetpack.compose.learning.theme.SystemUiController
 
 class TopAppBarActivity : ComponentActivity() {
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
