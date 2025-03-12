@@ -60,7 +60,7 @@ import com.jetpack.compose.learning.theme.SystemUiController
 import kotlinx.coroutines.launch
 
 @ExperimentalMaterialApi
-
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 class ImagePickerActivity : ComponentActivity() {
 
     private val PIC_CROP = 2
@@ -287,6 +287,7 @@ class ImagePickerActivity : ComponentActivity() {
         ActivityCompat.startActivityForResult(this, cropIntent, PIC_CROP, null)
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
