@@ -147,7 +147,7 @@ class CanvasTouchOperationActivity : ComponentActivity() {
                         down.consume()
                         var pointer = down
                         val change: PointerInputChange? =
-                            awaitTouchSlopOrCancellation(down.id) { change: PointerInputChange, over: Offset ->
+                            awaitTouchSlopOrCancellation(down.id) { change: PointerInputChange, _: Offset ->
                                 if (change.positionChange() != Offset.Zero) {
                                     change.consume()
                                 }

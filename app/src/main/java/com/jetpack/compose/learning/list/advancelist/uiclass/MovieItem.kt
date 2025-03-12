@@ -43,12 +43,14 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.jetpack.compose.learning.BuildConfig
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.list.advancelist.model.Movie
 import com.jetpack.compose.learning.theme.amber700
 
+@OptIn(ExperimentalCoilApi::class)
 @Composable
 fun MovieItem(
     data: Movie, onClick: () -> Unit

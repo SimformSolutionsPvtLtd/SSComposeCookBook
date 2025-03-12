@@ -271,8 +271,6 @@ class ImagePickerActivity : ComponentActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-            val extras: Bundle? = data?.extras
-            val thePic = extras?.getParcelable<Bitmap>("data")
             setContent {
                 val systemUiController = remember { SystemUiController(window) }
                 val appTheme = remember { mutableStateOf(AppThemeState()) }
@@ -293,17 +291,5 @@ class ImagePickerActivity : ComponentActivity() {
                 }
             }
         }
-    }
-
-    private fun getImageUri(context: Context, inImage: Bitmap): Uri? {
-        val bytes = ByteArrayOutputStream()
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
-        val path = MediaStore.Images.Media.insertImage(
-            context.contentResolver,
-            inImage,
-            "Title",
-            null
-        )
-        return Uri.parse(path)
     }
 }

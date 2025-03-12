@@ -171,7 +171,7 @@ class DropDownMenuActivity: ComponentActivity() {
                         .fillMaxWidth(0.8f)
                         .background(color = pink700),
                 ) {
-                    countryList.forEachIndexed { index, country ->
+                    countryList.forEachIndexed { _, country ->
                         DropdownMenuItem(onClick = {
                             customBackgroundCountry = country
                             isCustomBackgroundDropDownExpanded = false
@@ -246,7 +246,7 @@ class DropDownMenuActivity: ComponentActivity() {
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
                 ) {
-                    countryList.forEachIndexed { index, selectedCountry ->
+                    countryList.forEachIndexed { _, selectedCountry ->
                         DropdownMenuItem(onClick = {
                             disabledCountry = selectedCountry
                             isDisabledDropDownExpanded = false
