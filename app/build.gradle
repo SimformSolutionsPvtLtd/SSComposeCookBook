@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'org.sonarqube' version "4.0.0.2929"
 }
 
 android {
@@ -55,6 +56,12 @@ android {
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+    sonar {
+        properties {
+            property("sonar.projectKey", "sonar_test_android")
+            property("sonar.projectName", "sonar_test_android")
         }
     }
 }
