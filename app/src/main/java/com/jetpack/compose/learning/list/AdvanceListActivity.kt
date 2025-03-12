@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.list
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -45,6 +46,7 @@ class AdvanceListActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @ExperimentalFoundationApi
     @Preview
     @Composable
