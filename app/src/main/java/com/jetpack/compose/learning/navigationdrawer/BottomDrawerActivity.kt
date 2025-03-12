@@ -27,6 +27,7 @@ import com.jetpack.compose.learning.theme.BaseView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterialApi::class)
 class BottomDrawerActivity : ComponentActivity() {
 
     @OptIn(ExperimentalMaterialApi::class)

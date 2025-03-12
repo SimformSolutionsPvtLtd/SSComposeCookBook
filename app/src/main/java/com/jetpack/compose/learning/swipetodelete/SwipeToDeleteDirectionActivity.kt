@@ -74,7 +74,7 @@ class SwipeToDeleteDirectionActivity: ComponentActivity() {
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     items(items.size) {
-                        cellItem(number = items[it], context)
+                        CellItem(number = items[it], context)
                     }
                 }
             }
@@ -82,7 +82,7 @@ class SwipeToDeleteDirectionActivity: ComponentActivity() {
     }
 
     @Composable
-    fun cellItem(number: Int, context: Context) {
+    fun CellItem(number: Int, context: Context) {
         SwipeAbleItemCell(number = number, swipeDirection = swipeDirection ?: SwipeDirection.BOTH, onEditClick = {
             Toast.makeText(context, "Edit button clicked. Position :- $it", Toast.LENGTH_SHORT).show()
         }, onDeleteClicked = {

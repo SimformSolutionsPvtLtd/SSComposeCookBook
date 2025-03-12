@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.tabarlayout
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -30,6 +31,7 @@ class TabBarLayoutActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
     private fun MainContent() {
         val systemUiController = remember { SystemUiController(window) }

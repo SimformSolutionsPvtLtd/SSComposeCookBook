@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.animation
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
@@ -64,6 +65,7 @@ private fun TabBar(
     }
 }
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun TabBarContent() {
 
