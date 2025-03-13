@@ -3,6 +3,7 @@ package com.jetpack.compose.learning.maps.place.model
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.jetpack.compose.learning.BuildConfig
+import java.util.Locale
 
 data class PlaceResponse(val result: PlaceDetail?, val status: String)
 
@@ -69,7 +70,7 @@ data class Viewport(val southwest: Location, val northeast: Location)
 
 data class PhotosItem(val photo_reference: String, val width: Int, val height: Int) {
     fun getPhotoURL() =
-        String.format(BuildConfig.MAP_PHOTOS_END_POINT, width, photo_reference, BuildConfig.MAPS_API_KEY)
+        String.format(Locale.getDefault(), BuildConfig.MAP_PHOTOS_END_POINT, width, photo_reference, BuildConfig.MAPS_API_KEY)
 }
 
 data class AddressComponentsItem(
