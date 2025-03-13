@@ -41,7 +41,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = '17'
-        useIR = true
         freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
     }
     buildFeatures {
