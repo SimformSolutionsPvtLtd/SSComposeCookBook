@@ -63,7 +63,7 @@ import kotlinx.coroutines.launch
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 class ImagePickerActivity : ComponentActivity() {
 
-    private val PIC_CROP = 2
+    private val imageCrop = 2
     var isCameraSelected = false
     var imageUri: Uri? = null
     var bitmap: Bitmap? = null
@@ -284,7 +284,7 @@ class ImagePickerActivity : ComponentActivity() {
         cropIntent.putExtra("outputX", 800)
         cropIntent.putExtra("outputY", 800)
         cropIntent.putExtra("return-data", true)
-        ActivityCompat.startActivityForResult(this, cropIntent, PIC_CROP, null)
+        ActivityCompat.startActivityForResult(this, cropIntent, imageCrop, null)
     }
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")

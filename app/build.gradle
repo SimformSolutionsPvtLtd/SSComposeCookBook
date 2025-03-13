@@ -58,8 +58,9 @@ android {
     }
     lint {
         baseline = file("lint-baseline.xml")
-        ignoreWarnings = true
         checkReleaseBuilds false
+        checkDependencies = false
+        disable 'TypographyFractions','TypographyQuotes'
         // Or, if you prefer, you can continue to check for errors in release builds,
         // but continue the build even when errors are found:
         abortOnError false
@@ -70,6 +71,7 @@ android {
             property("sonar.projectName", "sonar_test_android")
         }
     }
+    namespace = "com.jetpack.compose.learning"
 }
 
 dependencies {

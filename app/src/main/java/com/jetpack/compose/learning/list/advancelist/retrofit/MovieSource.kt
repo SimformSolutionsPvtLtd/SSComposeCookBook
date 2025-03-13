@@ -17,7 +17,7 @@ class MovieSource : PagingSource<Int, Movie>() {
         return try {
             val nextPage = params.key ?: 1
             val userList = RetrofitClient.apiService.getMovieList(
-                api_key = BuildConfig.MOVIEDB_API_KEY,
+                apiKey = BuildConfig.MOVIEDB_API_KEY,
                 page = nextPage
             )
             LoadResult.Page(

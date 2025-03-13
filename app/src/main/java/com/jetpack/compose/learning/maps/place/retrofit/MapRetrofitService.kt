@@ -11,13 +11,13 @@ interface MapRetrofitService {
     @GET("place/autocomplete/json")
     suspend fun getAutoCompletePlaces(
         @Query("input") input: String,
-        @Query("key") api_key: String = BuildConfig.MAPS_API_KEY
+        @Query("key") apiKey: String = BuildConfig.MAPS_API_KEY
     ): AutoCompleteResponse
 
     @GET("place/details/json")
     suspend fun getPlaceDetail(
         @Query("placeid") placeId: String,
-        @Query("key") api_key: String = BuildConfig.MAPS_API_KEY
+        @Query("key") apiKey: String = BuildConfig.MAPS_API_KEY
     ): PlaceResponse
 
     @GET("directions/json")
@@ -25,6 +25,6 @@ interface MapRetrofitService {
         @Query("origin") originPlaceId: String,
         @Query("destination") destinationPlaceId: String,
         @Query("alternatives") alternatives: Boolean = true,
-        @Query("key") api_key: String = BuildConfig.MAPS_API_KEY
+        @Query("key") apiKey: String = BuildConfig.MAPS_API_KEY
     ): DirectionResponse
 }
