@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.demosamples.instagramdemo
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.animation.OvershootInterpolator
@@ -22,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import com.jetpack.compose.learning.R
 import kotlinx.coroutines.delay
 
+@SuppressLint("CustomSplashScreen")
 class InstagramSplashActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
