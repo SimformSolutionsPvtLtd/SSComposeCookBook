@@ -145,14 +145,11 @@ class TimePickerActivity : AppCompatActivity() {
 
     private fun getHour(hour: Int): Int {
         return when {
-            hour == 0 -> {
-                hour + 12
-            }
             hour > 12 -> {
                 hour - 12
             }
             else -> {
-                hour
+                hour + 12
             }
         }
     }

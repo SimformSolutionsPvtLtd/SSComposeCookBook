@@ -49,7 +49,7 @@ import kotlinx.coroutines.launch
 
 class ModalDrawerActivity : ComponentActivity() {
 
-    lateinit var drawerState: DrawerState
+    private lateinit var drawerState: DrawerState
     lateinit var scope: CoroutineScope
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -109,7 +109,7 @@ class SliderActivity : ComponentActivity() {
         )
         RangeSlider(
             values = sliderPosition,
-            onValueChange = { it -> sliderPosition = it },
+            onValueChange = { sliderPosition = it },
             valueRange = 0f..100f,
             onValueChangeFinished = {
                 // some business logic update with the state you hold
@@ -128,7 +128,7 @@ class SliderActivity : ComponentActivity() {
         RangeSlider(
             steps = 5,
             values = sliderPosition,
-            onValueChange = { it -> sliderPosition = it },
+            onValueChange = { sliderPosition = it },
             valueRange = 0f..100f,
             onValueChangeFinished = {
                 // some business logic update with the state you hold

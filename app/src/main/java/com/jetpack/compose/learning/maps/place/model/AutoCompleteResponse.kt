@@ -1,5 +1,7 @@
 package com.jetpack.compose.learning.maps.place.model
 
+import com.google.gson.annotations.SerializedName
+
 data class AutoCompleteResponse(
     var predictions: List<AutoCompleteItem>,
     var status: String
@@ -7,8 +9,10 @@ data class AutoCompleteResponse(
 
 data class AutoCompleteItem(
     var description: String,
-    var matched_substrings: List<MatchedSubStrings>,
-    var place_id: String,
+    @SerializedName("matched_substrings")
+    var matchedSubstrings: List<MatchedSubStrings>,
+    @SerializedName("place_id")
+    var placeId: String,
     var reference: String
 )
 

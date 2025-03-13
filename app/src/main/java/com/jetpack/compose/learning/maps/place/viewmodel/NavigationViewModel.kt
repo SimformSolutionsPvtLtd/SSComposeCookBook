@@ -204,8 +204,8 @@ class NavigationViewModel : ViewModel() {
      * Direction API call. It fetches the direction from maps api.
      */
     private fun getDirections(): Flow<Resource<DirectionResponse>> {
-        val originPlaceId = _startLocationResult.value?.place_id
-        val destinationPlaceId = _endLocationResult.value?.place_id
+        val originPlaceId = _startLocationResult.value?.placeId
+        val destinationPlaceId = _endLocationResult.value?.placeId
         return flow {
             val response = MapRetrofitClient.getInstance().apiService.getDirections(
                 "place_id:$originPlaceId",
@@ -237,15 +237,15 @@ class NavigationViewModel : ViewModel() {
                         //So accessing the first index for the lag to get information
                         //https://developers.google.com/maps/documentation/directions/get-directions#DirectionsRoute
                         val legItem = route.legs[0]
-                        val overViewLatLngPoints = PolyUtil.decode(route.overview_polyline.points)
+                        val overViewLatLngPoints = PolyUtil.decode(route.overviewPolyline.points)
                         val stepList = mutableListOf<DirectionStep>()
                         legItem.steps.forEach { stepsItem ->
                             val directionStep = DirectionStep(
                                 stepsItem.distance?.text ?: "",
                                 stepsItem.duration.text,
-                                stepsItem.start_location.getLatLng(),
-                                stepsItem.end_location.getLatLng(),
-                                stepsItem.html_instructions,
+                                stepsItem.startLocation.getLatLng(),
+                                stepsItem.endLocation.getLatLng(),
+                                stepsItem.htmlInstructions,
                                 PolyUtil.decode(stepsItem.polyline.points)
                             )
                             stepList.add(directionStep)
@@ -255,10 +255,10 @@ class NavigationViewModel : ViewModel() {
                             overviewPoints = overViewLatLngPoints,
                             distanceText = legItem.distance?.text ?: "",
                             durationText = legItem.duration?.text ?: "",
-                            startAddress = legItem.start_address,
-                            endAddress = legItem.end_address,
-                            startLocation = legItem.start_location.getLatLng(),
-                            endLocation = legItem.end_location.getLatLng(),
+                            startAddress = legItem.startAddress,
+                            endAddress = legItem.endAddress,
+                            startLocation = legItem.startLocation.getLatLng(),
+                            endLocation = legItem.endLocation.getLatLng(),
                             directionSteps = stepList
                         )
                         routeList.add(directionRoute)

@@ -86,7 +86,7 @@ class ShimmerAnimationActivity : ComponentActivity() {
 
         /**
         Create InfiniteTransition
-        which holds child animation like [Transition]
+        which holds child animation like Transition
         animations start running as soon as they enter
         the composition and do not stop unless they are removed
          */
@@ -99,7 +99,7 @@ class ShimmerAnimationActivity : ComponentActivity() {
             initialValue = 0f, targetValue = 1000f, animationSpec = infiniteRepeatable(
 
                 /**
-                 * Tween Animates between values over specified [durationMillis]
+                 * Tween Animates between values over specified durationMillis
                  */
                 tween(durationMillis = 1200, easing = FastOutSlowInEasing), RepeatMode.Reverse
             )

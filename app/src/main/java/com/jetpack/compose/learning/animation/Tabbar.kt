@@ -44,7 +44,6 @@ import androidx.compose.ui.unit.dp
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.animation.ui.theme.colorPrimaryDark
 import com.jetpack.compose.learning.animation.ui.theme.pinkColor
-import com.jetpack.compose.learning.animation.ui.theme.pinkColorDark
 import com.jetpack.compose.learning.theme.lightBlue200
 
 @Composable

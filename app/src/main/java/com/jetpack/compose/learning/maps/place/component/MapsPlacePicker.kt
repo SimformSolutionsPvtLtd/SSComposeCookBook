@@ -166,7 +166,7 @@ fun PlacePicker(
             AnimatedVisibility(visible = uiState.showSearchResult) {
                 SearchResultStateView(searchState) { place ->
                     focusManager.clearFocus()
-                    viewModel.selectPlace(place.place_id)
+                    viewModel.selectPlace(place.placeId)
                 }
             }
         }
@@ -225,7 +225,7 @@ private fun SearchResultStateView(
                     items(
                         items = autoCompleteItems,
                         key = {
-                            it.place_id
+                            it.placeId
                         },
                     ) {
                         SearchItem(it, onPlaceClick)
@@ -383,7 +383,7 @@ private fun PlaceDetail(data: PlaceDetail, onPlaceSelect: (PlaceResult) -> Unit)
                 items(
                     items = photos,
                     key = {
-                        it.photo_reference
+                        it.photoReference
                     },
                 ) {
                     PlacePhotoItem(it)
@@ -399,7 +399,7 @@ private fun PlaceDetail(data: PlaceDetail, onPlaceSelect: (PlaceResult) -> Unit)
                 items(
                     items = reviews,
                     key = {
-                        it.time.toString() + it.author_name
+                        it.time.toString() + it.authorName
                     },
                 ) {
                     PlaceReviewItem(it)
@@ -417,7 +417,7 @@ private fun PlaceDetail(data: PlaceDetail, onPlaceSelect: (PlaceResult) -> Unit)
 @Composable
 private fun PlaceReviewItem(it: Reviews) {
     val image = rememberImagePainter(
-        data = it.profile_photo_url,
+        data = it.profilePhotoUrl,
         builder = {
             crossfade(true)
         }
@@ -441,7 +441,7 @@ private fun PlaceReviewItem(it: Reviews) {
             )
             Spacer(modifier = Modifier.requiredWidth(8.dp))
             Column {
-                Text(it.author_name, fontWeight = FontWeight.Bold)
+                Text(it.authorName, fontWeight = FontWeight.Bold)
                 MapVerticalSpace(5.dp)
                 CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                     Text(
@@ -490,7 +490,7 @@ private fun PlacePhotoItem(it: PhotosItem) {
 private fun AutoCompleteItem.annotatedPlaceName(): AnnotatedString {
     return buildAnnotatedString {
         append(description)
-        matched_substrings.forEach {
+        matchedSubstrings.forEach {
             addStyle(
                 style = SpanStyle(fontWeight = FontWeight.Bold, fontSize = 17.sp),
                 start = it.offset,

@@ -22,7 +22,6 @@ package com.jetpack.compose.learning.theme
 import android.os.Build
 import android.view.View
 import android.view.Window
-import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.luminance
@@ -78,7 +77,8 @@ class SystemUiController(private val window: Window) {
      * @param transformColorForLightContent A lambda which will be invoked to transform [color] if
      * dark icons were requested but are not available. Defaults to applying a black scrim.
      */
-    fun setNavigationBarColor(
+    @Suppress("Unused")
+    private fun setNavigationBarColor(
         color: Color,
         darkIcons: Boolean = color.luminance() > 0.5f,
         transformColorForLightContent: (Color) -> Color = BlackScrimmed
@@ -101,28 +101,6 @@ class SystemUiController(private val window: Window) {
         }
     }
 
-    /**
-     * Set the status and navigation bars to [color].
-     *
-     * @see setStatusBarColor
-     * @see setNavigationBarColor
-     */
-    fun setSystemBarsColor(
-        color: Color,
-        darkIcons: Boolean = color.luminance() > 0.5f,
-        transformColorForLightContent: (Color) -> Color = BlackScrimmed
-    ) {
-        setStatusBarColor(color, darkIcons, transformColorForLightContent)
-        setNavigationBarColor(color, darkIcons, transformColorForLightContent)
-    }
-}
-
-/**
- * An [androidx.compose.Local] holding the current [SystemUiController] or throws an error if none
- * is [provided][androidx.compose.Providers].
- */
-val LocalSystemUiController = staticCompositionLocalOf<SystemUiController> {
-    error("No SystemUiController provided")
 }
 
 private val BlackScrim = Color(0f, 0f, 0f, 0.2f) // 20% opaque black

@@ -9,11 +9,8 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.AbstractComposeView
-import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.pink500
 
 /*This is custom toolbar we can use in XML*/

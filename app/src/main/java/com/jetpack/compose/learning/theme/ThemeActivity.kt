@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -15,8 +14,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -52,7 +51,6 @@ class ThemeActivity : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalFoundationApi::class)
     @Preview
     @Composable
     fun ThemeSample() {
@@ -80,12 +78,11 @@ class ThemeActivity : ComponentActivity() {
                                     .size(100.dp)
                                     .clip(RoundedCornerShape(10.dp))
                                     .background(
-                                        colorPallet
-                                            .get(it)
+                                        colorPallet[it]
                                             .getMaterialColor()
                                     )
                                     .clickable {
-                                        appTheme.value = AppThemeState(false, colorPallet.get(it))
+                                        appTheme.value = AppThemeState(false, colorPallet[it])
                                     }
                                     .then(
                                         if (isSelected) {

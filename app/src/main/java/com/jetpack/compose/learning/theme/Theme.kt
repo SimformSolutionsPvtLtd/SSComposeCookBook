@@ -81,13 +81,6 @@ private val DarkRedColorPalette = darkColors(
     surface = Color.Black
 )
 
-private val DarkYellowColorPalette = darkColors(
-    primary = yellow200,
-    primaryVariant = yellow500,
-    secondary = teal200,
-    surface = Color.Black
-)
-
 private val DarkBrownColorPalette = darkColors(
     primary = brown200,
     primaryVariant = brown500,
@@ -177,13 +170,6 @@ private val LightRedColorPalette = lightColors(
     surface = Color.White
 )
 
-private val LightYellowColorPalette = lightColors(
-    primary = yellow500,
-    primaryVariant = yellow700,
-    secondary = teal200,
-    surface = Color.White
-)
-
 private val LightBrownColorPalette = lightColors(
     primary = brown500,
     primaryVariant = brown700,
@@ -213,7 +199,7 @@ enum class ColorPalette {
 fun ComposeCookBookTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     colorPalette: ColorPalette = ColorPalette.GREEN,
-    content: @Composable() () -> Unit
+    content: @Composable () -> Unit
 ) {
 
     val colors = colorPalette.getMaterialColors(darkTheme)

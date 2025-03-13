@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="This is AppCompat TextView"
+        android:text="@string/this_is_appcompat_textview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtXmlViews" />
@@ -34,7 +34,7 @@
         android:id="@+id/btnAppCompatButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click Me to show toast."
+        android:text="@string/click_me_to_show_toast"
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
         android:background="@color/pink"

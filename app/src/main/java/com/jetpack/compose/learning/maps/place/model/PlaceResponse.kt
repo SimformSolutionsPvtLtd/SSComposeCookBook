@@ -2,6 +2,7 @@ package com.jetpack.compose.learning.maps.place.model
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
+import com.google.gson.annotations.SerializedName
 import com.jetpack.compose.learning.BuildConfig
 import java.util.Locale
 
@@ -9,23 +10,30 @@ data class PlaceResponse(val result: PlaceDetail?, val status: String)
 
 data class PlaceDetail(
     val utcOffset: Int,
-    val formatted_address: String?,
+    @SerializedName("formatted_address")
+    val formattedAddress: String?,
     val types: List<String>?,
     val icon: String,
-    val icon_background_color: String,
-    val address_components: List<AddressComponentsItem>?,
+    @SerializedName("icon_background_color")
+    val iconBackgroundColor: String,
+    @SerializedName("address_components")
+    val addressComponents: List<AddressComponentsItem>?,
     val photos: List<PhotosItem>?,
     val url: String,
     val reference: String,
     val name: String,
     val geometry: Geometry,
-    val icon_mask_base_uri: String,
+    @SerializedName("icon_mask_base_uri")
+    val iconMaskBaseUri: String,
     val vicinity: String,
-    val adr_address: String,
-    val place_id: String,
+    @SerializedName("adr_address")
+    val adrAddress: String,
+    @SerializedName("place_id")
+    val placeId: String,
     val rating: Float?,
     val reviews: List<Reviews>?,
-    val user_ratings_total: Int?,
+    @SerializedName("user_ratings_total")
+    val userRatingsTotal: Int?,
 ) {
     fun getLocation() = geometry.location.getLatLng()
 
@@ -37,15 +45,15 @@ data class PlaceDetail(
     }
 
     fun getAddress(): String {
-        if (formatted_address == null) {
+        if (formattedAddress == null) {
             return name
         }
-        if (address_components.isNullOrEmpty()) {
-            return "$name $formatted_address"
+        if (addressComponents.isNullOrEmpty()) {
+            return "$name $formattedAddress"
         }
-        val placeCodes = address_components.filter { it.types.contains("plus_code") }
-            .map { Pair(it.long_name, it.short_name) }
-        var address = "$name $formatted_address"
+        val placeCodes = addressComponents.filter { it.types.contains("plus_code") }
+            .map { Pair(it.longName, it.shortName) }
+        var address = "$name $formattedAddress"
         placeCodes.forEach {
             if (address.contains(it.first))
                 address = address.replace(it.first, "")
@@ -56,7 +64,7 @@ data class PlaceDetail(
     }
 
     fun getPlaceResult(): PlaceResult {
-        return PlaceResult(getAddress(), geometry, place_id)
+        return PlaceResult(getAddress(), geometry, placeId)
     }
 }
 
@@ -68,25 +76,31 @@ data class Location(val lng: Double, val lat: Double) {
 
 data class Viewport(val southwest: Location, val northeast: Location)
 
-data class PhotosItem(val photo_reference: String, val width: Int, val height: Int) {
+data class PhotosItem(val photoReference: String, val width: Int, val height: Int) {
     fun getPhotoURL() =
-        String.format(Locale.getDefault(), BuildConfig.MAP_PHOTOS_END_POINT, width, photo_reference, BuildConfig.MAPS_API_KEY)
+        String.format(Locale.getDefault(), BuildConfig.MAP_PHOTOS_END_POINT, width, photoReference, BuildConfig.MAPS_API_KEY)
 }
 
 data class AddressComponentsItem(
     val types: List<String>,
-    val short_name: String,
-    val long_name: String
+    @SerializedName("short_name")
+    val shortName: String,
+    @SerializedName("long_name")
+    val longName: String
 )
 
 data class Reviews(
-    val author_name: String,
-    val author_url: String,
-    val profile_photo_url: String,
+    @SerializedName("author_name")
+    val authorName: String,
+    @SerializedName("author_url")
+    val authorUrl: String,
+    @SerializedName("profile_photo_url")
+    val profilePhotoUrl: String,
     val rating: Float,
-    val relative_time_description: String,
+    @SerializedName("relative_time_description")
+    val relativeTimeDescription: String,
     val text: String,
     val time: Long
 )
 
-data class PlaceResult(val address: String, val geometry: Geometry, val place_id: String)
+data class PlaceResult(val address: String, val geometry: Geometry, val placeId: String)

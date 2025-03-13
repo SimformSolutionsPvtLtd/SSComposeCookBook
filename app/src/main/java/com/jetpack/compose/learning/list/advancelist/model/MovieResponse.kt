@@ -1,5 +1,7 @@
 package com.jetpack.compose.learning.list.advancelist.model
 
+import com.google.gson.annotations.SerializedName
+
 data class MovieResponse(
     var page: Int,
     var results: List<Movie>
@@ -7,12 +9,18 @@ data class MovieResponse(
 
 data class Movie(
     var id: Int,
-    var poster_path: String,
-    var original_language: String,
+    @SerializedName("poster_path")
+    var posterPath: String,
+    @SerializedName("original_language")
+    var originalLanguage: String,
     var overview: String,
     var title: String,
-    var original_title: String,
-    var backdrop_path: String,
-    var vote_average: String,
-    var vote_count: String
+    @SerializedName("original_title")
+    var originalTitle: String,
+    @SerializedName("backdrop_path")
+    var backdropPath: String,
+    @SerializedName("vote_average")
+    var voteAverage: String,
+    @SerializedName("vote_count")
+    var voteCount: String
 )

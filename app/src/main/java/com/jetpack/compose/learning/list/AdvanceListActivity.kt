@@ -75,7 +75,7 @@ class AdvanceListActivity : ComponentActivity() {
         }
     }
 
-    fun checkForInternet(context: Context): Boolean {
+    private fun checkForInternet(context: Context): Boolean {
 
         // register activity with the connectivity manager service
         val connectivityManager =

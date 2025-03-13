@@ -80,7 +80,7 @@ class CustomViewPullToRefreshActivity : ComponentActivity() {
                     }
             )
         }) {
-            Column() {
+            Column {
                 SwipeRefresh(
                         state = swipeRefreshState,
                         onRefresh = {

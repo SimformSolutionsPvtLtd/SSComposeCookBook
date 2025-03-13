@@ -52,7 +52,6 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
@@ -63,10 +62,9 @@ import kotlinx.coroutines.launch
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 class ImagePickerActivity : ComponentActivity() {
 
-    private val imageCrop = 2
-    var isCameraSelected = false
-    var imageUri: Uri? = null
-    var bitmap: Bitmap? = null
+    private var isCameraSelected = false
+    private var imageUri: Uri? = null
+    private var bitmap: Bitmap? = null
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -272,19 +270,6 @@ class ImagePickerActivity : ComponentActivity() {
                     .padding(top = 10.dp)
             )
         }
-    }
-
-    private fun startCrop(imageUri: Uri?) {
-        //crop image
-        val cropIntent = Intent("com.android.camera.action.CROP")
-        cropIntent.setDataAndType(imageUri, "image/*")
-        cropIntent.putExtra("crop", "true")
-        cropIntent.putExtra("aspectX", 1)
-        cropIntent.putExtra("aspectY", 1)
-        cropIntent.putExtra("outputX", 800)
-        cropIntent.putExtra("outputY", 800)
-        cropIntent.putExtra("return-data", true)
-        ActivityCompat.startActivityForResult(this, cropIntent, imageCrop, null)
     }
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")

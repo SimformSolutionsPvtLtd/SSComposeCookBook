@@ -132,16 +132,6 @@ class SimpleTextActivity : ComponentActivity() {
     }
 
     @Composable
-    fun BoldText() {
-        Text(
-            "Text style is bold",
-            Modifier.padding(bottom = 10.dp),
-            fontWeight = FontWeight.Bold,
-            fontSize = fontSize
-        )
-    }
-
-    @Composable
     fun ColorText() {
         Text(
             "Text color is Blue ",

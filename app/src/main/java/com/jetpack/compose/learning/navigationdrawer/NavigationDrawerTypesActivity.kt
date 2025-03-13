@@ -55,7 +55,6 @@ class NavigationDrawerTypesActivity : ComponentActivity() {
 
     @Preview
     @Composable
-    @OptIn(ExperimentalMaterialApi::class)
     fun NavigationDrawerTypes() {
         val spaceHeight = 24.dp
         Column(Modifier.background(MaterialTheme.colors.background).fillMaxHeight()) {

@@ -8,13 +8,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.IconButton
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults.elevation
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.ExperimentalPagerApi
 import com.jetpack.compose.learning.R
 import com.jetpack.compose.learning.model.Component
 import com.jetpack.compose.learning.theme.AppThemeState
@@ -56,7 +55,6 @@ class ViewPagerActivity : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalPagerApi::class)
     @Composable
     fun ViewPagerExample(modifier: Modifier = Modifier) {
         LazyColumn(

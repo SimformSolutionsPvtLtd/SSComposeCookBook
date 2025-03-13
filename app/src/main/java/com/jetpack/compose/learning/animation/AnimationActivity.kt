@@ -85,7 +85,7 @@ class AnimationActivity : ComponentActivity() {
         }
     }
 
-    private fun getComponents(): List<Component> = listOf<Component>(
+    private fun getComponents(): List<Component> = listOf(
         Component("BasicAnimation", BasicAnimation::class.java),
         Component("ContentAnimation", ContentIconAnimationActivity::class.java),
         Component("GestureAnimation", GestureAnimationActivity::class.java),

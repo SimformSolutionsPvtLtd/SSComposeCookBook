@@ -73,7 +73,7 @@ class CustomBackgroundPullToRefreshActivity : ComponentActivity() {
                     }
             )
         }) {
-            Column() {
+            Column {
                 SwipeRefresh(
                         state = swipeRefreshState,
                         onRefresh = {

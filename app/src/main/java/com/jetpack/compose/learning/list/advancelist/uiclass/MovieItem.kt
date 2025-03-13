@@ -74,7 +74,7 @@ fun MovieItem(
                 color = MaterialTheme.colors.surface.copy(alpha = 0.2f)
             ) {
                 val image =
-                    rememberImagePainter(data = BuildConfig.IMAGE_URL_MOVIEDB + data.backdrop_path,
+                    rememberImagePainter(data = BuildConfig.IMAGE_URL_MOVIEDB + data.backdropPath,
                         builder = {
                             crossfade(true)
                             placeholder(R.drawable.ic_movie_placeholder)
@@ -92,8 +92,8 @@ fun MovieItem(
                 modifier = Modifier.padding(10.dp)
             ) {
                 Text(
-                    text = data.original_title,
-                    style = MaterialTheme.typography.h6,
+                    text = data.originalTitle,
+                    style = typography.h6,
                     color = Color.Black,
                     maxLines = 2, overflow = TextOverflow.Ellipsis,
                 )
@@ -108,7 +108,7 @@ fun MovieItem(
                         overflow = TextOverflow.Ellipsis,
                         onTextLayout = { res -> lines = res.lineCount })
                     for (i in lines..3) { // set minimum lines = 4
-                        Text(" ", style = MaterialTheme.typography.body2)
+                        Text(" ", style = typography.body2)
                     }
                 }
                 Row(
@@ -128,7 +128,7 @@ fun MovieItem(
                                     fontSize = 18.sp
                                 )
                             ) {
-                                append(data.vote_average)
+                                append(data.voteAverage)
                             }
                             append(" / 10")
                         },

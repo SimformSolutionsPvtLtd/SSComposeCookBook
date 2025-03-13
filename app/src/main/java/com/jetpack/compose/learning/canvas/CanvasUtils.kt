@@ -20,8 +20,6 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ExposedDropdownMenuBox
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.RadioButton
-import androidx.compose.material.RadioButtonDefaults
 import androidx.compose.material.Slider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -128,30 +126,6 @@ fun SubTitle(text: String, modifier: Modifier = Modifier) {
         textAlign = TextAlign.Start,
         modifier = modifier
     )
-}
-
-@Composable
-fun RadioSelector(
-    selected: Boolean,
-    onChangeClick: (Boolean) -> Unit,
-    title: String,
-    modifier: Modifier = Modifier,
-) {
-    Row(modifier, verticalAlignment = Alignment.CenterVertically) {
-        RadioButton(
-            selected = selected,
-            onClick = {
-                onChangeClick.invoke(!selected)
-            },
-            colors = RadioButtonDefaults.colors(selectedColor = MaterialTheme.colors.primary),
-        )
-        Text(
-            text = title,
-            Modifier.clickable {
-                onChangeClick.invoke(!selected)
-            },
-        )
-    }
 }
 
 @Composable

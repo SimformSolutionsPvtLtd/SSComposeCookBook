@@ -75,8 +75,8 @@ class BottomNavigationActivity : ComponentActivity() {
             ScreenType.Notifications,
             ScreenType.Profile
         )
-        Column() {
-            BottomNavigation() {
+        Column {
+            BottomNavigation {
                 val navBackStackEntry by navHostController.currentBackStackEntryAsState()
                 val currentRoute = navBackStackEntry?.destination?.route
                 items.forEach { screen ->

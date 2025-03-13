@@ -29,11 +29,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.swiperefresh.SwipeRefresh
-import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.jetpack.compose.learning.theme.AppThemeState
 import com.jetpack.compose.learning.theme.BaseView
@@ -73,7 +71,7 @@ class SimplePullToRefresh : ComponentActivity() {
                     }
             )
         }) {
-            Column() {
+            Column {
                 SwipeRefresh(state = swipeRefreshState, onRefresh = {
                     isRefreshing = true
                 }) {

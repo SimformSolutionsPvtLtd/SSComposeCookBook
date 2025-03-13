@@ -2,7 +2,6 @@ package com.jetpack.compose.learning.animation
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.calculateTargetValue
 import androidx.compose.animation.splineBasedDecay
@@ -42,10 +41,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.jetpack.compose.learning.R
-import kotlin.math.absoluteValue
-import kotlin.math.roundToInt
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlin.math.absoluteValue
+import kotlin.math.roundToInt
 
 /**
  * Shows the entire screen.
@@ -91,7 +90,6 @@ fun SwipeToDelete() {
 /**
  * Shows a separator for topics.
  */
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun TopicRowSpacer(visible: Boolean) {
     AnimatedVisibility(visible = visible) {

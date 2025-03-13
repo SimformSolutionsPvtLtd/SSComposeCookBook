@@ -251,13 +251,11 @@ class ColorsTransformation : VisualTransformation {
     private fun buildAnnotatedStringWithColors(text: String): AnnotatedString {
         val words: List<String> = text.split("\\s+".toRegex())// splits by whitespace
         val colors = listOf(Color.Magenta, Color.Red, Color.Blue, Color.Black)
-        var count = 0
         val builder = AnnotatedString.Builder()
-        for (word in words) {
+        for ((count, word) in words.withIndex()) {
             builder.withStyle(style = SpanStyle(color = colors[count % 4])) {
                 append("$word ")
             }
-            count++
         }
         return builder.toAnnotatedString()
     }

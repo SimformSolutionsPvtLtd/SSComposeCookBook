@@ -11,12 +11,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -66,7 +63,7 @@ class LazyGridActivity : ComponentActivity() {
                 }
             )
         }) {
-            Column() {
+            Column {
                 Text(
                     "LazyVerticalGrid :",
                     modifier = Modifier.padding(20.dp),
@@ -74,35 +71,6 @@ class LazyGridActivity : ComponentActivity() {
                 )
                 LazyGridExample()
             }
-        }
-    }
-
-    @Composable
-    fun LazyColumnExample() {
-        val itemsList = (0..20).toList()
-        LazyColumn(
-            contentPadding = PaddingValues(10.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
-            items(itemsList.size) {
-                ColumnItem(number = it)
-            }
-        }
-    }
-
-    @Composable
-    fun ColumnItem(number: Int) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp)
-                .background(MaterialTheme.colors.background)
-                .border(1.dp, MaterialTheme.colors.primary),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-
-        ) {
-            Text(text = "Item Number $number", color = MaterialTheme.colors.primary)
         }
     }
 

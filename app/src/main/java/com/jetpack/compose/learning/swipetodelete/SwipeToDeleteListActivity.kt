@@ -61,7 +61,7 @@ class SwipeToDeleteListActivity : ComponentActivity() {
                 }
             )
         }) {
-            Column() {
+            Column {
                 Button(
                     onClick = {
                         navigateToSwipeToDeleteActivity(context, SwipeDirection.LEFT)

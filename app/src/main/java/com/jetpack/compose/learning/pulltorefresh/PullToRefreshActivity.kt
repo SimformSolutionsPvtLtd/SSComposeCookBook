@@ -58,7 +58,7 @@ class PullToRefreshActivity : ComponentActivity() {
                 }
             )
         }) {
-            Column() {
+            Column {
                 Button(
                         onClick = {
                             startActivity(Intent(context, SimplePullToRefresh::class.java))

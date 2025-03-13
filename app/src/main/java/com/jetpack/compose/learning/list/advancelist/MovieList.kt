@@ -34,7 +34,7 @@ fun MovieInfoList(modifier: Modifier, userList: Flow<PagingData<Movie>>, context
                 MovieItem(data = it, onClick = {
                     Toast.makeText(
                         context,
-                        item.original_title,
+                        item.originalTitle,
                         Toast.LENGTH_SHORT
                     ).show()
                 })

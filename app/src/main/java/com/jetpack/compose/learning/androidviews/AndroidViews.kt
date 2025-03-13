@@ -15,8 +15,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -84,7 +82,7 @@ class AndroidViews : ComponentActivity() {
             AndroidView(factory = {
                 View.inflate(it, R.layout.compose, null)
             },
-            update = {
+            update = { it ->
                 textView = it.findViewById(R.id.txtAppCompatTextView)
                 button = it.findViewById(R.id.btnAppCompatButton)
 

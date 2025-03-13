@@ -32,7 +32,7 @@ import com.jetpack.compose.learning.theme.SystemUiController
 @ExperimentalMaterialApi
 class SwipeToDeleteDirectionActivity: ComponentActivity() {
 
-    var swipeDirection: SwipeDirection? = null
+    private var swipeDirection: SwipeDirection? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
