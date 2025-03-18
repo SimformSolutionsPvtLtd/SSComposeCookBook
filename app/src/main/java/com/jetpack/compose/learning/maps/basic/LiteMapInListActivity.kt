@@ -54,6 +54,7 @@ class LiteMapInListActivity : ComponentActivity() {
     }
 
     @Composable
+    @Suppress("DEPRECATION")
     fun MainContent() {
         MapScaffold(
             title = "Lite Map",

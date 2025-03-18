@@ -52,6 +52,7 @@ class MapPolylineActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent(mapsViewModel: MapPolylineViewModel = viewModel()) {
         var showLoading by remember { mutableStateOf(true) }

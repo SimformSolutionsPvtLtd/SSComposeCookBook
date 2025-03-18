@@ -159,6 +159,7 @@ class AddRemovePagerActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun TopBar(dropDownClick: (String) -> Unit) {
         val isShowDropdown by viewModel.isShowDropdown.collectAsState()

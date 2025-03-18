@@ -53,6 +53,7 @@ import kotlinx.coroutines.launch
  */
 class HorizontalViewPager : ComponentActivity() {
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

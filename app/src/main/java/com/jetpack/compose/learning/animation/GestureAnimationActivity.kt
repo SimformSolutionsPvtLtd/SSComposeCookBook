@@ -24,6 +24,7 @@ import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 
 class GestureAnimationActivity : ComponentActivity() {
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

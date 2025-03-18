@@ -50,6 +50,7 @@ class MapScaleBarActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent(viewModel: MapScaleBarViewModel = viewModel()) {
         var showLoading by remember { mutableStateOf(true) }

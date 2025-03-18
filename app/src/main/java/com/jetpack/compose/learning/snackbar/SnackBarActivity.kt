@@ -55,6 +55,7 @@ class SnackBarActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Preview
     @Composable
+    @Suppress("DEPRECATION")
     private fun MainContent() {
         val systemUiController = remember { SystemUiController(window) }
         val appTheme = remember { mutableStateOf(AppThemeState()) }

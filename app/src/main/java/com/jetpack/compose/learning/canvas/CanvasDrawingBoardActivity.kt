@@ -59,6 +59,7 @@ import com.jetpack.compose.learning.theme.SystemUiController
  */
 class CanvasDrawingBoardActivity : ComponentActivity() {
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

@@ -53,6 +53,7 @@ class MapKMLOverlayActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent() {
         var showLoading by remember { mutableStateOf(true) }

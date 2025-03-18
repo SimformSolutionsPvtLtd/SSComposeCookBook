@@ -50,6 +50,7 @@ class MapGroundOverlayActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent(mapsViewModel: MapGroundOverlayViewModel = viewModel()) {
         var showLoading by remember { mutableStateOf(true) }

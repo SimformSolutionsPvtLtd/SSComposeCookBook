@@ -63,6 +63,7 @@ class CanvasTextImageActivity : ComponentActivity() {
         FilterQuality.High.toString() to FilterQuality.High
     )
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

@@ -52,6 +52,7 @@ class SimpleTextActivity : ComponentActivity() {
 
     val fontSize = 18.sp
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

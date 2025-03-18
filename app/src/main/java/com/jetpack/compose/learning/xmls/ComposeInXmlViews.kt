@@ -41,6 +41,7 @@ class ComposeInXmlViews : AppCompatActivity() {
     private lateinit var composeView: ComposeView
     private lateinit var appCompatButton: AppCompatButton
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_compose_in_xml)

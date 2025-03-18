@@ -52,6 +52,7 @@ class MapCircleActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent(mapsViewModel: MapCircleViewModel = viewModel()) {
         var showLoading by remember { mutableStateOf(true) }

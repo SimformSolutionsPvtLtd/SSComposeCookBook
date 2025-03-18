@@ -48,6 +48,7 @@ class BottomNavigationActivity : ComponentActivity() {
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
+    @Suppress("DEPRECATION")
     fun MainContent() {
         val navController = rememberNavController()
         Scaffold(

@@ -70,6 +70,7 @@ class MapsPlaceActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainScreen(navController: NavController, viewModel: MapsPlaceActivityViewModel) {
         val placeResult by viewModel.placeResult.collectAsState()

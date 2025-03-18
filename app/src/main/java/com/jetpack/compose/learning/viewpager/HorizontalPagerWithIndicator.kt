@@ -40,6 +40,7 @@ import com.jetpack.compose.learning.theme.SystemUiController
 
 class HorizontalPagerWithIndicator : ComponentActivity() {
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

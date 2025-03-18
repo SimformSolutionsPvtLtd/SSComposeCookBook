@@ -45,6 +45,7 @@ import dev.chrisbanes.snapper.ExperimentalSnapperApi
  */
 class HorizontalPagerWithFlingBehaviorActivity : ComponentActivity() {
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

@@ -37,6 +37,7 @@ import com.jetpack.compose.learning.theme.SystemUiController
 
 class SampleUIActivity : ComponentActivity() {
 
+    @Suppress("DEPRECATION")
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

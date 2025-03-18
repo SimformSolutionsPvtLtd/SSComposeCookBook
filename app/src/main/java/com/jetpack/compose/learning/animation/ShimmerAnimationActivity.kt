@@ -50,6 +50,7 @@ class ShimmerAnimationActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun InitView() {
         Column(Modifier.background(MaterialTheme.colors.background)) {

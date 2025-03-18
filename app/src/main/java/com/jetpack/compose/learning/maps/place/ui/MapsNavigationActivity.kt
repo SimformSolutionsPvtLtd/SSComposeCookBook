@@ -94,6 +94,7 @@ class MapsNavigationActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainScreen(navController: NavController, viewModel: NavigationViewModel) {
         val startLocation by viewModel.startLocationResult.collectAsState()

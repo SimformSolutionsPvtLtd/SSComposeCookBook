@@ -66,6 +66,7 @@ class DialogActivity : ComponentActivity() {
     }
 
     @Preview
+    @Suppress("DEPRECATION")
     @Composable
     fun DialogTypes() {
         openAlertDialog = remember { mutableStateOf(false) }

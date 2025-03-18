@@ -60,6 +60,7 @@ class MapMarkerActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent(mapsViewModel: MapMarkerViewModel = viewModel()) {
         var showLoading by remember { mutableStateOf(true) }

@@ -80,6 +80,7 @@ class CanvasBlendModesActivity : ComponentActivity() {
         BlendMode.Luminosity.toString() to BlendMode.Luminosity
     )
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

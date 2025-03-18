@@ -49,6 +49,7 @@ import kotlin.math.roundToInt
  */
 class CanvasShapesActivity : ComponentActivity() {
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

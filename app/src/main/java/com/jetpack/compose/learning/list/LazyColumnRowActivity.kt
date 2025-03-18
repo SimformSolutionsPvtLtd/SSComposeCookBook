@@ -50,6 +50,7 @@ class LazyColumnRowActivity : ComponentActivity() {
     }
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+    @Suppress("DEPRECATION")
     @Preview
     @Composable
     fun MainContent() {

@@ -53,6 +53,7 @@ class ThemeActivity : ComponentActivity() {
 
     @Preview
     @Composable
+    @Suppress("DEPRECATION")
     fun ThemeSample() {
         val spaceHeight = 24.dp
         Column(Modifier.background(MaterialTheme.colors.background).fillMaxHeight()) {

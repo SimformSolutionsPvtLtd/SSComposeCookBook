@@ -82,6 +82,7 @@ class CanvasTouchOperationActivity : ComponentActivity() {
         IDLE, DOWN, MOVE, UP
     }
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

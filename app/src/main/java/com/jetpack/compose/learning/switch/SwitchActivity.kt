@@ -34,6 +34,7 @@ import com.jetpack.compose.learning.theme.BaseView
 import com.jetpack.compose.learning.theme.SystemUiController
 
 class SwitchActivity : ComponentActivity() {
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

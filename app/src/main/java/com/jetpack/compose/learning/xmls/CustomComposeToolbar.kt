@@ -22,6 +22,7 @@ class CustomComposeToolbar @JvmOverloads constructor(
 
     var onBackPressed: () -> Unit = {}
 
+    @Suppress("DEPRECATION")
     // The Content function works as a Composable function so we can now define our Compose UI components to render.
     @Composable
     override fun Content() {

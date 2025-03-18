@@ -53,6 +53,7 @@ class AndroidViews : ComponentActivity() {
     }
 
     @Preview
+    @Suppress("DEPRECATION")
     @Composable
     fun AndroidViewSample() {
         Column(Modifier.background(MaterialTheme.colors.background)) {

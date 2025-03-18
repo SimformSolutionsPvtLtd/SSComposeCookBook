@@ -53,6 +53,7 @@ class MapPolygonActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent(mapsViewModel: MapPolygonViewModel = viewModel()) {
         var showLoading by remember { mutableStateOf(true) }

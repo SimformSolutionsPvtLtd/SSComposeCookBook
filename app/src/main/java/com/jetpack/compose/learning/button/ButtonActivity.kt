@@ -39,6 +39,7 @@ class ButtonActivity : ComponentActivity() {
     }
 
     @Preview
+    @Suppress("DEPRECATION")
     @Composable
     fun ButtonSample() {
         val spaceHeight = 24.dp

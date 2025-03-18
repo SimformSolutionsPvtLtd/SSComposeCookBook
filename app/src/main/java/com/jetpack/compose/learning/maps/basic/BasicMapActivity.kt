@@ -58,6 +58,7 @@ class BasicMapActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent(viewModel: BasicMapsViewModel) {
         var showLoading by remember { mutableStateOf(true) }

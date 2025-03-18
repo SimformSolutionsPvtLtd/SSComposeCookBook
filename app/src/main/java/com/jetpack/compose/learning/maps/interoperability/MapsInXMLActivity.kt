@@ -24,6 +24,7 @@ import com.jetpack.compose.learning.theme.SystemUiController
  * Include example of how to use compose map in activity or fragment.
  */
 class MapsInXMLActivity : AppCompatActivity() {
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_compose_maps_in_xml)

@@ -51,6 +51,7 @@ class LazyGridActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @ExperimentalFoundationApi
     @Preview
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent() {
         Scaffold(topBar = {

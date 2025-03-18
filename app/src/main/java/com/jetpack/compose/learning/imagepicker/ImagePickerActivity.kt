@@ -66,6 +66,7 @@ class ImagePickerActivity : ComponentActivity() {
     private var imageUri: Uri? = null
     private var bitmap: Bitmap? = null
 
+    @Suppress("DEPRECATION")
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -235,6 +236,7 @@ class ImagePickerActivity : ComponentActivity() {
             }
         }
 
+        @Suppress("DEPRECATION")
         imageUri?.let {
             if (!isCameraSelected) {
                 this.bitmap = if (Build.VERSION.SDK_INT < 28) {
@@ -272,9 +274,11 @@ class ImagePickerActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if (resultCode == Activity.RESULT_OK) {
             setContent {
                 val systemUiController = remember { SystemUiController(window) }

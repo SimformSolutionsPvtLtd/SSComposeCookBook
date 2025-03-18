@@ -50,6 +50,7 @@ class MapTileOverlayActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent(mapsViewModel: MapTileOverlayViewModel = viewModel()) {
         var showLoading by remember { mutableStateOf(true) }

@@ -53,6 +53,7 @@ class CanvasPathOperationActivity : ComponentActivity() {
         PathOperation.Xor.toString() to PathOperation.Xor
     )
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

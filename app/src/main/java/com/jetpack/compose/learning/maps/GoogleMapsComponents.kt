@@ -106,6 +106,7 @@ fun MapScreen(
  * The @param[actionItems] can be used to display action items in toolbar.
  */
 @Composable
+@Suppress("DEPRECATION")
 @OptIn(ExperimentalAnimationApi::class)
 fun MapScaffold(
     title: String,

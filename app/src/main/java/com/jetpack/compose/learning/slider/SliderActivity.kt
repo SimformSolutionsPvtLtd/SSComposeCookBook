@@ -48,6 +48,7 @@ class SliderActivity : ComponentActivity() {
 
     @Preview
     @Composable
+    @Suppress("DEPRECATION")
     fun SliderExamples() {
         val headerStyle = MaterialTheme.typography.h6
         val spaceHeight = 24.dp

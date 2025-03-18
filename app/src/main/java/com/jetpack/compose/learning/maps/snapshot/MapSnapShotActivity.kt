@@ -58,6 +58,7 @@ class MapSnapShotActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent() {
         var showLoading by remember { mutableStateOf(false) }

@@ -48,6 +48,7 @@ class AdvanceListActivity : ComponentActivity() {
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @ExperimentalFoundationApi
+    @Suppress("DEPRECATION")
     @Preview
     @Composable
     fun MainContent() {

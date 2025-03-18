@@ -66,6 +66,7 @@ class CanvasAndroidEasterEggActivity : ComponentActivity() {
     }
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

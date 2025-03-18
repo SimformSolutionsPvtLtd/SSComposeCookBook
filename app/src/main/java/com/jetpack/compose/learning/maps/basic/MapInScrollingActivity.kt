@@ -57,6 +57,7 @@ class MapInScrollingActivity : ComponentActivity() {
     }
 
     @Composable
+    @Suppress("DEPRECATION")
     fun MainContent() {
         Scaffold(topBar = {
             TopAppBar(

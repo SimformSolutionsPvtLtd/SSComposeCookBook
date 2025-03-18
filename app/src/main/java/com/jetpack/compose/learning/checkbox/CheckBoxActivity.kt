@@ -46,6 +46,7 @@ class CheckBoxActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @Composable
     fun CheckBoxSample() {
 

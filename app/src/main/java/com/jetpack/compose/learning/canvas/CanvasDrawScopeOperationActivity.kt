@@ -60,6 +60,7 @@ class CanvasDrawScopeOperationActivity : ComponentActivity() {
         ClipOp.Intersect.toString() to ClipOp.Intersect
     )
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

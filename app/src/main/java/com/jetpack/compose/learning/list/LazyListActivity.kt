@@ -54,6 +54,7 @@ class LazyListActivity : ComponentActivity() {
     }
 
     @Preview
+    @Suppress("DEPRECATION")
     @Composable
     fun LazyComposables() {
         val spaceHeight = 24.dp

@@ -46,6 +46,7 @@ class ZoomViewActivity : ComponentActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
     private fun MainContent() {

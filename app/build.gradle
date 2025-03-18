@@ -49,7 +49,7 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion kotlin_gradle_version
+        //kotlinCompilerVersion kotlin_gradle_version
     }
     packagingOptions {
         resources {
@@ -57,18 +57,19 @@ android {
         }
     }
     lint {
+        abortOnError false
         baseline = file("lint-baseline.xml")
         checkReleaseBuilds false
         checkDependencies = false
         disable 'TypographyFractions','CustomSplashScreen','LintBaseline', 'TypographyQuotes', 'GradleDependency'
         // Or, if you prefer, you can continue to check for errors in release builds,
         // but continue the build even when errors are found:
-        abortOnError false
     }
     sonar {
         properties {
             property("sonar.projectKey", "sonar_test_android")
             property("sonar.projectName", "sonar_test_android")
+//            property("sonar.androidLint.reportPaths", "build/reports/lint-results-debug.html")
         }
     }
     namespace = "com.jetpack.compose.learning"

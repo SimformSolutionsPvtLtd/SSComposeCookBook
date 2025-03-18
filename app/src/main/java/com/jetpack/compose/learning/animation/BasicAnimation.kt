@@ -46,6 +46,7 @@ class BasicAnimation : ComponentActivity() {
 
     @ExperimentalAnimationApi
     @Composable
+    @Suppress("DEPRECATION")
     fun InitView() {
         Column(Modifier.background(MaterialTheme.colors.background)) {
             TopAppBar(title = { Text(text = "Basic Animation", color = Color.White) },

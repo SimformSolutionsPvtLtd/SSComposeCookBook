@@ -38,6 +38,7 @@ import kotlinx.coroutines.launch
 
 class ViewPagerWithTabActivity : ComponentActivity() {
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

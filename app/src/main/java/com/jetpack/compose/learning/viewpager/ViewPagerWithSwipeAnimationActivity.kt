@@ -64,6 +64,7 @@ class ViewPagerWithSwipeAnimationActivity : ComponentActivity() {
     private val minAutoScrollDelay = 400
     private val autoScrollChangeValue = 100
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

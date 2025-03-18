@@ -36,6 +36,7 @@ class TimePickerActivity : AppCompatActivity() {
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
+    @Suppress("DEPRECATION")
     private fun MainContent() {
         var datePicked: String? by remember {
             mutableStateOf(null)

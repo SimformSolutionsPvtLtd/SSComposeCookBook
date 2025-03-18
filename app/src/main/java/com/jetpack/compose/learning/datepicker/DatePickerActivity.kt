@@ -33,6 +33,7 @@ class DatePickerActivity : AppCompatActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
     private fun MainContent() {

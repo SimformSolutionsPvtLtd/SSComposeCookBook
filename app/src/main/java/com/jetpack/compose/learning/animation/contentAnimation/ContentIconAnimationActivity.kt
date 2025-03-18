@@ -62,6 +62,7 @@ class ContentIconAnimationActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @ExperimentalMaterialApi
     @ExperimentalAnimationApi
+    @Suppress("DEPRECATION")
     @Composable
     fun InitView() {
         Column(Modifier.background(MaterialTheme.colors.background)) {

@@ -60,6 +60,7 @@ class DropDownMenuActivity: ComponentActivity() {
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Preview
+    @Suppress("DEPRECATION")
     @Composable
     fun MainContent() {
         var isTopBarExpanded by remember { mutableStateOf(false) }

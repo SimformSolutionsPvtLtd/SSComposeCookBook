@@ -62,6 +62,7 @@ class CustomViewPullToRefreshActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Preview
     @Composable
+    @Suppress("DEPRECATION")
     fun MainContent() {
 
         val items = remember { mutableStateListOf<Int>() }
