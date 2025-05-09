@@ -8,45 +8,6 @@ on:
         required: false
         default: 'feature/integrate_sonar_qube'
 
-#      build_flavour:
-#        description: 'Build flavour to use in build variant'
-#        required: true
-#        type: choice
-#        options:
-#          - meta_v1_flow
-#          - zenni_v1_flow
-#          - dev
-#        default: 'zenni_v1_flow'
-#
-#      build_type:
-#        description: 'Build type to use in build variant'
-#        required: true
-#        type: choice
-#        options:
-#          - Debug
-#          - Release
-#        default: 'Debug'
-#
-#      build_version_code:
-#        description: 'Build version code'
-#        required: true
-#        type: string
-#
-#      ip_address:
-#        description: 'IP Address to use in AppProperties'
-#        required: true
-#        default: '192.168.2.97'
-#
-#      app_id:
-#        description: 'Application Id for Pocket Deploy'
-#        required: true
-#        default: '4fddc527-3450-447c-8900-31129208242a'
-#
-#      release_notes:
-#        description: 'Release notes for the build'
-#        required: true
-#        type: 'string'
-
 jobs:
   build-and-analyze-upload:
     name: Build, Analyze, and Upload to Pocket Deploy
@@ -71,24 +32,7 @@ jobs:
       - name: Grant Execute Permission to Gradle
         run: chmod +x ./gradlew
 
-#      # Step 4: Change ipAddress variable
-#      - name: Replace IP Address in AppProperties.kt
-#        run: |
-#          sed -i 's|override val ipAddress: String = ".*"|override val ipAddress: String = "${{ inputs.ip_address }}"|' app/src/${{ inputs.build_flavour }}/java/com/eyebot/AppProperties.kt
-#          cat app/src/${{ inputs.build_flavour }}/java/com/eyebot/AppProperties.kt
-#
-#      # Step 5: Change build version variable
-#      - name: Change build versionCode in AppProperties.kt
-#        run: |
-#          if [[ "${{ inputs.build_flavour }}" == "meta_v1_flow" ]]; then
-#            sed -i 's|meta-app-version-code = ".*"|meta-app-version-code = "${{ inputs.build_version_code }}"|' gradle/libs.versions.toml
-#          elif [[ "${{ inputs.build_flavour }}" == "zenni_v1_flow" ]]; then
-#            sed -i 's|zenni-app-version-code = ".*"|zenni-app-version-code = "${{ inputs.build_version_code }}"|' gradle/libs.versions.toml
-#          else
-#            sed -i 's|dev-app-version-code = ".*"|dev-app-version-code = "${{ inputs.build_version_code }}"|' gradle/libs.versions.toml
-#          fi
-
-      # Step 6: Cache SonarQube packages
+      # Step 4: Cache SonarQube packages
       - name: Cache SonarQube packages
         uses: actions/cache@v4
         with:
@@ -96,7 +40,7 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      # Step 7: Cache Gradle packages
+      # Step 5: Cache Gradle packages
       - name: Cache Gradle packages
         uses: actions/cache@v4
         with:
@@ -104,76 +48,9 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
 
-      # Step 8: Build and analyze with SonarQube
+      # Step 6: Build and analyze with SonarQube
       - name: Build and analyze
-#        if: ${{ inputs.build_flavour == 'zenni_v1_flow' }}
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: ./gradlew build sonar --info
-#
-#      # Step 9: Build the specified variant dynamically
-#      - name: Build Specified Variant
-#        run: |
-#          ./gradlew assemble${{ inputs.build_flavour }}${{ inputs.build_type }}
-#
-#      # Step 10: Set the APK file path based on selected build variant
-#      - name: Set APK Path
-#        id: set_apk_path
-#        run: |
-#          if [[ "${{ inputs.build_type }}" == "Debug" ]]; then
-#            echo "APK_PATH=app/build/outputs/apk/${{ inputs.build_flavour }}/debug/*.apk" >> $GITHUB_ENV
-#          elif [[ "${{ inputs.build_type }}" == "Release" ]]; then
-#            echo "APK_PATH=app/build/outputs/apk/${{ inputs.build_flavour }}/release/*.apk" >> $GITHUB_ENV
-#          fi
-#            echo "APK Path: ${{ env.APK_PATH }}"
-#
-#      # Step 11: Upload to Pocket Deploy
-#      - name: Upload to Pocket Deploy
-#        run: |
-#          npx simform-pocket-cli distribute \
-#                     --applicationId ${{ inputs.app_id }} \
-#                     --buildPath ${{ env.APK_PATH }} \
-#                     --appToken ${{ secrets.POCKET_DEPLOY_TOKEN }} \
-#                     --release-notes "${{ inputs.release_notes }}" --silent
-#
-#      # Step 12: Write Build Log
-#      - name: Generate Build Log
-#        run: |
-#          APK_NAME=$(basename ${{ env.APK_PATH }})
-#          BUILD_VERSION_CODE=${{ inputs.build_version_code }}
-#          POST_DATE=$(date '+%Y-%m-%d %H:%M:%S')
-#          COMMIT_ID=$(git rev-parse HEAD)
-#          FLAVOUR_NAME=${{ inputs.build_flavour }}
-#          IP_ADDRESS=${{ inputs.ip_address }}
-#          FLAVOUR_TYPE=${{ inputs.build_type }}
-#          RELEASE_NOTES="${{ inputs.release_notes }}"
-#          OUTPUT_FILE="build_log.txt"
-#
-#          # Append the build information
-#          echo "Writing build information to $OUTPUT_FILE..."
-#
-#          if [ ! -f "$OUTPUT_FILE" ]; then
-#            touch "$OUTPUT_FILE"
-#            echo "== Build Information Log ==" >> "$OUTPUT_FILE"
-#            echo "File created: $(date)" >> "$OUTPUT_FILE"
-#          fi
-#
-#          echo -e "\n===========================" >> "$OUTPUT_FILE"
-#          echo "APK Name          : $APK_NAME" >> "$OUTPUT_FILE"
-#          echo "Build Version Code: $BUILD_VERSION_CODE" >> "$OUTPUT_FILE"
-#          echo "Date of Posting   : $POST_DATE" >> "$OUTPUT_FILE"
-#          echo "Last Commit ID    : $COMMIT_ID" >> "$OUTPUT_FILE"
-#          echo "Build Flavour     : $FLAVOUR_NAME" >> "$OUTPUT_FILE"
-#          echo "Build Type        : $FLAVOUR_TYPE" >> "$OUTPUT_FILE"
-#          echo "Release Notes     : $RELEASE_NOTES" >> "$OUTPUT_FILE"
-#          echo "===========================" >> "$OUTPUT_FILE"
-#
-#          echo "Build information successfully written to $OUTPUT_FILE."
-#
-#      # Step 13: Upload Build Log as Artifact
-#      - name: Upload Build Log as Artifact
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: build_log
-#          path: build_log.txt
